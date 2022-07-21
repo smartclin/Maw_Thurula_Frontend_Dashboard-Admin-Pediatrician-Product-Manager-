@@ -19,6 +19,7 @@ const AuthGuard = ({ children }) => {
     isAuthenticated,
     // user
   } = useAuth();
+
   const { pathname } = useLocation();
 
   //   const routes = flat(AllPages);
