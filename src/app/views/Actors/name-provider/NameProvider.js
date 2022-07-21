@@ -12,4 +12,4 @@ const NameProvider = () => {
     );
 };
 
-export default AdminDashboard;
+export default NameProvider;

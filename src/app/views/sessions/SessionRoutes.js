@@ -11,6 +11,7 @@ const sessionRoutes = [
   { path: '/session/signin', element: <JwtLogin /> },
   { path: '/session/forgot-password', element: <ForgotPassword /> },
   { path: '/session/404', element: <NotFound /> },
+
 ];
 
 export default sessionRoutes;

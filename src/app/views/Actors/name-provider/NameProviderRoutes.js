@@ -10,4 +10,4 @@ const NameProviderRoutes = [
     }
 ];
 
-export default AdminRoutes;
+export default NameProviderRoutes;
