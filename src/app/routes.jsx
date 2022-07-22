@@ -15,7 +15,7 @@ const routes = [
         <MatxLayout />
       </AuthGuard>
     ),
-    children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes,   ...AdminRoutes],
+    children: [...AdminRoutes],
   },
   ...sessionRoutes,
   { path: '/', element: <Navigate to="/admin" /> },

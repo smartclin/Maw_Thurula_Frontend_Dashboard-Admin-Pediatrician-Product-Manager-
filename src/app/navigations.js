@@ -1,4 +1,4 @@
-export const navigations = [
+export const navigations1 = [
   { label: 'PAGES', type: 'label' },
   {
       name: 'Session/Auth',
@@ -57,58 +57,68 @@ export const navigations = [
   },
 ];
 
-//
-// export const navigations = [
-//   { label: 'Admin', type: 'label' },
-//   {
-//     name: 'Mothers ',
-//     icon: 'pregnant_woman',
-//     badge: { value: '', color: 'secondary' },
-//     children: [
-//       { name: 'List', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Post Requests', path: '/material/autocomplete', iconText: 'A' },
-//
-//     ],
-//   },
-//
-//   {
-//     name: 'Pediatrician ',
-//     icon: 'local_hospital',
-//     badge: { value: '', color: 'secondary' },
-//     children: [
-//       { name: 'List', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Articles', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'New Requests', path: '/material/autocomplete', iconText: 'A' },
-//
-//     ],
-//   },
-//   {
-//     name: 'Astrologers ',
-//     icon: 'recent_actors',
-//     badge: { value: '', color: 'secondary' },
-//     children: [
-//       { name: 'List', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Reports', path: '/material/autocomplete', iconText: 'A' },
-//     ],
-//   },
-//   {
-//     name: 'Name Providers ',
-//     icon: 'rate_review',
-//     badge: { value: '', color: 'secondary' },
-//     children: [
-//       { name: 'List', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Reports', path: '/material/autocomplete', iconText: 'A' },
-//     ],
-//   },
-//   {
-//     name: 'Ecommerce',
-//     icon: 'store',
-//     badge: { value: '', color: 'secondary' },
-//     children: [
-//       { name: 'Products', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Orders', path: '/material/autocomplete', iconText: 'A' },
-//       { name: 'Reports', path: '/material/autocomplete', iconText: 'A' },
-//
-//     ],
-//   },
-// ];
+
+export const navigations = [
+  { label: 'Dashboard', type: 'label' },
+  {
+    name: 'Home ',
+    icon: 'home',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Home', path: '/admin', iconText: 'A' },
+    ],
+  },
+
+  { label: 'Admin', type: 'label' },
+  {
+    name: 'Mothers ',
+    icon: 'pregnant_woman',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'List', path: '/admin/mothers', iconText: 'A' },
+      { name: 'Post Requests', path: '/admin/mothers_post_request', iconText: 'A' },
+
+    ],
+  },
+
+  {
+    name: 'Pediatrician ',
+    icon: 'local_hospital',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'List', path: '/admin/pediatricians', iconText: 'A' },
+      { name: 'Articles', path: '/admin/pediatrician_articles', iconText: 'A' },
+      { name: 'New Requests', path: '/admin/pediatrician_request', iconText: 'A' },
+
+    ],
+  },
+  {
+    name: 'Astrologers ',
+    icon: 'recent_actors',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'List', path: '/admin/astrologers', iconText: 'A' },
+      { name: 'Reports', path: '/admin/astrologers_reports', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Name Providers ',
+    icon: 'rate_review',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'List', path: '/admin/name_providers', iconText: 'A' },
+      { name: 'Reports', path: '/admin/name_providers_reports', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Ecommerce',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
+      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
+      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  },
+];
