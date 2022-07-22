@@ -8,8 +8,8 @@ const userList = [
   {
     id: 1,
     role: 'SA',
-    name: 'Jason Alexander',
-    username: 'jason_alexander',
+    name: 'Hansana Ranaweera',
+    username: 'Hansana 987',
     email: 'jason@ui-lib.com',
     avatar: '/assets/images/face-6.jpg',
     age: 25,
