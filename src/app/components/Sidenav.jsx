@@ -4,6 +4,7 @@ import useSettings from 'app/hooks/useSettings';
 import { navigations } from 'app/navigations';
 import { Fragment } from 'react';
 import Scrollbar from 'react-perfect-scrollbar';
+import useAuth from "../hooks/useAuth";
 
 const StyledScrollBar = styled(Scrollbar)(() => ({
   paddingLeft: '1rem',
