@@ -1,3 +1,5 @@
+import useAuth from "./hooks/useAuth";
+
 export const navigations1 = [
   { label: 'PAGES', type: 'label' },
   {
@@ -122,3 +124,4 @@ export const navigations = [
     ],
   },
 ];
+
