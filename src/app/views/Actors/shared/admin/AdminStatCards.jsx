@@ -27,17 +27,12 @@ const Heading = styled('h6')(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-const AdminStatCards = () => {
-  const cardList = [
-    { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
-    { name: 'Pediatricians', amount: 3050, icon: 'local_hospital' },
-    { name: 'Astrologers', amount: 3050, icon: 'recent_actors' },
-    { name: 'Name Providers', amount: 3050, icon: 'rate_review' },
-  ];
+const AdminStatCards = ( props ) => {
+
 
   return (
     <Grid container spacing={3} sx={{ mb: '24px' }}>
-      {cardList.map((item, index) => (
+      {props.cardList.map((item, index) => (
         <Grid item xs={12} md={6} key={index}>
           <StyledCard elevation={6}>
             <ContentBox>

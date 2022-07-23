@@ -47,13 +47,18 @@ const AdminDashboard = () => {
             },
         },
     }));
-
+    const cardList = [
+        { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
+        { name: 'Pediatricians', amount: 3050, icon: 'local_hospital' },
+        { name: 'Astrologers', amount: 3050, icon: 'recent_actors' },
+        { name: 'Name Providers', amount: 3050, icon: 'rate_review' },
+    ];
     return (
         <Fragment>
             <ContentBox className="analytics">
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
-                        <AdminStatCards />
+                        <AdminStatCards cardList={cardList} />
                         <LatestCommunityPostRequestTable />
                         {/*<H4>Trending Articles </H4>*/}
                         {/*<RowCards />*/}
