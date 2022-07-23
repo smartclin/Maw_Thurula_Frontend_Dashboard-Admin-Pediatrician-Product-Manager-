@@ -1,7 +1,7 @@
 import { styled } from '@mui/system';
 import { MatxVerticalNav } from 'app/components';
 import useSettings from 'app/hooks/useSettings';
-import { navigations } from 'app/navigations';
+import { navigations_AL, navigations_PM, navigations_PT, navigations_NP, navigations_ADMIN } from 'app/navigations';
 import { Fragment } from 'react';
 import Scrollbar from 'react-perfect-scrollbar';
 import useAuth from "../hooks/useAuth";
@@ -23,9 +23,24 @@ const SideNavMobile = styled('div')(({ theme }) => ({
   zIndex: -1,
   [theme.breakpoints.up('lg')]: { display: 'none' },
 }));
-
+let navigation_array = {};
 const Sidenav = ({ children }) => {
   const { settings, updateSettings } = useSettings();
+  const { logout, user } = useAuth();
+  console.log("user");
+  console.log(user.role);
+  console.log("user");
+  if( user.role == "ADMIN" ){
+    navigation_array =  navigations_ADMIN ;
+  }else if (user.role == "PM"){
+    navigation_array =  navigations_PM ;
+  }else if (user.role == "NP"){
+    navigation_array =  navigations_NP ;
+  }else if (user.role == "AL"){
+    navigation_array =  navigations_AL ;
+  }else if (user.role == "PT"){
+    navigation_array =  navigations_PT ;
+  }
 
   const updateSidebarMode = (sidebarSettings) => {
     let activeLayoutSettingsName = settings.activeLayout + 'Settings';
@@ -47,7 +62,7 @@ const Sidenav = ({ children }) => {
     <Fragment>
       <StyledScrollBar options={{ suppressScrollX: true }}>
         {children}
-        <MatxVerticalNav items={navigations} />
+        <MatxVerticalNav items={navigation_array} />
       </StyledScrollBar>
 
       <SideNavMobile onClick={() => updateSidebarMode({ mode: 'close' })} />

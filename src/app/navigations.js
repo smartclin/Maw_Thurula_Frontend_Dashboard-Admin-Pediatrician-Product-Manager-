@@ -1,9 +1,9 @@
 import useAuth from "./hooks/useAuth";
 
-export const navigations1 = [
+export const navigations = [
   { label: 'PAGES', type: 'label' },
   {
-      name: 'Session/Auth',
+    name: 'Session/Auth',
     icon: 'security',
     children: [
       { name: 'Sign in', iconText: 'SI', path: '/session/signin' },
@@ -60,7 +60,7 @@ export const navigations1 = [
 ];
 
 
-export const navigations = [
+export const navigations_ADMIN = [
   { label: 'Dashboard', type: 'label' },
   {
     name: 'Home ',
@@ -124,4 +124,92 @@ export const navigations = [
     ],
   },
 ];
+export const navigations_PM = [
+  { label: 'Dashboard', type: 'label' },
+  { label: 'Product Manager', type: 'label' },
+  {
+    name: 'Home ',
+    icon: 'home',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Home', path: '/admin', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Ecommerce',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
+      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
+      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
 
+    ],
+  },
+];
+export const navigations_PT = [
+  { label: 'Pediatrician', type: 'label' },
+  {
+    name: 'Home ',
+    icon: 'home',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Home', path: '/admin', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Ecommerce',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
+      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
+      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  },
+];
+export const navigations_NP = [
+  { label: 'Name Provider', type: 'label' },
+  {
+    name: 'Home ',
+    icon: 'home',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Home', path: '/admin', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Ecommerce',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
+      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
+      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  },
+];
+export const navigations_AL = [
+  { label: 'Astrologer', type: 'label' },
+  {
+    name: 'Home ',
+    icon: 'home',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Home', path: '/admin', iconText: 'A' },
+    ],
+  },
+  {
+    name: 'Ecommerce',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
+      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
+      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  },
+];

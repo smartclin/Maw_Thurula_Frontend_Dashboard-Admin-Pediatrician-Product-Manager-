@@ -16,11 +16,6 @@ const userList = [
   },
 ];
 
-// FOLLOWING CODES ARE MOCK SERVER IMPLEMENTATION
-// YOU NEED TO BUILD YOUR OWN SERVER
-// IF YOU NEED HELP ABOUT SERVER SIDE IMPLEMENTATION
-// CONTACT US AT support@ui-lib.com
-
 Mock.onPost('/api/auth/login').reply(async (config) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
