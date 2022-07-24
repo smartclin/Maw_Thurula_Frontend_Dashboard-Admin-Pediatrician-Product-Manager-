@@ -5,7 +5,7 @@
 //     guest: ['SA', 'ADMIN', 'EDITOR', 'GUEST'], // Everyone has access
 // }
 export const authRoles = {
-    admin: ['PM', 'ADMIN'],
+    admin: ['PM', 'ADMIN', "AL", "NP", "PT"],
     product_manager: ['PM'],
     astrologer: ['AL'],
     name_provider: ['NP'],

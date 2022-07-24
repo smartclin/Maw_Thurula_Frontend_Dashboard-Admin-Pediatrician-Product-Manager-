@@ -1,9 +1,9 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import ProfitStatCards from './shared/admin/ProfitStatCards';
-import AdminStatCards from "./shared/admin/AdminStatCards";
-import LatestCommunityPostRequestTable from "./shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "./shared/admin/PediatricianRequestTable";
+import ProfitStatCards from '../admin/shared/admin/ProfitStatCards';
+import AdminStatCards from "../admin/shared/admin/AdminStatCards";
+import LatestCommunityPostRequestTable from "../admin/shared/admin/LatestCommunityPostRequestTable";
+import PediatricianRequestTable from "../admin/shared/admin/PediatricianRequestTable";
 import LineChart from "../shared/LineChart";
 
 
@@ -32,7 +32,7 @@ const H4 = styled('h4')(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const AdminDashboard = () => {
+const AstrologerDashboard = () => {
     const { palette } = useTheme();
 
     const Container = styled('div')(({ theme }) => ({
@@ -55,7 +55,9 @@ const AdminDashboard = () => {
     ];
     return (
         <Fragment>
+
             <ContentBox className="analytics">
+                <h1> Astrologer Dashboard</h1>
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <AdminStatCards cardList={cardList} />
@@ -86,4 +88,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default AstrologerDashboard;

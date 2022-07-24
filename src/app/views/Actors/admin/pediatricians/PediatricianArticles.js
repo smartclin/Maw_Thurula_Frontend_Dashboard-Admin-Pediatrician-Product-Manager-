@@ -1,9 +1,9 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import ProfitStatCards from '../../shared/admin/ProfitStatCards';
+import ProfitStatCards from '../shared/admin/ProfitStatCards';
 import ArticleCard from '../../shared/ArticleCard';
-import LatestCommunityPostRequestTable from "../../shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "../../shared/admin/PediatricianRequestTable";
+import LatestCommunityPostRequestTable from "../shared/admin/LatestCommunityPostRequestTable";
+import PediatricianRequestTable from "../shared/admin/PediatricianRequestTable";
 import LineChart from "../../shared/LineChart";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
