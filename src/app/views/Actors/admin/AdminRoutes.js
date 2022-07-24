@@ -2,7 +2,6 @@ import Loadable from 'app/components/Loadable';
 import { lazy } from 'react';
 import {authRoles} from "../../../auth/authRoles";
 
-
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
@@ -10,7 +9,7 @@ const MothersList = Loadable(lazy(() => import('./mothers/MothersList')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
-const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles')));
+const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianProfile')));
 const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests')));
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));

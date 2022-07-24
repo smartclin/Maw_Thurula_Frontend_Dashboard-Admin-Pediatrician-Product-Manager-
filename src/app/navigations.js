@@ -58,8 +58,6 @@ export const navigations = [
     path: 'http://demos.ui-lib.com/matx-react-doc/',
   },
 ];
-
-
 export const navigations_ADMIN = [
   { label: 'Dashboard', type: 'label' },
   {
