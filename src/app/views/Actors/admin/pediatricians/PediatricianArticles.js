@@ -180,18 +180,12 @@ const AdminDashboard = () => {
             },
         },
     }));
-    const temp = [
-        {name: "Hansana"},
-        {name: "Hansana"},
-        {name: "Hansana"},
-        {name: "Hansana"},
-    ]
     return (
         <Fragment>
             <ContentBox className="analytics">
-                <Grid>
+                <div>
                    <div className="d-flex" >
-                    <div className=" m-4">
+                    <div className="ms-4">
                         <Autocomplete
                             disablePortal
                             options={top100Films}
@@ -200,7 +194,16 @@ const AdminDashboard = () => {
                             renderInput={(params) => <TextField {...params} label="Search by catogery" />}
                         />
                     </div>
-                       <div className=" m-4">
+                       <div className="ms-5">
+                           <Autocomplete
+                               disablePortal
+                               options={top100Films}
+                               id="combo-box-demo"
+                               sx={{ width: 300 }}
+                               renderInput={(params) => <TextField {...params} label="Search with author" />}
+                           />
+                       </div>
+                       <div className="ms-5">
                            <Autocomplete
                                disablePortal
                                options={top100Films}
@@ -210,17 +213,14 @@ const AdminDashboard = () => {
                            />
                        </div>
                    </div>
-                   <div>
-                       <ArticleCard />
+
+                   <div className="d-inline-flex" >
                        <ArticleCard />
 
-                       <ArticleCard />
-                       <ArticleCard />
-                       <ArticleCard />
-                       <ArticleCard />
+
 
                    </div>
-                </Grid>
+                </div>
             </ContentBox>
         </Fragment>
     );
