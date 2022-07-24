@@ -56,7 +56,7 @@ const Small = styled('small')(({ bgcolor }) => ({
   boxShadow: '0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24)',
 }));
 
-const AstrologerDashboardTopSellingTable = () => {
+const NameProviderDashboardTopSellingTable = () => {
   const { palette } = useTheme();
   const bgError = palette.error.main;
   const bgPrimary = palette.primary.main;
@@ -73,7 +73,7 @@ const AstrologerDashboardTopSellingTable = () => {
       <CardHeader>
         <Title>Request messages from mothers - Today</Title>
         <div>{date}</div>
-      {/*  <Select size="small" defaultValue="this_month">
+      {  /*<Select size="small" defaultValue="this_month">
           <MenuItem value="this_month">This Month</MenuItem>
           <MenuItem value="last_month">Last Month</MenuItem>
         </Select>*/}
@@ -142,33 +142,33 @@ const productList = [
   {
 
     name: 'maneesha@gmail.com',
-    price: 'request name leters',
+    price: 'Request names',
     available: 15,
   },
   {
 
     name: 'amali@gmail.com',
-    price: 'request name leters',
+    price: 'Request names',
     available: 30,
   },
   {
 
     name: 'acd@gmail.com',
-    price: 'request name leters',
+    price: 'Request names',
     available: 35,
   },
   {
 
     name: 'sara@gmail.com',
-    price: 'request name leters',
+    price: 'Request names',
     available: 0,
   },
   {
 
     name: 'kane@gmail.com',
-    price: 'request name leters',
+    price: 'Request names',
     available: 5,
   },
 ];
 
-export default AstrologerDashboardTopSellingTable;
+export default NameProviderDashboardTopSellingTable;
