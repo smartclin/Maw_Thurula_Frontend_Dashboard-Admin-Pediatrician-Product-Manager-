@@ -77,7 +77,7 @@ const MotherList = () => {
             options={{
                 rowStyle: {
                     fontSize:12.5,
-                    color:'#91909E'
+                    // color:'#91909E'
                 },
 
 
