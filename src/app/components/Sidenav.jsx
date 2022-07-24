@@ -41,6 +41,7 @@ const Sidenav = ({ children }) => {
   }else if (user.role == "PT"){
     navigation_array =  navigations_PT ;
   }
+  
 
   const updateSidebarMode = (sidebarSettings) => {
     let activeLayoutSettingsName = settings.activeLayout + 'Settings';

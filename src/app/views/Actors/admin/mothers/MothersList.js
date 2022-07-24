@@ -4,15 +4,15 @@ import { Fragment } from 'react';
 // import DateTimePicker from '@mui/x-date-pickers-pro/DateTimePicker';
 
 import Button from '@mui/material/Button';
-import MotherList from "../../shared/mother/MotherListTable";
+import MotherList from "../shared/mother/MotherListTable";
 import AdminStatCards from "../../../dashboard/shared/admin/AdminStatCards";
 import LatestCommunityPostRequestTable from "../../../dashboard/shared/admin/LatestCommunityPostRequestTable";
 import PediatricianRequestTable from "../../../dashboard/shared/admin/PediatricianRequestTable";
 import ProfitStatCards from "../../../dashboard/shared/admin/ProfitStatCards";
 import LineChart from "../../../charts/echarts/LineChart";
-import MotherStatCards from "../../shared/mother/Motherstatcard";
-import BestMotherList from "../../shared/mother/BestMothrList";
-import DenseTable from "../../shared/mother/BestMothrList";
+import MotherStatCards from "../shared/mother/Motherstatcard";
+import BestMotherList from "../shared/mother/BestMothrList";
+import DenseTable from "../shared/mother/BestMothrList";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',

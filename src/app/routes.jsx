@@ -4,6 +4,7 @@ import sessionRoutes from 'app/views/sessions/SessionRoutes';
 import { Navigate } from 'react-router-dom';
 import MatxLayout from './components/MatxLayout/MatxLayout';
 import AdminRoutes from "./views/Actors/admin/AdminRoutes";
+import AstrologerRoutes from "./views/Actors/astrologer/AstrologerRoutes";
 
 const routes = [
   {
@@ -12,7 +13,7 @@ const routes = [
         <MatxLayout />
       </AuthGuard>
     ),
-    children: [...AdminRoutes],
+    children: [...AdminRoutes, ...AstrologerRoutes],
   },
   ...sessionRoutes,
   { path: '/', element: <Navigate to="/admin" /> },
