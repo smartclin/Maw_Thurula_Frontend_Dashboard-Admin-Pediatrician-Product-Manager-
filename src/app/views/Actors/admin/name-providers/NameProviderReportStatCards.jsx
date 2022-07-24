@@ -3,9 +3,14 @@ import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/materia
 import { Small } from 'app/components/Typography';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+//import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+// you will need the css that comes with bootstrap@3. if you are using
+// a tool like webpack, you can do the following:
+import 'bootstrap/dist/css/bootstrap.css';
+// you will also need the css that comes with bootstrap-daterangepicker
+import 'bootstrap-daterangepicker/daterangepicker.css';
 
 
 
@@ -38,11 +43,26 @@ const Heading = styled('h6')(({ theme }) => ({
 const dateRange={
     margin:"20px 0px 20px 0"
 };
-
+let dateRangeButton={
+    backgroundColor: '#2b62d9',
+    border: '0',
+    borderRadius: '4px',
+    boxShadow: 'rgba(0, 0, 0, .3) 0 5px 15px',
+    boxSizing: 'border-box',
+    color: '#fff',
+    cursor: 'pointer',
+    fontFamily:'Montserrat,sans-serif',
+    fontSize: '.9em',
+    margin: '5px',
+    padding: '10px 15px',
+    textAlign: 'center',
+    userSelect: 'none',
+    touchAction: 'manipulation',
+};
 const NameProviderReportStatCards = () => {
   const cardList1 = [
     { name: 'Name Providers', amount: 3050, icon: 'group' },
-    { name: 'This week registerd Name Providers', amount: '20', icon: 'fiber_new' },
+    { name: 'This month registerd Name Providers', amount: '20', icon: 'fiber_new' },
 
   ];
     const cardList2 = [
@@ -76,7 +96,7 @@ const NameProviderReportStatCards = () => {
           ))}
         </Grid>
           <div style={dateRange}>
-              <LocalizationProvider
+              {/*<LocalizationProvider
                   dateAdapter={AdapterDateFns}
                   localeText={{ start: 'Start date', end: 'End date' }}
               >
@@ -93,7 +113,12 @@ const NameProviderReportStatCards = () => {
                           </React.Fragment>
                       )}
                   />
-              </LocalizationProvider>
+              </LocalizationProvider>*/}
+              <DateRangePicker
+                  initialSettings={{ startDate: '1/1/2022', endDate: '3/08/2022' }}
+              >
+                  <button style={dateRangeButton}>Select Date Range </button>
+              </DateRangePicker>
           </div>
 
           <Grid container spacing={3} sx={{ mb: '24px' }}>
