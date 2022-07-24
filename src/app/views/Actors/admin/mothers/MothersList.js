@@ -1,25 +1,45 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import AdminStatCards from "../../shared/admin/AdminStatCards";
-import DateTimePicker from '@mui/x-date-pickers-pro/DateTimePicker';
-
-import Button from '@mui/material/Button';
-
+import MaterialTable from 'material-table';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import {Delete} from "@mui/icons-material";
 const MothersList = () => {
 
-    const cardList = [
-        { name: 'Registered Mothers', amount: 3050, icon: 'home' },
-        { name: 'Current Active Mothers', amount: 3050, icon: 'local_hospital' },
-        { name: 'Astrologers', amount: 3050, icon: 'recent_actors' },
-        { name: 'Name Providers', amount: 3050, icon: 'rate_review' },
-    ];
+
+    let tableDiv={
+
+        margin : '10px',
+        padding:'10px',
+
+    };
+    let matTable={
+        padding: '20px'
+    };
+
     return (
         <Fragment>
-            <h1> Mother's List HI Akhila</h1>
+            <h1> Mother's List</h1>
+            <div style={tableDiv}>
+                <MaterialTable style={matTable}
+                    title="Mothers"
+                    columns={[
+                        { title: 'Mother Email', field: 'MotherEmail' },
+                        { title: 'View Report', field: 'ViewReport'},
+                        { title: 'Block/Unblock', field: 'BlockUnblock'},
 
-            <AdminStatCards cardList={cardList} />
-            <Button variant="contained">Hello World</Button>;
-            <DateTimePicker></DateTimePicker>
+
+                    ]}
+                    data={[
+                        {MotherEmail: 'Mehmet@gmail.com',BlockUnblock: ''},
+                         {MotherEmail: 'MAmeesha@gmai.com', BlockUnblock: ''},
+                    ]}
+                    options={{
+                        search: true
+                    }}
+
+                />
+            </div>
+
         </Fragment>
     );
 };

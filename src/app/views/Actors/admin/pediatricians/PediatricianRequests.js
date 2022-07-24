@@ -7,7 +7,7 @@ const PediatricianRequests = () => {
 
     return (
         <Fragment>
-            <h1> Pediatrician Requests </h1>
+            <h1> Pediatrician Requests hhjj </h1>
         </Fragment>
     );
 };

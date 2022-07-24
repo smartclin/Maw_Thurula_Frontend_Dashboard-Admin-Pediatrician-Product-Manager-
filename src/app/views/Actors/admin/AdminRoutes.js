@@ -3,6 +3,7 @@ import { lazy } from 'react';
 import {authRoles} from "../../../auth/authRoles";
 
 
+
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
@@ -15,9 +16,13 @@ const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pedi
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));
 const AstrologerReports = Loadable(lazy(() => import('../../Actors/admin/astrologers/AstrologerReports')));
+const OneAstrologerReport = Loadable(lazy(() => import('../../Actors/admin/astrologers/OneAstrologerReport')));
+
+
 //this for add lazy loading name provider component
 const NameProvider = Loadable(lazy(() => import('../../Actors/admin/name-providers/NameProviders')));
 const NameProviderReports = Loadable(lazy(() => import('../../Actors/admin/name-providers/NameProviderReports')));
+const OneNameProviderReport = Loadable(lazy(() => import('../../Actors/admin/name-providers/OneNameProviderReport')));
 //this for add lazy loading ecommerce component
 const EcommerceProducts = Loadable(lazy(() => import('./ecommerce/EcommerceProduct')));
 const EcommerceOrders = Loadable(lazy(() => import('./ecommerce/EcommerceOrders')));
@@ -35,9 +40,11 @@ const AdminRoutes = [
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
+    { path: '/admin/one_astrologer_report', element: <OneAstrologerReport/>, auth: authRoles.admin },
 
     { path: '/admin/name_providers', element: <NameProvider />, auth: authRoles.admin },
     { path: '/admin/name_providers_reports', element: <NameProviderReports />, auth: authRoles.admin },
+    { path: '/admin/one_name_provider_report', element: <OneNameProviderReport/>, auth: authRoles.admin },
 
     { path: '/admin/ecommerce_products', element: <EcommerceProducts />, auth: authRoles.admin },
     { path: '/admin/ecommerce_orders', element: <EcommerceOrders />, auth: authRoles.admin },
