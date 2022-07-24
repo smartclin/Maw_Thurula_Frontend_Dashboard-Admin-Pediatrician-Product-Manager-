@@ -1,18 +1,9 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-// import AdminStatCards from "../../shared/admin/AdminStatCards";
-// import DateTimePicker from '@mui/x-date-pickers-pro/DateTimePicker';
 
-import Button from '@mui/material/Button';
-import MotherList from "../shared/mother/MotherListTable";
-import AdminStatCards from "../../../dashboard/shared/admin/AdminStatCards";
-import LatestCommunityPostRequestTable from "../../../dashboard/shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "../../../dashboard/shared/admin/PediatricianRequestTable";
-import ProfitStatCards from "../../../dashboard/shared/admin/ProfitStatCards";
-import LineChart from "../../../charts/echarts/LineChart";
-import MotherStatCards from "../shared/mother/Motherstatcard";
-import BestMotherList from "../shared/mother/BestMothrList";
-import DenseTable from "../shared/mother/BestMothrList";
+
+import MotherStatCards from "../../shared/mother/Motherstatcard";
+import MotherList from "../../shared/mother/MotherListTable";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -57,20 +48,18 @@ const MothersList = () => {
     return (
         <Fragment>
             <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={8} md={8} sm={12} xs={12}>
+                <Grid container spacing={3}  >
+                    <Grid item lg={12} md={8} sm={12} xs={12}>
                         <MotherStatCards/>
 
-                        <MotherList
-                        className
-                        />
+                        <MotherList/>
 
                     </Grid>
 
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <BestMotherList />
+                    {/*<Grid item lg={3} md={4} sm={12} xs={12}>*/}
+                    {/*    <BestMotherList />*/}
 
-                    </Grid>
+                    {/*</Grid>*/}
                 </Grid>
             </ContentBox>
         </Fragment>

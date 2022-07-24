@@ -1,5 +1,6 @@
 import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
 import { Small } from 'app/components/Typography';
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 import Brightness5OutlinedIcon from '@mui/icons-material/Brightness5Outlined';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -31,8 +32,8 @@ const Heading = styled('h6')(({ theme }) => ({
 const MotherStatCards = () => {
     const cardList = [
         { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
-        { name: 'Astrologers Jobs', amount: 3050, icon: 'brightness_5' },
-        { name: 'Name provider Jobs', amount: 3050, icon: 'rate_review' },
+        { name: 'Active Mothers', amount: 3050, icon: 'woman' },
+        { name: 'Blocked Mothers', amount: 3050, icon: 'person_offIcon' },
     ];
 
     return (
