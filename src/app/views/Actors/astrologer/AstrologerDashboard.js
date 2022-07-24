@@ -1,10 +1,9 @@
-import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import ProfitStatCards from '../admin/shared/admin/ProfitStatCards';
-import AdminStatCards from "../admin/shared/admin/AdminStatCards";
-import LatestCommunityPostRequestTable from "../admin/shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "../admin/shared/admin/PediatricianRequestTable";
-import LineChart from "../shared/LineChart";
+import {avatarClasses, Card, Grid, Icon, styled, useTheme} from '@mui/material';
+
+import Avatar from '@mui/material/Avatar';
+import AstrologerDashboardStatCards from "./AstrologerDashboardStatCards";
+import AstrologerDashboardTopSellingTable from "./AstrologerDashboardTopSellingTable";
 
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -32,55 +31,85 @@ const H4 = styled('h4')(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const AstrologerDashboard = () => {
-    const { palette } = useTheme();
+const cardInside={
+    display:'flex',
+    /*alignItems:'center',
+    justifyContent:'center',*/
+    margin:'10px',
+};
 
-    const Container = styled('div')(({ theme }) => ({
-        margin: '30px',
-        [theme.breakpoints.down('sm')]: {
-            margin: '16px',
-        },
-        '& .breadcrumb': {
-            marginBottom: '30px',
-            [theme.breakpoints.down('sm')]: {
-                marginBottom: '16px',
-            },
-        },
-    }));
-    const cardList = [
-        { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
-        { name: 'Pediatricians', amount: 3050, icon: 'local_hospital' },
-        { name: 'Astrologers', amount: 3050, icon: 'recent_actors' },
-        { name: 'Name Providers', amount: 3050, icon: 'rate_review' },
-    ];
+const avatar = {
+    height:100,
+    width:100,
+
+
+};
+const emailAndPhone= {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'flex-start',
+    height: '50px'
+
+}
+const AstrologerDashboard = () => {
+    let requestTittle={
+        color:'#9e9e9e',
+        fontSize: '25px',
+        paddingLeft:'20px',
+        fontWeight:'bold',
+    };
+
+    let responseInput={
+        width: '50%',
+
+    };
+
+    let sendButton={
+        marginLeft: '7px'
+    }
+
     return (
         <Fragment>
 
             <ContentBox className="analytics">
-                <h1> Astrologer Dashboard</h1>
+
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
-                        <AdminStatCards cardList={cardList} />
-                        <LatestCommunityPostRequestTable />
-                        {/*<H4>Trending Articles </H4>*/}
-                        {/*<RowCards />*/}
-                        <PediatricianRequestTable />
-
+                        <AstrologerDashboardStatCards />
+                        <AstrologerDashboardTopSellingTable/>
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <ProfitStatCards />
-                        <Card sx={{ px: 3, py: 2, mb: 3 }}>
-                            <Title>Monthly Profits Summary</Title>
+                        <Card  sx={{ px: 3, py: 2, mb: 3 }}>
+                            <Title style ={{fontSize:'2em'}}>Hi Perera</Title>
+                            <SubTitle>Astrologer</SubTitle>
+                            <div style={cardInside}>
+                                <Avatar style={avatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            </div>
 
-                            <LineChart
-                                height="350px"
-                                color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                            />
+                            <p>Astrologer Atlanta. Quality Results in 1 Minute or Less!
+                                Search for Astrologer Atlanta. Instant and Personalized
+                                Results. Always Facts.Results & Answers. Privacy Friendly.</p>
+
+                            <span style={emailAndPhone}>
+               <Icon color="primary">mail</Icon>
+                <h4 style={{paddingLeft:20,fontSize:'18px'}}>perara@gmail.com</h4>
+                 </span>
+
+                            <span style={emailAndPhone}>
+                   <Icon color="primary">local_phone</Icon>
+                 <h4 style={{paddingLeft:20,fontSize:'18px'}} >077 4562389</h4>
+                  </span>
+                            <span style={emailAndPhone}>
+                   <Icon color="primary">location_on</Icon>
+                 <h4 style={{paddingLeft:20,fontSize:'18px'}} >No 56/A Senanayake Road,Colombo 10</h4>
+                  </span>
+
                         </Card>
 
-                        {/*<UpgradeCard />*/}
-                        {/*<Campaigns />*/}
+
+
                     </Grid>
                 </Grid>
             </ContentBox>
