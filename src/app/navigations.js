@@ -58,8 +58,6 @@ export const navigations = [
     path: 'http://demos.ui-lib.com/matx-react-doc/',
   },
 ];
-
-
 export const navigations_ADMIN = [
   { label: 'Dashboard', type: 'label' },
   {
@@ -198,17 +196,15 @@ export const navigations_AL = [
     icon: 'home',
     badge: { value: '', color: 'secondary' },
     children: [
-      { name: 'Home', path: '/admin', iconText: 'A' },
+      { name: 'Home', path: '/al', iconText: 'A' },
     ],
   },
   {
-    name: 'Ecommerce',
+    name: 'Jobs',
     icon: 'store',
     badge: { value: '', color: 'secondary' },
     children: [
-      { name: 'Products', path: '/admin/ecommerce_products', iconText: 'A' },
-      { name: 'Orders', path: '/admin/ecommerce_orders', iconText: 'A' },
-      { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+      { name: 'New Request', path: '/al/new_request', iconText: 'A' },
 
     ],
   },
