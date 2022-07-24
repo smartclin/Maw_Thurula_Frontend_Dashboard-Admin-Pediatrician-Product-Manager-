@@ -1,16 +1,18 @@
+
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import AstrologerReportStatCards from "./AstrologerReportStatCards";
-import AstrologerReportLineChart from "./AstrologerReportLineChart";
+
+import NameProviderReportLineChart from "./NameProviderReportLineChart";
 import {Title} from "@mui/icons-material";
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import DownloadIcon from '@mui/icons-material/Download';
+import OneNameProviderReportStatCards from "./OneNameProviderReportStatCards";
 
-const AstrologersReports = () => {
 
+const OneNameProviderReport  = () => {
     const { palette } = useTheme();
 
     const Title = styled('span')(() => ({
@@ -50,7 +52,7 @@ const AstrologersReports = () => {
     return (
         <Fragment>
             <div style={titleDiv}>
-                <div style={reportTitle}> Astrologer's Report </div>
+                <div style={reportTitle}> Sampath Gamage </div>
                 <div>
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Button variant="contained" component="label">
@@ -63,27 +65,20 @@ const AstrologersReports = () => {
             </div>
 
             <div style={mainDiv}>
-                <AstrologerReportStatCards  />
+                <OneNameProviderReportStatCards>
 
-
+                </OneNameProviderReportStatCards>
 
                 <div style ={chartDiv}>
                     <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Registerd Astrologers</Title>
+                        <Title> Profit </Title>
 
-                        <AstrologerReportLineChart
+                        <NameProviderReportLineChart
                             height="350px"
                             color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
                         />
                     </Card>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Profit from Astrologers</Title>
 
-                        <AstrologerReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
                 </div>
             </div>
 
@@ -91,4 +86,4 @@ const AstrologersReports = () => {
     );
 };
 
-export default AstrologersReports;
+export default OneNameProviderReport  ;
