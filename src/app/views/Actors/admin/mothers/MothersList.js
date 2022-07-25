@@ -1,5 +1,9 @@
 import {Grid, styled, useTheme} from '@mui/material';
 import {Fragment} from 'react';
+import MotherStatCards from "./component/Motherstatcard";
+// import MotherList from "../shared/mother/MotherListTable";
+import SimpleAction from "./component/MotherListTable";
+// import MotherListtable from "./component/MotherListTable";
 
 //
 // import MotherStatCards from "../../shared/mother/Motherstatcard";
@@ -47,21 +51,14 @@ const MothersList = () => {
     }));
     return (
         <Fragment>
-            <ContentBox className="analytics">
-                <Grid container spacing={3}  >
-                    <Grid item lg={12} md={8} sm={12} xs={12}>
-                        {/*<MotherStatCards/>*/}
-
-                        {/*<MotherList/>*/}
-
+                  <ContentBox className="analytics">
+                    <Grid container spacing={3}>
+                      <Grid item lg={12} md={8} sm={12} xs={12}>
+                          <MotherStatCards/>
+                          <SimpleAction/>
+                      </Grid>
                     </Grid>
-
-                    {/*<Grid item lg={3} md={4} sm={12} xs={12}>*/}
-                    {/*    <BestMotherList />*/}
-
-                    {/*</Grid>*/}
-                </Grid>
-            </ContentBox>
+                  </ContentBox>
         </Fragment>
     );
 };
