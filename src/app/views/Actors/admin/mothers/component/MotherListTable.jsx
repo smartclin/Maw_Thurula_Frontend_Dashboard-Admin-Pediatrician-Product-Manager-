@@ -13,7 +13,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 
-const SimpleAction=()=> {
+const MotherListTable=()=> {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -94,12 +94,10 @@ const SimpleAction=()=> {
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
-                paging: true, pageSizeOptions: [ 5, 10, 20, 25, 50, 100], pageSize: 5,
-                paginationType: "stepped", showFirstLastPageButtons: false, paginationPosition: "both",
-                labelRowsPerPage:"xxx"
+                paging: false,
             }}
         />
         </div>
     )
 }
-export default SimpleAction;
+export default MotherListTable;

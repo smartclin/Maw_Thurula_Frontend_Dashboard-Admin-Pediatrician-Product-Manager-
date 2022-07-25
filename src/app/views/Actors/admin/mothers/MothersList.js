@@ -1,13 +1,9 @@
 import {Grid, styled, useTheme} from '@mui/material';
 import {Fragment} from 'react';
 import MotherStatCards from "./component/Motherstatcard";
-// import MotherList from "../shared/mother/MotherListTable";
-import SimpleAction from "./component/MotherListTable";
-// import MotherListtable from "./component/MotherListTable";
+import MotherListTable from "./component/MotherListTable";
 
-//
-// import MotherStatCards from "../../shared/mother/Motherstatcard";
-// import MotherList from "../../shared/mother/MotherListTable";
+
 
 const ContentBox = styled('div')(({theme}) => ({
     margin: '30px',
@@ -55,7 +51,7 @@ const MothersList = () => {
                     <Grid container spacing={3}>
                       <Grid item lg={12} md={8} sm={12} xs={12}>
                           <MotherStatCards/>
-                          <SimpleAction/>
+                          <MotherListTable/>
                       </Grid>
                     </Grid>
                   </ContentBox>
