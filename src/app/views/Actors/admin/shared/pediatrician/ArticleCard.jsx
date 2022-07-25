@@ -2,6 +2,7 @@ import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import { convertHexToRGB } from 'app/utils/utils';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ThumbUpAlt from '@mui/icons-material/ThumbUpAlt';
+import {Link} from "react-router-dom";
 
 const CardRoot = styled(Card)(({ theme }) => ({
     marginBottom: '24px',
@@ -43,7 +44,7 @@ const ArticleCard = () => {
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
                             <h4 className="card-title">Family Success Planning</h4>
-                            <Heading className="d-flex">Catogery <p><a href="#">-Pregnancy</a></p></Heading>
+                            <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-Pregnancy</a></p></Heading>
                             <Paragraph className="card-text">This is a longer card with supporting text below as a natural
                                 lead-in to
                                 additional content. This content is a little bit longer.</Paragraph>
@@ -56,7 +57,11 @@ const ArticleCard = () => {
 
                         <StyledCard className="card-footer">
 
-                            <small className="text-muted "><a href="#">view full article</a></small>
+                            <small className="text-muted ">
+                                <Link to="/admin/pediatricians" className="link">
+                                    View full article
+                                </Link>
+                            </small>
                         </StyledCard>
                     </div>
                 </div>
@@ -65,7 +70,8 @@ const ArticleCard = () => {
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
                             <h4 className="card-title">Family Success Planning</h4>
-                            <Heading className="d-flex">Catogery <p><a href="#">-Pregnancy</a></p></Heading>
+                            <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-Pregnancy</a></p></Heading>
+
                             <Paragraph className="card-text">This is a longer card with supporting text below as a natural
                                 lead-in to
                                 additional content. This content is a little bit longer.</Paragraph>
@@ -78,7 +84,11 @@ const ArticleCard = () => {
 
                         <StyledCard className="card-footer">
 
-                            <small className="text-muted "><a href="#">view full article</a></small>
+                            <small className="text-muted ">
+                                <Link to="/admin/pediatricians" className="link">
+                                View full article
+                            </Link>
+                            </small>
                         </StyledCard>
                     </div>
                 </div>
@@ -87,7 +97,7 @@ const ArticleCard = () => {
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
                             <h4 className="card-title">Family Success Planning</h4>
-                            <Heading className="d-flex">Catogery <p><a href="#">-Pregnancy</a></p></Heading>
+                            <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-Pregnancy</a></p></Heading>
                             <Paragraph className="card-text">This is a longer card with supporting text below as a natural
                                 lead-in to
                                 additional content. This content is a little bit longer.</Paragraph>
@@ -100,7 +110,11 @@ const ArticleCard = () => {
 
                         <StyledCard className="card-footer">
 
-                            <small className="text-muted "><a href="#">view full article</a></small>
+                            <small className="text-muted ">
+                                <Link to="/admin/pediatricians" className="link">
+                                    View full article
+                                </Link>
+                            </small>
                         </StyledCard>
                     </div>
                 </div>
