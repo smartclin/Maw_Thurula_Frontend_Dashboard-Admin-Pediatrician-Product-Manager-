@@ -1,40 +1,14 @@
+import * as React from 'react';
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import ProfitStatCards from '../shared/admin/ProfitStatCards';
-import ArticleCard from '../shared/pediatrician/ArticleCard';
-import LatestCommunityPostRequestTable from "../shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "../shared/admin/PediatricianRequestTable";
-import LineChart from "../../shared/LineChart";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import PediatricianSingleArticle from "./PediatriciansSingleArticle";
+import Posts from "./PostList";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: { margin: '16px' },
-}));
-
-const Title = styled('span')(() => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginRight: '.5rem',
-    textTransform: 'capitalize',
-}));
-const search = styled('span')(() => ({
-    display:'flex',
-
-}));
-
-const SubTitle = styled('span')(({ theme }) => ({
-    fontSize: '0.875rem',
-    color: theme.palette.text.secondary,
-}));
-
-const H4 = styled('h4')(({ theme }) => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: '16px',
-    textTransform: 'capitalize',
-    color: theme.palette.text.secondary,
 }));
 const top100Films = [
     { label: 'The Shawshank Redemption', year: 1994 },
@@ -162,67 +136,55 @@ const top100Films = [
     { label: '3 Idiots', year: 2009 },
     { label: 'Monty Python and the Holy Grail', year: 1975 },
 ];
-
-
-const AdminDashboard = () => {
+const Analytics = () => {
     const { palette } = useTheme();
 
-    const Container = styled('div')(({ theme }) => ({
-        margin: '30px',
-        [theme.breakpoints.down('sm')]: {
-            margin: '16px',
-        },
-        '& .breadcrumb': {
-            marginBottom: '30px',
-            [theme.breakpoints.down('sm')]: {
-                marginBottom: '16px',
-            },
-        },
-    }));
     return (
         <Fragment>
             <ContentBox className="analytics">
-                <div>
-                   <div className="d-flex" >
-                    <div className="ms-4">
-                        <Autocomplete
-                            disablePortal
-                            options={top100Films}
-                            id="combo-box-demo"
-                            sx={{ width: 300 }}
-                            renderInput={(params) => <TextField {...params} label="Search by catogery" />}
-                        />
-                    </div>
-                       <div className="ms-5">
-                           <Autocomplete
-                               disablePortal
-                               options={top100Films}
-                               id="combo-box-demo"
-                               sx={{ width: 300 }}
-                               renderInput={(params) => <TextField {...params} label="Search with author" />}
-                           />
-                       </div>
-                       <div className="ms-5">
-                           <Autocomplete
-                               disablePortal
-                               options={top100Films}
-                               id="combo-box-demo"
-                               sx={{ width: 300 }}
-                               renderInput={(params) => <TextField {...params} label="Search with author" />}
-                           />
-                       </div>
+               <div className="d-flex" >
+                   <div className="ms-4">
+                       <Autocomplete
+                           disablePortal
+                           options={top100Films}
+                           id="combo-box-demo"
+                           sx={{ width: 300 }}
+                           renderInput={(params) => <TextField {...params} label="Search by catogery" />}
+                       />
                    </div>
-
-                   <div className="d-inline-flex" >
-                       <ArticleCard />
-
-
-
+                   <div className="ms-5">
+                       <Autocomplete
+                           disablePortal
+                           options={top100Films}
+                           id="combo-box-demo"
+                           sx={{ width: 300 }}
+                           renderInput={(params) => <TextField {...params} label="Search with Category" />}
+                       />
                    </div>
-                </div>
+                   <div className="ms-5">
+                       <Autocomplete
+                           disablePortal
+                           options={top100Films}
+                           id="combo-box-demo"
+                           sx={{ width: 300 }}
+                           renderInput={(params) => <TextField {...params} label="Search with Date" />}
+                       />
+                   </div>
+               </div>
             </ContentBox>
+               <ContentBox className="analytics">
+                   {/*<Grid container spacing={3}>*/}
+                   <Grid>
+
+                       <Posts/>
+
+                   </Grid>
+
+                   {/*</Grid>*/}
+               </ContentBox>
+
         </Fragment>
     );
 };
 
-export default AdminDashboard;
+export default Analytics;
