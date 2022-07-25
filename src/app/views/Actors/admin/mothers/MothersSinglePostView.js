@@ -1,7 +1,8 @@
 import {Grid, styled, useTheme} from '@mui/material';
 import {Fragment} from 'react';
-import MotherStatCards from "./component/Motherstatcard";
-import MotherListTable from "./component/MotherListTable";
+import MotherPostblockcard from "./component/MotherPostTopBlock";
+import MotherPostDescription from "./component/MotherPostDescription";
+import AdminPostCommentMother from "./component/MotherPostCommentTable";
 
 
 
@@ -47,14 +48,23 @@ const MothersList = () => {
     }));
     return (
         <Fragment>
-                  <ContentBox className="analytics">
-                    <Grid container spacing={3}>
-                      <Grid item lg={12} md={8} sm={12} xs={12}>
-                          <MotherStatCards/>
-                          <MotherListTable/>
-                      </Grid>
+            <ContentBox className="analytics">
+                <Grid container spacing={3}>
+                    <Grid item lg={6} md={1} sm={12} xs={12}>
+                        <MotherPostblockcard/>
                     </Grid>
-                  </ContentBox>
+
+                    <Grid item lg={6} md={4} sm={12} xs={12}>
+
+                        <MotherPostDescription/>
+
+                    </Grid>
+                    <Grid item lg={12} md={4} sm={12} xs={12}>
+                        <AdminPostCommentMother/>
+                    </Grid>
+
+                </Grid>
+            </ContentBox>
         </Fragment>
     );
 };

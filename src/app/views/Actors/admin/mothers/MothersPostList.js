@@ -1,7 +1,8 @@
-import {Grid, styled, useTheme} from '@mui/material';
+import {Grid, styled, useTheme,Card } from '@mui/material';
 import {Fragment} from 'react';
-import MotherStatCards from "./component/Motherstatcard";
-import MotherListTable from "./component/MotherListTable";
+import Typography from "@mui/material/Typography";
+import MotherProfileTopcard from "./component/MotherProfileTop";
+import MotherPosts from "./component/MotherPosts";
 
 
 
@@ -47,14 +48,23 @@ const MothersList = () => {
     }));
     return (
         <Fragment>
-                  <ContentBox className="analytics">
-                    <Grid container spacing={3}>
-                      <Grid item lg={12} md={8} sm={12} xs={12}>
-                          <MotherStatCards/>
-                          <MotherListTable/>
-                      </Grid>
-                    </Grid>
-                  </ContentBox>
+          <ContentBox className="analytics">
+            <Grid container spacing={0}>
+              <Grid item lg={6} md={1} sm={12} xs={12}>
+                <MotherProfileTopcard />
+              </Grid>
+
+              <Grid item lg={12} md={4} sm={12} xs={12}>
+                <Card style={{paddingLeft:30,paddingRight:30,}}>
+                  <Typography gutterBottom variant="h6" component="div" style={{marginTop:10, marginBottom:20}}>
+                    Recent Posts
+                  </Typography>
+                  <MotherPosts/>
+                </Card>
+              </Grid>
+
+            </Grid>
+          </ContentBox>
         </Fragment>
     );
 };

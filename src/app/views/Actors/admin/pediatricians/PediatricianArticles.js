@@ -7,7 +7,6 @@ import PediatricianRequestTable from "../shared/admin/PediatricianRequestTable";
 import LineChart from "../../shared/LineChart";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
