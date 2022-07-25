@@ -1,27 +1,16 @@
 import React from "react";
-import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
-import { Small } from 'app/components/Typography';
-import TextField from '@mui/material/TextField';
-import { LocalizationProvider } from '@mui/x-date-pickers-pro';
-//import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
-// you will need the css that comes with bootstrap@3. if you are using
-// a tool like webpack, you can do the following:
-import 'bootstrap/dist/css/bootstrap.css';
-// you will also need the css that comes with bootstrap-daterangepicker
-import 'bootstrap-daterangepicker/daterangepicker.css';
+import {Box, Card, Grid, Icon, IconButton, styled, Tooltip} from '@mui/material';
+import {Small} from 'app/components/Typography';
 
 
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '24px !important',
-  background: theme.palette.background.paper,
-  [theme.breakpoints.down('sm')]: { padding: '16px !important' },
+const StyledCard = styled(Card)(({theme}) => ({
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '24px !important',
+    background: theme.palette.background.paper,
+    [theme.breakpoints.down('sm')]: {padding: '16px !important'},
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -114,11 +103,11 @@ const NameProviderReportStatCards = () => {
                       )}
                   />
               </LocalizationProvider>*/}
-              <DateRangePicker
-                  initialSettings={{ startDate: '1/1/2022', endDate: '3/08/2022' }}
-              >
-                  <button style={dateRangeButton}>Select Date Range </button>
-              </DateRangePicker>
+              {/*<DateRangePicker*/}
+              {/*    initialSettings={{ startDate: '1/1/2022', endDate: '3/08/2022' }}*/}
+              {/*>*/}
+              {/*    <button style={dateRangeButton}>Select Date Range </button>*/}
+              {/*</DateRangePicker>*/}
           </div>
 
           <Grid container spacing={3} sx={{ mb: '24px' }}>
