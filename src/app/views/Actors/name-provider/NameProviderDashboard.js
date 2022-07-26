@@ -90,24 +90,7 @@ const NameProviderDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <NameProviderDashboardStatCards />
-                        <div style={chartDiv}>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Requests Summary</Title>
-
-                                <NameProviderDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Profits Summary</Title>
-
-                                <NameProviderDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                        </div>
+                        <NameProviderDashboardTopSellingTable/>
 
 
                     </Grid>
@@ -122,7 +105,8 @@ const NameProviderDashboard = () => {
 
                             <p>Astrologer Atlanta. Quality Results in 1 Minute or Less!
                                 Search for Astrologer Atlanta. Instant and Personalized
-                                Results. Always Facts.Results & Answers. Privacy Friendly.</p>
+                                Results. Always Facts.Results & Answers. Privacy Friendly.
+                                Always Facts.Results & Answers. Privacy Friendly</p>
 
                             <span style={emailAndPhone}>
                <Icon color="primary">mail</Icon>
@@ -144,7 +128,25 @@ const NameProviderDashboard = () => {
 
                     </Grid>
                 </Grid>
-                <NameProviderDashboardTopSellingTable/>
+
+                <div style={chartDiv}>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Requests Summary</Title>
+
+                        <NameProviderDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Profits Summary</Title>
+
+                        <NameProviderDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                </div>
             </ContentBox>
         </Fragment>
     );

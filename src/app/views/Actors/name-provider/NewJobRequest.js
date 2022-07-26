@@ -1,7 +1,11 @@
+import NewJobRequestTable from "../astrologer/NewJobRequestTable";
 
 const NameProviderNewJobRequest = ( ) => {
+    let mainDiv;
     return (
-        <h1> This is name provider new job request</h1>
+        <div style={mainDiv}>
+            <NewJobRequestTable/>
+        </div>
     )
 }
 

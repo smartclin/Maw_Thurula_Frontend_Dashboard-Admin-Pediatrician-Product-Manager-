@@ -163,12 +163,7 @@ const productList = [
     price: 'Request names',
     available: 0,
   },
-  {
 
-    name: 'kane@gmail.com',
-    price: 'Request names',
-    available: 5,
-  },
 ];
 
 export default NameProviderDashboardTopSellingTable;
