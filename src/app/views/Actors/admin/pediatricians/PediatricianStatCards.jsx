@@ -92,7 +92,7 @@ const PediatricianStatCards = () => {
 
                     <TableCell sx={{ px: 0 }}  style={{ textAlign: "center"}} colSpan={1}>
                       <IconButton>
-                        <Icon color="primary">ArrowForward</Icon>
+                        <Icon color="primary">ArrowForwardIcon</Icon>
                       </IconButton>
                     </TableCell>
                   </TableRow>

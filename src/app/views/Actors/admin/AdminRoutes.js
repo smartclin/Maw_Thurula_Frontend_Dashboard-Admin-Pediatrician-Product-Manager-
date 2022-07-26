@@ -13,7 +13,7 @@ const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostReq
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
 const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatriciansViewArticles')));
-const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')))
+const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests')))
 
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));
