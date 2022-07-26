@@ -1,22 +1,13 @@
-import { Card, Grid, styled, useTheme } from '@mui/material';
-import { Fragment } from 'react';
-// import AdminStatCards from "../../shared/admin/AdminStatCards";
-// import DateTimePicker from '@mui/x-date-pickers-pro/DateTimePicker';
+import {Grid, styled, useTheme} from '@mui/material';
+import {Fragment} from 'react';
+import MotherStatCards from "./component/Motherstatcard";
+import MotherListTable from "./component/MotherListTable";
 
-import Button from '@mui/material/Button';
-import MotherList from "../shared/mother/MotherListTable";
-import AdminStatCards from "../../../dashboard/shared/admin/AdminStatCards";
-import LatestCommunityPostRequestTable from "../../../dashboard/shared/admin/LatestCommunityPostRequestTable";
-import PediatricianRequestTable from "../../../dashboard/shared/admin/PediatricianRequestTable";
-import ProfitStatCards from "../../../dashboard/shared/admin/ProfitStatCards";
-import LineChart from "../../../charts/echarts/LineChart";
-import MotherStatCards from "../shared/mother/Motherstatcard";
-import BestMotherList from "../shared/mother/BestMothrList";
-import DenseTable from "../shared/mother/BestMothrList";
 
-const ContentBox = styled('div')(({ theme }) => ({
+
+const ContentBox = styled('div')(({theme}) => ({
     margin: '30px',
-    [theme.breakpoints.down('sm')]: { margin: '16px' },
+    [theme.breakpoints.down('sm')]: {margin: '16px'},
 }));
 
 const Title = styled('span')(() => ({
@@ -56,23 +47,14 @@ const MothersList = () => {
     }));
     return (
         <Fragment>
-            <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={8} md={8} sm={12} xs={12}>
-                        <MotherStatCards/>
-
-                        <MotherList
-                        className
-                        />
-
+                  <ContentBox className="analytics">
+                    <Grid container spacing={3}>
+                      <Grid item lg={12} md={8} sm={12} xs={12}>
+                          <MotherStatCards/>
+                          <MotherListTable/>
+                      </Grid>
                     </Grid>
-
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <BestMotherList />
-
-                    </Grid>
-                </Grid>
-            </ContentBox>
+                  </ContentBox>
         </Fragment>
     );
 };

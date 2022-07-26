@@ -1,5 +1,4 @@
-import { Card, Grid, styled, useTheme } from '@mui/material';
-import { Fragment } from 'react';
+import {Fragment} from 'react';
 
 
 const MothersPostRequests = () => {
@@ -7,7 +6,7 @@ const MothersPostRequests = () => {
 
     return (
         <Fragment>
-            <h1> Mother's Post List</h1>
+            <h1> Mother'aas Post List</h1>
         </Fragment>
     );
 };

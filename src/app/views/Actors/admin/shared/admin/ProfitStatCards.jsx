@@ -1,4 +1,4 @@
-import { Card, Fab, Grid, Icon, lighten, styled, useTheme } from '@mui/material';
+import {Card, Fab, Grid, Icon, lighten, styled, useTheme} from '@mui/material';
 
 const ContentBox = styled('div')(() => ({
   display: 'flex',
@@ -12,21 +12,30 @@ const FabIcon = styled(Fab)(() => ({
   boxShadow: 'none !important',
 }));
 
-const H3 = styled('h3')(({ textcolor }) => ({
+const H3 = styled('h3')(({textcolor}) => ({
   margin: 0,
   color: textcolor,
   fontWeight: '500',
   marginLeft: '12px',
 }));
 
-const H1 = styled('h1')(({ theme }) => ({
+const H5 = styled('h3')(({textcolor}) => ({
+  margin: 0,
+  color: textcolor,
+  fontWeight: '500',
+  marginLeft: '12px',
+  fontSize: '1.1em'
+}));
+
+const H1 = styled('h1')(({theme}) => ({
   margin: 0,
   flexGrow: 1,
   color: theme.palette.text.secondary,
+  fontSize: '1.5em'
 }));
 
-const Span = styled('span')(({ textcolor }) => ({
-  fontSize: '13px',
+const Span = styled('span')(({textcolor}) => ({
+  fontSize: '11px',
   color: textcolor,
   marginLeft: '4px',
 }));
@@ -53,10 +62,10 @@ const ProfitStatCards = () => {
       <Grid item xs={12} md={12}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
+            <FabIcon size="medium" sx={{background: 'rgba(9, 182, 109, 0.15)'}}>
+              <Icon sx={{color: '#08ad6c'}}>trending_up</Icon>
             </FabIcon>
-            <H3 textcolor={'#08ad6c'}>Profits</H3>
+            <H5 textcolor={'#08ad6c'}>Profits</H5>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
@@ -72,10 +81,10 @@ const ProfitStatCards = () => {
       <Grid item xs={12} md={12}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
+            <FabIcon size="medium" sx={{background: 'rgba(9, 182, 109, 0.15)'}}>
+              <Icon sx={{color: '#08ad6c'}}>trending_up</Icon>
             </FabIcon>
-            <H3 textcolor={'#08ad6c'}>Profits</H3>
+            <H5 textcolor={'#08ad6c'}>Profits</H5>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
@@ -91,10 +100,10 @@ const ProfitStatCards = () => {
       <Grid item xs={12} md={12}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
-            <FabIcon size="medium" sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon sx={{ color: '#08ad6c' }}>trending_up</Icon>
+            <FabIcon size="medium" sx={{background: 'rgba(9, 182, 109, 0.15)'}}>
+              <Icon sx={{color: '#08ad6c'}}>trending_up</Icon>
             </FabIcon>
-            <H3 textcolor={'#08ad6c'}>Profits</H3>
+            <H5 textcolor={'#08ad6c'}>Profits</H5>
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
