@@ -4,12 +4,14 @@ import {avatarClasses, Card, Grid, Icon, styled, useTheme} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import AstrologerDashboardStatCards from "./AstrologerDashboardStatCards";
 import AstrologerDashboardTopSellingTable from "./AstrologerDashboardTopSellingTable";
-
+import AstrologerDashboardLineChart from "./AstrologerDashboardLineChart";
+//import {Title} from "@mui/icons-material";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: { margin: '16px' },
 }));
+
 
 const Title = styled('span')(() => ({
     fontSize: '1rem',
@@ -53,6 +55,7 @@ const emailAndPhone= {
 
 }
 const AstrologerDashboard = () => {
+    const { palette } = useTheme();
     let requestTittle={
         color:'#9e9e9e',
         fontSize: '25px',
@@ -68,7 +71,17 @@ const AstrologerDashboard = () => {
     let sendButton={
         marginLeft: '7px'
     }
+    let registerdAstrologers={
+        margin:"20px 2px 20px 2px",
+        width:'100%',
+        padding:'10px 2 10px 2px' ,
 
+    };
+    let chartDiv={
+        display:'flex',
+        flexDirection:'raw',
+        flexWrap:" nowrap"
+    };
     return (
         <Fragment>
 
@@ -77,7 +90,26 @@ const AstrologerDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <AstrologerDashboardStatCards />
-                        <AstrologerDashboardTopSellingTable/>
+                        <div style={chartDiv}>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                                <Title> Monthly Requests Summary</Title>
+
+                                <AstrologerDashboardLineChart
+                                    height="350px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                                <Title> Monthly Profits Summary</Title>
+
+                                <AstrologerDashboardLineChart
+                                    height="350px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                        </div>
+
+
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
@@ -112,6 +144,7 @@ const AstrologerDashboard = () => {
 
                     </Grid>
                 </Grid>
+                <AstrologerDashboardTopSellingTable/>
             </ContentBox>
         </Fragment>
     );
