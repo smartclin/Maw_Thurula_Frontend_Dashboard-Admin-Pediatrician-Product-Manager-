@@ -1,8 +1,14 @@
 
+
+
 const AstrologerNewJobRequest = ( ) => {
+
     return (
-        <h1> This is astrologer new job request</h1>
+
+    <div>
+        <h1>ggggg</h1>
+            </div>
     )
 }
 
-export default  AstrologerNewJobRequest;
+export default  AstrologerNewJobRequest ;
