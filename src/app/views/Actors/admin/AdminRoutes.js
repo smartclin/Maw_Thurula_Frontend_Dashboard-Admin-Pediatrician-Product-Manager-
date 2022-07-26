@@ -14,9 +14,11 @@ const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pedi
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));
 const AstrologerReports = Loadable(lazy(() => import('../../Actors/admin/astrologers/AstrologerReports')));
+const AstrologerRequests = Loadable(lazy(() => import('../../Actors/admin/astrologers/AstrologerRequests')));
 //this for add lazy loading name provider component
 const NameProvider = Loadable(lazy(() => import('../../Actors/admin/name-providers/NameProviders')));
 const NameProviderReports = Loadable(lazy(() => import('../../Actors/admin/name-providers/NameProviderReports')));
+
 //this for add lazy loading ecommerce component
 const EcommerceProducts = Loadable(lazy(() => import('./ecommerce/EcommerceProduct')));
 const EcommerceOrders = Loadable(lazy(() => import('./ecommerce/EcommerceOrders')));
@@ -34,9 +36,12 @@ const AdminRoutes = [
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
+    { path: '/admin/astrologers_request', element: <AstrologerRequests />, auth: authRoles.admin },
+
 
     { path: '/admin/name_providers', element: <NameProvider />, auth: authRoles.admin },
     { path: '/admin/name_providers_reports', element: <NameProviderReports />, auth: authRoles.admin },
+
 
     { path: '/admin/ecommerce_products', element: <EcommerceProducts />, auth: authRoles.admin },
     { path: '/admin/ecommerce_orders', element: <EcommerceOrders />, auth: authRoles.admin },

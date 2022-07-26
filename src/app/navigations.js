@@ -99,6 +99,7 @@ export const navigations_ADMIN = [
     children: [
       { name: 'List', path: '/admin/astrologers', iconText: 'A' },
       { name: 'Reports', path: '/admin/astrologers_reports', iconText: 'A' },
+      { name: 'New Requests', path: '/admin/astrologer_request', iconText: 'A' },
     ],
   },
   {
@@ -108,6 +109,7 @@ export const navigations_ADMIN = [
     children: [
       { name: 'List', path: '/admin/name_providers', iconText: 'A' },
       { name: 'Reports', path: '/admin/name_providers_reports', iconText: 'A' },
+      { name: 'New Requests', path: '/admin/name_provider_request', iconText: 'A' },
     ],
   },
   {
