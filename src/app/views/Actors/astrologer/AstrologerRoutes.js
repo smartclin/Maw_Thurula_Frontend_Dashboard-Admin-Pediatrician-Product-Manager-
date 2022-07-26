@@ -6,7 +6,7 @@ import {authRoles} from "../../../auth/authRoles";
 
 
 const AstrologerDashboard = Loadable(lazy(() => import('../../Actors/astrologer/AstrologerDashboard')));
-const NewJobs = Loadable(lazy(() => import('./NewJobRequest')))
+const NewJobs = Loadable(lazy(() => import('./NewJobRequestTable')))
 const AstrologerViewRequest = Loadable(lazy(() => import('./AstrologerViewRequest')));
 const AstrologerViewRequestWithResponse = Loadable(lazy(() => import('./AstrologerViewRequestWithResponse')));
 

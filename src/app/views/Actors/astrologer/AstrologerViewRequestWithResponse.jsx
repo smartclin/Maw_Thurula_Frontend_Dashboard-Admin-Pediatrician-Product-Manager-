@@ -76,7 +76,18 @@ I would like to get proper letters for my baby name
                 </ListItem>
             </List>
             <div style={requestTittle}>Response message</div>
+            <List  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} >
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <MessageIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Message" secondary="Here I am include baby names for your baby with a meaning.
 
+            " />
+                </ListItem>
+            </List>
         </div>
     );
 
