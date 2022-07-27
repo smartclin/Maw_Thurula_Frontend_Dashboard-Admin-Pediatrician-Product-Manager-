@@ -9,6 +9,9 @@ import PediatricianDashboardStatCards from "./PediatricianDashboardStatCards";
 import PediatricianDashboardTopSellingTable from "./PediatricianDashboardTopSellingTable";
 import PediatricianSingleArticle from "../admin/pediatricians/PediatriciansSingleArticle";
 import ArticleCard from "../admin/shared/pediatrician/ArticleCard";
+import BasicCard from "./PediatricianDashboardTrendingArticle";
+import PediatricianDashboardWritePostCard from "./PediatricianDashboardWritePostCard";
+import AstrologerDashboardLineChart from "../astrologer/AstrologerDashboardLineChart";
 
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -42,7 +45,11 @@ const cardInside={
     justifyContent:'center',*/
     margin:'10px',
 };
-
+let chartDiv={
+    display:'flex',
+    flexDirection:'raw',
+    flexWrap:" nowrap"
+};
 const avatar = {
     height:100,
     width:100,
@@ -58,6 +65,7 @@ const emailAndPhone= {
 
 }
 const PediatricianDashboard = () => {
+    const { palette } = useTheme();
     let requestTittle={
         color:'#9e9e9e',
         fontSize: '25px',
@@ -73,6 +81,12 @@ const PediatricianDashboard = () => {
     let sendButton={
         marginLeft: '7px'
     }
+    let registerdAstrologers={
+        margin:"20px 2px 20px 2px",
+        width:'100%',
+        padding:'10px 2 10px 2px' ,
+
+    };
 
     return (
         <Fragment>
@@ -83,13 +97,35 @@ const PediatricianDashboard = () => {
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <PediatricianDashboardStatCards />
                         <PediatricianDashboardTopSellingTable/>
+                        <div style={chartDiv}>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                                <Title> Monthly Requests Summary</Title>
+
+                                <AstrologerDashboardLineChart
+                                    height="350px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                                <Title> Monthly Profits Summary</Title>
+
+                                <AstrologerDashboardLineChart
+                                    height="350px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                        </div>
                     </Grid>
-
                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                       <div>
-                           {/*<ArticleCard/>*/}
-                       </div>
+                       <div sx={{ px: 3, py: 2, mb: 3 }} >
+                           <div>
+                               <PediatricianDashboardWritePostCard/>
 
+                           </div>
+                           <div>
+                               <BasicCard/>
+                           </div>
+                       </div>
                     </Grid>
                 </Grid>
             </ContentBox>

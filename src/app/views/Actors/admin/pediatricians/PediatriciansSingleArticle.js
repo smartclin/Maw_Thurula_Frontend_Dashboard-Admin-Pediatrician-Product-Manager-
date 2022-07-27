@@ -54,7 +54,6 @@ const PediatricianSingleArticle = ({img}) => {
                     <small>45</small>
                 </IconButton>
             </div>
-
         </div>
     );
 };

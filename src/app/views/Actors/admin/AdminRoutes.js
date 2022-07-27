@@ -3,9 +3,10 @@ import { lazy } from 'react';
 import {authRoles} from "../../../auth/authRoles";
 import OneAstrologerReport from "./astrologers/OneAstrologerReport";
 import OneNameProviderReport from "./name-providers/OneNameProviderReport";
+import AdminDashboard from "./AdminDashboard";
 
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
-const PediatricianDashboard = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatricianDashboard')));
+// const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
 const MothersList = Loadable(lazy(() => import('./mothers/MothersSinglePostView')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
@@ -31,7 +32,7 @@ const EcommerceOrders = Loadable(lazy(() => import('./ecommerce/EcommerceOrders'
 const EcommerceReports = Loadable(lazy(() => import('./ecommerce/EcommerceReports')));
 
 const AdminRoutes = [
-    { path: '/admin', element: <PediatricianDashboard />, auth: authRoles.admin },
+    { path: '/admin', element: <AdminDashboard />, auth: authRoles.admin },
 
     { path: '/admin/mothers', element: <MothersList />, auth: authRoles.admin },
     { path: '/admin/mothers_post_request', element: <MothersPostRequests />, auth: authRoles.admin },

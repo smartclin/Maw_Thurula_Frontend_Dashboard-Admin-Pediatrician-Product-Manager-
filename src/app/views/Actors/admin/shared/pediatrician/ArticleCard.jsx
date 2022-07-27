@@ -40,7 +40,7 @@ const ArticleCard = () => {
         <div>
             <div className="d-flex p-2"  >
                 <div className="w-50 p-3">
-                    <div className="card">
+                    <div className="card" >
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
                             <h4 className="card-title">Family Success Planning</h4>

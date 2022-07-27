@@ -3,7 +3,7 @@ import "../shared/pediatrician/CommonStyles.css"
 import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ViewArticleComments from "../shared/pediatrician/ViewArticleComments";
+import PediatricianArticleComments from "./PediatricianArticleComments";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     boxShadow: 'none',
@@ -17,9 +17,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 export default function ViewFullArticle() {
     return (
         <div className="singlePost">
-
             <div className="singlePostWrapper">
-
                 <img
                     className="singlePostImg"
                     src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -84,17 +82,13 @@ export default function ViewFullArticle() {
                     iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
                     a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
                 </p>
-                <ViewArticleComments/>
-                {/*<DefaultComponent/>*/}
+                <PediatricianArticleComments/>
                 <StyledCard className="card-footer m-3">
                     <div className="d-flex flex-row">
                         <Button variant="contained">Block the article</Button>
                     </div>
                 </StyledCard>
             </div>
-
-
-
         </div>
     );
 }

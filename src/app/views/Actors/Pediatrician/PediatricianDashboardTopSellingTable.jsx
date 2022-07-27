@@ -10,13 +10,13 @@ import {
   Table,
   TableBody,
   TableCell,
+  Button,
   TableHead,
   TableRow,
   useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
-import {Routes, Route, useNavigate} from 'react-router-dom';
-//import ViewMessage from "./ViewMessage";
+
 const CardHeader = styled(Box)(() => ({
   display: 'flex',
   paddingLeft: '24px',
@@ -61,115 +61,100 @@ const PediatricianDashboardTopSellingTable = () => {
   const bgError = palette.error.main;
   const bgPrimary = palette.primary.main;
   const bgSecondary = palette.secondary.main;
-  const navigate = useNavigate();
-  function ViewMessage() {
-    //navigate('ViewMessage.jsx');
-  }
-  const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   return (
-    <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
-      <CardHeader>
-        <Title>Feedback comments-today</Title>
-        <div>{date}</div>
-      {  /*<Select size="small" defaultValue="this_month">
-          <MenuItem value="this_month">This Month</MenuItem>
-          <MenuItem value="last_month">Last Month</MenuItem>
-        </Select>*/}
-      </CardHeader>
+      <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
+        <CardHeader style={{ paddingLeft: 15}}>
+          <Title style={{marginLeft:0}}>Comments Section</Title>
 
-      <Box overflow="auto">
-        <ProductTable>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ px: 6 }} colSpan={4}>
-                Email
-              </TableCell>
-              <TableCell sx={{ px: 0 }} colSpan={3}>
-                Post
-              </TableCell>
+          {/*<Select size="small" defaultValue="this_month">*/}
+          {/*  <MenuItem value="this_month">This Month</MenuItem>*/}
+          {/*  <MenuItem value="last_month">Last Month</MenuItem>*/}
+          {/*</Select>*/}
+        </CardHeader>
 
-              <TableCell sx={{ px: 0 }} colSpan={2}>
-                comment
-              </TableCell>
-              <TableCell sx={{ px: 0 }} colSpan={3}>
-                Like
-              </TableCell>
-              <TableCell sx={{ px: 0 }} colSpan={2}>
-                Reply
-              </TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {productList.map((product, index) => (
-              <TableRow key={index} hover onClick={ViewMessage}>
-                <TableCell colSpan={4} sx={{ px: 0, textTransform: 'capitalize' }}>
-                  <Box display="flex" alignItems="center">
-
-                    <Paragraph sx={{ m: 0, ml: 4 }}>{product.name}</Paragraph>
-                  </Box>
+        <Box overflow="auto">
+          <ProductTable>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ px: 2 }} colSpan={2}>
+                  Email
                 </TableCell>
-                <TableCell colSpan={2} sx={{ px: 0, textTransform: 'capitalize' }}>
-                  {product.available}
+                <TableCell sx={{ px: 4 }} colSpan={4}>
+                  Comments
+                </TableCell>
+                <TableCell sx={{ px: 3 }} colSpan={2}>
+                  Date
                 </TableCell>
 
-                <TableCell colSpan={3} sx={{ px: 0, textTransform: 'capitalize' }}>
-                  {product.comment}
-                </TableCell>
-
-                <TableCell sx={{ px: 0 }} align="left" colSpan={3}>
-                  <IconButton>
-                    <Icon color="primary">favorite_border</Icon>
-                  </IconButton>
-                </TableCell>
-
-                <TableCell sx={{ px: 0 }} colSpan={3}>
-                  <IconButton>
-                    <Icon color="primary">sms</Icon>
-                  </IconButton>
+                <TableCell sx={{ px: 2 }} colSpan={2}>
+                  Actions
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </ProductTable>
-      </Box>
-    </Card>
+            </TableHead>
+
+            <TableBody>
+              {productList.map((product, index) => (
+                  <TableRow key={index} hover>
+                    <TableCell align="left" colSpan={2} sx={{ px: 0,  }}>
+                      {product.email}
+                    </TableCell>
+                    <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
+                      <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
+                        <Paragraph sx={{ m: 0, ml: 4 }}>{product.comment}</Paragraph>
+                      </Box>
+                    </TableCell>
+
+                    <TableCell sx={{ px: 3 }} align="left" colSpan={2}>
+                      {product.date}
+                    </TableCell>
+
+                    <TableCell sx={{ px: 0 }} colSpan={2}>
+                      <IconButton>
+                        <Icon color="warning">delete_forever</Icon>
+                      </IconButton>
+                      <IconButton>
+                        <Icon color="primary">message</Icon>
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+              ))}
+            </TableBody>
+          </ProductTable>
+        </Box>
+      </Card>
   );
 };
 
 const productList = [
   {
-
-    name: 'maneesha@gmail.com',
-    comment: 'Request names',
-    available: 'Healthy family' ,
+    email:'akila@gmaidfsdfsdsdfdsfsdfl.com',
+    comment: 'A quality content with useful images.Wish to contact the author....',
+    date:'2022/06/05',
+    price: 100,
+    available: 15,
   },
   {
-
-    name: 'amali@gmail.com',
-    comment: 'Request names',
+    email:'akila@gmail.com',
+    comment: 'very informative.Wish to contact the author...',
+    price: 1500,
     available: 30,
+    date:'2022/06/04',
   },
   {
-
-    name: 'acd@gmail.com',
-    comment: 'Request names',
+    email:'akila@gmail.com',
+    comment: 'Wish to contact the author,A quality content with useful images..',
+    price: 1900,
     available: 35,
+    date:'2022/06/03',
   },
   {
-
-    name: 'sara@gmail.com',
-    comment: 'Request names',
+    email:'akila@gmail.com',
+    comment: 'A quality content with useful images..',
+    price: 100,
     available: 0,
-  },
-  {
-
-    name: 'kane@gmail.com',
-    comment: 'Request names',
-    available: 5,
-  },
+    date:'2022/06/02',
+  }
 ];
 
 export default PediatricianDashboardTopSellingTable;
