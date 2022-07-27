@@ -163,12 +163,7 @@ const productList = [
     price: 'request name leters',
     available: 0,
   },
-  {
 
-    name: 'kane@gmail.com',
-    price: 'request name leters',
-    available: 5,
-  },
 ];
 
 export default AstrologerDashboardTopSellingTable;
