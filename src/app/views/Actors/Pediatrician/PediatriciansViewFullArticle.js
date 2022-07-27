@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import "../shared/pediatrician/CommonStyles.css"
+import "../admin/shared/pediatrician/CommonStyles.css"
 import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import PediatricianArticleComments from "./component/PediatricianArticleComments";
+import PediatricianArticleComments from "../admin/pediatricians/component/PediatricianArticleComments";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     boxShadow: 'none',
@@ -82,12 +82,12 @@ export default function ViewFullArticle() {
                     iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
                     a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
                 </p>
-                <PediatricianArticleComments/>
-                <StyledCard className="card-footer m-3">
-                    <div className="d-flex flex-row">
-                        <Button variant="contained">Block the article</Button>
-                    </div>
-                </StyledCard>
+                {/*<PediatricianArticleComments/>*/}
+                {/*<StyledCard className="card-footer m-3">*/}
+                {/*    <div className="d-flex flex-row">*/}
+                {/*        <Button variant="contained">Block the article</Button>*/}
+                {/*    </div>*/}
+                {/*</StyledCard>*/}
             </div>
         </div>
     );

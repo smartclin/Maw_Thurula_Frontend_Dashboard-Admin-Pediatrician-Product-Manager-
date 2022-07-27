@@ -4,7 +4,7 @@ import { Card, Grid, styled, useTheme ,IconButton,Button} from '@mui/material';
 import CommentView from "./CommentView";
 import { Link } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import "../shared/pediatrician/CommonStyles.css"
+import "../../shared/pediatrician/CommonStyles.css"
 import ShareIcon from "@mui/icons-material/Share";
 
 const PediatricianSingleArticle = ({img}) => {
@@ -31,7 +31,7 @@ const PediatricianSingleArticle = ({img}) => {
           </span>
                 </div>
                 <span className="postTitle">
-          <Link to="/admin/pediatricians" className="link">
+          <Link to="/pt/PediatricianViewFullArticles" className="link">
             Lorem ipsum dolor sit amet
           </Link>
         </span>

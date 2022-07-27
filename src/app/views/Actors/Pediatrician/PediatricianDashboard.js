@@ -7,11 +7,12 @@ import NameProviderDashboardStatCards from "../name-provider/NameProviderDashboa
 import NameProviderDashboardTopSellingTable from "../name-provider/NameProviderDashboardTopSellingTable";
 import PediatricianDashboardStatCards from "./PediatricianDashboardStatCards";
 import PediatricianDashboardTopSellingTable from "./PediatricianDashboardTopSellingTable";
-import PediatricianSingleArticle from "../admin/pediatricians/PediatriciansSingleArticle";
+import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import ArticleCard from "../admin/shared/pediatrician/ArticleCard";
 import BasicCard from "./PediatricianDashboardTrendingArticle";
 import PediatricianDashboardWritePostCard from "./PediatricianDashboardWritePostCard";
-import AstrologerDashboardLineChart from "../astrologer/AstrologerDashboardLineChart";
+import PediatricianDashboardLineChart from "../Pediatrician/PediatricianDashboardLineChart";
+import NameProviderDashboardLineChart from "../name-provider/NameProviderDashboardLineChart";
 
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -88,6 +89,15 @@ const PediatricianDashboard = () => {
 
     };
 
+    let rightCard={
+       display:'flex',
+        flexDirection:'column',
+        justifyContent:'space_around'
+
+    };
+    let marginstyle={
+        marginBottom:'28px'
+    };
     return (
         <Fragment>
 
@@ -97,37 +107,43 @@ const PediatricianDashboard = () => {
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <PediatricianDashboardStatCards />
                         <PediatricianDashboardTopSellingTable/>
-                        <div style={chartDiv}>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Requests Summary</Title>
 
-                                <AstrologerDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Profits Summary</Title>
 
-                                <AstrologerDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                        </div>
                     </Grid>
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                       <div sx={{ px: 3, py: 2, mb: 3 }} >
-                           <div>
-                               <PediatricianDashboardWritePostCard/>
 
+                    <Grid item lg={4} md={4} sm={12} xs={12}>
+
+
+                        <div  style={rightCard}>
+                           <div style={marginstyle}>
+                               <PediatricianDashboardWritePostCard/>
                            </div>
-                           <div>
-                               <BasicCard/>
-                           </div>
-                       </div>
+                            <BasicCard/>
+                        </div>
+
+
+
                     </Grid>
                 </Grid>
+
+                <div style={chartDiv}>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Followers </Title>
+
+                        <PediatricianDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Article count</Title>
+
+                        <PediatricianDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                </div>
             </ContentBox>
         </Fragment>
     );

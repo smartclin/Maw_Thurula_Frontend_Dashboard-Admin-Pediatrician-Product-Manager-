@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Fragment } from 'react';
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import PediatricianSingleArticle from "./PediatriciansSingleArticle";
-import "../shared/pediatrician/CommonStyles.css"
+import "../../shared/pediatrician/CommonStyles.css"
 
 
 export default function Posts() {
