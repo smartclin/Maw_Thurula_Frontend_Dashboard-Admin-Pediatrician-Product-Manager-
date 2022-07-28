@@ -5,13 +5,13 @@ import Avatar from '@mui/material/Avatar';
 
 import NameProviderDashboardStatCards from "../name-provider/NameProviderDashboardStatCards";
 import NameProviderDashboardTopSellingTable from "../name-provider/NameProviderDashboardTopSellingTable";
-import PediatricianDashboardStatCards from "./PediatricianDashboardStatCards";
-import PediatricianDashboardTopSellingTable from "./PediatricianDashboardTopSellingTable";
+import PediatricianDashboardStatCards from "./shared/PediatricianDashboardStatCards";
+import PediatricianDashboardTopSellingTable from "./shared/PediatricianDashboardTopSellingTable";
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import ArticleCard from "../admin/shared/pediatrician/ArticleCard";
-import BasicCard from "./PediatricianDashboardTrendingArticle";
-import PediatricianDashboardWritePostCard from "./PediatricianDashboardWritePostCard";
-import PediatricianDashboardLineChart from "../Pediatrician/PediatricianDashboardLineChart";
+import BasicCard from "./shared/PediatricianDashboardTrendingArticle";
+import PediatricianDashboardWritePostCard from "./shared/PediatricianDashboardWritePostCard";
+import PediatricianDashboardLineChart from "./shared/PediatricianDashboardLineChart";
 import NameProviderDashboardLineChart from "../name-provider/NameProviderDashboardLineChart";
 
 
@@ -107,8 +107,6 @@ const PediatricianDashboard = () => {
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <PediatricianDashboardStatCards />
                         <PediatricianDashboardTopSellingTable/>
-
-
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>

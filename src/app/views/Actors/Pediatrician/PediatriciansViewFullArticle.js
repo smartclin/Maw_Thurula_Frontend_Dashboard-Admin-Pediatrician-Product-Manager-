@@ -4,6 +4,8 @@ import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PediatricianArticleComments from "../admin/pediatricians/component/PediatricianArticleComments";
+import Analytics from "./shared/PediatricianVIewArticleComments";
+import MarkunreadRoundedIcon from "@mui/icons-material/MarkunreadRounded";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     boxShadow: 'none',
@@ -44,12 +46,10 @@ export default function ViewFullArticle() {
 
                 <div>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                        <small>454</small>
+                        <FavoriteIcon /> <span style={{fontSize:20}}>12</span>
                     </IconButton>
                     <IconButton aria-label="share">
-                        <ShareIcon />
-                        <small>45</small>
+                        <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
                     </IconButton>
                 </div>
                 <p className="singlePostDesc">
@@ -88,6 +88,9 @@ export default function ViewFullArticle() {
                 {/*        <Button variant="contained">Block the article</Button>*/}
                 {/*    </div>*/}
                 {/*</StyledCard>*/}
+            </div>
+            <div id={"comments"}>
+                <Analytics/>
             </div>
         </div>
     );

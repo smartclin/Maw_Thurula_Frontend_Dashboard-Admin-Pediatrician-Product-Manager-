@@ -183,8 +183,9 @@ const AdminDashboard = () => {
         <Fragment>
             <ContentBox className="analytics">
                 <div>
-                   <div className="d-flex" >
-                    <div className="ms-4">
+
+                   <div className="d-flex justify-content-center " >
+                    <div className="ms-4 shadow-sm border-0">
                         <Autocomplete
                             disablePortal
                             options={top100Films}
@@ -213,10 +214,13 @@ const AdminDashboard = () => {
                        </div>
                    </div>
 
-                   <div className="d-inline-flex" >
+                    <div className="d-flex flex-md-wrap justify-content-center">
                        <ArticleCard />
-
-
+                       <ArticleCard />
+                       <ArticleCard />
+                       <ArticleCard />
+                       <ArticleCard />
+                       <ArticleCard />
 
                    </div>
                 </div>

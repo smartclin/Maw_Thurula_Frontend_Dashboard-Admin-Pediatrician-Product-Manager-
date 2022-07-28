@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
+import { Box, Card, Grid, Icon, IconButton, styled, Tooltip,Link } from '@mui/material';
 import { Small } from 'app/components/Typography';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -48,9 +48,10 @@ const PediatricianDashboardStatCards = () => {
             </ContentBox>
 
             <Tooltip title="View Details" placement="top">
-              <IconButton>
-                <Icon>arrow_right_alt</Icon>
-              </IconButton>
+                <IconButton>
+                  <Icon>arrow_right_alt</Icon>
+                </IconButton>
+
             </Tooltip>
           </StyledCard>
         </Grid>

@@ -16,6 +16,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
+import {Link} from "react-router-dom";
 
 const CardHeader = styled(Box)(() => ({
   display: 'flex',
@@ -99,11 +100,17 @@ const PediatricianDashboardTopSellingTable = () => {
                     <TableCell align="left" colSpan={2} sx={{ px: 0,  }}>
                       {product.email}
                     </TableCell>
-                    <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
-                      <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
-                        <Paragraph sx={{ m: 0, ml: 4 }}>{product.comment}</Paragraph>
-                      </Box>
-                    </TableCell>
+
+                      <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
+                        <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
+                          <Paragraph sx={{ m: 0, ml: 4 }}>
+                            <Link className="link"   to="/pt/PediatricianViewFullArticles">{product.comment} ..<span>view more</span> </Link>
+                            </Paragraph>
+                        </Box>
+                      </TableCell>
+
+
+
 
                     <TableCell sx={{ px: 3 }} align="left" colSpan={2}>
                       {product.date}

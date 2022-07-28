@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
+import { Link } from "react-router-dom";
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
@@ -53,7 +54,9 @@ export default function BasicCard() {
                     <ShareIcon />
                     <small>45</small>
                 </IconButton>
-                <Button size="small">View full article</Button>
+                <Button size="small">
+                    <Link className="link" to="/pt/PediatricianViewFullArticles">View full article</Link>
+                    </Button>
             </div>
         </CardActions>
       </Card>
