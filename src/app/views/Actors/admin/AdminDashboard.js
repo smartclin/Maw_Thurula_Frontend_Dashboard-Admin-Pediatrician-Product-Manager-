@@ -64,7 +64,7 @@ const AdminDashboard = () => {
                         {/*<H4>Trending Articles </H4>*/}
                         {/*<RowCards />*/}
                         <PediatricianRequestTable/>
-                        <Button>asd</Button>
+                        {/*<Button>asd</Button>*/}
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>

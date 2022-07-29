@@ -185,7 +185,7 @@ const AdminDashboard = () => {
                 <div>
 
                    <div className="d-flex justify-content-center " >
-                    <div className="ms-4 shadow-sm border-0">
+                    <div className="ms-3 shadow-sm border-0">
                         <Autocomplete
                             disablePortal
                             options={top100Films}
@@ -194,7 +194,7 @@ const AdminDashboard = () => {
                             renderInput={(params) => <TextField {...params} label="Search by catogery" />}
                         />
                     </div>
-                       <div className="ms-5">
+                       <div className="ms-3" >
                            <Autocomplete
                                disablePortal
                                options={top100Films}
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
                                renderInput={(params) => <TextField {...params} label="Search with author" />}
                            />
                        </div>
-                       <div className="ms-5">
+                       <div className="ms-3">
                            <Autocomplete
                                disablePortal
                                options={top100Films}

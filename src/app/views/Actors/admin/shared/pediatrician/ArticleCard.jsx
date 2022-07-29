@@ -36,13 +36,13 @@ const Paragraph = styled('p')(({ theme }) => ({
 }));
 const ArticleCard = () => {
     return (
-        <div className="w-25 card shadow-sm p-3 mb-5 bg-white rounded m-5">
+        <div className="w-25 card shadow-sm mb-5 bg-white rounded m-5">
 
                 {/*<div className="p-3" >*/}
                 {/*    <div  className="w-25 card shadow-sm p-3 mb-5 bg-white rounded"  >*/}
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
-                            <h4 className="card-title">Family Success Planning</h4>
+                            <h5 className="card-title">Family Success Planning</h5>
                             <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-Pregnancy</a></p></Heading>
                             <Paragraph className="card-text">This is a longer card with supporting text below as a natural
                                 lead-in to
@@ -57,7 +57,7 @@ const ArticleCard = () => {
                         <StyledCard className="card-footer">
 
                             <small className="text-muted ">
-                                <Link to="/admin/pediatricians" className="link">
+                                <Link to="/admin/pediatrician_full_article" className="link">
                                     View full article
                                 </Link>
                             </small>

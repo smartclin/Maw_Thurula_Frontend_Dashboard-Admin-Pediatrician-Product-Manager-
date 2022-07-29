@@ -13,8 +13,9 @@ const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostReq
 
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
-const PediatricianArticles = Loadable(lazy(() => import('../Pediatrician/PediatriciansViewArticles')));
+const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')));
 const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')))
+const Pediatrician_full_article = Loadable(lazy(() => import('../../Actors/admin/pediatricians/ViewFullArticle')))
 
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));
@@ -40,6 +41,7 @@ const AdminRoutes = [
     { path: '/admin/pediatricians', element: <PediatricianList />, auth: authRoles.admin },
     { path: '/admin/pediatrician_articles', element: <PediatricianArticles />, auth: authRoles.admin },
     { path: '/admin/pediatrician_request', element: <PediatricianRequests />, auth: authRoles.admin },
+    { path: '/admin/pediatrician_full_article', element: <Pediatrician_full_article />, auth: authRoles.admin },
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
