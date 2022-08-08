@@ -141,7 +141,13 @@ const MotherListTable=()=> {
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
-                paging: false,
+                paging: true,
+            }}
+            localization={{
+                pagination: {
+                    labelDisplayedRows: '',
+                    labelRowsPerPage:''
+                },
             }}
         />
         </div>
