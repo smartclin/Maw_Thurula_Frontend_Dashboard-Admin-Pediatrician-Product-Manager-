@@ -1,7 +1,8 @@
 import {Grid, styled, useTheme} from '@mui/material';
-import {Fragment} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 
 import {useParams,} from 'react-router-dom';
+import {getNameProviders} from "../../../../services/admin_service";
 
 const ContentBox = styled('div')(({theme}) => ({
     margin: '30px',
@@ -31,7 +32,7 @@ const H4 = styled('h4')(({ theme }) => ({
 const MothersList = () => {
     const {palette} = useTheme();
     const {id} = useParams();
-
+    const [motherList, setMotherList] = useState(null);
 
     console.log("location")
     console.log(id)
@@ -47,10 +48,31 @@ const MothersList = () => {
             },
         },
     }));
+
+    useEffect(() => {
+        getNameProviders().then(data => {
+            setMotherList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(async () => {
+        console.log(motherList);
+    }, [motherList]);
     return (
         <Fragment>
             <ContentBox className="analytics">
+                {
+                    motherList ? motherList.map((mother, index) => {
+                        return (
+                            <>
+                                <h1 key={index}> {mother.title}</h1>
+                                <img key={"2" + index} src={mother.url} width={"100px"}/>
+                            </>)
 
+                    }) : <h1> Data Loading</h1>
+                }
                 <Grid container spacing={3}>
                     {/*<Grid item lg={6} md={1} sm={12} xs={12}>*/}
                     {/*    <MotherPostblockcard/>*/}
