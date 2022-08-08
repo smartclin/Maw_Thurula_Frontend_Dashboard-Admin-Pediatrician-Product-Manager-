@@ -14,7 +14,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
 
-const AstrologerViewRequestWithRequest = ( ) =>  {
+const NameProviderViewRequest = ( ) =>  {
 
 
     let requestTittle={
@@ -76,18 +76,18 @@ I would like to get proper letters for my baby name
                 </ListItem>
             </List>
             <div style={requestTittle}>Response message</div>
-            <List  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} >
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <MessageIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include baby names for your baby with a meaning.
+            <Box
+                component="form"
+                sx={{
+                    '& > :not(style)': { m: 1, width: '25ch' },
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <TextField style={responseInput} id="outlined-basic" label="Type response here ..." variant="outlined" />
 
-            " />
-                </ListItem>
-            </List>
+            </Box>
+            <Button  style ={sendButton} variant="contained">Send</Button>
         </div>
     );
 
@@ -99,4 +99,4 @@ I would like to get proper letters for my baby name
 
 
 
-export default AstrologerViewRequestWithRequest;
+export default NameProviderViewRequest;

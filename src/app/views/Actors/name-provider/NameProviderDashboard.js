@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import {avatarClasses, Card, Grid, Icon, styled, useTheme} from '@mui/material';
+import {avatarClasses, Card, Grid, Icon, IconButton, styled, useTheme} from '@mui/material';
 
 import Avatar from '@mui/material/Avatar';
 import NameProviderDashboardStatCards from "./NameProviderDashboardStatCards";
@@ -82,6 +82,12 @@ const NameProviderDashboard = () => {
         flexDirection:'raw',
         flexWrap:" nowrap"
     };
+    let titleHeader={
+        display:'flex',
+        flexDirection:'raw',
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+    };
     return (
         <Fragment>
 
@@ -90,39 +96,31 @@ const NameProviderDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <NameProviderDashboardStatCards />
-                        <div style={chartDiv}>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Requests Summary</Title>
-
-                                <NameProviderDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                                <Title> Monthly Profits Summary</Title>
-
-                                <NameProviderDashboardLineChart
-                                    height="350px"
-                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                                />
-                            </Card>
-                        </div>
+                        <NameProviderDashboardTopSellingTable/>
 
 
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
                         <Card  sx={{ px: 3, py: 2, mb: 3 }}>
-                            <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi Perera</Title>
-                            <SubTitle>Name Provider</SubTitle>
+                            <div style={titleHeader}>
+                                <div>
+                                    <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi Perera</Title>
+                                    <SubTitle>Name Provider</SubTitle>
+                                </div>
+                                <div>
+                                    <IconButton ><Icon>edit</Icon></IconButton>
+                                </div>
+                            </div>
+
                             <div style={cardInside}>
                                 <Avatar style={avatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                             </div>
 
                             <p>Astrologer Atlanta. Quality Results in 1 Minute or Less!
                                 Search for Astrologer Atlanta. Instant and Personalized
-                                Results. Always Facts.Results & Answers. Privacy Friendly.</p>
+                                Results. Always Facts.Results & Answers. Privacy Friendly.
+                                Always Facts.Results & Answers. Privacy Friendly</p>
 
                             <span style={emailAndPhone}>
                <Icon color="primary">mail</Icon>
@@ -144,7 +142,25 @@ const NameProviderDashboard = () => {
 
                     </Grid>
                 </Grid>
-                <NameProviderDashboardTopSellingTable/>
+
+                <div style={chartDiv}>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Requests Summary</Title>
+
+                        <NameProviderDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
+                        <Title> Monthly Profits Summary</Title>
+
+                        <NameProviderDashboardLineChart
+                            height="350px"
+                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                        />
+                    </Card>
+                </div>
             </ContentBox>
         </Fragment>
     );

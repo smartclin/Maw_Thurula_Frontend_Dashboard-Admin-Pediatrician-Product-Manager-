@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Card, Grid, Icon, IconButton, styled, Tooltip} from '@mui/material';
+import {Box, Card, Grid, Icon, IconButton, styled, TextField, Tooltip} from '@mui/material';
 import {Small} from 'app/components/Typography';
 
 
@@ -86,6 +86,19 @@ const OneAstrologerReportStatCards = () => {
           ))}
         </Grid>
           <div style={dateRange}>
+
+                  <Box
+                      component="form"
+                      sx={{
+                          '& > :not(style)': { m: 1, width: '25ch' },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                  >
+                      <TextField label="Start Date" color="primary" focused type="date" />
+                      <TextField label="End Date" color="primary" focused  type="date"/>
+
+                  </Box>
              {/* <LocalizationProvider
                   dateAdapter={AdapterDateFns}
                   localeText={{ start: 'Start date', end: 'End date' }}

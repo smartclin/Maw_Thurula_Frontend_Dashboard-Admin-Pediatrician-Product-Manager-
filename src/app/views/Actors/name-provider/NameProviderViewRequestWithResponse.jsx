@@ -14,7 +14,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
 
-const AstrologerViewRequestWithRequest = ( ) =>  {
+const NameProviderViewRequestWithRequest = ( ) =>  {
 
 
     let requestTittle={
@@ -99,4 +99,4 @@ I would like to get proper letters for my baby name
 
 
 
-export default AstrologerViewRequestWithRequest;
+export default NameProviderViewRequestWithRequest;
