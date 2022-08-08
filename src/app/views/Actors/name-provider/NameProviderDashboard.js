@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import {avatarClasses, Card, Grid, Icon, styled, useTheme} from '@mui/material';
+import {avatarClasses, Card, Grid, Icon, IconButton, styled, useTheme} from '@mui/material';
 
 import Avatar from '@mui/material/Avatar';
 import NameProviderDashboardStatCards from "./NameProviderDashboardStatCards";
@@ -82,6 +82,12 @@ const NameProviderDashboard = () => {
         flexDirection:'raw',
         flexWrap:" nowrap"
     };
+    let titleHeader={
+        display:'flex',
+        flexDirection:'raw',
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+    };
     return (
         <Fragment>
 
@@ -97,8 +103,16 @@ const NameProviderDashboard = () => {
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
                         <Card  sx={{ px: 3, py: 2, mb: 3 }}>
-                            <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi Perera</Title>
-                            <SubTitle>Name Provider</SubTitle>
+                            <div style={titleHeader}>
+                                <div>
+                                    <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi Perera</Title>
+                                    <SubTitle>Name Provider</SubTitle>
+                                </div>
+                                <div>
+                                    <IconButton ><Icon>edit</Icon></IconButton>
+                                </div>
+                            </div>
+
                             <div style={cardInside}>
                                 <Avatar style={avatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                             </div>
