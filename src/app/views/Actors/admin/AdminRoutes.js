@@ -8,13 +8,13 @@ import AdminDashboard from "./AdminDashboard";
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 // const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
-const MothersList = Loadable(lazy(() => import('./mothers/MothersSinglePostView')));
+const MothersList = Loadable(lazy(() => import('./mothers/MothersList')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
 
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
 const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')));
-const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')))
+const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests.js')))
 const Pediatrician_full_article = Loadable(lazy(() => import('../../Actors/admin/pediatricians/ViewFullArticle')))
 
 //this for add lazy loading astrologer component

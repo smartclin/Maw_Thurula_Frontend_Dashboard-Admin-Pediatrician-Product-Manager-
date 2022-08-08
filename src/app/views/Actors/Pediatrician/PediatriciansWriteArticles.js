@@ -3,8 +3,7 @@ import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import Posts from "../admin/pediatricians/component/PostList";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+import Write from "./shared/PediatricianDashboardWritePost";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -16,18 +15,18 @@ const Analytics = () => {
 
     return (
         <Fragment>
-            <ContentBox className="analytics">
+            {/*<ContentBox className="analytics">*/}
 
-            </ContentBox>
-               <ContentBox className="analytics">
+            {/*</ContentBox>*/}
+               {/*<ContentBox className="analytics">*/}
                    {/*<Grid container spacing={3}>*/}
                    <Grid>
 
-                       <Posts/>
+                       <Write/>
 
                    </Grid>
 
-               </ContentBox>
+               {/*</ContentBox>*/}
 
         </Fragment>
     );
