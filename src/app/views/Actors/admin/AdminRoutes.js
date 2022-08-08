@@ -3,17 +3,19 @@ import { lazy } from 'react';
 import {authRoles} from "../../../auth/authRoles";
 import OneAstrologerReport from "./astrologers/OneAstrologerReport";
 import OneNameProviderReport from "./name-providers/OneNameProviderReport";
+import AdminDashboard from "./AdminDashboard";
 
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
-const PediatricianDashboard = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatricianDashboard')));
+// const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
-const MothersList = Loadable(lazy(() => import('./mothers/MothersSinglePostView')));
+const MothersList = Loadable(lazy(() => import('./mothers/MothersList')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
 
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
-const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatriciansViewArticles')));
-const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')))
+const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')));
+const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests.js')))
+const Pediatrician_full_article = Loadable(lazy(() => import('../../Actors/admin/pediatricians/ViewFullArticle')))
 
 //this for add lazy loading astrologer component
 const Astrologer = Loadable(lazy(() => import('../../Actors/admin/astrologers/Astrologers')));
@@ -31,7 +33,7 @@ const EcommerceOrders = Loadable(lazy(() => import('./ecommerce/EcommerceOrders'
 const EcommerceReports = Loadable(lazy(() => import('./ecommerce/EcommerceReports')));
 
 const AdminRoutes = [
-    { path: '/admin', element: <PediatricianDashboard />, auth: authRoles.admin },
+    { path: '/admin', element: <AdminDashboard />, auth: authRoles.admin },
 
     { path: '/admin/mothers', element: <MothersList />, auth: authRoles.admin },
     { path: '/admin/mothers_post_request', element: <MothersPostRequests />, auth: authRoles.admin },
@@ -39,6 +41,7 @@ const AdminRoutes = [
     { path: '/admin/pediatricians', element: <PediatricianList />, auth: authRoles.admin },
     { path: '/admin/pediatrician_articles', element: <PediatricianArticles />, auth: authRoles.admin },
     { path: '/admin/pediatrician_request', element: <PediatricianRequests />, auth: authRoles.admin },
+    { path: '/admin/pediatrician_full_article', element: <Pediatrician_full_article />, auth: authRoles.admin },
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },

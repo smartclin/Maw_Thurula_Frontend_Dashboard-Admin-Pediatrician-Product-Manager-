@@ -2,20 +2,19 @@ import * as React from 'react';
 import { Fragment } from 'react';
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import PediatricianSingleArticle from "./PediatriciansSingleArticle";
-import "../shared/pediatrician/CommonStyles.css"
+import "../../shared/pediatrician/CommonStyles.css"
 
 
 export default function Posts() {
     return (
 
                     <div className="posts">
-                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6758029/pexels-photo-6758029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
-                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6711867/pexels-photo-6711867.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>
                         <PediatricianSingleArticle img="https://images.pexels.com/photos/5490778/pexels-photo-5490778.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>
                         <PediatricianSingleArticle img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6711867/pexels-photo-6711867.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>
+                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
                         <PediatricianSingleArticle img="https://images.pexels.com/photos/4916559/pexels-photo-4916559.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"/>
-
+                        <PediatricianSingleArticle img="https://images.pexels.com/photos/6758029/pexels-photo-6758029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
                     </div>
     );
 }

@@ -6,6 +6,7 @@ import MatxLayout from './components/MatxLayout/MatxLayout';
 import AdminRoutes from "./views/Actors/admin/AdminRoutes";
 import AstrologerRoutes from "./views/Actors/astrologer/AstrologerRoutes";
 import NameProviderRoutes from "./views/Actors/name-provider/NameProviderRoutes";
+import PediatricianRoutes from "./views/Actors/Pediatrician/PediatricianRoutes";
 
 const routes = [
   {
@@ -14,7 +15,7 @@ const routes = [
         <MatxLayout />
       </AuthGuard>
     ),
-    children: [...AdminRoutes, ...AstrologerRoutes,...NameProviderRoutes],
+    children: [...AdminRoutes, ...AstrologerRoutes,...NameProviderRoutes,...PediatricianRoutes],
   },
   ...sessionRoutes,
   { path: '/', element: <Navigate to="/admin" /> },

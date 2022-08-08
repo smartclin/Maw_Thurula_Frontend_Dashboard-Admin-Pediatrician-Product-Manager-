@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import PediatricianSingleArticle from "./PediatriciansSingleArticle";
-import Posts from "./PostList";
+import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
+import Posts from "../admin/pediatricians/component/PostList";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
