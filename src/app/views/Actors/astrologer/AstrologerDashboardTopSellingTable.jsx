@@ -125,9 +125,20 @@ const AstrologerDashboardTopSellingTable = () => {
                 </TableCell>
 
                 <TableCell sx={{ px: 0 }} colSpan={1}>
-                  <IconButton>
-                    <Icon color="primary">sms</Icon>
-                  </IconButton>
+                  {product.available ? (
+                      product.available < 20 ? (
+                          <IconButton>
+                            <Icon color="success">done</Icon>
+                          </IconButton>
+                      ) : (
+                          <IconButton>
+                            <Icon color="primary">sms</Icon>
+                          </IconButton>
+                      )
+                  ) : (
+                      <Small bgcolor={bgError}></Small>
+                  )}
+
                 </TableCell>
               </TableRow>
             ))}
@@ -161,7 +172,7 @@ const productList = [
 
     name: 'sara@gmail.com',
     price: 'request name leters',
-    available: 0,
+    available: 30,
   },
 
 ];
