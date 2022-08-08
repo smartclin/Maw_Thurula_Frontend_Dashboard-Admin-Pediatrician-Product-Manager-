@@ -53,11 +53,11 @@ const MotherPostblockcard = () => {
                     <IconButton aria-label="share">
                         <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
                     </IconButton>
-                    <ExpandMore>
-                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />}>
+                    {/*<ExpandMore>*/}
+                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}}>
                             Hide
                         </Button>
-                    </ExpandMore>
+                    {/*</ExpandMore>*/}
                 </CardActions>
             </CardContent>
         </Card>

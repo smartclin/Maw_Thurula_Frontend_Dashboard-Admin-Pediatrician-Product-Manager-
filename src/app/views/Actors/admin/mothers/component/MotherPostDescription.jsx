@@ -29,7 +29,7 @@ const MotherPostDescription = () => {
     }));
 
     return (
-        <Card sx={{ minWidth: 275,paddingBottom:0 , minHeight:165,maxHeight:165 }}>
+        <Card sx={{ minWidth: 275,paddingBottom:0 , minHeight:165, }}>
             <CardContent>
                 <Title>
                     Special Notes
