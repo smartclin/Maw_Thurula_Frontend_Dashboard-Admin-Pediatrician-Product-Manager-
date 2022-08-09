@@ -16,7 +16,9 @@ import {useNavigate} from 'react-router-dom';
 
 const MotherListTable=()=> {
     const navigate = useNavigate();
-    const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
+    // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
+    const handleOnClick = () => navigate('/admin/target_mothers_post_list/2', {replace: false});
+
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
     const [open, setOpen] = React.useState(false);

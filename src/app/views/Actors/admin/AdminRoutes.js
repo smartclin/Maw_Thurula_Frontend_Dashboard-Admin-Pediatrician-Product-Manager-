@@ -11,6 +11,7 @@ const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 const MothersList = Loadable(lazy(() => import('./mothers/MothersList')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
 const OneMothersDetails = Loadable(lazy(() => import('./mothers/MothersSinglePostView')));
+const TargetMothersPostList = Loadable(lazy(() => import('./mothers/MothersPostList')));
 
 //this for pediatrician routes
 const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
@@ -41,6 +42,8 @@ const AdminRoutes = [
     {path: '/admin/mothers', element: <MothersList/>, auth: authRoles.admin},
     {path: '/admin/mothers_post_request', element: <MothersPostRequests/>, auth: authRoles.admin},
     {path: '/admin/mother_details/:id', element: <OneMothersDetails/>, auth: authRoles.admin},
+    {path: '/admin/target_mothers_post_list/:id', element: <TargetMothersPostList/>, auth: authRoles.admin},
+
 
     {path: '/admin/pediatricians', element: <PediatricianList/>, auth: authRoles.admin},
     {path: '/admin/pediatrician_articles', element: <PediatricianArticles/>, auth: authRoles.admin},
