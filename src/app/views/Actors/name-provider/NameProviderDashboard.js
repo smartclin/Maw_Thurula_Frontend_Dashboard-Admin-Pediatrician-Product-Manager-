@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import NameProviderDashboardStatCards from "./NameProviderDashboardStatCards";
 import NameProviderDashboardTopSellingTable from "./NameProviderDashboardTopSellingTable";
 import NameProviderDashboardLineChart from "./NameProviderDashboardLineChart";
+import {useNavigate, useParams} from "react-router-dom";
 //import {Title} from "@mui/icons-material";
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -56,6 +57,14 @@ const emailAndPhone= {
 }
 const NameProviderDashboard = () => {
     const { palette } = useTheme();
+
+    const navigate = useNavigate();
+    const {id} = useParams();
+    const editProfile =()=>navigate({
+        pathname:'./edit_Profile',
+
+    })
+
     let requestTittle={
         color:'#9e9e9e',
         fontSize: '25px',
@@ -109,7 +118,7 @@ const NameProviderDashboard = () => {
                                     <SubTitle>Name Provider</SubTitle>
                                 </div>
                                 <div>
-                                    <IconButton ><Icon>edit</Icon></IconButton>
+                                    <IconButton ><Icon onClick={editProfile} >edit</Icon></IconButton>
                                 </div>
                             </div>
 

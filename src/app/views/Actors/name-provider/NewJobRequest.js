@@ -1,4 +1,5 @@
-import NewJobRequestTable from "../astrologer/NewJobRequestTable";
+import NewJobRequestTable from "./NewJobRequestTable";
+
 
 const NameProviderNewJobRequest = ( ) => {
     let mainDiv;
