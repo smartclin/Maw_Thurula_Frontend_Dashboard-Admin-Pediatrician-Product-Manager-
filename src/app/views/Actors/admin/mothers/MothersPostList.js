@@ -6,6 +6,7 @@ import MotherPosts from "./component/MotherPosts";
 
 
 
+
 const ContentBox = styled('div')(({theme}) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {margin: '16px'},
@@ -46,15 +47,16 @@ const MothersList = () => {
             },
         },
     }));
+
     return (
         <Fragment>
           <ContentBox className="analytics">
             <Grid container spacing={0}>
-              <Grid item lg={6} md={1} sm={12} xs={12}>
+              <Grid item lg={6} md={6} sm={12} xs={12}>
                 <MotherProfileTopcard />
               </Grid>
 
-              <Grid item lg={12} md={4} sm={12} xs={12}>
+              <Grid item lg={12} md={12} sm={12} xs={12}>
                 <Card style={{paddingLeft:30,paddingRight:30,}}>
                   <Typography gutterBottom variant="h6" component="div" style={{marginTop:10, marginBottom:20}}>
                     Recent Posts
