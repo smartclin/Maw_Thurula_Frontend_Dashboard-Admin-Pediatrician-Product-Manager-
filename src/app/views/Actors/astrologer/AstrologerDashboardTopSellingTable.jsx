@@ -61,9 +61,16 @@ const AstrologerDashboardTopSellingTable = () => {
   const bgError = palette.error.main;
   const bgPrimary = palette.primary.main;
   const bgSecondary = palette.secondary.main;
+
+
   const navigate = useNavigate();
-  function ViewMessage() {
-    //navigate('ViewMessage.jsx');
+  const viewRequest=(replyStatus)=>{
+
+    replyStatus >20 ?
+        navigate({pathname:'/al/view_request_with_response'})
+        :
+        navigate({pathname:'/al/view_request'})
+
   }
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -100,7 +107,7 @@ const AstrologerDashboardTopSellingTable = () => {
 
           <TableBody>
             {productList.map((product, index) => (
-              <TableRow key={index} hover onClick={ViewMessage}>
+              <TableRow key={index} hover  onClick={viewRequest}>
                 <TableCell colSpan={4} align="left" sx={{ px: 0, textTransform: 'capitalize' }}>
                   <Box display="flex" alignItems="center">
 
@@ -141,9 +148,13 @@ const AstrologerDashboardTopSellingTable = () => {
 
                 </TableCell>
               </TableRow>
-            ))}
+            )
+
+            )}
           </TableBody>
+
         </ProductTable>
+
       </Box>
     </Card>
   );

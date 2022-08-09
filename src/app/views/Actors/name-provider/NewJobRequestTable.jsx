@@ -17,17 +17,16 @@ import DoneIcon from '@mui/icons-material/Done';
 import {useNavigate} from "react-router-dom";
 
 const NewJobRequestTable=()=> {
+
     const navigate = useNavigate();
+
     const viewRequest=(replyStatus)=>{
         replyStatus ?
-            navigate({pathname:'/al/view_request_with_response'})
+            navigate({pathname:'/np/view_request_with_response'})
             :
-            navigate({pathname:'/al/view_request'})
+            navigate({pathname:'/np/view_request'})
 
     }
-
-
-
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
