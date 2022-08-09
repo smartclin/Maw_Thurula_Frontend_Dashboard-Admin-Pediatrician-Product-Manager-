@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {Link} from "react-router-dom";
 
 const CardHeader = styled(Box)(() => ({
   display: 'flex',
@@ -91,9 +92,9 @@ const NameProviderStatCards = () => {
 
 
                     <TableCell sx={{ px: 0 }}  style={{ textAlign: "center"}} colSpan={1}>
-                      <IconButton>
-                        <Icon color="primary">ArrowForward</Icon>
-                      </IconButton>
+                      <Link to="/admin/NameProviderApprovalDecision" className="link">
+                        View Profile
+                      </Link>
                     </TableCell>
                   </TableRow>
               ))}

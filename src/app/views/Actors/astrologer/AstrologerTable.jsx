@@ -63,7 +63,7 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 
 
-const PediatricianTable = () => {
+const AstrologerTable = () => {
     const { palette } = useTheme();
     const bgError = palette.error.main;
     const bgPrimary = palette.primary.main;
@@ -101,7 +101,7 @@ const PediatricianTable = () => {
                 </ProductTable>
                         <div>
                             <div className="m-40">
-                                <Link to="/admin/pediatrician_request" className="link">
+                                <Link to="/admin/astrologer_request" className="link">
                                     <Button  color="secondary">Back</Button>
                                 </Link>
                             </div>
@@ -167,5 +167,5 @@ const mothersList = [
 
 ];
 
-export default PediatricianTable;
+export default AstrologerTable;
 
