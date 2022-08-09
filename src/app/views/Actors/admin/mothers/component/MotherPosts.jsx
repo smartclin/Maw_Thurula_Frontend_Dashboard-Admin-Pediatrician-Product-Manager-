@@ -16,6 +16,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import PendingRoundedIcon from '@mui/icons-material/PendingRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import MarkunreadRoundedIcon from '@mui/icons-material/MarkunreadRounded';
+import {useNavigate} from "react-router-dom";
+
 
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -58,7 +60,8 @@ const ExpandMore = styled((props) => {
 
 
 const MotherPosts = () => {
-
+    const navigate = useNavigate();
+    const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -78,7 +81,7 @@ const MotherPosts = () => {
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
             {cardList.map((item, index) => (
-                <Grid item xs={4} md={4} key={index}>
+                <Grid item xs={4} md={4} key={index} onClick={()=>{handleOnClick()}}>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardHeader
                             avatar={
@@ -113,7 +116,7 @@ const MotherPosts = () => {
                             <IconButton aria-label="add to favorites">
                                 <FavoriteIcon /> <span style={{fontSize:20}}>12</span>
                             </IconButton>
-                            <IconButton aria-label="share">
+                            <IconButton aria-label="share" onClick={()=>{alert("️This works on every component!")}}>
                                 <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
                             </IconButton>
                             <ExpandMore>

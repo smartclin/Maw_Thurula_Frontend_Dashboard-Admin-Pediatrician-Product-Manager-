@@ -12,8 +12,15 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
+import {useNavigate} from 'react-router-dom';
 
 const MotherListTable=()=> {
+    const navigate = useNavigate();
+    // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
+    const handleOnClick = () => navigate('/admin/target_mothers_post_list/2', {replace: false});
+
+    // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
+
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -73,19 +80,61 @@ const MotherListTable=()=> {
                 { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%" },
             ]}
             data={[
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Posts: 1987, Comments: 63 ,Status:1},
-                { url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',name: 'Anura Anjana', Email: 'anjanadissanayaka@gmail.com', Posts: 1987, Comments: 63 ,Status:1},
-                { url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',name: 'Kasun Anjana', Email: 'anjanadissanayaka@gmail.com', Posts: 1987, Comments: 63 ,Status:0},
-                { url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',name: 'Pasan Anjana', Email: 'anjanadissanayaka@gmail.com', Posts: 1987, Comments: 63 ,Status:1},
-                { url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',name: 'Pasan Anjana', Email: 'anjanadissanayaka@gmail.com', Posts: 1987, Comments: 63 ,Status:1},
+                {
+                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    name: 'Akila Anjana',
+                    Email: 'anjanadissanayaka@gmail.com',
+                    Posts: 1987,
+                    Comments: 63,
+                    Status: 1
+                },
+                {
+                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    name: 'Anura Anjana',
+                    Email: 'anjanadissanayaka@gmail.com',
+                    Posts: 1987,
+                    Comments: 63,
+                    Status: 1
+                },
+                {
+                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    name: 'Kasun Anjana',
+                    Email: 'anjanadissanayaka@gmail.com',
+                    Posts: 1987,
+                    Comments: 63,
+                    Status: 0
+                },
+                {
+                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    name: 'Pasan Anjana',
+                    Email: 'anjanadissanayaka@gmail.com',
+                    Posts: 1987,
+                    Comments: 63,
+                    Status: 1
+                },
+                {
+                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    name: 'Pasan Anjana',
+                    Email: 'anjanadissanayaka@gmail.com',
+                    Posts: 1987,
+                    Comments: 63,
+                    Status: 1
+                },
 
             ]}
-            onRowClick={(event, rowData) => console.log(rowData)}
+            onRowClick={(event, rowData) => handleOnClick()}
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: LockIcon, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: LockOpenIcon, onClick: (rowData) => { handleClickOpen()} }
+                        ? {
+                            icon: LockIcon, onClick: (rowData) => { /* anythink */
+                            }
+                        }
+                        : {
+                            icon: LockOpenIcon, onClick: (rowData) => {
+                                handleClickOpen()
+                            }
+                        }
                 },
                 {
                     icon: VisibilityIcon,
@@ -94,7 +143,13 @@ const MotherListTable=()=> {
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
-                paging: false,
+                paging: true,
+            }}
+            localization={{
+                pagination: {
+                    labelDisplayedRows: '',
+                    labelRowsPerPage:''
+                },
             }}
         />
         </div>

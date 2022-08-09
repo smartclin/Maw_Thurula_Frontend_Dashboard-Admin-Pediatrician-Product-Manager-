@@ -1,8 +1,8 @@
-import { styled } from '@mui/system';
-import { MatxVerticalNav } from 'app/components';
+import {styled} from '@mui/system';
+import {MatxVerticalNav} from 'app/components';
 import useSettings from 'app/hooks/useSettings';
-import { navigations_AL, navigations_PM, navigations_PT, navigations_NP, navigations_ADMIN } from 'app/navigations';
-import { Fragment } from 'react';
+import {navigations_ADMIN, navigations_AL, navigations_NP, navigations_PM, navigations_PT} from 'app/navigations';
+import {Fragment} from 'react';
 import Scrollbar from 'react-perfect-scrollbar';
 import useAuth from "../hooks/useAuth";
 
@@ -12,7 +12,7 @@ const StyledScrollBar = styled(Scrollbar)(() => ({
   position: 'relative',
 }));
 
-const SideNavMobile = styled('div')(({ theme }) => ({
+const SideNavMobile = styled('div')(({theme}) => ({
   position: 'fixed',
   top: 0,
   left: 0,
@@ -41,7 +41,7 @@ const Sidenav = ({ children }) => {
   }else if (user.role == "PT"){
     navigation_array =  navigations_PT ;
   }
-  
+
 
   const updateSidebarMode = (sidebarSettings) => {
     let activeLayoutSettingsName = settings.activeLayout + 'Settings';
