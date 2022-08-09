@@ -63,7 +63,7 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 
 
-const PediatricianTable = () => {
+const NameProviderTable = () => {
     const { palette } = useTheme();
     const bgError = palette.error.main;
     const bgPrimary = palette.primary.main;
@@ -99,25 +99,25 @@ const PediatricianTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                        <div>
-                            <div className="m-40">
-                                <Link to="/admin/pediatrician_request" className="link">
-                                    <Button  color="secondary">Back</Button>
-                                </Link>
-                            </div>
-                            <div m={2}
-                            >
-                                <Button variant="contained" color="success">Accept</Button>
-                            </div>
+                <div>
+                    <div className="m-40">
+                        <Link to="/admin/name_provider_requests" className="link">
+                            <Button  color="secondary">Back</Button>
+                        </Link>
+                    </div>
+                    <div m={2}
+                    >
+                        <Button variant="contained" color="success">Accept</Button>
+                    </div>
 
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Reject</Button>
-                            </div>
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Contact user</Button>
-                            </div>
+                    <div className='m-1'>
+                        <Button variant="outlined" color="error">Reject</Button>
+                    </div>
+                    <div className='m-1'>
+                        <Button variant="outlined" color="error">Contact user</Button>
+                    </div>
 
-                        </div>
+                </div>
             </Box>
         </Card>
 
@@ -167,5 +167,5 @@ const mothersList = [
 
 ];
 
-export default PediatricianTable;
+export default NameProviderTable;
 

@@ -15,8 +15,9 @@ import {
   useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+// import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const CardHeader = styled(Box)(() => ({
   display: 'flex',
@@ -92,9 +93,16 @@ const AstrologerStatCards = () => {
 
 
                     <TableCell sx={{ px: 0 }}  style={{ textAlign: "center"}} colSpan={1}>
+
+                        {/*<Link to="/admin/astrologer_view_details" className="link">*/}
+                        {/*  View details*/}
+                        {/*</Link>*/}
                       <Link to="/admin/AstrologerApprovalDecision" className="link">
                         View Profile
                       </Link>
+
+
+
                     </TableCell>
                   </TableRow>
               ))}
@@ -127,6 +135,5 @@ const mothersList = [
 
   },
 ];
-
 
 export default AstrologerStatCards;

@@ -20,7 +20,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 import Button from '@mui/material/Button';
-import {Link} from "react-router-dom";
 
 const CardHeader = styled(Box)(() => ({
     display: 'flex',
@@ -63,7 +62,7 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 
 
-const PediatricianTable = () => {
+const AstrologerTable = () => {
     const { palette } = useTheme();
     const bgError = palette.error.main;
     const bgPrimary = palette.primary.main;
@@ -99,25 +98,23 @@ const PediatricianTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                        <div>
-                            <div className="m-40">
-                                <Link to="/admin/pediatrician_request" className="link">
-                                    <Button  color="secondary">Back</Button>
-                                </Link>
-                            </div>
-                            <div m={2}
-                            >
-                                <Button variant="contained" color="success">Accept</Button>
-                            </div>
+                <div>
+                    <div className="m-40">
+                        <Button  color="secondary">Back</Button>
+                    </div>
+                    <div m={2}
+                    >
+                        <Button variant="contained" color="success">Accept</Button>
+                    </div>
 
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Reject</Button>
-                            </div>
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Contact user</Button>
-                            </div>
+                    <div className='m-1'>
+                        <Button variant="outlined" color="error">Reject</Button>
+                    </div>
+                    <div className='m-1'>
+                        <Button variant="outlined" color="error">Contact user</Button>
+                    </div>
 
-                        </div>
+                </div>
             </Box>
         </Card>
 
@@ -167,5 +164,5 @@ const mothersList = [
 
 ];
 
-export default PediatricianTable;
+export default AstrologerTable;
 

@@ -1,6 +1,6 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import NameProviderStatCards from "./NameProviderStatCards";
+import NameProviderStatCards from "./component/NameProviderStatCards";
 
 
 

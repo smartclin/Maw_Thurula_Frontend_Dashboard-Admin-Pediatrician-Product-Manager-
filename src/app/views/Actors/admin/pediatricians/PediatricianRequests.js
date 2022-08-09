@@ -1,8 +1,9 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import PediatricianStatCards from "./component/PediatricianStatCards";
-import PediatricianTable from "./component/PediatricianTable";
-import PediatricianEditProfileDetails from "./component/PediatricianEditProfileDetails";
+import PediatricianStatCards from "../../admin/pediatricians/component/PediatricianStatCards";
+ import PediatricianTable from "../../admin/pediatricians/component/PediatricianStatCards";
+ import PediatricianEditProfileDetails from "./../../admin/pediatricians/component/PediatricianEditProfileDetails";
+import PediatricianProfileView from "./PediatricianProfileView";
 
 
 
@@ -17,13 +18,19 @@ const PediatricianRequests = () => {
 
             </PediatricianStatCards>
 
-            <PediatricianTable>
 
-            </PediatricianTable>
 
-            <PediatricianEditProfileDetails>
 
-            </PediatricianEditProfileDetails>
+
+            {/*<PediatricianEditProfileDetails>*/}
+
+            {/*</PediatricianEditProfileDetails>*/}
+
+            {/*<PediatricianProfileView>*/}
+
+            {/*</PediatricianProfileView>*/}
+
+
 
 
 
