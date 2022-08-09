@@ -5,6 +5,8 @@ import Avatar from '@mui/material/Avatar';
 import AstrologerDashboardStatCards from "./AstrologerDashboardStatCards";
 import AstrologerDashboardTopSellingTable from "./AstrologerDashboardTopSellingTable";
 import AstrologerDashboardLineChart from "./AstrologerDashboardLineChart";
+import editProfile from "./EditProfile";
+import {useNavigate, useParams} from "react-router-dom";
 //import {Title} from "@mui/icons-material";
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -54,8 +56,15 @@ const emailAndPhone= {
     height: '50px'
 
 }
+
 const AstrologerDashboard = () => {
     const { palette } = useTheme();
+    const navigate = useNavigate();
+    const {id} = useParams();
+    const editProfile =()=>navigate({
+    pathname:'./edit_Profile',
+
+})
     let requestTittle={
         color:'#9e9e9e',
         fontSize: '25px',
@@ -109,7 +118,7 @@ const AstrologerDashboard = () => {
                                     <SubTitle>Astrologer</SubTitle>
                                 </div>
                                 <div>
-                                    <IconButton ><Icon>edit</Icon></IconButton>
+                                    <IconButton onClick={editProfile} ><Icon>edit</Icon></IconButton>
                                 </div>
                             </div>
                             <div style={cardInside}>
@@ -161,6 +170,7 @@ const AstrologerDashboard = () => {
                     </Card>
                 </div>
             </ContentBox>
+
         </Fragment>
     );
 };
