@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import {IconButton} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import MarkunreadRoundedIcon from "@mui/icons-material/MarkunreadRounded";
 
 const bull = (
     <Box
@@ -47,12 +48,10 @@ export default function BasicCard() {
 
             <div>
                 <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                    <small>454</small>
+                    <FavoriteIcon /> <span style={{fontSize:20}}>12</span>
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
-                    <small>45</small>
+                    <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
                 </IconButton>
                 <Button size="small">
                     <Link className="link" to="/pt/PediatricianViewFullArticles">View full article</Link>

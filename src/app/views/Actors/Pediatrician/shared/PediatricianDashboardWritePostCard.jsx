@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 
 const bull = (
     <Box
@@ -34,7 +35,10 @@ export default function PediatricianDashboardWritePostCard() {
             {/*adjective*/}
           </Typography>
             <CardActions>
-                <Button variant="contained">Start Article</Button>
+                <Link to="/pt/PediatricianWriteArticles" className="link">
+                    <Button variant="contained">Start Article</Button>
+                </Link>
+
             </CardActions>
         </CardContent>
 

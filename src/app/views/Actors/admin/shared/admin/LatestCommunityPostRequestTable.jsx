@@ -121,27 +121,27 @@ const LatestCommunityPostRequestTable = () => {
 const mothersList = [
   {
     name: 'Maduni Tharukshi',
-    topic: "Assigment denne ne",
+    topic: "How to feed your newborn?",
     available: 15,
   },
   {
     name: 'Lulakshi Naduni',
-    topic: "Prasannage duka ahanna weno",
+    topic: "What are the symptoms of baby fever?",
     available: 30,
   },
   {
     name: 'Akila ',
-    topic: "prasannath den bono",
+    topic: "Check your baby's hearing",
     available: 35,
   },
   {
     name: 'Yasas',
-    topic: "Apita bonna thiyena dewal adu weno",
+    topic: "What are the symptoms of baby fever?",
     available: 0,
   },
   {
     name: 'Prasanna',
-    topic: 1190,
+    topic: "How to take care your toddler?",
     available: 5,
   },
 ];
