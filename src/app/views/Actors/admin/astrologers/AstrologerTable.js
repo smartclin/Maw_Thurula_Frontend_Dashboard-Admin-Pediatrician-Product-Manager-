@@ -72,7 +72,6 @@ const AstrologerTable = () => {
         <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
             <CardHeader>
                 <Title> User Details </Title>
-
             </CardHeader>
 
             <Box overflow="auto">
@@ -98,20 +97,17 @@ const AstrologerTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                <div>
-                    <div className="m-40">
-                        <Button  color="secondary">Back</Button>
-                    </div>
-                    <div m={2}
-                    >
+                <div style={{display:"flex",marginLeft:43}} >
+
+                    <div className='m-1'>
                         <Button variant="contained" color="success">Accept</Button>
                     </div>
 
                     <div className='m-1'>
-                        <Button variant="outlined" color="error">Reject</Button>
+                        <Button variant="contained" color="error">Reject</Button>
                     </div>
                     <div className='m-1'>
-                        <Button variant="outlined" color="error">Contact user</Button>
+                        <Button variant="contained" color="error">Contact user</Button>
                     </div>
 
                 </div>

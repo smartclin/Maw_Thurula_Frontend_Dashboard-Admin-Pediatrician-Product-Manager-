@@ -99,7 +99,7 @@ const AstrologerTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                        <div>
+                        <div >
                             <div className="m-40">
                                 <Link to="/admin/astrologer_request" className="link">
                                     <Button  color="secondary">Back</Button>
