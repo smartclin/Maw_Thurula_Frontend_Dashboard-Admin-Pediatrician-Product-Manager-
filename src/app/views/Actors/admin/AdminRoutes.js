@@ -4,6 +4,8 @@ import {authRoles} from "../../../auth/authRoles";
 import OneAstrologerReport from "./astrologers/OneAstrologerReport";
 import OneNameProviderReport from "./name-providers/OneNameProviderReport";
 import AdminDashboard from "./AdminDashboard";
+import MotherfullPosts from "./mothers/component/ViewFullPost";
+import MothersRequestList from "./mothers/MothersRequestPostView";
 
 const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 // const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
@@ -49,6 +51,7 @@ const AdminRoutes = [
     {path: '/admin/mothers_post_request', element: <MothersPostRequests/>, auth: authRoles.admin},
     {path: '/admin/mother_details/:id', element: <OneMothersDetails/>, auth: authRoles.admin},
     {path: '/admin/target_mothers_post_list/:id', element: <TargetMothersPostList/>, auth: authRoles.admin},
+    {path: '/admin/target_mothers_full_post_list/:id', element: <MothersRequestList/>, auth: authRoles.admin},
 
 
     { path: '/admin/pediatricians', element: <PediatricianList />, auth: authRoles.admin },
