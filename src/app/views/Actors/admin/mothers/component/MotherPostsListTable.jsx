@@ -80,38 +80,38 @@ const MotherPostListTable=()=> {
             data={[
                 {
                     id:'1',
-                    name: 'Akila Anjana',
-                    Posts: 1987,
+                    name: 'Madhuni Tharukshi',
+                    Posts: 6,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'Breastfeeding challenges'
                 },
                 {
                     id:'1',
-                    name: 'Akila Anjana',
-                    Posts: 1987,
+                    name: 'Kasunika Udayangi',
+                    Posts: 4,
                     date:'2022/08/10',
-                    Title: 'demo title'
+                    Title: 'Lack of sleep'
                 },
                 {
                     id:'1',
-                    name: 'Akila Anjana',
-                    Posts: 1987,
+                    name: 'Pawani Chathurika',
+                    Posts: 12,
                     date:'2022/08/10',
-                    Title: 'demo title'
+                    Title: 'When to call the doctor'
                 },
                 {
                     id:'1',
-                    name: 'Akila Anjana',
-                    Posts: 1987,
+                    name: 'Lulakshi hettiarachchi',
+                    Posts: 4,
                     date:'2022/08/10',
-                    Title: 'demo title'
+                    Title: 'Weight gain'
                 },
                 {
                     id:'1',
-                    name: 'Akila Anjana',
-                    Posts: 1987,
+                    name: 'Amasha sewwandi',
+                    Posts: 2,
                     date:'2022/08/10',
-                    Title: 'demo title'
+                    Title: 'Vaccine safety'
                 },
 
 

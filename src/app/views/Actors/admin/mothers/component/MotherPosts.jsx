@@ -70,12 +70,13 @@ const MotherPosts = () => {
 
 
     const cardList = [
-        { name: 'Registered Mothers', amount: 100, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: 200, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: 300, icon: 'person_offIcon' },
-        { name: 'Registered Mothers', amount: 400, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: 500, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: 600, icon: 'person_offIcon' },
+        { category: 'Inconsolable crying', date: "2022/07/02", img: 'pregnant_woman',content:"Parents everywhere can testify to the fact that becoming a parent can be equally thrilling and terrifying—a combination of excitement and joy on the one hand and fear and frustration on the other. ",title:" Listening to Others",likes:12,comments:23 },
+        { category: 'Vaccine safety', date: "2022/07/03", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable! While making milk is “natural,”",title:"Getting on a Schedule",likes:12,comments:23 },
+        { category: 'Weight gain', date: "2022/07/05", img: 'pregnant_woman',content:"Sleepless nights are part of parenthood, but you’ll be surprised how quickly you adjust. It’s true that babies sleep a lot, Many health experts including the American Academy of Pediatrics",title:"",likes:12,comments:23 },
+        { category: 'Making milestones', date: "2022/07/01", img: 'pregnant_woman',content:"During the first years of your child’s life, you will likely encounter bouts of sickness including colds and fevers . It’s hard to know when to call the doctor.",title:"Being Perfect",likes:12,comments:23 },
+        { category: 'Vaccine safety', date: "2022/07/02", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable!",title:"Losing the baby weight",likes:12,comments:23 },
+        { category: 'Inconsolable crying', date: "2022/08/02", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable! ",title:"Saying No",likes:12,comments:23 },
+
     ];
 
     return (
@@ -93,8 +94,8 @@ const MotherPosts = () => {
                                 <IconButton aria-label="settings">
                                 </IconButton>
                             }
-                            title="CAtogary name"
-                            subheader="September 14, 2016"
+                            title={item.category}
+                            subheader={item.date}
                         />
                         <CardMedia
                             component="img"
@@ -104,20 +105,18 @@ const MotherPosts = () => {
                         />
                         <CardContent>
                             <Typography variant="body2" color="#576574">
-                                How do I get my baby to sleep through the night?
+                                {item.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                if you like...
+                                {item.content}
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
                             <IconButton aria-label="add to favorites">
-                                <FavoriteIcon /> <span style={{fontSize:20}}>12</span>
+                                <FavoriteIcon /> <span style={{fontSize:20}}>{item.likes}</span>
                             </IconButton>
                             <IconButton aria-label="share" onClick={()=>{alert("️This works on every component!")}}>
-                                <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
+                                <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.comments}</span>
                             </IconButton>
                             <ExpandMore>
                                 <PendingRoundedIcon style={{fontSize:25}} />
