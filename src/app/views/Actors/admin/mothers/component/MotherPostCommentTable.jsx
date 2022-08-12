@@ -128,29 +128,29 @@ const AdminPostCommentMother = () => {
 
 const productList = [
     {
-        email:'akila@gmaidfsdfsdsdfdsfsdfl.com',
-        comment: 'A quality content with useful images.Wish to contact the author....',
+        email:'maduni12@gmail.com',
+        comment: 'Baby is swallowing during feeding',
         date:'2022/06/05',
         price: 100,
         available: 15,
     },
     {
-        email:'akila@gmail.com',
-        comment: 'very informative.Wish to contact the author...',
+        email:'wikramanayake@gmail.com',
+        comment: 'If your baby seems satisfied after breastfeeding',
         price: 1500,
         available: 30,
         date:'2022/06/04',
     },
     {
-        email:'akila@gmail.com',
-        comment: 'Wish to contact the author,A quality content with useful images..',
+        email:'maduni12@gmail.com',
+        comment: 'Your breasts should feel softer at the end of a feeding',
         price: 1900,
         available: 35,
         date:'2022/06/03',
     },
     {
-        email:'akila@gmail.com',
-        comment: 'A quality content with useful images..',
+        email:'wikramanayake@gmail.com',
+        comment: 'It’s normal for a newborn’s weight to fluctuate during the first few days of their life',
         price: 100,
         available: 0,
         date:'2022/06/02',

@@ -35,9 +35,7 @@ const MotherRequestPostDescription = () => {
                     Description
                 </Title>
                 <Typography sx={{ fontSize: 14 , marginTop:1 }} color="text.secondary" gutterBottom>
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except AntarcticaLizards are a widespread group of squamate reptiles, with over 6,000
-                    species
+                    Every parent wants to do everything they can to help their child grow healthy and strong. But it doesn’t always go smoothly, especially when you’re just starting out.
                 </Typography>
 
             </CardContent>

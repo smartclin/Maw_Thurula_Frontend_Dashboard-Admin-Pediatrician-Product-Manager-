@@ -66,52 +66,66 @@ const SingleMotherPostListTable=()=> {
             title="Previous posts"
             columns={[
 
-                { title: 'Title', field: 'Title',width: "30%",
+                { title: 'Title', field: 'Title',width: "20%",
                     cellStyle: {
                         paddingLeft:30
                     },
                     headerStyle: {
                         paddingLeft:30
                     } },
-                { title: 'comments', field: 'comments',width: "1%"},
-                { title: 'like', field: 'like',width: "1%" },
-                { title: 'Date', field: 'date',width: "10%" },
+                { title: 'comments', field: 'comments',width: "5%"},
+                { title: 'like', field: 'like',width: "5%" },
+                { title: 'Date', field: 'date',width: "20%" },
             ]}
             data={[
                 {
                     id:'1',
-                    like: 123,
-                    comments: 198,
+                    like: 40,
+                    comments: 23,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'Baby\'s constant crying '
                 },
                 {
                     id:'1',
-                    like: 123,
-                    comments: 198,
+                    like: 12,
+                    comments: 3,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'You bring your little one home from the hospital and suddenly he starts sneezing.'
                 },
                 {
                     id:'1',
-                    like: 123,
-                    comments: 198,
+                    like: 34,
+                    comments: 5,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'New moms put a lot of pressure on themselves to breastfeed like a pro right after giving birth'
                 },
                 {
                     id:'1',
-                    like: 123,
-                    comments: 198,
+                    like: 23,
+                    comments: 7,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'After hours of labor you might just look at your newborn and feel more tired than in love. '
                 },
                 {
                     id:'1',
-                    like: 123,
-                    comments: 198,
+                    like: 67,
+                    comments: 3,
                     date:'2022/08/10',
-                    Title: 'demo title demo title demo title demo title demo title demo title'
+                    Title: 'Hitting Milestones'
+                },
+                {
+                    id:'1',
+                    like: 87,
+                    comments: 9,
+                    date:'2022/08/10',
+                    Title: ' creating an eating and sleeping schedule for your baby is important '
+                },
+                {
+                    id:'1',
+                    like: 12,
+                    comments: 0,
+                    date:'2022/08/10',
+                    Title: 'Once your baby arrives, it might feel as though everyone you know wants to swing by to sneak a peek at the new addition'
                 },
 
 

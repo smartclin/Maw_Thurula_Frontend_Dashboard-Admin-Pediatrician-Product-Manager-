@@ -19,16 +19,16 @@ const MotherProfileTopcard = () => {
                 </Grid>
                 <Grid item xs={8}>
                     <Typography gutterBottom variant="h6" component="div">
-                        Akila Anjnana
+                        Maduni Tharukshi
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        akilaanjanadissanayaka@gmail.com
+                        maduni12@gmail.com
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         07/25/2022
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Posts : 5
+                        Posts : 6
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         <Button variant="contained" color="warning" size="small" style={{height:25 , fontSize:'1em'}}>

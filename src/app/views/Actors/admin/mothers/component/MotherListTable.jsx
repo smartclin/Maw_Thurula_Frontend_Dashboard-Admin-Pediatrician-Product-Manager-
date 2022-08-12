@@ -77,47 +77,47 @@ const MotherListTable=()=> {
                 { title: 'Email', field: 'Email',width: "10%" },
                 { title: 'Posts', field: 'Posts',width: "10%" },
                 { title: 'Comments', field: 'Comments',width: "10%" },
-                { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%" },
+                { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
             ]}
             data={[
                 {
                     url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
-                    name: 'Akila Anjana',
-                    Email: 'anjanadissanayaka@gmail.com',
-                    Posts: 1987,
+                    name: 'Maduni Tharukshi',
+                    Email: 'maduni12@gmail.com',
+                    Posts: 6,
                     Comments: 63,
                     Status: 1
                 },
                 {
                     url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
-                    name: 'Anura Anjana',
-                    Email: 'anjanadissanayaka@gmail.com',
-                    Posts: 1987,
+                    name: 'Senuri wikramanayake',
+                    Email: 'wikramanayake@gmail.com',
+                    Posts: 12,
                     Comments: 63,
                     Status: 1
                 },
                 {
                     url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
-                    name: 'Kasun Anjana',
-                    Email: 'anjanadissanayaka@gmail.com',
-                    Posts: 1987,
-                    Comments: 63,
+                    name: 'Kasunika jayathilake',
+                    Email: 'jayathilake@gmail.com',
+                    Posts: 1,
+                    Comments: 34,
                     Status: 0
                 },
                 {
                     url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
-                    name: 'Pasan Anjana',
-                    Email: 'anjanadissanayaka@gmail.com',
-                    Posts: 1987,
-                    Comments: 63,
+                    name: 'Nisansala sewwandi',
+                    Email: 'sewwandi@gmail.com',
+                    Posts: 5,
+                    Comments: 15,
                     Status: 1
                 },
                 {
                     url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
-                    name: 'Pasan Anjana',
-                    Email: 'anjanadissanayaka@gmail.com',
-                    Posts: 1987,
-                    Comments: 63,
+                    name: 'Hiruni mahisha',
+                    Email: 'mahisha@gmail.com',
+                    Posts: 4,
+                    Comments: 87,
                     Status: 1
                 },
 
