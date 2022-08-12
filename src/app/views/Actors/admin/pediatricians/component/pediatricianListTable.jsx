@@ -74,6 +74,7 @@ const PediatricianListTable=()=> {
                 { title: 'Registered', field: 'date',width: "10%" },
                 { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%" ,hidden:true},
             ]}
+            // commect for check data
             data={[
                 {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Articles: 25, Number: '0713804551' ,date: '2022/07/06' ,Status:1},
                 {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', Articles: 26, Number: '0713804552' ,date: '2022/07/06' ,Status:1},
