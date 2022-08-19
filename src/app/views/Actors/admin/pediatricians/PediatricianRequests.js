@@ -1,45 +1,30 @@
-import { Card, Grid, styled, useTheme } from '@mui/material';
+import {Button, Card, Grid, styled, useTheme} from '@mui/material';
 import { Fragment } from 'react';
-import PediatricianStatCards from "../../admin/pediatricians/component/PediatricianStatCards";
- import PediatricianTable from "../../admin/pediatricians/component/PediatricianStatCards";
- import PediatricianEditProfileDetails from "./../../admin/pediatricians/component/PediatricianEditProfileDetails";
-import PediatricianProfileView from "./PediatricianProfileView";
+import PediatriciansRequestStatCards from  "./component/Pediatriciansrequeststatcard";
+import PediatriciansRequestListTable from  "./component/PediatriciansRequestListTable";
 
 
 
 
-const PediatricianRequests = () => {
 
+const Astrologers = () => {
 
+    const ContentBox = styled('div')(({ theme }) => ({
+        margin: '30px',
+        [theme.breakpoints.down('md')]: { margin: '16px' },
+    }));
     return (
         <Fragment>
-            <h1>  </h1>
-            <PediatricianStatCards>
-
-            </PediatricianStatCards>
-
-
-
-
-
-            {/*<PediatricianEditProfileDetails>*/}
-
-            {/*</PediatricianEditProfileDetails>*/}
-
-            {/*<PediatricianProfileView>*/}
-
-            {/*</PediatricianProfileView>*/}
-
-
-
-
-
-
-
-
-
+            <ContentBox className="analytics" >
+                <Grid container item lg={12} spacing={3} >
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <PediatriciansRequestStatCards/>
+                        <PediatriciansRequestListTable/>
+                    </Grid>
+                </Grid>
+            </ContentBox>
         </Fragment>
     );
 };
 
-export default PediatricianRequests;
+export default Astrologers;
