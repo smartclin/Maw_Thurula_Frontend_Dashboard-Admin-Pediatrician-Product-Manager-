@@ -81,7 +81,7 @@ const MotherListTable=()=> {
             ]}
             data={[
                 {
-                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
                     name: 'Maduni Tharukshi',
                     Email: 'maduni12@gmail.com',
                     Posts: 6,
@@ -89,7 +89,7 @@ const MotherListTable=()=> {
                     Status: 1
                 },
                 {
-                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    url: 'https://i.postimg.cc/43yRsCwr/13.jpg',
                     name: 'Senuri wikramanayake',
                     Email: 'wikramanayake@gmail.com',
                     Posts: 12,
@@ -97,7 +97,7 @@ const MotherListTable=()=> {
                     Status: 1
                 },
                 {
-                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    url: 'https://i.postimg.cc/Zn0j1C0B/6.jpg',
                     name: 'Kasunika jayathilake',
                     Email: 'jayathilake@gmail.com',
                     Posts: 1,
@@ -105,7 +105,7 @@ const MotherListTable=()=> {
                     Status: 0
                 },
                 {
-                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    url: 'https://i.postimg.cc/PryVPnn5/8.jpg',
                     name: 'Nisansala sewwandi',
                     Email: 'sewwandi@gmail.com',
                     Posts: 5,
@@ -113,7 +113,7 @@ const MotherListTable=()=> {
                     Status: 1
                 },
                 {
-                    url: 'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4',
+                    url: 'https://i.postimg.cc/sDp1kW0t/10.jpg',
                     name: 'Hiruni mahisha',
                     Email: 'mahisha@gmail.com',
                     Posts: 4,
