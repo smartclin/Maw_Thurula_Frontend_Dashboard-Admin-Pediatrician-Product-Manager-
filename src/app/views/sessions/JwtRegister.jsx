@@ -59,6 +59,7 @@ const JwtRegister = () => {
 
     try {
       register(values.email, values.username, values.password);
+      alert(values.username)
       navigate('/');
       setLoading(false);
     } catch (e) {

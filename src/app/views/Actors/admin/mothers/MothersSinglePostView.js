@@ -2,7 +2,7 @@ import {Grid, styled, useTheme} from '@mui/material';
 import {Fragment, useEffect, useState} from 'react';
 
 import {useParams,} from 'react-router-dom';
-import {getNameProviders} from "../../../../services/admin_service";
+import {getMotherList, getNameProviders} from "../../../../services/admin_service";
 
 const ContentBox = styled('div')(({theme}) => ({
     margin: '30px',
@@ -50,7 +50,9 @@ const MothersList = () => {
     }));
 
     useEffect(() => {
-        getNameProviders().then(data => {
+        getMotherList().then(data => {
+            console.log(data)
+            // console.log(JSON.parse(data))
             setMotherList(data);
         }).catch(err => {
             console.log(err.error)
@@ -58,20 +60,22 @@ const MothersList = () => {
     }, []);
 
     useEffect(async () => {
+        console.log("set");
         console.log(motherList);
     }, [motherList]);
     return (
         <Fragment>
             <ContentBox className="analytics">
                 {
-                    motherList ? motherList.map((mother, index) => {
+                    motherList ? motherList.students.map((mother, index) => {
                         return (
                             <>
-                                <h1 key={index}> {mother.title}</h1>
-                                <img key={"2" + index} src={mother.url} width={"100px"}/>
+                                {/*<h2>kkkkkkkk</h2>*/}
+                                <h1 key={index}> {mother.first_name}</h1>
+                                {/*<img key={"2" + index} src={mother.url} width={"100px"}/>*/}
                             </>)
 
-                    }) : <h1> Data Loading</h1>
+                    }) : <h1> Data 1 Loading</h1>
                 }
                 <Grid container spacing={3}>
                     {/*<Grid item lg={6} md={1} sm={12} xs={12}>*/}
