@@ -69,7 +69,7 @@ const ProfitStatCards = () => {
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>10.8k</H1>
+            <H1>Rs.10 000</H1>
             <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
               <Icon className="icon">expand_less</Icon>
             </IconBox>
@@ -78,6 +78,25 @@ const ProfitStatCards = () => {
         </Card>
       </Grid>
 
+      {/*<Grid item xs={12} md={12}>*/}
+      {/*  <Card elevation={3} sx={{ p: 2 }}>*/}
+      {/*    <ContentBox>*/}
+      {/*      <FabIcon size="medium" sx={{background: 'rgba(9, 182, 109, 0.15)'}}>*/}
+      {/*        <Icon sx={{color: '#08ad6c'}}>trending_up</Icon>*/}
+      {/*      </FabIcon>*/}
+      {/*      <H5 textcolor={'#08ad6c'}>Profits</H5>*/}
+      {/*    </ContentBox>*/}
+
+      {/*    <ContentBox sx={{ pt: 2 }}>*/}
+      {/*      <H1>$2.8M</H1>*/}
+      {/*      <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>*/}
+      {/*        <Icon className="icon">expand_less</Icon>*/}
+      {/*      </IconBox>*/}
+      {/*      <Span textcolor={'#08ad6c'}> From Ecommerce </Span>*/}
+      {/*    </ContentBox>*/}
+      {/*  </Card>*/}
+      {/*</Grid>*/}
+
       <Grid item xs={12} md={12}>
         <Card elevation={3} sx={{ p: 2 }}>
           <ContentBox>
@@ -88,26 +107,7 @@ const ProfitStatCards = () => {
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>$2.8M</H1>
-            <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
-              <Icon className="icon">expand_less</Icon>
-            </IconBox>
-            <Span textcolor={'#08ad6c'}> From Ecommerce </Span>
-          </ContentBox>
-        </Card>
-      </Grid>
-
-      <Grid item xs={12} md={12}>
-        <Card elevation={3} sx={{ p: 2 }}>
-          <ContentBox>
-            <FabIcon size="medium" sx={{background: 'rgba(9, 182, 109, 0.15)'}}>
-              <Icon sx={{color: '#08ad6c'}}>trending_up</Icon>
-            </FabIcon>
-            <H5 textcolor={'#08ad6c'}>Profits</H5>
-          </ContentBox>
-
-          <ContentBox sx={{ pt: 2 }}>
-            <H1>$2.8M</H1>
+            <H1>Rs.12 000</H1>
             <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
               <Icon className="icon">expand_less</Icon>
             </IconBox>

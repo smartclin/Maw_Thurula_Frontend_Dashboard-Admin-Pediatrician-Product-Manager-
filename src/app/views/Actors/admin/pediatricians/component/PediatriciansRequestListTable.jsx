@@ -12,15 +12,11 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import {useNavigate} from 'react-router-dom';
+import PendingIcon from '@mui/icons-material/Pending';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
-const MotherListTable=()=> {
-    const navigate = useNavigate();
-    // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = () => navigate('/admin/target_mothers_post_list/2', {replace: false});
-
-    // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
-
+const PediatriciansRequestListTable=()=> {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -57,11 +53,12 @@ const MotherListTable=()=> {
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
+
                 <Button onClick={handleClose}>Submit</Button>
             </DialogActions>
         </Dialog>
         <MaterialTable
-            title="Mothers List"
+            title="Pending Request List"
             columns={[
                 {
                     field: 'url',
@@ -75,71 +72,31 @@ const MotherListTable=()=> {
                     }                },
                 { title: 'Name', field: 'name',width: "10%" },
                 { title: 'Email', field: 'Email',width: "10%" },
-                { title: 'Posts', field: 'Posts',width: "10%" },
-                { title: 'Comments', field: 'Comments',width: "10%" },
-                { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
+                { title: 'Phone', field: 'phone',width: "10%" },
             ]}
             data={[
-                {
-                    url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
-                    name: 'Maduni Tharukshi',
-                    Email: 'maduni12@gmail.com',
-                    Posts: 6,
-                    Comments: 63,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/43yRsCwr/13.jpg',
-                    name: 'Senuri wikramanayake',
-                    Email: 'wikramanayake@gmail.com',
-                    Posts: 12,
-                    Comments: 63,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/Zn0j1C0B/6.jpg',
-                    name: 'Kasunika jayathilake',
-                    Email: 'jayathilake@gmail.com',
-                    Posts: 1,
-                    Comments: 34,
-                    Status: 0
-                },
-                {
-                    url: 'https://i.postimg.cc/PryVPnn5/8.jpg',
-                    name: 'Nisansala sewwandi',
-                    Email: 'sewwandi@gmail.com',
-                    Posts: 5,
-                    Comments: 15,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/sDp1kW0t/10.jpg',
-                    name: 'Hiruni mahisha',
-                    Email: 'mahisha@gmail.com',
-                    Posts: 4,
-                    Comments: 87,
-                    Status: 1
-                },
+                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', phone: "0713568999", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
+                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', phone: "0713568994", Charge: 'Rs.700' ,Income: 'Rs.7500' ,Status:1},
+                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', phone: "0713568997", Charge: 'Rs.800' ,Income: 'Rs.7500' ,Status:0},
+                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', phone: "071356890", Charge: 'Rs.900' ,Income: 'Rs.7500' ,Status:0},
+                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', phone: "0713568991", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:0},
 
             ]}
-            onRowClick={(event, rowData) => handleOnClick()}
+            onRowClick={(event, rowData) => console.log(rowData)}
             actions={[
                 (rowData) => {
-                    return rowData.Status
-                        ? {
-                            icon: LockIcon, onClick: (rowData) => { /* anythink */
-                            }
-                        }
-                        : {
-                            icon: LockOpenIcon, onClick: (rowData) => {
-                                handleClickOpen()
-                            }
-                        }
+                    return {
+                        icon: CheckCircleIcon,
+                        tooltip: 'Accept',
+                        onClick: (event, rowData) => alert("You saved " + rowData.name),
+                    }
                 },
-                {
-                    icon: VisibilityIcon,
-                    tooltip: 'Save User',
-                    onClick: (event, rowData) => alert("You saved " + rowData.name),
+                (rowData) => {
+                    return {
+                        icon: CancelIcon,
+                        tooltip: 'Reject',
+                        onClick: (event, rowData) => alert("You Reject " + rowData.name),
+                    }
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
@@ -155,4 +112,4 @@ const MotherListTable=()=> {
         </div>
     )
 }
-export default MotherListTable;
+export default PediatriciansRequestListTable;

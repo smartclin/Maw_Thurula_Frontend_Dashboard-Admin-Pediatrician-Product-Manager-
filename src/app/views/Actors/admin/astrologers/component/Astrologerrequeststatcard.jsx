@@ -2,6 +2,10 @@ import { Box, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
 import { Small } from 'app/components/Typography';
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import PendingIcon from '@mui/icons-material/Pending';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 const StyledCard = styled(Card)(({ theme }) => ({
     display: 'flex',
@@ -29,23 +33,23 @@ const Heading = styled('h6')(({ theme }) => ({
     color: theme.palette.primary.main,
 }));
 
-const MotherStatCards = () => {
+const AstrologerRequestStatCards = () => {
     const cardList = [
-        { name: 'Registered Mothers', amount: 305, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: 300, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: 5, icon: 'person_offIcon' },
+        { name: 'Registered Astrologers', amount: 3050, icon: 'person_rounded',size:55 },
+        { name: 'Pending Requests', amount: 30, icon: 'pending_actions', size:50},
+        { name: 'Profit of the month', amount: "40,000", icon: 'monetization_on', size:50},
     ];
 
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
             {cardList.map((item, index) => (
-                <Grid item xs={12} md={4} key={index}>
-                    <StyledCard elevation={6}>
+                <Grid item xs={12} md={4} key={index} >
+                    <StyledCard elevation={6} style={{maxHeight:100 ,minHeight:100}}>
                         <ContentBox>
-                            <Icon className="icon">{item.icon}</Icon>
+                            <Icon className="icon" style={{fontSize:item.size}}>{item.icon}</Icon>
                             <Box ml="12px">
                                 <Small>{item.name}</Small>
-                                <Heading>{item.amount}</Heading>
+                                {item.name =='Profit of the month' ?  <Heading>Rs. {item.amount}.00</Heading>:<Heading>{item.amount}</Heading>}
                             </Box>
                         </ContentBox>
 
@@ -57,4 +61,4 @@ const MotherStatCards = () => {
     );
 };
 
-export default MotherStatCards;
+export default AstrologerRequestStatCards;
