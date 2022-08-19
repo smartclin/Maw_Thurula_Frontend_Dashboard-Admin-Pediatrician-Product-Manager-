@@ -1,21 +1,30 @@
-import { Card, Grid, styled, useTheme } from '@mui/material';
+import {Button, Card, Grid, styled, useTheme} from '@mui/material';
 import { Fragment } from 'react';
-import NameProviderStatCards from "./component/NameProviderStatCards";
+import NPRequestStatCards from  "./component/NPrequeststatcard";
+import NPRequestListTable from  "./component/NpRequestListTable";
 
 
 
-const NameProviderRequests = () => {
 
 
+const Astrologers = () => {
+
+    const ContentBox = styled('div')(({ theme }) => ({
+        margin: '30px',
+        [theme.breakpoints.down('md')]: { margin: '16px' },
+    }));
     return (
         <Fragment>
-            <h1>  </h1>
-            <NameProviderStatCards>
-
-            </NameProviderStatCards>
-
+            <ContentBox className="analytics" >
+                <Grid container item lg={12} spacing={3} >
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <NPRequestStatCards/>
+                        <NPRequestListTable/>
+                    </Grid>
+                </Grid>
+            </ContentBox>
         </Fragment>
     );
 };
 
-export default NameProviderRequests;
+export default Astrologers;
