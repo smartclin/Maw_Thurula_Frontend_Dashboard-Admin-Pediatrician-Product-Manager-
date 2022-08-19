@@ -97,7 +97,7 @@ const AstrologerTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                <div style={{display:"flex",marginLeft:43}} >
+                <div style={{display:"flex",marginLeft:43,marginBottom:30}} >
 
                     <div className='m-1'>
                         <Button variant="contained" color="success">Accept</Button>
@@ -122,40 +122,36 @@ const AstrologerTable = () => {
 const mothersList = [
     {
         name: 'Name',
-        topic: "********",
+        topic: "Hansana Ranaweera",
 
     },
     {
         name: 'NIC',
-        topic: "********",
+        topic: "199910923456",
     },
     {
         name: 'Birth Date',
-        topic: "********",
+        topic: "1999/10/23",
     },
     {
         name: 'Address ',
-        topic: "********",
+        topic: "No.53 Akuressa",
     },
     {
         name: 'Contact No',
-        topic: "********",
+        topic: "0713805999",
     },
     {
         name: 'Email',
-        topic: "********",
+        topic: "hansna@gmail.com",
     },
     {
         name: 'Currently working at',
-        topic: "********",
+        topic: "Home",
     },
     {
         name: 'Qualifications',
-        topic: "********",
-    },
-    {
-        name: 'Other',
-        topic: "********",
+        topic: "Empty",
     },
 
 ];

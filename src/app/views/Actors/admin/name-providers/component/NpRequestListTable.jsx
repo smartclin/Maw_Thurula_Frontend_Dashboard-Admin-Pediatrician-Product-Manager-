@@ -15,8 +15,13 @@ import Dialog from "@mui/material/Dialog";
 import PendingIcon from '@mui/icons-material/Pending';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import {useNavigate} from 'react-router-dom';
+
 
 const NPRequestListTable=()=> {
+    const navigate = useNavigate();
+    // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
+    const handleOnClick = () => navigate('/admin/NameProviderApprovalDecision', {replace: false});
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -99,6 +104,7 @@ const NPRequestListTable=()=> {
                     }
                 }
             ]}
+            onRowClick={(event, rowData) => handleOnClick()}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,
             }}
