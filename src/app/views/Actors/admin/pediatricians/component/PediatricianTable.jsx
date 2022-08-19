@@ -20,7 +20,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 import Button from '@mui/material/Button';
-import {Link} from "react-router-dom";
 
 const CardHeader = styled(Box)(() => ({
     display: 'flex',
@@ -63,7 +62,7 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 
 
-const PediatricianTable = () => {
+const AstrologerTable = () => {
     const { palette } = useTheme();
     const bgError = palette.error.main;
     const bgPrimary = palette.primary.main;
@@ -73,7 +72,6 @@ const PediatricianTable = () => {
         <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
             <CardHeader>
                 <Title> User Details </Title>
-
             </CardHeader>
 
             <Box overflow="auto">
@@ -99,25 +97,20 @@ const PediatricianTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                        <div>
-                            <div className="m-40">
-                                <Link to="/admin/pediatrician_request" className="link">
-                                    <Button  color="secondary">Back</Button>
-                                </Link>
-                            </div>
-                            <div m={2}
-                            >
-                                <Button variant="contained" color="success">Accept</Button>
-                            </div>
+                <div style={{display:"flex",marginLeft:43,marginBottom:30}} >
 
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Reject</Button>
-                            </div>
-                            <div className='m-1'>
-                                <Button variant="outlined" color="error">Contact user</Button>
-                            </div>
+                    <div className='m-1'>
+                        <Button variant="contained" color="success">Accept</Button>
+                    </div>
 
-                        </div>
+                    <div className='m-1'>
+                        <Button variant="contained" color="error">Reject</Button>
+                    </div>
+                    <div className='m-1'>
+                        <Button variant="contained" color="error">Contact user</Button>
+                    </div>
+
+                </div>
             </Box>
         </Card>
 
@@ -129,43 +122,39 @@ const PediatricianTable = () => {
 const mothersList = [
     {
         name: 'Name',
-        topic: "********",
+        topic: "Hansana Ranaweera",
 
     },
     {
         name: 'NIC',
-        topic: "********",
+        topic: "199910923456",
     },
     {
         name: 'Birth Date',
-        topic: "********",
+        topic: "1999/10/23",
     },
     {
         name: 'Address ',
-        topic: "********",
+        topic: "No.53 Akuressa",
     },
     {
         name: 'Contact No',
-        topic: "********",
+        topic: "0713805999",
     },
     {
         name: 'Email',
-        topic: "********",
+        topic: "hansna@gmail.com",
     },
     {
         name: 'Currently working at',
-        topic: "********",
+        topic: "Akuressa Hospital",
     },
     {
         name: 'Qualifications',
-        topic: "********",
-    },
-    {
-        name: 'Other',
-        topic: "********",
+        topic: "Empty",
     },
 
 ];
 
-export default PediatricianTable;
+export default AstrologerTable;
 
