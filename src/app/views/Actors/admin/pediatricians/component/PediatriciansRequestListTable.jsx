@@ -53,6 +53,7 @@ const PediatriciansRequestListTable=()=> {
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
+
                 <Button onClick={handleClose}>Submit</Button>
             </DialogActions>
         </Dialog>
