@@ -100,7 +100,7 @@ const MotherPosts = () => {
                         <CardMedia
                             component="img"
                             height="194"
-                            image="https://picsum.photos/id/870/200/300?grayscale&blur=2"
+                            image="https://i.postimg.cc/YS2RPYM3/1.jpg"
                             alt="Paella dish"
                         />
                         <CardContent>

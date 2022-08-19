@@ -31,9 +31,9 @@ const Heading = styled('h6')(({ theme }) => ({
 
 const MotherStatCards = () => {
     const cardList = [
-        { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: 3050, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: 3050, icon: 'person_offIcon' },
+        { name: 'Registered Mothers', amount: 305, icon: 'pregnant_woman' },
+        { name: 'Active Mothers', amount: 300, icon: 'woman' },
+        { name: 'Blocked Mothers', amount: 5, icon: 'person_offIcon' },
     ];
 
     return (

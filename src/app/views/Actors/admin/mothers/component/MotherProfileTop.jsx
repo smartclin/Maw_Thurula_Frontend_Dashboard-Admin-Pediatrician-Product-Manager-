@@ -14,7 +14,7 @@ const MotherProfileTopcard = () => {
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <div>
-                        <img src={"https://avatars0.githubusercontent.com/u/7895451?s=460&v=4"} style={{width:125, height:125,borderRadius:'50%',display: "block"}}/>
+                        <img src={"https://i.postimg.cc/q7jS5mTj/12.jpg"} style={{width:125, height:125,borderRadius:'50%',display: "block"}}/>
                     </div>
                 </Grid>
                 <Grid item xs={8}>

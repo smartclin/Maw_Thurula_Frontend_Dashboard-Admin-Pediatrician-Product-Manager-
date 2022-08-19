@@ -49,10 +49,10 @@ const AdminDashboard = () => {
         },
     }));
     const cardList = [
-        { name: 'Registered Mothers', amount: 3050, icon: 'pregnant_woman' },
-        { name: 'Pediatricians', amount: 3050, icon: 'local_hospital' },
-        { name: 'Astrologers', amount: 3050, icon: 'recent_actors' },
-        { name: 'Name Providers', amount: 3050, icon: 'rate_review' },
+        { name: 'Registered Mothers', amount: 305, icon: 'pregnant_woman' },
+        { name: 'Pediatricians', amount: 100, icon: 'local_hospital' },
+        { name: 'Astrologers', amount: 52, icon: 'recent_actors' },
+        { name: 'Name Providers', amount: 37, icon: 'rate_review' },
     ];
     return (
         <Fragment>
