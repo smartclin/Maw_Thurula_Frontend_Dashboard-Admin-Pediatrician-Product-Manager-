@@ -5,7 +5,7 @@ const LineChart = ({ height, color = [] }) => {
   const theme = useTheme();
 
   const option = {
-    grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },
+    grid: { top: '10%', bottom: '10%', left: '10%', right: '5%' },
     legend: {
       itemGap: 20,
       icon: 'circle',
