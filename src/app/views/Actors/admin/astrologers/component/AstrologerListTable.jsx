@@ -13,7 +13,8 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import PendingIcon from '@mui/icons-material/Pending';
-
+import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
+import {useNavigate, useParams} from "react-router-dom";
 const AstrologerListTable=()=> {
     const [open, setOpen] = React.useState(false);
 
@@ -29,6 +30,14 @@ const AstrologerListTable=()=> {
         console.log("data - "+data)
         return true
     }
+    const navigate = useNavigate();
+
+    const loadReport=()=>navigate({
+        pathname:'../admin/one_astrologer_report',
+
+    })
+
+
     return (
         <div>
 
@@ -86,13 +95,13 @@ const AstrologerListTable=()=> {
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: LockIcon, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: LockOpenIcon, onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon: ()=><LockIcon style={{color:'#1976d2'}}/>, onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><LockOpenIcon style={{color:'#1976d2'}}/>, onClick: (rowData) => { handleClickOpen()} }
                 },
                 {
-                    icon: PendingIcon,
-                    tooltip: 'Save User',
-                    onClick: (event, rowData) => alert("You saved " + rowData.name),
+                    icon: ()=><ViewTimelineIcon style={{color:'#1976d2'}}/>,
+                    tooltip: 'View report',
+                    onClick: (event, rowData) => {loadReport()},
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
