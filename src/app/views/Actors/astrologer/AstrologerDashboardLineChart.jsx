@@ -5,7 +5,7 @@ const AstrologerDashboardLineChart = ({ height, color = [] }) => {
   const theme = useTheme();
 
   const option = {
-    grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },
+    grid: { top: '10%', bottom: '10%', left: '10%', right: '5%' },
     legend: {
       itemGap: 20,
       icon: 'circle',
@@ -29,7 +29,7 @@ const AstrologerDashboardLineChart = ({ height, color = [] }) => {
       splitLine: {
         lineStyle: { color: theme.palette.text.secondary, opacity: 0.15 },
       },
-      axisLabel: { color: theme.palette.text.secondary, fontSize: 9, fontFamily: 'roboto' },
+      axisLabel: { color: theme.palette.text.secondary, fontSize: 14, fontFamily: 'roboto' },
     },
     series: [
       {

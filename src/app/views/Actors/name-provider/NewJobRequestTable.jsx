@@ -102,8 +102,8 @@ const NewJobRequestTable=()=> {
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: DoneIcon, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: PendingIcon, onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon:() =><DoneIcon style={{color:"#32a85c"}}/>,tooltip:'Replied' , onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><PendingIcon style={{color:"#f2b13f"}}/>,tooltip:'Waiting for reply', onClick: (rowData) => { handleClickOpen()} }
                 }
 
             ]}

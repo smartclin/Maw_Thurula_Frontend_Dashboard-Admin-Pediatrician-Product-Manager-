@@ -80,12 +80,20 @@ const NameProviderDashboard = () => {
     let sendButton={
         marginLeft: '7px'
     }
-    let registerdAstrologers={
-        margin:"20px 2px 20px 2px",
-        width:'100%',
-        padding:'10px 2 10px 2px' ,
+    let registerdAstrologers1={
+        margin:"20px 25px 20px 2px",
+        width:'60%',
+        //padding:'10px 2px 10px 2px' ,
+
 
     };
+    let registerdAstrologers2={
+        margin:"20px 2px 20px 0px",
+        width:'60%',
+        //padding:'10px 2px 10px 2px' ,
+
+
+    }
     let chartDiv={
         display:'flex',
         flexDirection:'raw',
@@ -105,7 +113,24 @@ const NameProviderDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <NameProviderDashboardStatCards />
-                        <NameProviderDashboardTopSellingTable/>
+                        <div style={chartDiv}>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers1}>
+                                <Title> Monthly Requests Summary</Title>
+
+                                <NameProviderDashboardLineChart
+                                    height="290px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                            <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers2}>
+                                <Title> Monthly Profits Summary</Title>
+
+                                <NameProviderDashboardLineChart
+                                    height="290px"
+                                    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
+                                />
+                            </Card>
+                        </div>
 
 
                     </Grid>
@@ -151,25 +176,8 @@ const NameProviderDashboard = () => {
 
                     </Grid>
                 </Grid>
+                <NameProviderDashboardTopSellingTable/>
 
-                <div style={chartDiv}>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Monthly Requests Summary</Title>
-
-                        <NameProviderDashboardLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Monthly Profits Summary</Title>
-
-                        <NameProviderDashboardLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                </div>
             </ContentBox>
         </Fragment>
     );

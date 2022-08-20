@@ -49,7 +49,6 @@ const AstrologerDashboardStatCards = () => {
 
             <Tooltip title="View Details" placement="top">
               <IconButton>
-                <Icon>arrow_right_alt</Icon>
               </IconButton>
             </Tooltip>
           </StyledCard>
