@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 import Mock from '../mock';
-
+import API from '../../../src/app/services/baseURL';
+import options from '../../../src/app/services/option';
 const JWT_SECRET = 'jwt_secret_key';
 const JWT_VALIDITY = '7 days';
+
 
 const userList = [
   {
@@ -16,12 +18,35 @@ const userList = [
   },
 ];
 
+
+
+
 Mock.onPost('/api/auth/login').reply(async (config) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const { email } = JSON.parse(config.data);
-    const user = userList.find((u) => u.email === email);
+    const response = await API.get(`student`, {
+      params: {
+        email: email,
+      }
+    }, options);
+    console.log(response.data.data[0].first_name)
+    // const user_id=response.data.user_id
+    const userList1=[
+      {
+        id: response.data.data[0].user_id,
+        role: response.data.data[0].Type,
+        name: response.data.data[0].first_name,
+        username: response.data.data[0].last_name,
+        email: response.data.data[0].email,
+        avatar: response.data.data[0].DP,
+        age: response.data.data[0].login_status,
+      },
+    ];
+    console.log("user list")
+    console.log(userList1)
+    const user = userList1.find((u) => u.email === email);
 
     if (!user) {
       return [400, { message: 'Invalid email or password' }];
@@ -52,6 +77,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
 Mock.onPost('/api/auth/register').reply((config) => {
   try {
     const { email, username } = JSON.parse(config.data);
+
     const user = userList.find((u) => u.email === email);
 
     if (user) {
