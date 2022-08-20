@@ -23,8 +23,8 @@ const OneNameProviderReport  = () => {
     }));
 
     let mainDiv={
-        marginLeft:'200px',
-        marginRight:'200px',
+        marginLeft:'100px',
+        marginRight:'100px',
 
     };
     let reportTitle={
@@ -45,7 +45,7 @@ const OneNameProviderReport  = () => {
     let titleDiv={
         display: 'flex',
         flexDirection:'raw',
-        margin: '0 200px 0 200px',
+        margin: '0 100px 0 100px',
         alignItems:'center',
         justifyContent:'space-between',
     };

@@ -15,6 +15,8 @@ import Dialog from "@mui/material/Dialog";
 import PendingIcon from '@mui/icons-material/Pending';
 import DoneIcon from '@mui/icons-material/Done';
 import {useNavigate} from "react-router-dom";
+import {green} from "@mui/material/colors";
+import {useTheme} from "@mui/material";
 
 const NewJobRequestTable=()=> {
     const navigate = useNavigate();
@@ -50,6 +52,7 @@ const NewJobRequestTable=()=> {
     let tableStyle={
         padding:'10px 25px '
     };
+    const { palette } = useTheme();
 
 
 
@@ -99,12 +102,16 @@ const NewJobRequestTable=()=> {
 
 
             ]}
+                      /* icons-material={{
+                           Pending: () => <PendingIcon style={{ color: "red" }} />,
+                           Done: () => <DoneIcon style={{ color: "orange" }} />
+                       }}*/
             onRowClick={(event, rowData) => viewRequest(rowData.Status)}
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: DoneIcon, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: PendingIcon, onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon:() =><DoneIcon style={{color:"#32a85c"}}/>,tooltip:'Replied' ,onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><PendingIcon style={{color:"#f2b13f"}}/>,tooltip:'Waiting for reply' , onClick: (rowData) => { handleClickOpen()} }
                 }
 
             ]}
@@ -117,6 +124,8 @@ const NewJobRequestTable=()=> {
                            labelRowsPerPage:''
                            },
                        }}
+
+
         />
         </div>
     )
