@@ -13,11 +13,32 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import {useNavigate} from 'react-router-dom';
+import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
+// import {useEffect, useState} from "@types/react";
+import {Fragment, useEffect, useState} from 'react';
 
 const MotherListTable=()=> {
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = () => navigate('/admin/target_mothers_post_list/2', {replace: false});
+    const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
+
+    const [MotherList, setMotherList] = useState([]);
+    const [TMotherList, setTMotherList] = useState([]);
+    const mlist=[]
+
+
+
+    useEffect(() => {
+        getMotherListForAdmin().then(data => {
+            setMotherList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(async () => {
+        // console.log(MotherList)
+    }, [MotherList]);
 
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
@@ -32,7 +53,7 @@ const MotherListTable=()=> {
     };
 
     const checkStatus=(data)=>{
-        console.log("data - "+data)
+        // console.log("data - "+data)
         return true
     }
     return (
@@ -64,68 +85,69 @@ const MotherListTable=()=> {
             title="Mothers List"
             columns={[
                 {
-                    field: 'url',
+                    field: 'DP',
                     title: 'Avatar',
-                    render: rowData => <img src={rowData.url} style={{width: 30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
+                    render: rowData => <img src={rowData.DP} style={{width: 30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
                     cellStyle: {
                         paddingLeft:30
                     },
                     headerStyle: {
                         paddingLeft:30
                     }                },
-                { title: 'Name', field: 'name',width: "10%" },
-                { title: 'Email', field: 'Email',width: "10%" },
-                { title: 'Posts', field: 'Posts',width: "10%" },
-                { title: 'Comments', field: 'Comments',width: "10%" },
-                { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
+                { title: 'Name', field: 'first_name',width: "10%" },
+                { title: 'Email', field: 'email',width: "10%" },
+                { title: 'Posts', field: 'postCount',width: "10%" },
+                { title: 'id', field: 'user_id',width: "10%",hidden:true },
+                { title: 'Status', field: 'STATUS',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
             ]}
-            data={[
-                {
-                    url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
-                    name: 'Maduni Tharukshi',
-                    Email: 'maduni12@gmail.com',
-                    Posts: 6,
-                    Comments: 63,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/43yRsCwr/13.jpg',
-                    name: 'Senuri wikramanayake',
-                    Email: 'wikramanayake@gmail.com',
-                    Posts: 12,
-                    Comments: 63,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/Zn0j1C0B/6.jpg',
-                    name: 'Kasunika jayathilake',
-                    Email: 'jayathilake@gmail.com',
-                    Posts: 1,
-                    Comments: 34,
-                    Status: 0
-                },
-                {
-                    url: 'https://i.postimg.cc/PryVPnn5/8.jpg',
-                    name: 'Nisansala sewwandi',
-                    Email: 'sewwandi@gmail.com',
-                    Posts: 5,
-                    Comments: 15,
-                    Status: 1
-                },
-                {
-                    url: 'https://i.postimg.cc/sDp1kW0t/10.jpg',
-                    name: 'Hiruni mahisha',
-                    Email: 'mahisha@gmail.com',
-                    Posts: 4,
-                    Comments: 87,
-                    Status: 1
-                },
-
-            ]}
-            onRowClick={(event, rowData) => handleOnClick()}
+            data={MotherList.students}
+            // data={[
+            //     {
+            //         url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
+            //         name: 'Maduni Tharukshi',
+            //         Email: 'maduni12@gmail.com',
+            //         Posts: 6,
+            //         Comments: 63,
+            //         Status: 1
+            //     },
+            //     {
+            //         url: 'https://i.postimg.cc/43yRsCwr/13.jpg',
+            //         name: 'Senuri wikramanayake',
+            //         Email: 'wikramanayake@gmail.com',
+            //         Posts: 12,
+            //         Comments: 63,
+            //         Status: 1
+            //     },
+            //     {
+            //         url: 'https://i.postimg.cc/Zn0j1C0B/6.jpg',
+            //         name: 'Kasunika jayathilake',
+            //         Email: 'jayathilake@gmail.com',
+            //         Posts: 1,
+            //         Comments: 34,
+            //         Status: 0
+            //     },
+            //     {
+            //         url: 'https://i.postimg.cc/PryVPnn5/8.jpg',
+            //         name: 'Nisansala sewwandi',
+            //         Email: 'sewwandi@gmail.com',
+            //         Posts: 5,
+            //         Comments: 15,
+            //         Status: 1
+            //     },
+            //     {
+            //         url: 'https://i.postimg.cc/sDp1kW0t/10.jpg',
+            //         name: 'Hiruni mahisha',
+            //         Email: 'mahisha@gmail.com',
+            //         Posts: 4,
+            //         Comments: 87,
+            //         Status: 1
+            //     },
+            //
+            // ]}
+            onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
             actions={[
                 (rowData) => {
-                    return rowData.Status
+                    return rowData.STATUS
                         ? {
                             icon: LockIcon, onClick: (rowData) => { /* anythink */
                             }
@@ -156,3 +178,35 @@ const MotherListTable=()=> {
     )
 }
 export default MotherListTable;
+
+
+
+// MotherList ? motherList.students.map((mother, index) => {
+//
+//     if(mother.STATUS == 1){
+//         block++
+//     }
+//     if(mother.login_status=1){
+//         active++
+//     }
+//     console.log(mother.user_id,)
+//     console.log(mother.first_name+" "+mother.last_name,)
+//     console.log(mother.DP,)
+//     console.log(mother.email,)
+//     console.log(mother.postCount,)
+//     mlist.push({
+//         id:mother.user_id,
+//         name:mother.first_name+" "+mother.last_name,
+//         url:mother.DP,
+//         Email:mother.email,
+//         Posts:mother.postCount,
+//         Status:mother.STATUS
+//     })
+//
+// }) : console.log("Data 1 Loading")
+
+// setTMotherList(mlist);
+// console.log("-----------------mlist")
+// console.log("all "+all)
+// console.log("active "+active)
+// console.log("block "+block)

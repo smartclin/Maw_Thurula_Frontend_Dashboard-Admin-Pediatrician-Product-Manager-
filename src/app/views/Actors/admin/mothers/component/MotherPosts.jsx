@@ -17,34 +17,17 @@ import PendingRoundedIcon from '@mui/icons-material/PendingRounded';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import MarkunreadRoundedIcon from '@mui/icons-material/MarkunreadRounded';
 import {useNavigate} from "react-router-dom";
+import { useParams } from "react-router";
+import {
+    getRecentMotherPostForAdmin
+} from "../../../../../services/Admin/Mother/admin_mother_service";
+import {Fragment, useEffect, useState} from 'react';
 
 
 
-const StyledCard = styled(Card)(({ theme }) => ({
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '24px !important',
-    background: theme.palette.background.paper,
-    [theme.breakpoints.down('sm')]: { padding: '16px !important' },
-}));
 
-const ContentBox = styled(Box)(({ theme }) => ({
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    '& small': { color: theme.palette.text.secondary },
-    '& .icon': { opacity: 0.6, fontSize: '44px', color: theme.palette.primary.main },
-}));
 
-const Heading = styled('h6')(({ theme }) => ({
-    margin: 0,
-    marginTop: '4px',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: theme.palette.primary.main,
-}));
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -61,14 +44,10 @@ const ExpandMore = styled((props) => {
 
 const MotherPosts = () => {
     const navigate = useNavigate();
-    const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const [expanded, setExpanded] = React.useState(false);
+    const handleOnClick = (id) => navigate('/admin/mother_details/'+id, {replace: false});
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
-
+    let { id } = useParams();
+    const [MotherPosts, setMotherPosts] = useState([]);
     const cardList = [
         { category: 'Inconsolable crying', date: "2022/07/02", img: 'pregnant_woman',content:"Parents everywhere can testify to the fact that becoming a parent can be equally thrilling and terrifying—a combination of excitement and joy on the one hand and fear and frustration on the other. ",title:" Listening to Others",likes:12,comments:23 },
         { category: 'Vaccine safety', date: "2022/07/03", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable! While making milk is “natural,”",title:"Getting on a Schedule",likes:12,comments:23 },
@@ -76,17 +55,53 @@ const MotherPosts = () => {
         { category: 'Making milestones', date: "2022/07/01", img: 'pregnant_woman',content:"During the first years of your child’s life, you will likely encounter bouts of sickness including colds and fevers . It’s hard to know when to call the doctor.",title:"Being Perfect",likes:12,comments:23 },
         { category: 'Vaccine safety', date: "2022/07/02", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable!",title:"Losing the baby weight",likes:12,comments:23 },
         { category: 'Inconsolable crying', date: "2022/08/02", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable! ",title:"Saying No",likes:12,comments:23 },
-
     ];
+    useEffect(() => {
+        getRecentMotherPostForAdmin(id).then(data => {
+            setMotherPosts(data.Data)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(async () => {
+        // console.log("--------------")
+        // console.log(MotherPosts)
+        // console.log("--------------")
+        // console.log(cardList)
+        // console.log("--------------")
+
+    }, [MotherPosts]);
+
+
+
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
+
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
+
 
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
-            {cardList.map((item, index) => (
-                <Grid item xs={4} md={4} key={index} onClick={()=>{handleOnClick()}}>
+            {(MotherPosts).map((item, index) => (
+                <Grid item xs={4} md={4} key={index} onClick={()=>{handleOnClick(item.PostId)}}>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardHeader
                             avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src="https://avatars0.githubusercontent.com/u/7895451?s=460&v=4">
+                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={item.img}>
 
                                 </Avatar>
                             }
@@ -95,7 +110,9 @@ const MotherPosts = () => {
                                 </IconButton>
                             }
                             title={item.category}
-                            subheader={item.date}
+                            subheader={
+                                DateReturn(item.Date)
+                            }
                         />
                         <CardMedia
                             component="img"
@@ -108,15 +125,15 @@ const MotherPosts = () => {
                                 {item.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                                {item.content}
+                                {item.post_content}
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
                             <IconButton aria-label="add to favorites">
-                                <FavoriteIcon /> <span style={{fontSize:20}}>{item.likes}</span>
+                                <FavoriteIcon /> <span style={{fontSize:20}}>{item.no_of_likes}</span>
                             </IconButton>
                             <IconButton aria-label="share" onClick={()=>{alert("️This works on every component!")}}>
-                                <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.comments}</span>
+                                <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.ReplyCount}</span>
                             </IconButton>
                             <ExpandMore>
                                 <PendingRoundedIcon style={{fontSize:25}} />

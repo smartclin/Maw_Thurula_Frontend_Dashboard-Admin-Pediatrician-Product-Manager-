@@ -50,7 +50,7 @@ const AdminRoutes = [
     {path: '/admin/mothers', element: <MothersList/>, auth: authRoles.admin},
     {path: '/admin/mothers_post_request', element: <MothersPostRequests/>, auth: authRoles.admin},
     {path: '/admin/mother_details/:id', element: <OneMothersDetails/>, auth: authRoles.admin},
-    {path: '/admin/target_mothers_post_list/:id', element: <TargetMothersPostList/>, auth: authRoles.admin},
+    {path: '/admin/target_mothers_post_list/:id/:count', element: <TargetMothersPostList/>, auth: authRoles.admin},
     {path: '/admin/target_mothers_full_post_list/:id', element: <MothersRequestList/>, auth: authRoles.admin},
 
 
