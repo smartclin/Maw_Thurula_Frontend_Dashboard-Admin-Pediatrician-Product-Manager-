@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode'
 import axios from 'axios.js'
 import { MatxLoading } from 'app/components'
 import {navigations_ADMIN, navigations_AL, navigations_NP, navigations_PM, navigations_PT} from "../navigations";
-
+import API from '../services/baseURL'
 const initialState = {
     isAuthenticated: false,
     isInitialised: false,
@@ -110,13 +110,14 @@ export const AuthProvider = ({ children }) => {
             username,
             password,
         })*/
-    const register = async (email, username, password,user_type) => {
-        alert(user_type)
-        const response = await axios.post('/reg', {
+    const register = async (email, username, password,user_type,service_charge) => {
+        //alert(user_type)
+        const response = await API.post('/reg', {
             'name': username,
             'email': email,
             'password':password,
-            'user_type':user_type
+            'user_type':user_type,
+            'service_charge':service_charge
         })
 
         const { accessToken, user } = response.data

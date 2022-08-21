@@ -39,6 +39,7 @@ const initialValues = {
   password: '',
   username: '',
   user_type: true,
+  service_charge:''
 };
 
 // form field validation schema
@@ -59,8 +60,8 @@ const JwtRegister = () => {
     setLoading(true);
 
     try {
-      register(values.email, values.username, values.password, values.user_type);
-      alert(values.username)
+      register(values.email, values.username, values.password, values.user_type,values.service_charge);
+      //alert(values.username)
       navigate('/');
       setLoading(false);
     } catch (e) {
@@ -92,6 +93,59 @@ const JwtRegister = () => {
               >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
+                    <FlexBox style={{display:"flex" ,marginBottom:'10px'}} gap={2}>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={1}
+                            sx={{ padding: 0 }}
+                           // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Pediatricion
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            // checked={values.user_type}
+                            value={2}
+                            sx={{ padding: 0 }}
+                          //  required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Astrologer
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={3}
+                            sx={{ padding: 0 }}
+                           // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Name Provider
+                        </Paragraph>
+                      </FlexBox>
+                    </FlexBox>
                     <TextField
                       fullWidth
                       size="small"
@@ -136,53 +190,23 @@ const JwtRegister = () => {
                       sx={{ mb: 2 }}
                     />
 
-                   <FlexBox style={{display:"flex"}} gap={2}>
-                     <FlexBox gap={0.5} alignItems="center">
-                       <input
-                           type='radio'
-                           size="small"
-                           name="user_type"
-                           onChange={handleChange}
-                         //  checked={values.user_type}
-                           value={1}
-                           sx={{ padding: 0 }}
-                       />
-
-                       <Paragraph fontSize={13}>
-                         Pediatricion
-                       </Paragraph>
-                     </FlexBox>
-                     <FlexBox gap={0.5} alignItems="center">
-                       <input
-                           type='radio'
-                           size="small"
-                           name="user_type"
-                           onChange={handleChange}
-                          // checked={values.user_type}
-                           value={2}
-                           sx={{ padding: 0 }}
-                       />
-
-                       <Paragraph fontSize={13}>
-                         Astrologer
-                       </Paragraph>
-                     </FlexBox>
-                     <FlexBox gap={0.5} alignItems="center">
-                       <input
-                           type='radio'
-                           size="small"
-                           name="user_type"
-                           onChange={handleChange}
-                         //  checked={values.user_type}
-                           value={3}
-                           sx={{ padding: 0 }}
-                       />
-
-                       <Paragraph fontSize={13}>
-                         Name Provider
-                       </Paragraph>
-                     </FlexBox>
-                   </FlexBox>
+                    { ((values.user_type)==2 || (values.user_type ==3))?
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="service_charge"
+                        type="service_charge"
+                        label="service_charge"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.service_charge}
+                        onChange={handleChange}
+                       // helperText={touched.password && errors.password}
+                        //error={Boolean(errors.password && touched.password)}
+                        sx={{ mb: 2 }}
+                    />
+                    :<div></div>
+                  }
 
                     <LoadingButton
                       type="submit"
