@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import {Card, Checkbox, Grid, Radio, TextField} from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import {RadioButtonChecked} from "@material-ui/icons";
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -135,19 +136,53 @@ const JwtRegister = () => {
                       sx={{ mb: 2 }}
                     />
 
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
-                        size="small"
-                        name="remember"
-                        onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
-                      />
+                   <FlexBox style={{display:"flex"}} gap={2}>
+                     <FlexBox gap={0.5} alignItems="center">
+                       <input
+                           type='radio'
+                           size="small"
+                           name="user_type"
+                           onChange={handleChange}
+                         //  checked={values.user_type}
+                           value={1}
+                           sx={{ padding: 0 }}
+                       />
 
-                      <Paragraph fontSize={13}>
-                        I have read and agree to the terms of service.
-                      </Paragraph>
-                    </FlexBox>
+                       <Paragraph fontSize={13}>
+                         Pediatricion
+                       </Paragraph>
+                     </FlexBox>
+                     <FlexBox gap={0.5} alignItems="center">
+                       <input
+                           type='radio'
+                           size="small"
+                           name="user_type"
+                           onChange={handleChange}
+                          // checked={values.user_type}
+                           value={2}
+                           sx={{ padding: 0 }}
+                       />
+
+                       <Paragraph fontSize={13}>
+                         Astrologer
+                       </Paragraph>
+                     </FlexBox>
+                     <FlexBox gap={0.5} alignItems="center">
+                       <input
+                           type='radio'
+                           size="small"
+                           name="user_type"
+                           onChange={handleChange}
+                         //  checked={values.user_type}
+                           value={3}
+                           sx={{ padding: 0 }}
+                       />
+
+                       <Paragraph fontSize={13}>
+                         Name Provider
+                       </Paragraph>
+                     </FlexBox>
+                   </FlexBox>
 
                     <LoadingButton
                       type="submit"
