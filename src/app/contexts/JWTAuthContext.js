@@ -109,11 +109,13 @@ export const AuthProvider = ({ children }) => {
             username,
             password,
         })*/
-    const register = async (email, username, password) => {
+    const register = async (email, username, password,user_type) => {
+        alert(user_type)
         const response = await axios.post('/reg', {
             'name': username,
             'email': email,
-            'password':password
+            'password':password,
+            'user_type':user_type
         })
 
         const { accessToken, user } = response.data

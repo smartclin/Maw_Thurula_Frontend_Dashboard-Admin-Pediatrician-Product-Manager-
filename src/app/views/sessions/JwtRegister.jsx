@@ -38,7 +38,7 @@ const initialValues = {
   email: '',
   password: '',
   username: '',
-  remember: true,
+  user_type: true,
 };
 
 // form field validation schema
@@ -59,7 +59,7 @@ const JwtRegister = () => {
     setLoading(true);
 
     try {
-      register(values.email, values.username, values.password);
+      register(values.email, values.username, values.password, values.user_type);
       alert(values.username)
       navigate('/');
       setLoading(false);
