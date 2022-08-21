@@ -16,23 +16,36 @@ import {Fragment, useEffect, useState} from 'react';
 
 const MotherProfileTopcard = () => {
 
-    let Reg_Date=""
-    let STATUS=0
-    let DP=""
-    let first_name=""
-    let email=""
+    const [MotherName, setMotherName] = useState("");
+    const [Reg_Date, setReg_Date] = useState("");
+    const [STATUS, setSTATUS] = useState(0);
+    const [email, setemail] = useState("");
+    const [DP, setDP] = useState("");
+    const [Count, setCount] = useState(0);
+
 
     let { id } = useParams();
-    // console.log("url "+id)
+    let { count } = useParams();
+    // console.log("count "+count)
 
+        getTargetMotherListForAdmin(id).then(data => {
+            const today = new Date(data.Data[0].Reg_Date);
+            const yyyy = today.getFullYear();
+            let mm = today.getMonth() + 1; // Months start at 0!
+            let dd = today.getDate();
 
-        getTargetMotherListForAdmin().then(data => {
-            first_name=JSON.stringify(data.Data[0].first_name)
-            Reg_Date=JSON.stringify(data.Data[0].Reg_Date)
-            STATUS=JSON.stringify(data.Data[0].STATUS)
-            DP=JSON.stringify(data.Data[0].DP)
-            email=JSON.stringify(data.Data[0].DP)
-            console.log("name "+first_name)
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            const formattedToday = dd + '/' + mm + '/' + yyyy;
+
+            setReg_Date(formattedToday)
+
+            setSTATUS(data.Data[0].STATUS)
+            setDP(data.Data[0].DP)
+            setemail(data.Data[0].email)
+            setMotherName(data.Data[0].first_name)
+            setCount(count)
         }).catch(err => {
             console.log(err.error)
         })
@@ -43,12 +56,12 @@ const MotherProfileTopcard = () => {
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <div>
-                        <img src={"https://i.postimg.cc/q7jS5mTj/12.jpg"} style={{width:125, height:125,borderRadius:'50%',display: "block"}}/>
+                        <img src={DP} style={{width:125, height:125,borderRadius:'50%',display: "block"}}/>
                     </div>
                 </Grid>
                 <Grid item xs={8}>
                     <Typography gutterBottom variant="h6" component="div">
-                        {first_name}
+                        {MotherName}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {email}
@@ -57,12 +70,18 @@ const MotherProfileTopcard = () => {
                         {Reg_Date}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Posts : 6
+                        Posts : {Count}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        <Button variant="contained" color="warning" size="small" style={{height:25 , fontSize:'1em'}}>
-                            Block-{STATUS}
-                        </Button>
+                        {STATUS ?
+                            <Button variant="contained" color="warning" size="small" style={{height:25 , fontSize:'1em'}}>
+                                Block
+                            </Button>
+                        :
+                            <Button variant="contained" color="warning" size="small" style={{height:25 , fontSize:'1em'}}>
+                                Unblock
+                            </Button>
+                        }
                     </Typography>
 
 

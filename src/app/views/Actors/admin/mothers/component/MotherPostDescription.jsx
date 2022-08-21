@@ -10,6 +10,9 @@ import Typography from '@mui/material/Typography';
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
+import {useParams} from "react-router";
+import {useEffect, useState} from "react";
+import {getRecentMotherPostByPostIdForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
 
 const MotherPostDescription = () => {
     const Title = styled('span')(() => ({
@@ -27,7 +30,20 @@ const MotherPostDescription = () => {
             duration: theme.transitions.duration.shortest,
         }),
     }));
-
+    let { id } = useParams();
+    const [MotherPosts, setMotherPosts] = useState([]);
+    useEffect(() => {
+        getRecentMotherPostByPostIdForAdmin(id).then(data => {
+            setMotherPosts(data.data[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(async () => {
+        console.log("-------------------")
+        console.log(MotherPosts)
+        console.log(MotherPosts.post_content)
+    }, [MotherPosts]);
     return (
         <Card sx={{ minWidth: 275,paddingBottom:0 , minHeight:165, }}>
             <CardContent>
@@ -38,9 +54,7 @@ const MotherPostDescription = () => {
                     </IconButton>
                 </Title>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    Every parent wants to do everything they can to help their child grow healthy and strong.
-                    And breastfeeding is one of the best things you can do for your baby. But it doesn’t always
-                    go smoothly, especially when you’re just starting out.
+                    {MotherPosts.post_content}
                 </Typography>
 
             </CardContent>

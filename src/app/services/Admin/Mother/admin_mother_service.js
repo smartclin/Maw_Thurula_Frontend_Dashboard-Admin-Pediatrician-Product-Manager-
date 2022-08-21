@@ -9,13 +9,33 @@ export const getMotherListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
-export const getTargetMotherListForAdmin = async event => {
+export const getTargetMotherListForAdmin = async (id) => {
     const response = await API.get(`/admin/target_motherDetails`,{
         params:{
-            "uid":1
+            "uid":id
         }
     }, options);
-    console.log("res out "+response.data)
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const getRecentMotherPostForAdmin = async (id) => {
+    const response = await API.get(`/admin/mother_posts_list`,{
+        params:{
+            "uid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const getRecentMotherPostByPostIdForAdmin = async (id) => {
+    console.log("call func")
+    const response = await API.get(`/admin/Mother_Post_Details`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("================")
+    // console.log(response.data)
     return response.data;
 };
 export const getnofComments = async event => {
