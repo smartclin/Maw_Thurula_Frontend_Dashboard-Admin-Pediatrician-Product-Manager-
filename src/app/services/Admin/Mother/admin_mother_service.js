@@ -1,10 +1,21 @@
 import React from 'react';
 
-import API from './baseURL';
-import options from './option';
+import API from '../../baseURL';
+import options from '../../option';
+import axios from "axios";
 
-export const getMotherList = async event => {
+export const getMotherListForAdmin = async event => {
     const response = await API.get(`/admin/mother_list`, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const getTargetMotherListForAdmin = async event => {
+    const response = await API.get(`/admin/target_motherDetails`,{
+        params:{
+            "uid":1
+        }
+    }, options);
+    console.log("res out "+response.data)
     return response.data;
 };
 export const getnofComments = async event => {
@@ -15,7 +26,7 @@ export const getnofComments = async event => {
             "uid":1
         }
     }, options);
-    console.log("res out "+response.data)
+    // console.log("res out "+response.data)
     return response.data;
 };
 

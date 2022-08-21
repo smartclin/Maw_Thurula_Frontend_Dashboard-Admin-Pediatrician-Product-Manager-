@@ -2,6 +2,9 @@ import { Box, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
 import { Small } from 'app/components/Typography';
 import * as React from 'react';
 import Card from '@mui/material/Card';
+import {Fragment, useEffect, useState} from 'react';
+import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
+// import {getMotherList, getnofComments} from "../../../../../services/Admin/Mother/";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     display: 'flex',
@@ -30,10 +33,49 @@ const Heading = styled('h6')(({ theme }) => ({
 }));
 
 const MotherStatCards = () => {
+
+    const [motherList, setMotherList] = useState([]);
+    const [all, setAll] = useState(0);
+    const [block, setBlock] = useState(0);
+    const [active, setActive] = useState(0);
+
+
+    const mlist=[]
+
+
+
+
+    useEffect(() => {
+        getMotherListForAdmin().then(data => {
+            setMotherList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(async () => {
+        let tall=0;
+        let tblock=0;
+        let tactive=0;
+        motherList.students ? motherList.students.map((mother, index) => {
+            tall++;
+            if(mother.STATUS == 1){
+                tblock++;
+            }
+            if(mother.login_status==1){
+                tactive++;
+            }
+        }) : console.log("")
+
+        setAll(tall)
+        setActive(tactive)
+        setBlock(tblock)
+    }, [motherList]);
+
     const cardList = [
-        { name: 'Registered Mothers', amount: 305, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: 300, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: 5, icon: 'person_offIcon' },
+        { name: 'Registered Mothers', amount: all, icon: 'pregnant_woman' },
+        { name: 'Active Mothers', amount: active, icon: 'woman' },
+        { name: 'Blocked Mothers', amount: block, icon: 'person_offIcon' },
     ];
 
     return (

@@ -9,50 +9,15 @@ const ContentBox = styled('div')(({theme}) => ({
     [theme.breakpoints.down('sm')]: {margin: '16px'},
 }));
 
-const Title = styled('span')(() => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginRight: '.5rem',
-    textTransform: 'capitalize',
-}));
 
-const SubTitle = styled('span')(({ theme }) => ({
-    fontSize: '0.875rem',
-    color: theme.palette.text.secondary,
-}));
-
-const H4 = styled('h4')(({ theme }) => ({
-    fontSize: '1rem',
-    fontWeight: '500',
-    marginBottom: '16px',
-    textTransform: 'capitalize',
-    color: theme.palette.text.secondary,
-}));
 
 const MothersList = () => {
     const {palette} = useTheme();
     const {id} = useParams();
     const [motherList, setMotherList] = useState(null);
 
-    console.log("location")
-    console.log(id)
-    const Container = styled('div')(({theme}) => ({
-        margin: '30px',
-        [theme.breakpoints.down('sm')]: {
-            margin: '16px',
-        },
-        '& .breadcrumb': {
-            marginBottom: '30px',
-            [theme.breakpoints.down('sm')]: {
-                marginBottom: '16px',
-            },
-        },
-    }));
-
     useEffect(() => {
         getMotherList().then(data => {
-            console.log(data)
-            // console.log(JSON.parse(data))
             setMotherList(data);
         }).catch(err => {
             console.log(err.error)
@@ -71,7 +36,7 @@ const MothersList = () => {
                         return (
                             <>
                                 {/*<h2>kkkkkkkk</h2>*/}
-                                <h1 key={index}> {mother.first_name}</h1>
+                                <h1 key={index}> {mother.first_name} - {}</h1>
                                 {/*<img key={"2" + index} src={mother.url} width={"100px"}/>*/}
                             </>)
 
