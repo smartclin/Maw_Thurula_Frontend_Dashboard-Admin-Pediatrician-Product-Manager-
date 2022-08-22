@@ -196,7 +196,7 @@ const JwtRegister = () => {
                         size="small"
                         name="service_charge"
                         type="service_charge"
-                        label="service_charge"
+                        label="Service charge (Rs)"
                         variant="outlined"
                         onBlur={handleBlur}
                         value={values.service_charge}
