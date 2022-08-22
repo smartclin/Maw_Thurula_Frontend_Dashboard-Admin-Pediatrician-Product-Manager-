@@ -146,21 +146,16 @@ const MotherListTable=()=> {
             // ]}
             onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
             actions={[
+
                 (rowData) => {
                     return rowData.STATUS
-                        ? {
-                            icon: LockIcon, onClick: (rowData) => { /* anythink */
-                            }
-                        }
-                        : {
-                            icon: LockOpenIcon, onClick: (rowData) => {
-                                handleClickOpen()
-                            }
-                        }
-                },
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                }
+                ,
                 {
-                    icon: VisibilityIcon,
-                    tooltip: 'Save User',
+                    icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
+                    tooltip: 'View User',
                     onClick: (event, rowData) => alert("You saved " + rowData.name),
                 }
             ]}
