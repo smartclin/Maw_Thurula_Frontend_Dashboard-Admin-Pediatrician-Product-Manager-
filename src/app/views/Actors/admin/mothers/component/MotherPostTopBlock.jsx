@@ -15,9 +15,28 @@ import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded';
 import Avatar from "@mui/material/Avatar";
 import {red} from "@mui/material/colors";
 import CardHeader from "@mui/material/CardHeader";
+import {useParams} from "react-router";
+import {Fragment, useEffect, useState} from 'react';
+import {
+    getRecentMotherPostByPostIdForAdmin
+} from "../../../../../services/Admin/Mother/admin_mother_service";
+
 
 const MotherPostblockcard = () => {
-
+    let { id } = useParams();
+    const [MotherPosts, setMotherPosts] = useState([]);
+    useEffect(() => {
+        getRecentMotherPostByPostIdForAdmin(id).then(data => {
+            setMotherPosts(data.data[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(async () => {
+        console.log("-------------------")
+        console.log(MotherPosts)
+        console.log(MotherPosts.title)
+    }, [MotherPosts]);
     const ExpandMore = styled((props) => {
         const { expand, ...other } = props;
         return <IconButton {...other} />;
@@ -33,31 +52,50 @@ const MotherPostblockcard = () => {
         fontWeight: '500',
         textTransform: 'capitalize',
     }));
+
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
+
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
+
     return (
         <Card sx={{ minWidth: 275,paddingBottom:0 ,minHeight:165,maxHeight:165 }}>
             <CardContent>
                 <Title>
-                    How do I know my baby is getting enough breast milk?
+                    {MotherPosts.title}
                 </Title>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    2022/07/06
+                    {DateReturn(MotherPosts.Date)}
                 </Typography>
 
                 <Typography sx={{ mb: 1 , mt:1}} color="text.secondary">
-                    Category - Baby Helth
+                    Category - {MotherPosts.category}
                 </Typography>
                 <CardActions disableSpacing style={{paddingLeft:-3,maxHeight:30,marginLeft:-15}}>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon /> <span style={{fontSize:20}}>12</span>
+                        <FavoriteIcon /> <span style={{fontSize:20}}>{MotherPosts.no_of_likes}</span>
                     </IconButton>
                     <IconButton aria-label="share">
-                        <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
+                        <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{MotherPosts.ReplyCount}</span>
                     </IconButton>
-                    {/*<ExpandMore>*/}
+
+                    {MotherPosts.status==1 ?
+                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}}>
+                            Show
+                        </Button>
+                        :
                         <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}}>
                             Hide
                         </Button>
-                    {/*</ExpandMore>*/}
+                    }
                 </CardActions>
             </CardContent>
         </Card>

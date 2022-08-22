@@ -20,7 +20,7 @@ import {Fragment, useEffect, useState} from 'react';
 const MotherListTable=()=> {
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = (id) => navigate('/admin/target_mothers_post_list/'+id, {replace: false});
+    const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
 
     const [MotherList, setMotherList] = useState([]);
     const [TMotherList, setTMotherList] = useState([]);
@@ -37,7 +37,7 @@ const MotherListTable=()=> {
     }, []);
 
     useEffect(async () => {
-        console.log("------ "+MotherList.students)
+        // console.log(MotherList)
     }, [MotherList]);
 
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
@@ -144,23 +144,18 @@ const MotherListTable=()=> {
             //     },
             //
             // ]}
-            onRowClick={(event, rowData) => handleOnClick(rowData.user_id)}
+            onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
             actions={[
+
                 (rowData) => {
                     return rowData.STATUS
-                        ? {
-                            icon: LockIcon, onClick: (rowData) => { /* anythink */
-                            }
-                        }
-                        : {
-                            icon: LockOpenIcon, onClick: (rowData) => {
-                                handleClickOpen()
-                            }
-                        }
-                },
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                }
+                ,
                 {
-                    icon: VisibilityIcon,
-                    tooltip: 'Save User',
+                    icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
+                    tooltip: 'View User',
                     onClick: (event, rowData) => alert("You saved " + rowData.name),
                 }
             ]}
