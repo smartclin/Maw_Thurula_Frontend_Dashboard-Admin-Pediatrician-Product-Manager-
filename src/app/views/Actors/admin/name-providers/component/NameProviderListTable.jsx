@@ -15,6 +15,7 @@ import Dialog from "@mui/material/Dialog";
 import PendingIcon from '@mui/icons-material/Pending';
 import {useNavigate} from "react-router-dom";
 import ViewTimelineIcon from "@mui/icons-material/ViewTimeline";
+import ArchiveIcon from '@mui/icons-material/Archive';
 
 const NameProviderListTable=()=> {
     const [open, setOpen] = React.useState(false);
@@ -94,11 +95,11 @@ const NameProviderListTable=()=> {
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: ()=><LockIcon style={{color:'#1976d2'}}/>, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: ()=><LockOpenIcon style={{color:'#1976d2'}}/>,onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
                 },
                 {
-                    icon: () => <ViewTimelineIcon style={{color: '#1976d2'}}/>,
+                    icon: () => <ArchiveIcon style={{color: '#2c3e50'}}/>,
                     tooltip: 'View report',
                     onClick: (event, rowData) => {
                         loadReport()

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import API from './baseURL';
-import options from './option';
+import API from '../../baseURL';
+import options from '../../option';
 
-export const getMotherList = async event => {
+export const getMotherListForAdmin = async event => {
     const response = await API.get(`/admin/mother_list`, options);
     return response.data;
 };

@@ -63,7 +63,7 @@ const AdminDashboard = () => {
                         <LatestCommunityPostRequestTable />
                         {/*<H4>Trending Articles </H4>*/}
                         {/*<RowCards />*/}
-                        <PediatricianRequestTable/>
+                        {/*<PediatricianRequestTable/>*/}
                         {/*<Button>asd</Button>*/}
                     </Grid>
 
