@@ -101,7 +101,7 @@ const MotherPosts = () => {
                     <Card sx={{ maxWidth: 345 }}>
                         <CardHeader
                             avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={item.img}>
+                                <Avatar sx={{padding:0.4 }} aria-label="recipe" src={item.img}>
 
                                 </Avatar>
                             }

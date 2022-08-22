@@ -13,6 +13,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import PendingIcon from '@mui/icons-material/Pending';
+import ArchiveIcon from "@mui/icons-material/Archive";
 
 const PediatricianListTable=()=> {
     const [open, setOpen] = React.useState(false);
@@ -89,11 +90,11 @@ const PediatricianListTable=()=> {
             actions={[
                 (rowData) => {
                     return rowData.Status
-                        ? { icon: LockIcon, onClick: (rowData) => { /* anythink */ } }
-                        : { icon: LockOpenIcon, onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
                 },
                 {
-                    icon: PendingIcon,
+                    icon: () => <ArchiveIcon style={{color: '#2c3e50'}}/>,
                     tooltip: 'Save User',
                     onClick: (event, rowData) => alert("You saved " + rowData.name),
                 }
