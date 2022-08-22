@@ -28,25 +28,28 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const { email } = JSON.parse(config.data);
-    const response = await API.get(`student`, {
+    const { password } = JSON.parse(config.data)
+    const response = await API.get(`login`, {
       params: {
         email: email,
+        password:password
       }
     }, options);
-    console.log(response.data.data[0].first_name)
+    console.log("database data")
+    console.log(response.data.data[0])
     // const user_id=response.data.user_id
     const userList1=[
       {
         id: response.data.data[0].user_id,
-        role: response.data.data[0].Type,
-        name: response.data.data[0].first_name,
+        role: response.data.data[0].type,
+        name: response.data.data[0].name,
         username: response.data.data[0].last_name,
         email: response.data.data[0].email,
         avatar: response.data.data[0].DP,
         age: response.data.data[0].login_status,
       },
     ];
-    console.log("user list")
+    console.log("user list1")
     console.log(userList1)
     const user = userList1.find((u) => u.email === email);
 
@@ -56,7 +59,8 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
       expiresIn: JWT_VALIDITY,
     });
-
+    console.log("token")
+    console.log(accessToken)
     return [
       200,
       {

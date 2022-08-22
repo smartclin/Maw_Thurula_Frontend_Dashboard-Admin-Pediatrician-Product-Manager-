@@ -4,6 +4,7 @@ import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PediatricianArticleComments from "./component/PediatricianArticleComments";
+import ArticleComments from "../shared/admin/ArticleComments";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     boxShadow: 'none',
@@ -53,36 +54,29 @@ export default function ViewFullArticle() {
                     </IconButton>
                 </div>
                 <p className="singlePostDesc">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-                    quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-                    Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-                    eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-                    error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-                    impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-                    odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos!
+                    Sleep is healing. If you are chronically short on sleep,
+                    your health and most areas of your life suffer. Adequate
+                    sleep helps learning and memory. Lack of it increases
+                    your risk of disease by lowering your immunity,
+                    increases hypertension and irregular heartbeat and can
+                    lead to accidents. When you’re tired, you can become
+                    irritable and impatient, affecting your personal
+                    and professional relationships. Finally, chronic lack
+                    of sleep affects metabolism and can result in weight gain.
                     <br />
                     <br />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-                    quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-                    Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-                    eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-                    error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-                    impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-                    odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
+                    Aim for at least 30 minutes of aerobic exercise most
+                    days of the week, along with a couple strength-training workouts.
+                    Exercise can lower blood pressure and cholesterol,
+                    make bones stronger, help with weight control
+                    and relieve stress. Physical exercise even benefits
+                    the brain by increasing circulation. In addition,
+                    exercise your mind by reading, doing crosswords or
+                    learning something new. Doing something that involves
+                    both your brain and your hands, such as knitting or woodworking,
+                    can also be a great stress reliever.
                 </p>
-                <PediatricianArticleComments/>
+                <ArticleComments/>
                 <StyledCard className="card-footer m-3">
                     <div className="d-flex flex-row">
                         <Button variant="contained">Block the article</Button>

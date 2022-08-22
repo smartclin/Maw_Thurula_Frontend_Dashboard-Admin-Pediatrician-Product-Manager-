@@ -11,6 +11,7 @@ const Analytics = Loadable(lazy(() => import('../../dashboard/Analytics')));
 // const AdminDashboard = Loadable(lazy(() => import('../../Actors/admin/AdminDashboard')));
 //this for mother's routes
 const MothersList = Loadable(lazy(() => import('./mothers/MothersList')));
+const Loadingpage = Loadable(lazy(() => import('./Loadingpage')));
 const MothersPostRequests = Loadable(lazy(() => import('./mothers/MothersPostRequests')));
 const OneMothersDetails = Loadable(lazy(() => import('./mothers/MothersSinglePostView')));
 const TargetMothersPostList = Loadable(lazy(() => import('./mothers/MothersPostList')));
@@ -48,6 +49,7 @@ const AdminRoutes = [
     {path: '/admin', element: <AdminDashboard/>, auth: authRoles.admin},
 
     {path: '/admin/mothers', element: <MothersList/>, auth: authRoles.admin},
+    {path: '/page' , element: <Loadingpage/>, auth: authRoles.admin},
     {path: '/admin/mothers_post_request', element: <MothersPostRequests/>, auth: authRoles.admin},
     {path: '/admin/mother_details/:id', element: <OneMothersDetails/>, auth: authRoles.admin},
     {path: '/admin/target_mothers_post_list/:id/:count', element: <TargetMothersPostList/>, auth: authRoles.admin},
