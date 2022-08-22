@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { LoadingButton } from '@mui/lab';
-import { Card, Checkbox, Grid, TextField } from '@mui/material';
+import {Card, Checkbox, Grid, Radio, TextField} from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { Paragraph } from 'app/components/Typography';
 import useAuth from 'app/hooks/useAuth';
@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import {RadioButtonChecked} from "@material-ui/icons";
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -37,7 +38,8 @@ const initialValues = {
   email: '',
   password: '',
   username: '',
-  remember: true,
+  user_type: true,
+  service_charge:''
 };
 
 // form field validation schema
@@ -58,8 +60,8 @@ const JwtRegister = () => {
     setLoading(true);
 
     try {
-      register(values.email, values.username, values.password);
-      alert(values.username)
+      register(values.email, values.username, values.password, values.user_type,values.service_charge);
+      //alert(values.username)
       navigate('/');
       setLoading(false);
     } catch (e) {
@@ -91,6 +93,59 @@ const JwtRegister = () => {
               >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
+                    <FlexBox style={{display:"flex" ,marginBottom:'10px'}} gap={2}>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={1}
+                            sx={{ padding: 0 }}
+                           // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Pediatrician
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            // checked={values.user_type}
+                            value={2}
+                            sx={{ padding: 0 }}
+                          //  required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Astrologer
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={3}
+                            sx={{ padding: 0 }}
+                           // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Name Provider
+                        </Paragraph>
+                      </FlexBox>
+                    </FlexBox>
                     <TextField
                       fullWidth
                       size="small"
@@ -135,19 +190,23 @@ const JwtRegister = () => {
                       sx={{ mb: 2 }}
                     />
 
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
+                    { ((values.user_type)==2 || (values.user_type ==3))?
+                    <TextField
+                        fullWidth
                         size="small"
-                        name="remember"
+                        name="service_charge"
+                        type="service_charge"
+                        label="Service charge (Rs)"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.service_charge}
                         onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
-                      />
-
-                      <Paragraph fontSize={13}>
-                        I have read and agree to the terms of service.
-                      </Paragraph>
-                    </FlexBox>
+                       // helperText={touched.password && errors.password}
+                        //error={Boolean(errors.password && touched.password)}
+                        sx={{ mb: 2 }}
+                    />
+                    :<div></div>
+                  }
 
                     <LoadingButton
                       type="submit"

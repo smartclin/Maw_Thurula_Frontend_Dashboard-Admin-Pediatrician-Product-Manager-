@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
 import Mock from '../mock';
+import axios from "axios";
 
 const JWT_SECRET = 'jwt_secret_key';
 const JWT_VALIDITY = '7 days';
-
+//import  API from '../../app/services/baseURL'
 const userList = [
   {
     id: 1,
@@ -51,28 +52,45 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
 
 Mock.onPost('/api/auth/register').reply((config) => {
   try {
-    const { email, username } = JSON.parse(config.data);
-    const user = userList.find((u) => u.email === email);
-
+    const { email, username,password } = JSON.parse(config.data);
+    console.log(email)
+    /*const user = userList.find((u) => u.email === email);
     if (user) {
       return [400, { message: 'User already exists!' }];
-    }
-    const newUser = {
-      id: 2,
-      role: 'GUEST',
-      name: '',
-      username: username,
+    }*/
+   /* const newUser = {
+      name: username,
       email: email,
-      avatar: '/assets/images/face-6.jpg',
-      age: 25,
-    };
-    userList.push(newUser);
+      password:password,
+    };*/
+    /*const response= API.post('/reg',{
+      data:{
+        'name': username,
+        'email': email,
+        'password':password
+      },options);
+    console.log(response.data)
+    return response.data;
+    };*/
 
-    const accessToken = jwt.sign({ userId: newUser.id }, JWT_SECRET, {
-      expiresIn: JWT_VALIDITY,
+    axios({
+      method: 'post',
+      url: '/reg',
+      data: {
+        'name': username,
+        'email': email,
+        'password':password
+      },
+
+      //headers: {'Authorization': 'Bearer ...'}
     });
+   // userList.push(newUser);
 
-    return [
+ /* const accessToken = jwt.sign({ userId: newUser.id }, JWT_SECRET, {
+      expiresIn: JWT_VALIDITY,
+    });*/
+
+  /* return [
       200,
       {
         accessToken,
@@ -85,7 +103,7 @@ Mock.onPost('/api/auth/register').reply((config) => {
           role: newUser.role,
         },
       },
-    ];
+    ];*/
   } catch (err) {
     console.error(err);
     return [500, { message: 'Internal server error' }];

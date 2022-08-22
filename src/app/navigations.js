@@ -112,7 +112,7 @@ export const navigations_ADMIN = [
       { name: 'New Requests', path: '/admin/name_provider_requests', iconText: 'A' },
     ],
   },
-  {
+  /*{
     name: 'Ecommerce',
     icon: 'store',
     badge: { value: '', color: 'secondary' },
@@ -122,7 +122,7 @@ export const navigations_ADMIN = [
       { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
 
     ],
-  },
+  },*/
 ];
 export const navigations_PM = [
   { label: 'Dashboard', type: 'label' },
