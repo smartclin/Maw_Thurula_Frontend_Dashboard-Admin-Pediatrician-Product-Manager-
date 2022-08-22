@@ -2,6 +2,8 @@ import { Box, styled } from '@mui/material';
 import { MatxLogo } from 'app/components';
 import useSettings from 'app/hooks/useSettings';
 import { Span } from './Typography';
+import MawThurulaLogo from "./MawThurulaLogo";
+import {Image} from "react-bootstrap";
 
 const BrandRoot = styled(Box)(() => ({
   display: 'flex',
@@ -24,7 +26,7 @@ const Brand = ({ children }) => {
   return (
     <BrandRoot>
       <Box display="flex" alignItems="center">
-        <MatxLogo />
+        <MawThurulaLogo/>
         <StyledSpan mode={mode} className="sidenavHoverShow">
           මව් තුරුල
         </StyledSpan>
