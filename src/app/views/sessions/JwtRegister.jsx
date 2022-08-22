@@ -108,7 +108,7 @@ const JwtRegister = () => {
                         />
 
                         <Paragraph fontSize={13}>
-                          Pediatricion
+                          Pediatrician
                         </Paragraph>
                       </FlexBox>
                       <FlexBox gap={0.5} alignItems="center">
