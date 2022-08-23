@@ -61,7 +61,7 @@ const PediatricianListTable=()=> {
                 {
                     field: 'url',
                     title: 'Avatar',
-                    render: rowData => <img src={rowData.url} style={{width: 30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
+                    render: rowData => <img src={rowData.url} style={{width: 30,height:30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
                     cellStyle: {
                         paddingLeft:30
                     },
@@ -77,11 +77,11 @@ const PediatricianListTable=()=> {
             ]}
             // commect for check data
             data={[
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Articles: 25, Number: '0713804551' ,date: '2022/07/06' ,Status:1},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', Articles: 26, Number: '0713804552' ,date: '2022/07/06' ,Status:1},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', Articles: 75, Number: '0713804553' ,date: '2022/07/06' ,Status:0},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', Articles: 85, Number: '0743804555' ,date: '2022/07/06' ,Status:0},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', Articles: 21, Number: '0713804556' ,date: '2022/07/06' ,Status:1},
+                {url:'https://i.postimg.cc/mkbXchv1/7.jpg', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Articles: 25, Number: '0713804551' ,date: '2022/07/06' ,Status:1},
+                {url:'https://i.postimg.cc/W4Lzg2xN/4.jpg', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', Articles: 26, Number: '0713804552' ,date: '2022/07/06' ,Status:1},
+                {url:'https://i.postimg.cc/7YtTGrxh/3.jpg', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', Articles: 75, Number: '0713804553' ,date: '2022/07/06' ,Status:0},
+                {url:'https://i.postimg.cc/GtPLN2v8/6.jpg', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', Articles: 85, Number: '0743804555' ,date: '2022/07/06' ,Status:0},
+                {url:'https://i.postimg.cc/fTnrG143/1.webp', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', Articles: 21, Number: '0713804556' ,date: '2022/07/06' ,Status:1},
 
 
 

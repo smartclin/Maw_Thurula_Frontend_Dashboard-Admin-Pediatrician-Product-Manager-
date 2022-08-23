@@ -79,11 +79,11 @@ const AstrologerRequestListTable=()=> {
                 { title: 'Charge', field: 'Charge',width: "10%" }
             ]}
             data={[
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', phone: "0713568999", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', phone: "0713568994", Charge: 'Rs.700' ,Income: 'Rs.7500' ,Status:1},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', phone: "0713568997", Charge: 'Rs.800' ,Income: 'Rs.7500' ,Status:0},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', phone: "071356890", Charge: 'Rs.900' ,Income: 'Rs.7500' ,Status:0},
-                {url:'https://avatars0.githubusercontent.com/u/7895451?s=460&v=4', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', phone: "0713568991", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:0},
+                {url:'https://i.postimg.cc/mkbXchv1/7.jpg', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', phone: "0713568999", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
+                {url:'https://i.postimg.cc/W4Lzg2xN/4.jpg', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', phone: "0713568994", Charge: 'Rs.700' ,Income: 'Rs.7500' ,Status:1},
+                {url:'https://i.postimg.cc/7YtTGrxh/3.jpg', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', phone: "0713568997", Charge: 'Rs.800' ,Income: 'Rs.7500' ,Status:0},
+                {url:'https://i.postimg.cc/GtPLN2v8/6.jpg', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', phone: "071356890", Charge: 'Rs.900' ,Income: 'Rs.7500' ,Status:0},
+                {url:'https://i.postimg.cc/fTnrG143/1.webp', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', phone: "0713568991", Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:0},
 
             ]}
             onRowClick={(event, rowData) => console.log(rowData)}
