@@ -53,34 +53,31 @@ export default function ViewFullArticle() {
                     </IconButton>
                 </div>
                 <p className="singlePostDesc">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-                    quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-                    Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-                    eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-                    error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-                    impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-                    odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos!
+                    The increasing popularity of stylish, trendy athletic wear has made über-comfortable
+                    clothing something that’s just as much for the gym as it is outside of it.
+                    But as with all clothing, it’s not just about looking good. You want to feel good,
+                    feel comfortable and feel confident — whether you’re working out or lounging around.
+                    “High-quality activewear can enhance your workout experience for
+                    a multitude of reasons,” shares Miriam Fried, a personal
+                    trainer based in New York City and the founder of MF Strong.
+                    “If your clothing is uncomfortable, doesn’t breathe well, is
+                    always falling down or in need of adjustment, it can
+                    distract you from your workout and make it less effective and enjoyable.
+                    ” There’s also a confidence component to great activewear, shares
+                    Daniella Means, a professional powerlifter and vice president of the
+                    Hybrid Gym Group. “If you feel good, and think that you look good
+                    in your activewear, you’re more likely to perform with more confidence
+                    in your abilities.
                     <br />
                     <br />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-                    quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-                    Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-                    eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-                    error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-                    impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-                    odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-                    iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-                    a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
+                    “If your clothing is uncomfortable, doesn’t breathe well, is
+                    always falling down or in need of adjustment, it can
+                    distract you from your workout and make it less effective and enjoyable.
+                    ” There’s also a confidence component to great activewear, shares
+                    Daniella Means, a professional powerlifter and vice president of the
+                    Hybrid Gym Group. “If you feel good, and think that you look good
+                    in your activewear, you’re more likely to perform with more confidence
+                    in your abilities.
                 </p>
                 {/*<PediatricianArticleComments/>*/}
                 {/*<StyledCard className="card-footer m-3">*/}

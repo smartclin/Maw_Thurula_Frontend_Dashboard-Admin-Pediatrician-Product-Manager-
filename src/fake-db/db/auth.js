@@ -61,6 +61,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     });
     console.log("token")
     console.log(accessToken)
+    localStorage.setItem("role", user.role)
     return [
       200,
       {

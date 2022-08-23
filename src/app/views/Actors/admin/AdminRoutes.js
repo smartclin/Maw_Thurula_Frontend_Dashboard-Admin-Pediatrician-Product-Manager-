@@ -46,7 +46,7 @@ const EcommerceOrders = Loadable(lazy(() => import('./ecommerce/EcommerceOrders'
 const EcommerceReports = Loadable(lazy(() => import('./ecommerce/EcommerceReports')));
 
 const AdminRoutes = [
-    {path: '/admin', element: <AdminDashboard/>, auth: authRoles.admin},
+    {path: '/ADMIN', element: <AdminDashboard/>, auth: authRoles.admin},
 
     {path: '/admin/mothers', element: <MothersList/>, auth: authRoles.admin},
     {path: '/page' , element: <Loadingpage/>, auth: authRoles.admin},

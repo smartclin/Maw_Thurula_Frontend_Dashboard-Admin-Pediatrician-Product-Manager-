@@ -11,7 +11,7 @@ const NameProviderViewRequestWithResponse = Loadable(lazy(() => import('./NamePr
 const EditProfile = Loadable(lazy(() => import('./EditProfile')));
 
 const NameProviderRoutes = [
-    { path: '/np', element: <NameProviderDashboard />, auth: authRoles.admin },
+    { path: '/NP', element: <NameProviderDashboard />, auth: authRoles.admin },
     { path: '/np/new_request', element: <NewJobs />, auth: authRoles.admin },
     { path: '/np/view_request', element: <NameProviderViewRequest />, auth: authRoles.admin },
     { path: '/np/view_request_with_response', element: <NameProviderViewRequestWithResponse />, auth: authRoles.admin },

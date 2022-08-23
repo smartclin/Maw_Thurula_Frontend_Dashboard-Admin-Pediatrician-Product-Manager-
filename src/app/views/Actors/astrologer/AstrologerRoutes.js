@@ -12,7 +12,7 @@ const AstrologerViewRequestWithResponse = Loadable(lazy(() => import('./Astrolog
 const EditProfile = Loadable(lazy(() => import('./EditProfile')));
 
 const AstrologerRoutes = [
-    { path: '/al', element: <AstrologerDashboard />, auth: authRoles.admin },
+    { path: '/AL', element: <AstrologerDashboard />, auth: authRoles.admin },
     { path: '/al/new_request', element: <NewJobs />, auth: authRoles.admin },
     { path: '/al/view_request', element: <AstrologerViewRequest />, auth: authRoles.admin },
     { path: '/al/view_request_with_response', element: <AstrologerViewRequestWithResponse />, auth: authRoles.admin },

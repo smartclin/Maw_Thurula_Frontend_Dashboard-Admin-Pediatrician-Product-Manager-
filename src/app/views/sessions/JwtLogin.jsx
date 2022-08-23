@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import data from "bootstrap/js/src/dom/data";
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
 
@@ -59,7 +60,12 @@ const JwtLogin = () => {
     try {
       console.log(values.email)
       await login(values.email, values.password);
-      navigate('/');
+      // console.log(accessToken)
+      var userType = localStorage.getItem("role")
+      console.log("session")
+      console.log(userType)
+
+      navigate('/'+userType);
     } catch (e) {
       setLoading(false);
     }

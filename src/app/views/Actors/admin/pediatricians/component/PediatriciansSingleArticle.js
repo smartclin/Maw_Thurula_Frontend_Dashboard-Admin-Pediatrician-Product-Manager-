@@ -35,17 +35,19 @@ const PediatricianSingleArticle = ({img}) => {
                 </div>
                 <span className="postTitle">
           <Link to="/pt/PediatricianViewFullArticles" className="link">
-            Lorem ipsum dolor sit amet
+            Health and baby care
           </Link>
         </span>
                 <hr />
                 <span className="postDate">2022/09/07</span>
             </div>
             <p className="postDesc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?
+                Most newborns need eight to 12 feedings a day — about one feeding every two to three hours.
+                Look for early signs of readiness to feed. Signs include
+                moving the hands to the mouth, sucking on fists and
+                fingers, and lip smacking. Fussing and crying are
+                later cues. The sooner you begin each feeding,
+                the less likely you'll need to soothe a frantic baby.
             </p>
             <div>
                 <IconButton aria-label="add to favorites">
