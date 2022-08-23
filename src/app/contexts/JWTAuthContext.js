@@ -87,10 +87,11 @@ export const AuthProvider = ({ children }) => {
 
 
     const login = async (email, password) => {
-        const response = await axios.post('/student', {
+        const response = await axios.post('/api/auth/login', {
             email,
             password,
         })
+        console.log("came to login")
         const { accessToken, user } = response.data
 
         setSession(accessToken)

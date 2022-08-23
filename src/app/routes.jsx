@@ -19,6 +19,7 @@ const routes = [
   },
   ...sessionRoutes,
   { path: '/', element: <Navigate to="/admin" /> },
+  { path: '/page', element: <Navigate to="/page" /> },
   { path: '*', element: <NotFound /> },
 ];
 

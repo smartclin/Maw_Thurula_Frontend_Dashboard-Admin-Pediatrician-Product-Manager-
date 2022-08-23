@@ -149,7 +149,7 @@ const Analytics = () => {
                            options={top100Films}
                            id="combo-box-demo"
                            sx={{ width: 300 }}
-                           renderInput={(params) => <TextField {...params} label="Search by catogery" />}
+                           renderInput={(params) => <TextField {...params} label="Search by Title" />}
                        />
                    </div>
                    <div className="ms-5">

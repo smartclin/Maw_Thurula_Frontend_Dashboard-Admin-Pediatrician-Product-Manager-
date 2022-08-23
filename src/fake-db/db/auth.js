@@ -1,10 +1,13 @@
 import jwt from 'jsonwebtoken';
 import Mock from '../mock';
+import API from '../../../src/app/services/baseURL';
+import options from '../../../src/app/services/option';
 import axios from "axios";
 
 const JWT_SECRET = 'jwt_secret_key';
 const JWT_VALIDITY = '7 days';
-//import  API from '../../app/services/baseURL'
+
+
 const userList = [
   {
     id: 1,
@@ -17,12 +20,38 @@ const userList = [
   },
 ];
 
+
+
+
 Mock.onPost('/api/auth/login').reply(async (config) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const { email } = JSON.parse(config.data);
-    const user = userList.find((u) => u.email === email);
+    const { password } = JSON.parse(config.data)
+    const response = await API.get(`login`, {
+      params: {
+        email: email,
+        password:password
+      }
+    }, options);
+    console.log("database data")
+    console.log(response.data.data[0])
+    // const user_id=response.data.user_id
+    const userList1=[
+      {
+        id: response.data.data[0].user_id,
+        role: response.data.data[0].type,
+        name: response.data.data[0].name,
+        username: response.data.data[0].last_name,
+        email: response.data.data[0].email,
+        avatar: response.data.data[0].DP,
+        age: response.data.data[0].login_status,
+      },
+    ];
+    console.log("user list1")
+    console.log(userList1)
+    const user = userList1.find((u) => u.email === email);
 
     if (!user) {
       return [400, { message: 'Invalid email or password' }];
@@ -30,7 +59,9 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
       expiresIn: JWT_VALIDITY,
     });
-
+    console.log("token")
+    console.log(accessToken)
+    localStorage.setItem("role", user.role)
     return [
       200,
       {

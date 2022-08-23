@@ -11,7 +11,7 @@ const PediatricianWriteArticles = Loadable(lazy(() => import('../../Actors/Pedia
 
 
 const PediatriciansRoutes = [
-    { path: '/pt', element: <PediatricianDashboard/>, auth: authRoles.admin },
+    { path: '/PT', element: <PediatricianDashboard/>, auth: authRoles.admin },
     { path: '/pt/PediatricianViewArticles', element: <PediatricianViewArticles/>, auth: authRoles.admin },
     { path: '/pt/PediatricianViewFullArticles', element: <PediatricianViewFullArticles/>, auth: authRoles.admin },
     { path: '/pt/PediatricianWriteArticles', element: <PediatricianWriteArticles/>, auth: authRoles.admin },
