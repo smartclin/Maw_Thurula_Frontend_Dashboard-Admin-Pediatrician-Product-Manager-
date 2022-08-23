@@ -35,9 +35,9 @@ const JWTRoot = styled(JustifyBox)(() => ({
 
 // inital login credentials
 const initialValues = {
-  email: 'jason@ui-lib.com',
-  password: 'dummyPass',
-  remember: true,
+  email: '',
+  password: '',
+  remember: false,
 };
 
 // form field validation schema
@@ -73,8 +73,8 @@ const JwtLogin = () => {
 
   return (
     <JWTRoot>
-      <Card className="card">
-        <Grid container>
+      <Card className="card" style={{ display: "flex", alignContent: "center", justifyContent: "center"}} >
+        <Grid container style={{ display: "flex", alignContent: "center", justifyContent: "center" }}>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
               <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />

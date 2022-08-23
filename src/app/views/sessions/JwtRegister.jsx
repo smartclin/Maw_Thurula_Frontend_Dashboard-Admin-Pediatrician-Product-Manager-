@@ -72,8 +72,8 @@ const JwtRegister = () => {
 
   return (
     <JWTRegister>
-      <Card className="card">
-        <Grid container>
+      <Card className="card"  style={{ display: "flex", alignContent: "center", justifyContent: "center"}}>
+        <Grid container >
           <Grid item sm={6} xs={12}>
             <ContentBox>
               <img
@@ -93,59 +93,7 @@ const JwtRegister = () => {
               >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
-                    <FlexBox style={{display:"flex" ,marginBottom:'10px'}} gap={2}>
-                      <FlexBox gap={0.5} alignItems="center">
-                        <input
-                            type='radio'
-                            size="small"
-                            name="user_type"
-                            onChange={handleChange}
-                            //  checked={values.user_type}
-                            value={1}
-                            sx={{ padding: 0 }}
-                           // required
-                            error={errors.user_type}
-                        />
 
-                        <Paragraph fontSize={13}>
-                          Pediatrician
-                        </Paragraph>
-                      </FlexBox>
-                      <FlexBox gap={0.5} alignItems="center">
-                        <input
-                            type='radio'
-                            size="small"
-                            name="user_type"
-                            onChange={handleChange}
-                            // checked={values.user_type}
-                            value={2}
-                            sx={{ padding: 0 }}
-                          //  required
-                            error={errors.user_type}
-                        />
-
-                        <Paragraph fontSize={13}>
-                          Astrologer
-                        </Paragraph>
-                      </FlexBox>
-                      <FlexBox gap={0.5} alignItems="center">
-                        <input
-                            type='radio'
-                            size="small"
-                            name="user_type"
-                            onChange={handleChange}
-                            //  checked={values.user_type}
-                            value={3}
-                            sx={{ padding: 0 }}
-                           // required
-                            error={errors.user_type}
-                        />
-
-                        <Paragraph fontSize={13}>
-                          Name Provider
-                        </Paragraph>
-                      </FlexBox>
-                    </FlexBox>
                     <TextField
                       fullWidth
                       size="small"
@@ -189,6 +137,60 @@ const JwtRegister = () => {
                       error={Boolean(errors.password && touched.password)}
                       sx={{ mb: 2 }}
                     />
+
+                    <FlexBox style={{display:"flex" ,marginBottom:'10px'}} gap={2}>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={1}
+                            sx={{ padding: 0 }}
+                            // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Pediatrician
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            // checked={values.user_type}
+                            value={2}
+                            sx={{ padding: 0 }}
+                            //  required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Astrologer
+                        </Paragraph>
+                      </FlexBox>
+                      <FlexBox gap={0.5} alignItems="center">
+                        <input
+                            type='radio'
+                            size="small"
+                            name="user_type"
+                            onChange={handleChange}
+                            //  checked={values.user_type}
+                            value={3}
+                            sx={{ padding: 0 }}
+                            // required
+                            error={errors.user_type}
+                        />
+
+                        <Paragraph fontSize={13}>
+                          Name Provider
+                        </Paragraph>
+                      </FlexBox>
+                    </FlexBox>
 
                     { ((values.user_type)==2 || (values.user_type ==3))?
                     <TextField
