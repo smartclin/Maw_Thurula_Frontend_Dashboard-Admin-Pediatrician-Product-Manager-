@@ -13,6 +13,9 @@ import BasicCard from "./shared/PediatricianDashboardTrendingArticle";
 import PediatricianDashboardWritePostCard from "./shared/PediatricianDashboardWritePostCard";
 import PediatricianDashboardLineChart from "./shared/PediatricianDashboardLineChart";
 import NameProviderDashboardLineChart from "../name-provider/NameProviderDashboardLineChart";
+import FlowersListTable from "./shared/PediatricianVIewArticleComments";
+import CommentListTable from "./shared/PediatricianVIewArticleComments";
+import TodayCommentListTable from "./shared/PediatricianVIewTodayArticleComments";
 
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -106,7 +109,8 @@ const PediatricianDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <PediatricianDashboardStatCards />
-                        <PediatricianDashboardTopSellingTable/>
+                        <TodayCommentListTable/>
+                        {/*<PediatricianDashboardTopSellingTable/>*/}
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>

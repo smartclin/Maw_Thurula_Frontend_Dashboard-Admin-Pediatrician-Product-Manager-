@@ -168,6 +168,16 @@ export const navigations_PT = [
 
     ],
   },
+  {
+    name: 'Followers',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'List', path: '/pt/PediatricianViewFollowers', iconText: 'A' },
+      // { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  },
 ];
 export const navigations_NP = [
   { label: 'Name Provider', type: 'label' },
