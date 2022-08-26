@@ -22,17 +22,9 @@ const Analytics = () => {
                {/*<ContentBox className="analytics">*/}
                    {/*<Grid container spacing={3}>*/}
                    <Grid>
-                     {/*<div>*/}
-                     {/*    <input type="file"/>*/}
-                     {/*</div>*/}
-                       <Imageupload/>
+
                        <Write/>
-
-                       {/*<h2>fff</h2>*/}
-                       {/*<div id={"root"}>*/}
-                       {/*    <Imageupload/>*/}
-                       {/*</div>*/}
-
+                      <Imageupload/>
                    </Grid>
 
                {/*</ContentBox>*/}
