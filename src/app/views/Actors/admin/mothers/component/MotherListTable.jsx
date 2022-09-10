@@ -13,9 +13,13 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import {useNavigate} from 'react-router-dom';
-import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
+import {
+    BlockMother,
+    getMotherListForAdmin,
+    UnBlockMother
+} from "../../../../../services/Admin/Mother/admin_mother_service";
 // import {useEffect, useState} from "@types/react";
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment, useEffect, useState,useRef} from 'react';
 
 const MotherListTable=()=> {
     const navigate = useNavigate();
@@ -43,14 +47,45 @@ const MotherListTable=()=> {
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
     const [open, setOpen] = React.useState(false);
+    const [id, setId] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleBlockClickOpen = (uid) => {
+        setId(uid);
+        // console.log("Id : "+id)
         setOpen(true);
+    };
+    const handleUnBlockClickOpen= (uid) => {
+      UnBlockMother(uid).then(data => {
+            // console.log("Succesfully Unblocked id-"+uid)
+              getMotherListForAdmin().then(data => {
+                  setMotherList(data);
+              }).catch(err => {
+                  console.log(err.error)
+              })
+        }).catch(err => {
+            console.log(err.error)
+        })
     };
 
     const handleClose = () => {
         setOpen(false);
     };
+    const valueRef = useRef('')
+    const sendValue = () => {
+        // console.log(valueRef.current.value)
+        // console.log("Id : "+id)
+        BlockMother(id,valueRef.current.value).then(data => {
+            // console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
+            getMotherListForAdmin().then(data => {
+                setMotherList(data);
+            }).catch(err => {
+                console.log(err.error)
+            })
+        }).catch(err => {
+            console.log(err.error)
+        })
+        setOpen(false);
+    }
 
     const checkStatus=(data)=>{
         // console.log("data - "+data)
@@ -64,7 +99,7 @@ const MotherListTable=()=> {
             <DialogTitle>Reason for this action</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    This message will show on this users window
+                    Maybe she did it because of pregnancy stress...
                 </DialogContentText>
                 <TextField
                     autoFocus
@@ -74,11 +109,12 @@ const MotherListTable=()=> {
                     type="text"
                     fullWidth
                     variant="standard"
+                    inputRef={valueRef}
                 />
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Submit</Button>
+                <Button onClick={sendValue}>Block</Button>
             </DialogActions>
         </Dialog>
         <MaterialTable
@@ -149,14 +185,14 @@ const MotherListTable=()=> {
 
                 (rowData) => {
                     return rowData.STATUS
-                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
-                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (event, rowData) => { handleUnBlockClickOpen(rowData.user_id) } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (event, rowData) => { handleBlockClickOpen(rowData.user_id)} }
                 }
                 ,
                 {
                     icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
                     tooltip: 'View User',
-                    onClick: (event, rowData) => alert("You saved " + rowData.name),
+                    onClick: (event, rowData) => handleOnClick(rowData.user_id,rowData.postCount),
                 }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,

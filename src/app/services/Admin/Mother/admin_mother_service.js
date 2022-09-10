@@ -9,6 +9,26 @@ export const getMotherListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
+// http://localhost:3000/admin/block_mother
+export const BlockMother = async (id,mg) => {
+    const response = await API.get(`/admin/block_mother`,{
+        params:{
+            "uid":id,
+            "mg":mg
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const UnBlockMother = async (uid) => {
+    const response = await API.get(`/admin/unblock_mother`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getTargetMotherListForAdmin = async (id) => {
     const response = await API.get(`/admin/target_motherDetails`,{
         params:{
