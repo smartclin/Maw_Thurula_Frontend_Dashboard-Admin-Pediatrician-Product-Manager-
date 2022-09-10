@@ -20,6 +20,24 @@ export const BlockMother = async (id,mg) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const HidePost = async (id) => {
+    const response = await API.get(`/admin/HidePost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const ShowHidePost = async (id) => {
+    const response = await API.get(`/admin/ShowHidePost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const UnBlockMother = async (uid) => {
     const response = await API.get(`/admin/unblock_mother`,{
         params:{
@@ -47,8 +65,26 @@ export const getRecentMotherPostForAdmin = async (id) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const getMotherPostsReplyListForAdmin = async (id) => {
+    const response = await API.get(`/admin/post_comments_list`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const delete_Comment = async (id) => {
+    const response = await API.get(`/admin/delete_comments`,{
+        params:{
+            "cid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getRecentMotherPostByPostIdForAdmin = async (id) => {
-    console.log("call func")
+    // console.log("call func")
     const response = await API.get(`/admin/Mother_Post_Details`,{
         params:{
             "pid":id

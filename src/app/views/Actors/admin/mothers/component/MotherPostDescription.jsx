@@ -40,20 +40,20 @@ const MotherPostDescription = () => {
         })
     }, []);
     useEffect(async () => {
-        console.log("-------------------")
-        console.log(MotherPosts)
-        console.log(MotherPosts.post_content)
+        // console.log("-------------------")
+        // console.log(MotherPosts)
+        // console.log(MotherPosts.post_content)
     }, [MotherPosts]);
     return (
         <Card sx={{ minWidth: 275,paddingBottom:0 , minHeight:165, }}>
             <CardContent>
                 <Title>
                     Special Notes
-                    <IconButton aria-label="add to favorites" style={{ padding:0, marginLeft:2,marginBottom:7}}>
-                        <ModeEditRoundedIcon style={{fontSize:20}}/>
-                    </IconButton>
+                    {/*<IconButton aria-label="add to favorites" style={{ padding:0, marginLeft:2,marginBottom:7}}>*/}
+                    {/*    <ModeEditRoundedIcon style={{fontSize:20}}/>*/}
+                    {/*</IconButton>*/}
                 </Title>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginTop:10}}>
                     {MotherPosts.post_content}
                 </Typography>
 
