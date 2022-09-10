@@ -83,6 +83,16 @@ export const delete_Comment = async (id) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const warningForComments = async (id,mg) => {
+    const response = await API.get(`/admin/warning_for_comments`,{
+        params:{
+            "uid":id,
+            mg:mg
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getRecentMotherPostByPostIdForAdmin = async (id) => {
     // console.log("call func")
     const response = await API.get(`/admin/Mother_Post_Details`,{

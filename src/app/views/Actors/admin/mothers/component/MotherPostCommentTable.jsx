@@ -16,13 +16,23 @@ import {
     useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment, useEffect, useState,useRef} from 'react';
 import {
-    delete_Comment,
+    BlockMother,
+    delete_Comment, getMotherListForAdmin,
     getMotherPostsReplyListForAdmin,
-    getRecentMotherPostForAdmin
+    getRecentMotherPostForAdmin, warningForComments
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 import {useParams} from "react-router";
+
+import * as React from 'react';
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import TextField from "@mui/material/TextField";
+import DialogActions from "@mui/material/DialogActions";
+import Dialog from "@mui/material/Dialog";
+
 
 
 const CardHeader = styled(Box)(() => ({
@@ -102,67 +112,126 @@ const AdminPostCommentMother = () => {
         })
 
     }
+    const [open, setOpen] = React.useState(false);
+    const [warning, setwarning] = React.useState("");
+    const [uid, setUid] = React.useState(0);
+
+
+    const SendWarn = (uid,comment,date) => {
+
+        // console.log("Id : "+uid)
+        // console.log("comment : "+comment)
+        // console.log("date : "+date)
+        let mg="You have this warning message for commenting "+"\""+ comment+"\""+ " on "+date
+        // console.log("mg "+mg)
+        setwarning(mg)
+        setUid(uid)
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const valueRef = useRef('')
+    const sendValue = (cid) => {
+        // console.log(valueRef.current.value)
+        // console.log("Id : "+uid)
+        // console.log("mg : "+warning)
+        let warn=valueRef.current.value + "\n"+warning
+        // console.log(warn)
+        warningForComments(uid,warn).then(data => {
+            // console.log("Succesfully added ")
+
+        }).catch(err => {
+            console.log(err.error)
+        })
+        setOpen(false);
+    }
     return (
-        <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
-            <CardHeader style={{ paddingLeft: 15}}>
-                <Title style={{marginLeft:0}}>Comments Section</Title>
+        <div>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Reason for this action</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Notification message
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="reason"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                        inputRef={valueRef}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={sendValue}>Send</Button>
+                </DialogActions>
+            </Dialog>
+            <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
+                <CardHeader style={{ paddingLeft: 15}}>
+                    <Title style={{marginLeft:0}}>Comments Section</Title>
 
-                {/*<Select size="small" defaultValue="this_month">*/}
-                {/*  <MenuItem value="this_month">This Month</MenuItem>*/}
-                {/*  <MenuItem value="last_month">Last Month</MenuItem>*/}
-                {/*</Select>*/}
-            </CardHeader>
+                    {/*<Select size="small" defaultValue="this_month">*/}
+                    {/*  <MenuItem value="this_month">This Month</MenuItem>*/}
+                    {/*  <MenuItem value="last_month">Last Month</MenuItem>*/}
+                    {/*</Select>*/}
+                </CardHeader>
 
-            <Box overflow="auto">
-                <ProductTable>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell sx={{ px: 2 }} colSpan={2}>
-                                Email
-                            </TableCell>
-                            <TableCell sx={{ px: 4 }} colSpan={4}>
-                                Comments
-                            </TableCell>
-                            <TableCell sx={{ px: 3 }} colSpan={2}>
-                                Date
-                            </TableCell>
-
-                            <TableCell sx={{ px: 2 }} colSpan={2}>
-                                Actions
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-
-                    <TableBody>
-                        {MotherPostsReplyList.map((product, index) => (
-                            <TableRow key={index} hover>
-                                <TableCell align="left" colSpan={2} sx={{ px: 0,  }}>
-                                    {product.email}
+                <Box overflow="auto">
+                    <ProductTable>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell sx={{ px: 2 }} colSpan={2}>
+                                    Email
                                 </TableCell>
-                                <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
-                                    <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
-                                        <Paragraph sx={{ m: 0, ml: 4 }}>{product.reply_content}</Paragraph>
-                                    </Box>
+                                <TableCell sx={{ px: 4 }} colSpan={4}>
+                                    Comments
+                                </TableCell>
+                                <TableCell sx={{ px: 3 }} colSpan={2}>
+                                    Date
                                 </TableCell>
 
-                                <TableCell sx={{ px: 3 }} align="left" colSpan={2}>
-                                    {DateReturn(product.date)}
-                                </TableCell>
-
-                                <TableCell sx={{ px: 0 }} colSpan={2}>
-                                    <IconButton onClick={()=>{DeleteComment(product.reply_id)}}>
-                                        <Icon color="warning"  >delete_forever</Icon>
-                                    </IconButton>
-                                    <IconButton>
-                                        <Icon color="primary">message</Icon>
-                                    </IconButton>
+                                <TableCell sx={{ px: 2 }} colSpan={2}>
+                                    Actions
                                 </TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </ProductTable>
-            </Box>
-        </Card>
+                        </TableHead>
+
+                        <TableBody>
+                            {MotherPostsReplyList.map((product, index) => (
+                                <TableRow key={index} hover>
+                                    <TableCell align="left" colSpan={2} sx={{ px: 0,  }}>
+                                        {product.email}
+                                    </TableCell>
+                                    <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
+                                        <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
+                                            <Paragraph sx={{ m: 0, ml: 4 }}>{product.reply_content}</Paragraph>
+                                        </Box>
+                                    </TableCell>
+
+                                    <TableCell sx={{ px: 3 }} align="left" colSpan={2}>
+                                        {DateReturn(product.date)}
+                                    </TableCell>
+
+                                    <TableCell sx={{ px: 0 }} colSpan={2}>
+                                        <IconButton onClick={()=>{DeleteComment(product.reply_id)}}>
+                                            <Icon color="warning"  >delete_forever</Icon>
+                                        </IconButton>
+                                        <IconButton onClick={()=>{SendWarn(product.user_id,product.reply_content,DateReturn(product.date))}}>
+                                            <Icon color="primary">message</Icon>
+                                        </IconButton>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </ProductTable>
+                </Box>
+            </Card>
+        </div>
+
+
     );
 };
 
