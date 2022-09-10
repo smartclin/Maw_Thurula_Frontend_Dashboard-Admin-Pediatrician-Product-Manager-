@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import Posts from "../admin/pediatricians/component/PostList";
 import Write from "./shared/PediatricianDashboardWritePost";
-import Imageupload from "./shared/imageupload";
+import MyEditor from "./shared/TextEditor";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -22,16 +22,11 @@ const Analytics = () => {
                {/*<ContentBox className="analytics">*/}
                    {/*<Grid container spacing={3}>*/}
                    <Grid>
-                     {/*<div>*/}
-                     {/*    <input type="file"/>*/}
-                     {/*</div>*/}
-                       <Imageupload/>
-                       <Write/>
 
-                       {/*<h2>fff</h2>*/}
-                       {/*<div id={"root"}>*/}
-                       {/*    <Imageupload/>*/}
-                       {/*</div>*/}
+                       <Write/>
+                       <div className="form-row">
+                           <MyEditor/>
+                       </div>
 
                    </Grid>
 
