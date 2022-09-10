@@ -16,6 +16,14 @@ import {
     useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
+import {Fragment, useEffect, useState} from 'react';
+import {
+    delete_Comment,
+    getMotherPostsReplyListForAdmin,
+    getRecentMotherPostForAdmin
+} from "../../../../../services/Admin/Mother/admin_mother_service";
+import {useParams} from "react-router";
+
 
 const CardHeader = styled(Box)(() => ({
     display: 'flex',
@@ -58,10 +66,42 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 const AdminPostCommentMother = () => {
     const { palette } = useTheme();
-    const bgError = palette.error.main;
-    const bgPrimary = palette.primary.main;
-    const bgSecondary = palette.secondary.main;
+    let { id } = useParams();
+    const [MotherPostsReplyList, setMotherPostsReplyList] = useState([]);
+    useEffect(() => {
+        getMotherPostsReplyListForAdmin(id).then(data => {
+            setMotherPostsReplyList(data.data)
+            // console.log("Data ------------")
+            // console.log(MotherPostsReplyList)
+            // console.log(data.data)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
 
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
+    function DeleteComment(cid){
+        delete_Comment(cid).then(x => {
+            getMotherPostsReplyListForAdmin(id).then(data => {
+                setMotherPostsReplyList(data.data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        }).catch(err => {
+            console.log(err.error)
+        })
+
+    }
     return (
         <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
             <CardHeader style={{ paddingLeft: 15}}>
@@ -94,24 +134,24 @@ const AdminPostCommentMother = () => {
                     </TableHead>
 
                     <TableBody>
-                        {productList.map((product, index) => (
+                        {MotherPostsReplyList.map((product, index) => (
                             <TableRow key={index} hover>
                                 <TableCell align="left" colSpan={2} sx={{ px: 0,  }}>
                                     {product.email}
                                 </TableCell>
                                 <TableCell colSpan={4} align="left" sx={{ px: 0,  }}>
                                     <Box display="flex" justifyContent="flex-start" alignItems="flex-start" >
-                                        <Paragraph sx={{ m: 0, ml: 4 }}>{product.comment}</Paragraph>
+                                        <Paragraph sx={{ m: 0, ml: 4 }}>{product.reply_content}</Paragraph>
                                     </Box>
                                 </TableCell>
 
                                 <TableCell sx={{ px: 3 }} align="left" colSpan={2}>
-                                    {product.date}
+                                    {DateReturn(product.date)}
                                 </TableCell>
 
                                 <TableCell sx={{ px: 0 }} colSpan={2}>
-                                    <IconButton>
-                                        <Icon color="warning">delete_forever</Icon>
+                                    <IconButton onClick={()=>{DeleteComment(product.reply_id)}}>
+                                        <Icon color="warning"  >delete_forever</Icon>
                                     </IconButton>
                                     <IconButton>
                                         <Icon color="primary">message</Icon>

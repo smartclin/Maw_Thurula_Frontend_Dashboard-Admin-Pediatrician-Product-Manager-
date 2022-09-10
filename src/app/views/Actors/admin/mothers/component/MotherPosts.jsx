@@ -133,7 +133,8 @@ const MotherPosts = () => {
                                 <IconButton aria-label="add to favorites">
                                     <FavoriteIcon /> <span style={{fontSize:20}}>{item.no_of_likes}</span>
                                 </IconButton>
-                                <IconButton aria-label="share" onClick={()=>{alert("️This works on every component!")}}>
+                                {/*onClick={()=>{alert("️This works on every component!")}}*/}
+                                <IconButton aria-label="share" >
                                     <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.ReplyCount}</span>
                                 </IconButton>
                                 <ExpandMore>
