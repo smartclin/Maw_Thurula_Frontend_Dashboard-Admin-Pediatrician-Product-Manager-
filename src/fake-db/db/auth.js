@@ -20,7 +20,7 @@ const userList = [
   },
 ];
 
-
+let userList1=[]
 
 
 Mock.onPost('/api/auth/login').reply(async (config) => {
@@ -38,7 +38,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     console.log("database data")
     console.log(response.data.data[0])
     // const user_id=response.data.user_id
-    const userList1=[
+    userList1=[
       {
         id: response.data.data[0].user_id,
         role: response.data.data[0].type,
@@ -62,6 +62,9 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     console.log("token")
     console.log(accessToken)
     localStorage.setItem("role", user.role)
+    // $window.localStorage.setItem('user', JSON.stringify(user));
+    // this.currentUser = user;
+
     return [
       200,
       {
@@ -150,7 +153,7 @@ Mock.onGet('/api/auth/profile').reply((config) => {
 
     const accessToken = Authorization.split(' ')[1];
     const { userId } = jwt.verify(accessToken, JWT_SECRET);
-    const user = userList.find((u) => u.id === userId);
+    const user = userList1.find((u) => u.id === userId);
 
     if (!user) {
       return [401, { message: 'Invalid authorization token' }];

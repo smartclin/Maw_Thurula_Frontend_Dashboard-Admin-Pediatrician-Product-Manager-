@@ -3,8 +3,8 @@ import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import Posts from "../admin/pediatricians/component/PostList";
-import Write from "./shared/PediatricianDashboardWritePost";
-import Imageupload from "./shared/imageupload";
+import Write from "./shared/PediatricianDashboardWritePost2";
+import Imageupload from "./shared/Imageupload";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',

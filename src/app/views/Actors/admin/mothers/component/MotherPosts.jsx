@@ -22,13 +22,6 @@ import {
     getRecentMotherPostForAdmin
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 import {Fragment, useEffect, useState} from 'react';
-
-
-
-
-
-
-
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -39,8 +32,6 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
-
-
 
 const MotherPosts = () => {
     const navigate = useNavigate();
@@ -71,8 +62,6 @@ const MotherPosts = () => {
         // console.log("--------------")
 
     }, [MotherPosts]);
-
-
 
     const [expanded, setExpanded] = React.useState(false);
 

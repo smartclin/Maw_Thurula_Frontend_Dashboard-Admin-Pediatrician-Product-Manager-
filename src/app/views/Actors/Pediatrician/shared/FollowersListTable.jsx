@@ -16,29 +16,31 @@ import {useNavigate} from 'react-router-dom';
 import {getMotherListForAdmin} from "../../../../services/Admin/Mother/admin_mother_service";
 // import {useEffect, useState} from "@types/react";
 import {Fragment, useEffect, useState} from 'react';
+import {getFollowerListForPediatrician} from "../../../../services/Pediatrician/pt_service";
+
 
 const FlowersListTable=()=> {
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
+    // const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
 
-    const [MotherList, setMotherList] = useState([]);
+    const [FlowerList, setFollowerList] = useState([]);
     const [TMotherList, setTMotherList] = useState([]);
     const mlist=[]
 
 
 
     useEffect(() => {
-        getMotherListForAdmin().then(data => {
-            setMotherList(data);
+        getFollowerListForPediatrician(1).then(data => {
+            setFollowerList(data);
         }).catch(err => {
             console.log(err.error)
         })
     }, []);
 
     useEffect(async () => {
-        // console.log(MotherList)
-    }, [MotherList]);
+        console.log(FlowerList)
+    }, [FlowerList]);
 
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
@@ -96,11 +98,10 @@ const FlowersListTable=()=> {
                     }                },
                 { title: 'Name', field: 'first_name',width: "10%" },
                 { title: 'Email', field: 'email',width: "10%" },
-                { title: 'Posts', field: 'postCount',width: "10%" },
                 { title: 'id', field: 'user_id',width: "10%",hidden:true },
                 { title: 'Status', field: 'STATUS',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
             ]}
-            data={MotherList.students}
+            data={FlowerList.followers}
             // data={[
             //     {
             //         url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
@@ -144,13 +145,13 @@ const FlowersListTable=()=> {
             //     },
             //
             // ]}
-            onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
+            // onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
             actions={[
 
                 (rowData) => {
                     return rowData.STATUS
                         ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
-                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'BLOCK', onClick: (rowData) => { handleClickOpen()} }
                 }
                 ,
                 {
