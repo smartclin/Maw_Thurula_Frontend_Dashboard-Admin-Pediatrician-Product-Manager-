@@ -16,28 +16,91 @@ import PendingIcon from '@mui/icons-material/Pending';
 import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 import {useNavigate, useParams} from "react-router-dom";
 import ArchiveIcon from '@mui/icons-material/Archive';
+import {useEffect, useRef, useState} from "react";
+import {
+    BlockPediatrician,
+    getPListForAdmin,
+    UnBlockPediatrician
+} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
+import {
+    Astrologers_Data_with_profit,
+    BlockAstrologer, UnBlockAstrologer
+} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 const AstrologerListTable=()=> {
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const checkStatus=(data)=>{
-        console.log("data - "+data)
-        return true
-    }
     const navigate = useNavigate();
 
     const loadReport=()=>navigate({
         pathname:'../admin/one_astrologer_report',
 
     })
+    const [AList, setAList] = useState([]);
+    useEffect(() => {
+        Astrologers_Data_with_profit().then(data => {
+            setAList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
 
+
+    const [id, setId] = React.useState(false);
+
+    const handleBlockClickOpen = (uid) => {
+        console.log(uid)
+        setId(uid);
+        // // console.log("Id : "+id)
+        setOpen(true);
+    };
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    function calcProfit(x){
+        if(x){
+            // console.log("has val -"+x)
+            let val=numberWithCommas(x)
+            let y="Rs. "+val
+            return y
+        }
+        else {
+            return "Rs. 0"
+        }
+    }
+    const handleUnBlockClickOpen= (uid) => {
+        // console.log(uid)
+        UnBlockAstrologer(uid).then(data => {
+            // console.log("Succesfully Unblocked id-"+uid)
+            Astrologers_Data_with_profit().then(data => {
+                setAList(data);
+            }).catch(err => {
+                console.log(err.error)
+            })
+        }).catch(err => {
+            console.log(err.error)
+        })
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const valueRef = useRef('')
+    const sendValue = () => {
+        // console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
+        BlockAstrologer(id,valueRef.current.value).then(data => {
+            // console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
+            Astrologers_Data_with_profit().then(data => {
+                setAList(data);
+            }).catch(err => {
+                console.log(err.error)
+            })
+        }).catch(err => {
+            console.log(err.error)
+        })
+        setOpen(false);
+    }
 
     return (
         <div>
@@ -57,20 +120,21 @@ const AstrologerListTable=()=> {
                     type="text"
                     fullWidth
                     variant="standard"
+                    inputRef={valueRef}
                 />
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Submit</Button>
+                <Button onClick={sendValue}>Block</Button>
             </DialogActions>
         </Dialog>
         <MaterialTable
             title="Astrologers List"
             columns={[
                 {
-                    field: 'url',
+                    field: 'profile_picture',
                     title: 'Avatar',
-                    render: rowData => <img src={rowData.url} style={{width: 30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
+                    render: rowData => <img src={rowData.profile_picture} style={{width: 30, borderRadius: '50%',boxShadow: "0px 3px 6px #9E9E9E"}}/>,
                     cellStyle: {
                         paddingLeft:30
                     },
@@ -78,26 +142,28 @@ const AstrologerListTable=()=> {
                         paddingLeft:30
                     }                },
                 { title: 'Name', field: 'name',width: "10%" },
-                { title: 'Email', field: 'Email',width: "10%" },
-                { title: 'Jobs', field: 'Jobs',width: "10%" },
-                { title: 'Charge', field: 'Charge',width: "10%" },
-                { title: 'Income', field: 'Income',width: "10%" },
-                { title: 'Status', field: 'Status',lookup:{0:'Unblock',1:'Block'},width: "10%" ,hidden:true},
+                { title: 'id', field: 'user_id',width: "10%",hidden:true },
+                { title: 'Email', field: 'email',width: "10%" },
+                { title: 'Jobs', field: 'Jobs',width: "10%",hidden:true },
+                { title: 'Charge', field: 'service_charge', },
+                { title: 'Income', field: 'sum',render: (expense) => <span>{calcProfit(expense.sum)}</span>,},
+                { title: 'Status', field: 'STATUS',width: "10%" ,hidden:false},
             ]}
-            data={[
-                {url:'https://i.postimg.cc/mkbXchv1/7.jpg', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Jobs: 1987, Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
-                {url:'https://i.postimg.cc/W4Lzg2xN/4.jpg', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', Jobs: 1987, Charge: 'Rs.700' ,Income: 'Rs.7500' ,Status:1},
-                {url:'https://i.postimg.cc/7YtTGrxh/3.jpg', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', Jobs: 1987, Charge: 'Rs.800' ,Income: 'Rs.7500' ,Status:0},
-                {url:'https://i.postimg.cc/GtPLN2v8/6.jpg', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', Jobs: 1987, Charge: 'Rs.900' ,Income: 'Rs.7500' ,Status:0},
-                {url:'https://i.postimg.cc/fTnrG143/1.webp', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', Jobs: 1987, Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:0},
-
-            ]}
+            // data={[
+            //     {url:'https://i.postimg.cc/mkbXchv1/7.jpg', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Jobs: 1987, Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
+            //     {url:'https://i.postimg.cc/W4Lzg2xN/4.jpg', name: 'Anura Ajantha', Email: 'Ajantha@gmail.com', Jobs: 1987, Charge: 'Rs.700' ,Income: 'Rs.7500' ,Status:1},
+            //     {url:'https://i.postimg.cc/7YtTGrxh/3.jpg', name: 'Kasun kalhara', Email: 'kalhara@gmail.com', Jobs: 1987, Charge: 'Rs.800' ,Income: 'Rs.7500' ,Status:0},
+            //     {url:'https://i.postimg.cc/GtPLN2v8/6.jpg', name: 'Jagath Manawakage', Email: 'Manawakage@gmail.com', Jobs: 1987, Charge: 'Rs.900' ,Income: 'Rs.7500' ,Status:0},
+            //     {url:'https://i.postimg.cc/fTnrG143/1.webp', name: 'Dissanayaka', Email: 'dissanayaka@gmail.com', Jobs: 1987, Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:0},
+            //
+            // ]}
+            data={AList.astrologers}
             onRowClick={(event, rowData) => console.log(rowData)}
             actions={[
                 (rowData) => {
-                    return rowData.Status
-                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
-                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                    return rowData.STATUS==1
+                        ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (event, rowData) => { handleUnBlockClickOpen(rowData.user_id) } }
+                        : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (event, rowData) => { handleBlockClickOpen(rowData.user_id)} }
                 },,
                 {
                     icon: ()=><ArchiveIcon style={{color:'#95a5a6'}}/>,

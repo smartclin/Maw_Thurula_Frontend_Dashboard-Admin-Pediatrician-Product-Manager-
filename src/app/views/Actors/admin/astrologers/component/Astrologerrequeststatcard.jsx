@@ -6,6 +6,9 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PendingIcon from '@mui/icons-material/Pending';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import {useEffect, useState} from "react";
+import {getPListForAdmin} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
+import {getAListForAdmin} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     display: 'flex',
@@ -34,6 +37,40 @@ const Heading = styled('h6')(({ theme }) => ({
 }));
 
 const AstrologerRequestStatCards = () => {
+    const [AList, setAList] = useState([]);
+    const [all, setAll] = useState(0);
+    const [block, setBlock] = useState(0);
+    const [active, setActive] = useState(0);
+
+    useEffect(() => {
+        getAListForAdmin().then(data => {
+            setAList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(async () => {
+        let tall=0;
+        let tblock=0;
+        let tactive=0;
+        AList.astrologers ? AList.astrologers.map((p, index) => {
+            tall++;
+            if(p.STATUS == 1){
+                tblock++;
+            }
+            if(p.STATUS==2){
+                tactive++;
+            }
+        }) : console.log("")
+        console.log(tall)
+        console.log(tblock)
+        console.log(tactive)
+
+        setAll(tall)
+        setActive(tactive)
+        setBlock(tblock)
+    }, [AList]);
+
     const cardList = [
         { name: 'Registered Astrologers', amount: 3050, icon: 'person_rounded',size:55 },
         { name: 'Pending Requests', amount: 30, icon: 'pending_actions', size:50},

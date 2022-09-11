@@ -38,7 +38,7 @@ const PediatriciansRequestStatCards = () => {
 
         { name: 'Pending Requests', amount: 30, icon: 'pending_actions', size:45},
         { name: 'Registered Pediatricians', amount: 600, icon: 'person_rounded',size:57 },
-        { name: 'Active Pediatricians', amount: 40, icon: 'supervisor_account', size:60},
+        { name: 'Blocked Pediatricians', amount: 40, icon: 'person_offIcon', size:45},
     ];
 
     return (
