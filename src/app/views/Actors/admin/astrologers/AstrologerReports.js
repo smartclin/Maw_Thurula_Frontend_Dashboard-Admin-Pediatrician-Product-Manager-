@@ -1,3 +1,4 @@
+
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
 import AstrologerReportStatCards from "./AstrologerReportStatCards";
@@ -11,8 +12,11 @@ import DownloadIcon from '@mui/icons-material/Download';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import API from "../../../../services/baseURL";
 
 const AstrologersReports = () => {
+
+
 
     const { palette } = useTheme();
 
@@ -70,24 +74,8 @@ const AstrologersReports = () => {
 
 
 
-                <div style ={chartDiv}>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Registerd Astrologers</Title>
 
-                        <AstrologerReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Profit from Astrologers</Title>
 
-                        <AstrologerReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                </div>
             </div>
 
         </Fragment>

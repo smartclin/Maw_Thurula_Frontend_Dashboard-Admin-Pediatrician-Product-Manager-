@@ -1,8 +1,35 @@
 import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
+import { load_reg_al} from "../../../../services/Admin/Astrologer/admin_astrologer_report_service";
+import {useEffect, useState} from "react";
 
-const AstrologerReportLineChart = ({ height, color = [] }) => {
+
+const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
   const theme = useTheme();
+  console.log("line chart"+sDate)
+  console.log("line chart"+eDate)
+  const [RegAl, setRegAl] = useState([[]]);
+
+  //load registered astrolergers
+  useEffect(() => {
+    load_reg_al(sDate,eDate).then(data => {
+      console.log(data)
+      setRegAl(data);
+    console.log(RegAl['reg_al'][0]['month(registered_at)']);
+    console.log(RegAl['reg_al'][0]['count(*)']);
+    })
+  }, [])
+
+console.log(RegAl)
+ let al=[];
+let i=0;
+  RegAl.map((al_count:array)=> (
+      al[i]=al_count['count(*)'],
+      i++
+
+));
+  console.log(al[0]);
+ // console.log(al[1]);
 
   const option = {
     grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },

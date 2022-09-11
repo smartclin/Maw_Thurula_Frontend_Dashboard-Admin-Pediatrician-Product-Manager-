@@ -26,3 +26,4 @@ export const getNameProviders = async event => {
     console.log(response)
     return response.data;
 };
+

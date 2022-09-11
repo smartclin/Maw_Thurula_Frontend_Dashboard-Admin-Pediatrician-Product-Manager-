@@ -63,8 +63,8 @@ const JwtLogin = () => {
       // console.log(accessToken)
       var userType = localStorage.getItem("role")
       console.log("session")
-      console.log(userType)
-
+    //  console.log(userType)
+      //navigate('/');
       navigate('/'+userType);
     } catch (e) {
       setLoading(false);
