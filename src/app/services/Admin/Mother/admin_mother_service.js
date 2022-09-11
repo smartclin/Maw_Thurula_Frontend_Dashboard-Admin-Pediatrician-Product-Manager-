@@ -9,6 +9,48 @@ export const getMotherListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
+
+export const getSingleMotherPostListForAdmin = async (id) => {
+    const response = await API.get(`/admin/Check_single_mother_Posts_list`,{
+        params:{
+            "uid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const MotherPendingPostWithCount = async event => {
+    const response = await API.get(`/admin/Mother_Pending_Post_With_Count`, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const RejectPost = async (id) => {
+    const response = await API.get(`/admin/rejectPost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const AcceptPost = async (id) => {
+    const response = await API.get(`/admin/acceptPost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const SinglePostDetails = async (id) => {
+    const response = await API.get(`/admin/Single_Post_Details`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 // http://localhost:3000/admin/block_mother
 export const BlockMother = async (id,mg) => {
     const response = await API.get(`/admin/block_mother`,{
