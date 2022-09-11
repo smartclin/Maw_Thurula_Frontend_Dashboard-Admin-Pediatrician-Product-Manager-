@@ -149,7 +149,7 @@ const AdminPostCommentMother = () => {
     return (
         <div>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Reason for this action</DialogTitle>
+                <DialogTitle>Let's just send a warning message for now, shall we?</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Notification message
