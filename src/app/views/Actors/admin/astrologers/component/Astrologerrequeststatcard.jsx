@@ -8,7 +8,10 @@ import PendingIcon from '@mui/icons-material/Pending';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import {useEffect, useState} from "react";
 import {getPListForAdmin} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
-import {getAListForAdmin} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
+import {
+    Get_Astrologers_Month_Profit,
+    getAListForAdmin
+} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 
 const StyledCard = styled(Card)(({ theme }) => ({
     display: 'flex',
@@ -41,6 +44,8 @@ const AstrologerRequestStatCards = () => {
     const [all, setAll] = useState(0);
     const [block, setBlock] = useState(0);
     const [active, setActive] = useState(0);
+    const [monthProfit, setMonthProfit] = useState(0);
+
 
     useEffect(() => {
         getAListForAdmin().then(data => {
@@ -48,6 +53,15 @@ const AstrologerRequestStatCards = () => {
         }).catch(err => {
             console.log(err.error)
         })
+
+        Get_Astrologers_Month_Profit().then(data => {
+            // console.log("-----------------")
+            // console.log()
+            setMonthProfit(data.Data[0].sum)
+        }).catch(err => {
+            console.log(err.error)
+        })
+
     }, []);
     useEffect(async () => {
         let tall=0;
@@ -62,19 +76,21 @@ const AstrologerRequestStatCards = () => {
                 tactive++;
             }
         }) : console.log("")
-        console.log(tall)
-        console.log(tblock)
-        console.log(tactive)
+        // console.log(tall)
+        // console.log(tblock)
+        // console.log(tactive)
 
         setAll(tall)
         setActive(tactive)
         setBlock(tblock)
     }, [AList]);
-
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const cardList = [
-        { name: 'Registered Astrologers', amount: 3050, icon: 'person_rounded',size:55 },
-        { name: 'Pending Requests', amount: 30, icon: 'pending_actions', size:50},
-        { name: 'Profit of the month', amount: "40,000", icon: 'monetization_on', size:50},
+        { name: 'Registered Astrologers', amount: all, icon: 'person_rounded',size:55 },
+        { name: 'Pending Requests', amount: active, icon: 'pending_actions', size:50},
+        { name: 'Profit of the month', amount: numberWithCommas(monthProfit), icon: 'monetization_on', size:50},
     ];
 
     return (
