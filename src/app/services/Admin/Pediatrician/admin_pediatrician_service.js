@@ -51,3 +51,26 @@ export const BlockPediatrician = async (uid,mg) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const Pediatrician_Request_Data = async event => {
+    const response = await API.get(`/admin/view_paediatrician_requests`, options);
+    return response.data;
+};
+
+export const AcceptPediatrician = async (uid) => {
+    const response = await API.get(`/admin/accept_pediatrician`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const RejectPediatrician = async (uid) => {
+    const response = await API.get(`/admin/reject_pediatrician`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};

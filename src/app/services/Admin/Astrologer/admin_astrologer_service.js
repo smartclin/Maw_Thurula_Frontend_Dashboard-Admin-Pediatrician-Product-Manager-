@@ -71,3 +71,26 @@ export const BlockAstrologer = async (uid,mg) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const Astrologer_Request_Data = async event => {
+    const response = await API.get(`/admin/view_astrologer_requests`, options);
+    return response.data;
+};
+export const AcceptAstrologer = async (uid) => {
+    const response = await API.get(`/admin/accept_astrologer`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const RejectAstrologer = async (uid) => {
+    const response = await API.get(`/admin/reject_astrologer`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+

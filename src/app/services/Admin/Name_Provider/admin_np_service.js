@@ -71,3 +71,25 @@ export const BlockNP = async (uid,mg) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const NP_Request_Data = async event => {
+    const response = await API.get(`/admin/view_baby_name_provider_requests`, options);
+    return response.data;
+};
+export const AcceptNP = async (uid) => {
+    const response = await API.get(`/admin/accept_np`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const RejectNP = async (uid) => {
+    const response = await API.get(`/admin/reject_np`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
