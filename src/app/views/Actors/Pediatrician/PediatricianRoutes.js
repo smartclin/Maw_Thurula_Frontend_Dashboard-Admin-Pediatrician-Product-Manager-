@@ -8,6 +8,7 @@ const PediatricianDashboard = Loadable(lazy(() => import('../../Actors/Pediatric
 const PediatricianViewArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansViewArticles')));
 const PediatricianViewFullArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansViewFullArticle')));
 const PediatricianWriteArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansWriteArticles')));
+const PediatricianViewFollowers = Loadable(lazy(() => import('../../Actors/Pediatrician/FollowersList')));
 
 
 const PediatriciansRoutes = [
@@ -15,8 +16,7 @@ const PediatriciansRoutes = [
     { path: '/pt/PediatricianViewArticles', element: <PediatricianViewArticles/>, auth: authRoles.admin },
     { path: '/pt/PediatricianViewFullArticles', element: <PediatricianViewFullArticles/>, auth: authRoles.admin },
     { path: '/pt/PediatricianWriteArticles', element: <PediatricianWriteArticles/>, auth: authRoles.admin },
-
-
+    { path: '/pt/PediatricianViewFollowers', element: <PediatricianViewFollowers/>, auth: authRoles.admin },
 
 ];
 

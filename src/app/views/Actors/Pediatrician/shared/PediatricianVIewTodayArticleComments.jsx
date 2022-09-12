@@ -17,7 +17,7 @@ import {getMotherListForAdmin} from "../../../../services/Admin/Mother/admin_mot
 // import {useEffect, useState} from "@types/react";
 import {Fragment, useEffect, useState} from 'react';
 
-const CommentListTable=()=> {
+const TodayCommentListTable=()=> {
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
     const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
@@ -172,7 +172,7 @@ const CommentListTable=()=> {
         </div>
     )
 }
-export default CommentListTable;
+export default TodayCommentListTable;
 
 
 

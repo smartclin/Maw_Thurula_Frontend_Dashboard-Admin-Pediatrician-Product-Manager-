@@ -36,12 +36,14 @@ const H4 = styled('h4')(({ theme }) => ({
 }));
 
 const MothersRequestList = () => {
-    const {palette} = useTheme();
-    const {id} = useParams();
+    let { uid } = useParams();
+    let { pid } = useParams();
 
 
-    console.log("location")
-    console.log(id)
+    // console.log("location")
+    // console.log(uid)
+    // console.log(pid)
+
     const Container = styled('div')(({theme}) => ({
         margin: '30px',
         [theme.breakpoints.down('sm')]: {
@@ -54,6 +56,8 @@ const MothersRequestList = () => {
             },
         },
     }));
+
+
     return (
         <Fragment>
             <ContentBox className="analytics" >

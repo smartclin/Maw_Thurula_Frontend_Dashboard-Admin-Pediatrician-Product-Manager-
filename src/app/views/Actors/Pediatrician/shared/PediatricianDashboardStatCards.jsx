@@ -1,5 +1,7 @@
 import { Box, Card, Grid, Icon, IconButton, styled, Tooltip,Link } from '@mui/material';
 import { Small } from 'app/components/Typography';
+import {useEffect,useState} from "react";
+import {getFollowerListForPediatrician, getPostList} from "../../../../services/Pediatrician/pt_service";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -28,9 +30,49 @@ const Heading = styled('h6')(({ theme }) => ({
 }));
 
 const PediatricianDashboardStatCards = () => {
+
+  const [articleList, setArticleList] = useState([]);
+  const [all, setAll] = useState(0);
+
+  const [followerList, setFollowerList] = useState([]);
+  const [fall, setFall] = useState(0);
+
+  useEffect((id=1) => {
+    getPostList(id).then(data => {
+      setArticleList(data);
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+
+  useEffect(async () => {
+    let tall=0;
+    articleList.article ? articleList.article.map((mother, index) => {
+      tall++;
+    }) : console.log(tall)
+
+    setAll(tall)
+  }, [articleList]);
+
+  useEffect((id=1) => {
+    getFollowerListForPediatrician(id=1).then(data => {
+      setFollowerList(data);
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+
+  useEffect(async () => {
+    let fall=0;
+    followerList.followers ? followerList.followers.map((mother, index) => {
+      fall++;
+    }) : console.log(followerList)
+
+    setFall(fall)
+  }, [followerList]);
   const cardList = [
-    { name: 'Followers', amount: 30, icon: 'group' },
-    { name: 'No of articles', amount: 15, icon: 'check_circle' },
+    { name: 'Followers', amount: fall, icon: 'group' },
+    { name: 'No of articles', amount: all, icon: 'check_circle' },
 
   ];
 
@@ -51,7 +93,6 @@ const PediatricianDashboardStatCards = () => {
                 <IconButton>
                   <Icon>arrow_right_alt</Icon>
                 </IconButton>
-
             </Tooltip>
           </StyledCard>
         </Grid>

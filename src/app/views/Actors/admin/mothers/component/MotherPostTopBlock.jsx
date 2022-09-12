@@ -18,7 +18,8 @@ import CardHeader from "@mui/material/CardHeader";
 import {useParams} from "react-router";
 import {Fragment, useEffect, useState} from 'react';
 import {
-    getRecentMotherPostByPostIdForAdmin
+    BlockMother, getMotherListForAdmin,
+    getRecentMotherPostByPostIdForAdmin, HidePost, ShowHidePost
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 
 
@@ -33,9 +34,9 @@ const MotherPostblockcard = () => {
         })
     }, []);
     useEffect(async () => {
-        console.log("-------------------")
-        console.log(MotherPosts)
-        console.log(MotherPosts.title)
+        // console.log("-------------------")
+        // console.log(MotherPosts)
+        // console.log(MotherPosts.title)
     }, [MotherPosts]);
     const ExpandMore = styled((props) => {
         const { expand, ...other } = props;
@@ -65,6 +66,32 @@ const MotherPostblockcard = () => {
         const formattedToday = dd + '/' + mm + '/' + yyyy;
         return formattedToday
     }
+    const HidePosts = () => {
+        HidePost(id).then(x => {
+            // console.log("Hide - "+id);
+            getRecentMotherPostByPostIdForAdmin(id).then(data => {
+                setMotherPosts(data.data[0])
+            }).catch(err => {
+                console.log(err.error)
+            })
+
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }
+    const ShowPost = () => {
+        ShowHidePost(id).then(x => {
+            console.log("unHide - "+id);
+            getRecentMotherPostByPostIdForAdmin(id).then(data => {
+                setMotherPosts(data.data[0])
+            }).catch(err => {
+                console.log(err.error)
+            })
+
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }
 
     return (
         <Card sx={{ minWidth: 275,paddingBottom:0 ,minHeight:165,maxHeight:165 }}>
@@ -88,11 +115,11 @@ const MotherPostblockcard = () => {
                     </IconButton>
 
                     {MotherPosts.status==1 ?
-                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}}>
+                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}} onClick={()=>{ShowPost()}}>
                             Show
                         </Button>
                         :
-                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}}>
+                        <Button variant="outlined" color="warning" startIcon={<VisibilityOffRoundedIcon />} style={{marginLeft:10}} onClick={()=>{HidePosts()}}>
                             Hide
                         </Button>
                     }

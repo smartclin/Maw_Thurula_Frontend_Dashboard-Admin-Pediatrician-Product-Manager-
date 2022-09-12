@@ -9,6 +9,86 @@ export const getMotherListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
+
+export const getSingleMotherPostListForAdmin = async (id) => {
+    const response = await API.get(`/admin/Check_single_mother_Posts_list`,{
+        params:{
+            "uid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const MotherPendingPostWithCount = async event => {
+    const response = await API.get(`/admin/Mother_Pending_Post_With_Count`, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const RejectPost = async (id) => {
+    const response = await API.get(`/admin/rejectPost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const AcceptPost = async (id) => {
+    const response = await API.get(`/admin/acceptPost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const SinglePostDetails = async (id) => {
+    const response = await API.get(`/admin/Single_Post_Details`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+// http://localhost:3000/admin/block_mother
+export const BlockMother = async (id,mg) => {
+    const response = await API.get(`/admin/block_mother`,{
+        params:{
+            "uid":id,
+            "mg":mg
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const HidePost = async (id) => {
+    const response = await API.get(`/admin/HidePost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const ShowHidePost = async (id) => {
+    const response = await API.get(`/admin/ShowHidePost`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const UnBlockMother = async (uid) => {
+    const response = await API.get(`/admin/unblock_mother`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getTargetMotherListForAdmin = async (id) => {
     const response = await API.get(`/admin/target_motherDetails`,{
         params:{
@@ -27,8 +107,36 @@ export const getRecentMotherPostForAdmin = async (id) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const getMotherPostsReplyListForAdmin = async (id) => {
+    const response = await API.get(`/admin/post_comments_list`,{
+        params:{
+            "pid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const delete_Comment = async (id) => {
+    const response = await API.get(`/admin/delete_comments`,{
+        params:{
+            "cid":id
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
+export const warningForComments = async (id,mg) => {
+    const response = await API.get(`/admin/warning_for_comments`,{
+        params:{
+            "uid":id,
+            mg:mg
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getRecentMotherPostByPostIdForAdmin = async (id) => {
-    console.log("call func")
+    // console.log("call func")
     const response = await API.get(`/admin/Mother_Post_Details`,{
         params:{
             "pid":id

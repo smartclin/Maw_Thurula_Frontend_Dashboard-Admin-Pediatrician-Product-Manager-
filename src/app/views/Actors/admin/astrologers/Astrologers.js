@@ -13,7 +13,7 @@ const Astrologers = () => {
     return (
         <Fragment>
             <ContentBox className="analytics" >
-                <Grid container lg={12} spacing={3} >
+                <Grid container item lg={12} spacing={3} >
                     <Grid item lg={12} md={12} sm={12} xs={12}>
                         <Astrologerstatcard/>
                         <AstrologerListTable/>

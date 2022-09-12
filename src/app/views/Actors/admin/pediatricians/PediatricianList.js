@@ -4,6 +4,7 @@ import NamePorividerstatcard from "../name-providers/component/NameProviderstatc
 import NameProviderListTable from "../name-providers/component/NameProviderListTable";
 import PediatricianListTable from "./component/pediatricianListTable";
 import Pediatricianstatcard from "./component/pediatricianstatcard";
+import {useState} from "react";
 
 
 const PediatricianList = () => {
@@ -13,6 +14,7 @@ const PediatricianList = () => {
         margin: '30px',
         [theme.breakpoints.down('md')]: { margin: '16px' },
     }));
+
     return (
         <Fragment>
             <ContentBox className="analytics">

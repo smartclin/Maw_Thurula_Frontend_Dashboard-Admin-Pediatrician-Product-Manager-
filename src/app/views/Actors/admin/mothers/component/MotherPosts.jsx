@@ -19,16 +19,9 @@ import MarkunreadRoundedIcon from '@mui/icons-material/MarkunreadRounded';
 import {useNavigate} from "react-router-dom";
 import { useParams } from "react-router";
 import {
-    getRecentMotherPostForAdmin
+    getRecentMotherPostForAdmin, getTargetMotherListForAdmin
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 import {Fragment, useEffect, useState} from 'react';
-
-
-
-
-
-
-
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -40,13 +33,12 @@ const ExpandMore = styled((props) => {
     }),
 }));
 
-
-
 const MotherPosts = () => {
     const navigate = useNavigate();
     const handleOnClick = (id) => navigate('/admin/mother_details/'+id, {replace: false});
 
     let { id } = useParams();
+    let { count } = useParams();
     const [MotherPosts, setMotherPosts] = useState([]);
     const cardList = [
         { category: 'Inconsolable crying', date: "2022/07/02", img: 'pregnant_woman',content:"Parents everywhere can testify to the fact that becoming a parent can be equally thrilling and terrifying—a combination of excitement and joy on the one hand and fear and frustration on the other. ",title:" Listening to Others",likes:12,comments:23 },
@@ -72,13 +64,20 @@ const MotherPosts = () => {
 
     }, [MotherPosts]);
 
-
-
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const [Count, setCount] = useState(0);
+    getTargetMotherListForAdmin(id).then(data => {
+        setCount(count)
+    }).catch(err => {
+        console.log(err.error)
+    })
+
+
 
     function DateReturn(date){
         const today = new Date(date);
@@ -96,53 +95,67 @@ const MotherPosts = () => {
 
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
-            {(MotherPosts).map((item, index) => (
-                <Grid item xs={4} md={4} key={index} onClick={()=>{handleOnClick(item.PostId)}}>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{padding:0.4 }} aria-label="recipe" src={item.img}>
+            { (Count!=0) ?
+                // <h6>Data found{Count}</h6>
+                (MotherPosts).map((item, index) => (
+                    <Grid item xs={4} md={4} key={index} onClick={()=>{handleOnClick(item.PostId)}}>
+                        <Card sx={{ maxWidth: 345 }}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar sx={{padding:0.4 }} aria-label="recipe" src={item.img}>
 
-                                </Avatar>
-                            }
-                            action={
-                                <IconButton aria-label="settings">
+                                    </Avatar>
+                                }
+                                action={
+                                    <IconButton aria-label="settings">
+                                    </IconButton>
+                                }
+                                title={item.category}
+                                subheader={
+                                    DateReturn(item.Date)
+                                }
+                            />
+                            <CardMedia
+                                component="img"
+                                height="194"
+                                image="https://i.postimg.cc/Pxng9B9H/1.webp"
+                                alt="Paella dish"
+                            />
+                            <CardContent>
+                                <Typography variant="body2" color="#576574">
+                                    {item.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {item.post_content}
+                                </Typography>
+                            </CardContent>
+                            <CardActions disableSpacing>
+                                <IconButton aria-label="add to favorites">
+                                    <FavoriteIcon /> <span style={{fontSize:20}}>{item.no_of_likes}</span>
                                 </IconButton>
-                            }
-                            title={item.category}
-                            subheader={
-                                DateReturn(item.Date)
-                            }
-                        />
-                        <CardMedia
-                            component="img"
-                            height="194"
-                            image="https://i.postimg.cc/Pxng9B9H/1.webp"
-                            alt="Paella dish"
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="#576574">
-                                {item.title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {item.post_content}
-                            </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing>
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon /> <span style={{fontSize:20}}>{item.no_of_likes}</span>
-                            </IconButton>
-                            <IconButton aria-label="share" onClick={()=>{alert("️This works on every component!")}}>
-                                <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.ReplyCount}</span>
-                            </IconButton>
-                            <ExpandMore>
-                                <PendingRoundedIcon style={{fontSize:25}} />
-                            </ExpandMore>
-                        </CardActions>
+                                {/*onClick={()=>{alert("️This works on every component!")}}*/}
+                                <IconButton aria-label="share" >
+                                    <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>{item.ReplyCount}</span>
+                                </IconButton>
+                                <ExpandMore>
+                                    <PendingRoundedIcon style={{fontSize:25}} />
+                                </ExpandMore>
+                            </CardActions>
 
-                    </Card>
+                        </Card>
+                    </Grid>
+                ))
+
+                :
+                <Grid style={{paddingLeft:25,paddingTop:20,}}>
+                    <Typography gutterBottom variant="h6" component="div" style={{color:"#34495e"}}>
+                        No Posts Yet
+                    </Typography>
                 </Grid>
-            ))}
+            }
+
+
+
         </Grid>
     );
 };
