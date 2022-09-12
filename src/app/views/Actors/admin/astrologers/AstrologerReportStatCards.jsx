@@ -7,6 +7,11 @@ import {load_stat_card1, load_stat_card2,load_tot_income,load_pending_income} fr
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import AstrologerReportLineChart from "./AstrologerReportLineChart";
+//import {refresh} from "./AstrologerReportLineChart";
+import {render} from "react-dom";
+import AstrologerReportLineChart2 from "./AstrologerReportLineChart2";
+
+
 
 const StyledCard = styled(Card)(({theme}) => ({
     display: 'flex',
@@ -39,6 +44,7 @@ const dateRange={
 };
 
 const AstrologerReportStatCards = () => {
+    const [value, setValue] = useState();
    const [StatCard1, setStatCard1] = useState([]);
 
    useEffect(() => {
@@ -81,7 +87,7 @@ const AstrologerReportStatCards = () => {
 
 
 
-    const [value, setValue] = React.useState([null, null]);
+   // const [value, setValue] = React.useState([null, null]);
 
     let dateRangeButton={
     backgroundColor: '#2b62d9',
@@ -138,17 +144,43 @@ const AstrologerReportStatCards = () => {
         alignItems:'center',
         justifyContent:'space-between',
     };
+    const current = new Date();
+    const dateE = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+   // console.log(dateE)
+
+    const dateS=`${(current.getFullYear()-1)}-${current.getMonth()+1}-${current.getDate()}`;
+   // console.log(dateS)
+
+
+      //  const defaultValueS = dateS.toLocaleDateString('en-CA');
+       // const defaultValueE = dateE.toLocaleDateString('en-CA');
+
 
     const [sDate, setsDate] = useState('');
     const [eDate, seteDate] = useState('');
     const [Tot, setTot] = useState();
     const [Pending, setPending] = useState();
 
+    useEffect(()=>{
+    seteDate(dateE);
+    setsDate(dateS);
+    },[])
+    console.log(`sDate: ${sDate}`);
+    console.log(`eDate: ${eDate}`);
+    //load total income
+    load_tot_income(sDate,eDate).then(data => {
+        setTot(data);
+    })
+
+    //load pending income
+    load_pending_income(sDate,eDate).then(data => {
+        setPending(data);
+    })
+
     function FilterData(event) {
         //  prevent page refresh
         event.preventDefault();
-        console.log(`sDate: ${sDate}`);
-        console.log(`eDate: ${eDate}`);
+
 
         //load total income
         load_tot_income(sDate,eDate).then(data => {
@@ -160,6 +192,7 @@ const AstrologerReportStatCards = () => {
             setPending(data);
         })
 
+        setValue({});
     }
 
     const cardList2 = [
@@ -167,6 +200,7 @@ const AstrologerReportStatCards = () => {
         { name: 'Total Income', amount:Tot , icon: 'attach_money' },
         { name: 'Pending Income', amount: Pending, icon: 'trending_up' },
     ];
+    let chart;
     return (<div>
         <Grid container spacing={3} sx={{ mb: '24px' }}>
           {cardList1.map((item, index) => (
@@ -203,15 +237,18 @@ const AstrologerReportStatCards = () => {
               >
 
                       <TextField label="Start Date" color="primary" focused type="date"  id={sDate} name='sDate'
+                                 defaultValue={sDate}
                                  value={sDate}
                                  onChange={(e) => setsDate(e.target.value)}
+                                 selected
+
 
                           />
 
                       <TextField label="End Date" color="primary" focused  type="date" id={eDate} name='eDate'
                                  value={eDate}
                                  onChange={(e) => seteDate(e.target.value)}
-
+                                 defaultValue={eDate}
                           />
                       <Stack spacing={2} direction="row">
 
@@ -274,20 +311,22 @@ const AstrologerReportStatCards = () => {
                     <Title> Registerd Astrologers</Title>
 
                     <AstrologerReportLineChart
+
                         height="350px"
                         color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        sDate
-                        eDate
+                        sDate={sDate}
+                        eDate={eDate}
+
                     />
                 </Card>
                 <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
                     <Title> Profit from Astrologers</Title>
 
-                    <AstrologerReportLineChart
+                    <AstrologerReportLineChart2
                         height="350px"
                         color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
                         sDate={sDate}
-                        eDate={eDate}
+                         eDate={eDate}
                     />
                 </Card>
             </div>

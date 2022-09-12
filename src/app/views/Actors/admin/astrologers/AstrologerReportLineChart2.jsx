@@ -1,55 +1,41 @@
 import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
-import { load_reg_al} from "../../../../services/Admin/Astrologer/admin_astrologer_report_service";
+import {load_profit_al, load_reg_al} from "../../../../services/Admin/Astrologer/admin_astrologer_report_service";
 import {useEffect, useState} from "react";
 import {array} from "yup";
 
 
-const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
-
-
-  let al_month=[];
-  let al_count=[];
-  const [AlMonth, setAlMonth] = useState([]);
-  const [AlCount, setAlCount] = useState([]);
-
+const AstrologerReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
   const theme = useTheme();
-
+  console.log("line chart"+sDate)
+  console.log("line chart"+eDate)
   const [RegAl, setRegAl] = useState([[]]);
 
+  //load profit from astrolergers
 
-  useEffect(() => {
-    load_reg_al(sDate,eDate).then(data => {
+    let al_month=[];
+    let al_count=[];
+    const [AlMonth, setAlMonth] = useState([]);
+    const [AlCount, setAlCount] = useState([]);
+    useEffect(() => {
+        load_profit_al(sDate,eDate).then(data => {
+            setRegAl(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, [RegAl]);
 
-      setRegAl(data);
-      console.log(RegAl)
-    }).catch(err => {
-      console.log(err.error)
-    })
-  }, [RegAl]);
+    useEffect(async () => {
 
-  useEffect(async () => {
+        if(RegAl.profit_al){
+            console.log(RegAl.profit_al)
+            al_count=RegAl.profit_al.map((al_count:array)=> al_count['SUM(amount)']);
+            al_month=RegAl.profit_al.map((al_month:array)=> al_month['month(date_time)']);
+            setAlCount(al_count)
+            setAlMonth(al_month)
+        }
+    }, [RegAl]);
 
-    if(RegAl.reg_al){
-     console.log(RegAl)
-      al_count=RegAl.reg_al.map((al_count:array)=> al_count['count(*)']);
-      al_month=RegAl.reg_al.map((al_month:array)=> al_month['month(registered_at)']);
-      setAlCount(al_count)
-      setAlMonth(al_month)
-      console.log(al_count)
-    }
-  }, [RegAl]);
-
-
- /*useEffect(()=>{
-   setAlCount(al_count)
- },[])
-
-
-  useEffect(()=>{
-    al_month?setAlMonth(al_month)
-   // console.log(AlMonth)
-  },[])*/
 
 
   const option = {
@@ -60,13 +46,11 @@ const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
       textStyle: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' },
     },
     xAxis: {
-
       type: 'category',
       data: AlMonth,
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
-        xLabel:'month',
         fontSize: 14,
         fontFamily: 'roboto',
         color: theme.palette.text.secondary,
@@ -96,7 +80,4 @@ const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
   return <ReactEcharts style={{ height: height }} option={{ ...option, color: [...color] }} />;
 };
 
-export default AstrologerReportLineChart;
-
-export class refresh {
-}
+export default AstrologerReportLineChart2;

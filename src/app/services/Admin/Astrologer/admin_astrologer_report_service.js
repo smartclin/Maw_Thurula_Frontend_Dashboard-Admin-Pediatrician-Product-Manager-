@@ -55,6 +55,17 @@ export const load_reg_al = async (sDate,eDate) => {
         "sdate": sDate,
         "edate": eDate,
     })
+    let data1=response.data;
+    //let data1=response.data['reg_al'];
+    console.log(data1)
+    return data1;
+};
+
+export const load_profit_al = async (sDate,eDate) => {
+    const response = await API.post('/admin/al/profit_al', {
+        "sdate": sDate,
+        "edate": eDate,
+    })
 
     let data1=response.data;
     //  console.log(data1)
