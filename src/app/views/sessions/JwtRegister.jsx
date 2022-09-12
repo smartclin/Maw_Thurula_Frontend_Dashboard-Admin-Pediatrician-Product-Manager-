@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+
 import {RadioButtonChecked} from "@material-ui/icons";
 
 const FlexBox = styled(Box)(() => ({ display: 'flex', alignItems: 'center' }));
@@ -217,7 +218,7 @@ const JwtRegister = () => {
                       variant="contained"
                       sx={{ mb: 2, mt: 3 }}
                     >
-                      Regiser
+                      Register
                     </LoadingButton>
 
                     <Paragraph>
