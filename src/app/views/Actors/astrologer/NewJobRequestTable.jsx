@@ -17,6 +17,8 @@ import DoneIcon from '@mui/icons-material/Done';
 import {useNavigate} from "react-router-dom";
 import {green} from "@mui/material/colors";
 import {useTheme} from "@mui/material";
+import {useEffect, useState} from "react";
+import {load_req} from "../../../services/Astrologer/al_service";
 
 const NewJobRequestTable=()=> {
     const navigate = useNavigate();
@@ -53,6 +55,39 @@ const NewJobRequestTable=()=> {
         padding:'10px 25px '
     };
     const { palette } = useTheme();
+    let u_id=localStorage.getItem("id");
+//let req_data=[];
+    const [req_data, set_req_data] = useState([]);
+    //load today requests
+    let table_data=[];
+
+
+
+
+    const [Req, setReq] = useState([]);
+    const [TableReq, setTableReq] = useState([]);
+    useEffect(() => {
+        load_req(u_id).then(data => {
+            setReq(data);
+            console.log(Req)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, [Req]);
+
+    useEffect(async () => {
+
+        if(Req.req){
+
+            set_req_data(Req.req)
+            console.log(req_data)
+
+            table_data=req_data.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status}))
+            setTableReq(table_data);
+            console.log(TableReq);
+
+        }
+    }, [Req]);
 
 
 
@@ -90,18 +125,7 @@ const NewJobRequestTable=()=> {
                 { title: 'Date', field: 'Date',width: "10%" },
                 { title: 'Status', field: 'Status',lookup:{0:'Waiting for reply',1:'Replied'},width: "10%" ,hidden:true},
             ]}
-            data={[
-                { name: 'Maduni Tharukshi', Email: 'maduni@gmail.com', Date: '2022/02/05', Status:1},
-                { name: 'Akila Anjana', Email: 'anjana@gmail.com', Date: '2022/02/01',Status:0},
-                { name: 'Lulakshi Naduni', Email: 'lulakshi@gmail.com', Date: '2022/01/30' ,Status:1},
-                {name: 'Hansana Ranaweera', Email: 'hansa@gmail.com', Date: '2022/01/25' ,Status:1},
-                { name: 'Yasas Gamage', Email: 'yasas@gmail.com', Date: '2022/01/02', Status:0},
-                { name: 'Maduni Tharukshi', Email: 'maduni@gmail.com', Date: '2022/02/05', Status:1},
-                { name: 'Akila Anjana', Email: 'anjana@gmail.com', Date: '2022/02/01',Status:0},
-                { name: 'Lulakshi Naduni', Email: 'lulakshi@gmail.com', Date: '2022/01/30' ,Status:1},
-
-
-            ]}
+            data={TableReq}
                       /* icons-material={{
                            Pending: () => <PendingIcon style={{ color: "red" }} />,
                            Done: () => <DoneIcon style={{ color: "orange" }} />

@@ -1,5 +1,7 @@
 import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
 import { Small } from 'app/components/Typography';
+import {useEffect, useState} from "react";
+import {load_stat_card1, load_stat_card2} from "../../../services/NameProvider/np_dashboard_service";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -28,9 +30,40 @@ const Heading = styled('h6')(({ theme }) => ({
 }));
 
 const NameProviderDashboardStatCards = () => {
+  let u_id=localStorage.getItem("id");
+  console.log(u_id)
+  const [StatCard1, setStatCard1] = useState([]);
+
+  useEffect(() => {
+    load_stat_card1(u_id).then(data => {
+      setStatCard1(data);
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+
+  useEffect(async () => {
+
+    console.log(StatCard1)
+  }, [StatCard1]);
+
+  const [StatCard2, setStatCard2] = useState([]);
+  useEffect(() => {
+    load_stat_card2(u_id).then(data => {
+      setStatCard2(data);
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+
+  useEffect(async () => {
+
+    console.log(StatCard2)
+  }, [StatCard2]);
+
   const cardList = [
-    { name: 'Request messages-waiting for reply', amount: 30, icon: 'message' },
-    { name: 'Responded messages', amount: 15, icon: 'check_circle' },
+    { name: 'Request messages-waiting for reply', amount: StatCard1, icon: 'message' },
+    { name: 'Responded messages', amount: StatCard2, icon: 'check_circle' },
 
   ];
 

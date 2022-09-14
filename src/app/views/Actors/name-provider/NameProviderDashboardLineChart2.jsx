@@ -2,43 +2,43 @@ import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
 import {useEffect, useState} from "react";
 import {array} from "yup";
-import {load_line_chart1} from "../../../services/NameProvider/np_dashboard_service";
+import {load_line_chart2} from "../../../services/NameProvider/np_dashboard_service";
 
 
-const NameProviderDashboardLineChart = ({ height, color = []}) => {
+const NameProviderDashboardLineChart2 = ({ height, color = []}) => {
   const theme = useTheme();
   let u_id=localStorage.getItem("id");
   const [RegAl, setRegAl] = useState([[]]);
 
   //load profit from astrolergers
 
-  let al_month=[];
-  let al_count=[];
-  const [AlMonth, setAlMonth] = useState([]);
-  const [AlCount, setAlCount] = useState([]);
-  useEffect(() => {
-    load_line_chart1(u_id).then(data => {
-      setRegAl(data);
-    }).catch(err => {
-      console.log(err.error)
-    })
-  }, [RegAl]);
+    let al_month=[];
+    let al_count=[];
+    const [AlMonth, setAlMonth] = useState([]);
+    const [AlCount, setAlCount] = useState([]);
+    useEffect(() => {
+        load_line_chart2(u_id).then(data => {
+            setRegAl(data);
+           // console.log(RegAl)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, [RegAl]);
 
-  useEffect(async () => {
+    useEffect(async () => {
 
-    if(RegAl.req_data){
-      console.log(RegAl.req_data)
-      al_count=RegAl.req_data.map((al_count:array)=> al_count['count(*)']);
-      al_month=RegAl.req_data.map((al_month:array)=> al_month['month(request_date)']);
-      setAlCount(al_count)
-      setAlMonth(al_month)
-    }
-  }, [RegAl]);
-
+        if(RegAl.profit_data){
+            console.log(RegAl.profit_data)
+            al_count=RegAl.profit_data.map((al_count:array)=> al_count['sum(amount)']);
+            al_month=RegAl.profit_data.map((al_month:array)=> al_month['month(date_time)']);
+            setAlCount(al_count)
+            setAlMonth(al_month)
+        }
+    }, [RegAl]);
 
 
   const option = {
-    grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },
+    grid: { top: '10%', bottom: '10%', left: '12%', right: '5%' },
     legend: {
       itemGap: 20,
       icon: 'circle',
@@ -79,4 +79,4 @@ const NameProviderDashboardLineChart = ({ height, color = []}) => {
   return <ReactEcharts style={{ height: height }} option={{ ...option, color: [...color] }} />;
 };
 
-export default NameProviderDashboardLineChart;
+export default NameProviderDashboardLineChart2;

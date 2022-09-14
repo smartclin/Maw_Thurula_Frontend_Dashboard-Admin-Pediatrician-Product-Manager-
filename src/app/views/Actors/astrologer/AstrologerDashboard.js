@@ -175,7 +175,7 @@ const AstrologerDashboard = () => {
 
                             <span style={emailAndPhone}>
                <Icon color="primary">mail</Icon>
-                <span style={{paddingLeft:20,fontSize:'17px'}}>perara@gmail.com</span>
+                <span style={{paddingLeft:20,fontSize:'17px'}}>{ProfileCard.email}</span>
                  </span>
 
                             <span style={emailAndPhone}>
