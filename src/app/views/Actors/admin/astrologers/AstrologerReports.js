@@ -14,6 +14,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import API from "../../../../services/baseURL";
 
+//import * as jsPDF from 'jspdf';
+import * as ReactDOMServer from "react-dom/server";
+
 const AstrologersReports = () => {
 
 
@@ -54,15 +57,20 @@ const AstrologersReports = () => {
         alignItems:'center',
         justifyContent:'space-between',
     };
+    const Download=()=>{
+       /* const doc = new jsPDF();
+        doc.fromHTML(ReactDOMServer.renderToStaticMarkup(this.render()));
+        doc.save("myDocument.pdf");*/
+    }
     return (
         <Fragment>
             <div style={titleDiv}>
                 <div style={reportTitle}> Astrologer's Report </div>
                 <div>
                     <Stack direction="row" alignItems="center" spacing={2}>
-                        <Button variant="contained" component="label">
+                        <Button variant="contained" component="label" onClick={Download}>
                             Download as a PDF  <DownloadIcon></DownloadIcon>
-                            <input hidden accept="image/*" multiple type="file" />
+
                         </Button>
 
                     </Stack>

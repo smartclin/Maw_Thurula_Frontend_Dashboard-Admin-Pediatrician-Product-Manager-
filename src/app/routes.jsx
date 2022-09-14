@@ -10,7 +10,7 @@ import PediatricianRoutes from "./views/Actors/Pediatrician/PediatricianRoutes";
 
 const routes = [
   {
-    element: (
+  element: (
      <AuthGuard>
      <MatxLayout />
      </AuthGuard>
