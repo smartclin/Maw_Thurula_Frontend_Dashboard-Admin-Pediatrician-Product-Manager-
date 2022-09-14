@@ -6,6 +6,7 @@ import LatestCommunityPostRequestTable from "./shared/admin/LatestCommunityPostR
 import PediatricianRequestTable from "./shared/admin/PediatricianRequestTable";
 import LineChart from "../shared/LineChart";
 import Button from 'react-bootstrap/Button';
+import MatxLayout from "../../../components/MatxLayout/MatxLayout";
 
 
 const ContentBox = styled('div')(({theme}) => ({
@@ -34,6 +35,7 @@ const H4 = styled('h4')(({ theme }) => ({
 }));
 
 const AdminDashboard = () => {
+
     const { palette } = useTheme();
 
     const Container = styled('div')(({ theme }) => ({

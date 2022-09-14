@@ -12,11 +12,41 @@ export const getPostList = async (id) => {
     return response.data;
 };
 
-export const getCommentCount = async event => {
+export const fullArticle = async (id,id1) => {
+    const response = await API.get(`/pt/view_single_articles`,{
+        params:{
+            "article_id":id,
+            "doctor_id":id1
+        }
+    }, options);
+    return response.data;
+};
+
+export const getCommentCount = async (id) => {
 
     const response = await API.get(`/pt/no_of_article_comments`,{
         params:{
-            "article_id":1
+            "article_id":id
+        }
+    }, options);
+    return response.data;
+};
+
+export const getCommentList = async (id) => {
+
+    const response = await API.get(`/pt/view_article_comments`,{
+        params:{
+            "article_id":id
+        }
+    }, options);
+    return response.data;
+};
+
+export const today_article_comments = async (today) => {
+
+    const response = await API.get(`/pt/get_today_comments`,{
+        params:{
+            "today":today
         }
     }, options);
     return response.data;
