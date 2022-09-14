@@ -16,6 +16,9 @@ import {
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import {useEffect, useState} from "react";
+import {load_line_chart2, load_today_req} from "../../../services/Astrologer/al_dashboard_service";
+import {array} from "yup";
 //import ViewMessage from "./ViewMessage";
 const CardHeader = styled(Box)(() => ({
   display: 'flex',
@@ -57,6 +60,37 @@ const Small = styled('small')(({ bgcolor }) => ({
 }));
 
 const AstrologerDashboardTopSellingTable = () => {
+
+  let u_id=localStorage.getItem("id");
+//let req_data=[];
+  const [req_data, set_req_data] = useState([]);
+  //load today requests
+
+
+
+  const [Req, setReq] = useState([]);
+  useEffect(() => {
+    load_today_req(u_id).then(data => {
+      setReq(data);
+      console.log(Req)
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+
+  useEffect(async () => {
+
+    if(Req.today_req){
+
+      set_req_data(Req.today_req)
+      console.log(req_data)
+     req_data.map((x) => console.log(x.email))
+
+
+    }
+  }, [Req]);
+
+
   const { palette } = useTheme();
   const bgError = palette.error.main;
   const bgPrimary = palette.primary.main;
@@ -106,22 +140,25 @@ const AstrologerDashboardTopSellingTable = () => {
           </TableHead>
 
           <TableBody>
-            {productList.map((product, index) => (
+            {req_data.map((product, index) => (
+
               <TableRow key={index} hover  onClick={viewRequest}>
                 <TableCell colSpan={4} align="left" sx={{ px: 0, textTransform: 'capitalize' }}>
                   <Box display="flex" alignItems="center">
 
-                    <Paragraph sx={{ m: 0, ml: 4 }}>{product.name}</Paragraph>
+
+
+                    <Paragraph sx={{ m: 0, ml: 4 }}>{product.email}</Paragraph>
                   </Box>
                 </TableCell>
 
                 <TableCell align="left" colSpan={2} sx={{ px: 0, textTransform: 'capitalize' }}>
-                  {product.price}
+                  {product.message}
                 </TableCell>
 
                 <TableCell sx={{ px: 0 }} align="left" colSpan={2}>
-                  {product.available ? (
-                    product.available < 20 ? (
+                  {product.request_status ? (
+                    product.request_status >0? (
                         <Small bgcolor={bgPrimary}>replied</Small>
                     ) : (
                         <Small bgcolor={bgError}>waiting for reply</Small>
@@ -132,8 +169,8 @@ const AstrologerDashboardTopSellingTable = () => {
                 </TableCell>
 
                 <TableCell sx={{ px: 0 }} colSpan={1}>
-                  {product.available ? (
-                      product.available < 20 ? (
+                  {product.request_status ? (
+                      product.request_status =1 ? (
                           <IconButton>
                             <Icon color="success">done</Icon>
                           </IconButton>
@@ -143,7 +180,9 @@ const AstrologerDashboardTopSellingTable = () => {
                           </IconButton>
                       )
                   ) : (
-                      <Small bgcolor={bgError}></Small>
+                      <IconButton>
+                        <Icon color="primary">sms</Icon>
+                      </IconButton>
                   )}
 
                 </TableCell>
@@ -164,25 +203,25 @@ const productList = [
   {
 
     name: 'maneesha@gmail.com',
-    price: 'request name leters',
+    msg: 'request name leters',
     available: 15,
   },
   {
 
     name: 'amali@gmail.com',
-    price: 'request name leters',
+    msg: 'request name leters',
     available: 30,
   },
   {
 
     name: 'acd@gmail.com',
-    price: 'request name leters',
+    msg: 'request name leters',
     available: 35,
   },
   {
 
     name: 'sara@gmail.com',
-    price: 'request name leters',
+    msg: 'request name leters',
     available: 30,
   },
 

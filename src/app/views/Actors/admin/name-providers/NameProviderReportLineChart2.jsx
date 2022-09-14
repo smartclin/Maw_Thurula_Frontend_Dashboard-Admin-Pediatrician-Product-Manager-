@@ -1,39 +1,40 @@
 import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
+import {load_profit_np} from "../../../../services/Admin/Name_Provider/admin_np_report_service";
 import {useEffect, useState} from "react";
 import {array} from "yup";
-import {load_line_chart1} from "../../../services/Astrologer/al_dashboard_service";
 
 
-const AstrologerDashboardLineChart = ({ height, color = []}) => {
+const NameProviderReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
   const theme = useTheme();
-  let u_id=localStorage.getItem("id");
+  console.log("line chart"+sDate)
+  console.log("line chart"+eDate)
   const [RegAl, setRegAl] = useState([[]]);
 
   //load profit from astrolergers
 
-  let al_month=[];
-  let al_count=[];
-  const [AlMonth, setAlMonth] = useState([]);
-  const [AlCount, setAlCount] = useState([]);
-  useEffect(() => {
-    load_line_chart1(u_id).then(data => {
-      setRegAl(data);
-    }).catch(err => {
-      console.log(err.error)
-    })
-  }, [RegAl]);
+    let al_month=[];
+    let al_count=[];
+    const [AlMonth, setAlMonth] = useState([]);
+    const [AlCount, setAlCount] = useState([]);
+    useEffect(() => {
+        load_profit_np(sDate,eDate).then(data => {
+            setRegAl(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, [RegAl]);
 
-  useEffect(async () => {
+    useEffect(async () => {
 
-    if(RegAl.req_data){
-      console.log(RegAl.req_data)
-      al_count=RegAl.req_data.map((al_count:array)=> al_count['count(*)']);
-      al_month=RegAl.req_data.map((al_month:array)=> al_month['month(request_date)']);
-      setAlCount(al_count)
-      setAlMonth(al_month)
-    }
-  }, [RegAl]);
+        if(RegAl.profit_np){
+            console.log(RegAl.profit_np)
+            al_count=RegAl.profit_np.map((al_count:array)=> al_count['SUM(amount)']);
+            al_month=RegAl.profit_np.map((al_month:array)=> al_month['month(date_time)']);
+            setAlCount(al_count)
+            setAlMonth(al_month)
+        }
+    }, [RegAl]);
 
 
 
@@ -79,4 +80,4 @@ const AstrologerDashboardLineChart = ({ height, color = []}) => {
   return <ReactEcharts style={{ height: height }} option={{ ...option, color: [...color] }} />;
 };
 
-export default AstrologerDashboardLineChart;
+export default NameProviderReportLineChart2;

@@ -1,8 +1,56 @@
 import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
+import { load_reg_np} from "../../../../services/Admin/Name_Provider/admin_np_report_service";
+import {useEffect, useState} from "react";
+import {array} from "yup";
 
-const NameProviderReportLineChart = ({ height, color = [] }) => {
+
+const NameProviderReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
+
+
+  let al_month=[];
+  let al_count=[];
+  const [AlMonth, setAlMonth] = useState([]);
+  const [AlCount, setAlCount] = useState([]);
+
   const theme = useTheme();
+
+  const [RegAl, setRegAl] = useState([[]]);
+
+
+  useEffect(() => {
+    load_reg_np(sDate,eDate).then(data => {
+
+      setRegAl(data);
+      console.log(RegAl)
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, [RegAl]);
+
+  useEffect(async () => {
+
+    if(RegAl.reg_np){
+      console.log(RegAl)
+      al_count=RegAl.reg_np.map((al_count:array)=> al_count['count(*)']);
+      al_month=RegAl.reg_np.map((al_month:array)=> al_month['month(registered_at)']);
+      setAlCount(al_count)
+      setAlMonth(al_month)
+      console.log(al_count)
+    }
+  }, [RegAl]);
+
+
+  /*useEffect(()=>{
+    setAlCount(al_count)
+  },[])
+
+
+   useEffect(()=>{
+     al_month?setAlMonth(al_month)
+    // console.log(AlMonth)
+   },[])*/
+
 
   const option = {
     grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },
@@ -12,11 +60,13 @@ const NameProviderReportLineChart = ({ height, color = [] }) => {
       textStyle: { color: theme.palette.text.secondary, fontSize: 13, fontFamily: 'roboto' },
     },
     xAxis: {
+
       type: 'category',
-      data: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+      data: AlMonth,
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
+        xLabel:'month',
         fontSize: 14,
         fontFamily: 'roboto',
         color: theme.palette.text.secondary,
@@ -33,7 +83,7 @@ const NameProviderReportLineChart = ({ height, color = [] }) => {
     },
     series: [
       {
-        data: [30, 40, 20, 50, 40, 80, 90,30, 40, 20, 50, 40,],
+        data: AlCount,
         type: 'line',
         smooth: true,
         symbolSize: 4,
@@ -47,3 +97,4 @@ const NameProviderReportLineChart = ({ height, color = [] }) => {
 };
 
 export default NameProviderReportLineChart;
+

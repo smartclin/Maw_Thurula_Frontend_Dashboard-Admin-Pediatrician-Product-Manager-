@@ -1,16 +1,11 @@
 
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-import AstrologerReportStatCards from "./NameProviderReportStatCards";
-import AstrologerReportLineChart from "./NameProviderReportLineChart";
-import {Title} from "@mui/icons-material";
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import DownloadIcon from '@mui/icons-material/Download';
 import NameProviderReportStatCards from "./NameProviderReportStatCards";
-import NameProviderReportLineChart from "./NameProviderReportLineChart";
+
 
 const NameProvidersReports = () => {
     const { palette } = useTheme();
@@ -34,14 +29,8 @@ const NameProvidersReports = () => {
         marginTop:'20px',
         marginBottom:'20px'
     };
-    let registerdAstrologers={
-        margin:"20px 0 20px 0"
-    };
-    let chartDiv={
-        display:'flex',
-        flexDirection:'column',
-        flexWrap:" nowrap"
-    };
+
+
     let titleDiv={
         display: 'flex',
         flexDirection:'raw',
@@ -69,24 +58,7 @@ const NameProvidersReports = () => {
 
                 </NameProviderReportStatCards>
 
-                <div style ={chartDiv}>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Registerd Name Providers</Title>
 
-                        <NameProviderReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                    <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                        <Title> Profit from Name Providers</Title>
-
-                        <NameProviderReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
-                    </Card>
-                </div>
             </div>
 
         </Fragment>
