@@ -8,6 +8,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import Analytics from "../../../Pediatrician/shared/PediatricianVIewArticleComments";
 import MarkunreadRoundedIcon from "@mui/icons-material/MarkunreadRounded";
 import {Fragment, useEffect, useState} from 'react';
+import {getCommentCount} from "../../../../../services/Pediatrician/pt_service";
 // import * as React from "@types/react";
 
 
@@ -25,15 +26,28 @@ function DateReturn(date){
 }
 
 const PediatricianSingleArticle = (props) => {
+    const [ArticleComments, setArticleComments] = useState([]);
+    const [Image, setImage] = useState([]);
     const navigate = useNavigate();
-    const handleOnClick = (id) => navigate('/admin/mother_details/'+id, {replace: false});
-
+    const handleOnClick = (id,id1,id2) => navigate('/pt/PediatricianViewFullArticles/'+id+'/'+id1+'/'+id2, {replace: false});
     const { palette } = useTheme();
     console.log("props")
     console.log(props)
 
+    useEffect(() => {
+        getCommentCount(props.posts.article_id).then(data => {
+            setArticleComments(data.count[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(async () => {
+        console.log("commentssss")
+        console.log(ArticleComments.count)
+    }, [ArticleComments]);
+
     return (
-        <div className="post" onClick={()=>{handleOnClick()}}>
+        <div className="post" onClick={()=>{handleOnClick(props.posts.article_id,props.posts.doctor_id,ArticleComments.count)}}>
             <img
                 className="postImg"
                 src={props.posts.image_1}
@@ -75,7 +89,7 @@ const PediatricianSingleArticle = (props) => {
                     <FavoriteIcon /> <span style={{fontSize:20}}>{props.posts.no_of_likes}</span>
                 </IconButton>
                 <IconButton aria-label="share">
-                    <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}></span>
+                    <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /><span style={{fontSize:20}}>{ArticleComments.count}</span>
                 </IconButton>
             </div>
 

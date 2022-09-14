@@ -44,18 +44,18 @@ const Posts1 = () => {
     // let { id } = useParams();
     const [ArticlePosts, setArticlePosts] = useState([]);
     const [ArticleComments, setArticleComments] = useState([]);
-
-    useEffect(() => {
-        getCommentCount().then(data => {
-            setArticleComments(data.count)
-        }).catch(err => {
-            console.log(err.error)
-        })
-    }, []);
-    useEffect(async () => {
-        console.log("gghh")
-        console.log(ArticleComments)
-    }, [ArticleComments]);
+    //
+    // useEffect(() => {
+    //     getCommentCount().then(data => {
+    //         setArticleComments(data.count)
+    //     }).catch(err => {
+    //         console.log(err.error)
+    //     })
+    // }, []);
+    // useEffect(async () => {
+    //     console.log("gghh")
+    //     console.log(ArticleComments)
+    // }, [ArticleComments]);
 
 
     const cardList = [
@@ -67,18 +67,13 @@ const Posts1 = () => {
         { category: 'Inconsolable crying', date: "2022/08/02", img: 'pregnant_woman',content:"Positioning. Latch. Pain. Mastitis. Low milk supply. You name it, we’ve heard about it. The key to survival is knowing that each and every issue is manageable! ",title:"Saying No",likes:12,comments:23 },
     ];
     useEffect(() => {
-        getPostList().then(data => {
+        getPostList(1).then(data => {
             setArticlePosts(data.article)
         }).catch(err => {
             console.log(err.error)
         })
     }, []);
     useEffect(async () => {
-        // console.log("--------------")
-        // console.log(MotherPosts)
-        // console.log("--------------")
-        // console.log(cardList)
-        // console.log("--------------")
         console.log("ff")
         console.log(ArticlePosts)
 
@@ -94,7 +89,7 @@ const Posts1 = () => {
         <Grid container spacing={3} sx={{ mb: '24px' }}>
             {(ArticlePosts).map((item, index) => (
                 <div className="posts">
-                    <PediatricianSingleArticle posts= {item} count={ArticleComments[0]}/>
+                    <PediatricianSingleArticle posts= {item}/>
                 </div>
             ))}
         </Grid>

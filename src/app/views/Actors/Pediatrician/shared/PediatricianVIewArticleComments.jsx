@@ -16,21 +16,24 @@ import {useNavigate} from 'react-router-dom';
 import {getMotherListForAdmin} from "../../../../services/Admin/Mother/admin_mother_service";
 // import {useEffect, useState} from "@types/react";
 import {Fragment, useEffect, useState} from 'react';
+import {getCommentList} from "../../../../services/Pediatrician/pt_service";
 
-const CommentListTable=()=> {
+const CommentListTable=(props)=> {
+    let id=props.article;
+    console.log("id")
+    console.log(id)
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
     const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
 
+    const [CommentList, setCommentList] = useState([]);
     const [MotherList, setMotherList] = useState([]);
-    const [TMotherList, setTMotherList] = useState([]);
-    const mlist=[]
-
 
 
     useEffect(() => {
-        getMotherListForAdmin().then(data => {
-            setMotherList(data);
+        getCommentList(id).then(data => {
+            setCommentList(data.article);
+            console.log("CommentList")
         }).catch(err => {
             console.log(err.error)
         })
@@ -38,7 +41,9 @@ const CommentListTable=()=> {
 
     useEffect(async () => {
         // console.log(MotherList)
-    }, [MotherList]);
+        console.log(CommentList)
+
+    }, [CommentList]);
 
     // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
@@ -70,7 +75,7 @@ const CommentListTable=()=> {
                         autoFocus
                         margin="dense"
                         id="reason"
-                        label="Reason for Block"
+                        label="Reason for the action"
                         type="text"
                         fullWidth
                         variant="standard"
@@ -96,11 +101,11 @@ const CommentListTable=()=> {
                         }                },
                     { title: 'Name', field: 'first_name',width: "10%" },
                     { title: 'Email', field: 'email',width: "10%" },
-                    { title: 'date', field: 'postCount',width: "10%" },
+                    { title: 'comment', field: 'comment_content',width: "10%" },
                     { title: 'id', field: 'user_id',width: "10%",hidden:true },
                     { title: 'Status', field: 'STATUS',lookup:{0:'Unblock',1:'Block'},width: "10%",hidden:true } ,
                 ]}
-                data={MotherList.students}
+                data={CommentList}
                 // data={[
                 //     {
                 //         url: 'https://i.postimg.cc/q7jS5mTj/12.jpg',
@@ -144,20 +149,20 @@ const CommentListTable=()=> {
                 //     },
                 //
                 // ]}
-                onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
+                // onRowClick={(event, rowData) => handleOnClick(rowData.user_id,rowData.postCount)}
                 actions={[
 
                     (rowData) => {
-                        return rowData.STATUS
-                            ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
-                            : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Lock', onClick: (rowData) => { handleClickOpen()} }
+                        return rowData.status
+                            ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Block the comment', onClick: (rowData) => { handleClickOpen()} }
+                            : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Unblock the comment', onClick: (rowData) => { handleClickOpen()} }
                     }
-                    ,
-                    {
-                        icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
-                        tooltip: 'View User',
-                        onClick: (event, rowData) => alert("You saved " + rowData.name),
-                    }
+                    // ,
+                    // {
+                    //     icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
+                    //     tooltip: 'View User',
+                    //     onClick: (event, rowData) => alert("You saved " + rowData.name),
+                    // }
                 ]}
                 options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                     paging: true,
