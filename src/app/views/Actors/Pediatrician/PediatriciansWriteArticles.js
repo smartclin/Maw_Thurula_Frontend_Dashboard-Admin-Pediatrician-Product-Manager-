@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import Posts from "../admin/pediatricians/component/PostList";
 import Write from "./shared/PediatricianDashboardWritePost";
-import MyEditor from "./shared/TextEditor";
+//import MyEditor from "./shared/TextEditor";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -25,7 +25,7 @@ const Analytics = () => {
 
                        <Write/>
                        <div className="form-row">
-                           <MyEditor/>
+                           { /* <MyEditor/>*/}
                        </div>
 
                    </Grid>

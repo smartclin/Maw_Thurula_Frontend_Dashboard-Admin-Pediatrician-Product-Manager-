@@ -149,11 +149,7 @@ const AstrologerReportStatCards = () => {
    // console.log(dateE)
 
     const dateS=`${(current.getFullYear()-1)}-${current.getMonth()+1}-${current.getDate()}`;
-   // console.log(dateS)
 
-
-      //  const defaultValueS = dateS.toLocaleDateString('en-CA');
-       // const defaultValueE = dateE.toLocaleDateString('en-CA');
 
 
     const [sDate, setsDate] = useState('');
@@ -308,7 +304,7 @@ const AstrologerReportStatCards = () => {
           </Grid>
             <div style ={chartDiv}>
                 <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
-                    <Title> Registerd Astrologers</Title>
+                    <Title> Registered Astrologers</Title>
 
                     <AstrologerReportLineChart
 
