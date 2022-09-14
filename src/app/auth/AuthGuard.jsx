@@ -4,6 +4,15 @@ import { Navigate, useLocation } from 'react-router-dom';
 import AllPages from '../routes';
 
 const userHasPermission = (pathname, user, routes) => {
+  console.log("pathname")
+  console.log(pathname)
+
+  console.log("user")
+  console.log(user)
+
+  console.log("routes")
+  console.log(routes)
+
   if (!user) {
     return false;
   }
