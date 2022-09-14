@@ -6,6 +6,9 @@ import NameProviderDashboardStatCards from "./NameProviderDashboardStatCards";
 import NameProviderDashboardTopSellingTable from "./NameProviderDashboardTopSellingTable";
 import NameProviderDashboardLineChart from "./NameProviderDashboardLineChart";
 import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {load_profile_card} from "../../../services/NameProvider/np_dashboard_service";
+import NameProviderDashboardLineChart2 from "./NameProviderDashboardLineChart2";
 //import {Title} from "@mui/icons-material";
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -105,6 +108,19 @@ const NameProviderDashboard = () => {
         justifyContent: "space-between",
         alignItems: "flex-end",
     };
+    let u_id=localStorage.getItem("id");
+    const [ProfileCard, setProfileCard] = useState([]);
+    useEffect(() => {
+        load_profile_card(u_id).then(data => {
+            setProfileCard(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(async () => {
+        console.log(ProfileCard)
+    }, [ProfileCard]);
     return (
         <Fragment>
 
@@ -125,7 +141,7 @@ const NameProviderDashboard = () => {
                             <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers2}>
                                 <Title> Monthly Profits Summary</Title>
 
-                                <NameProviderDashboardLineChart
+                                <NameProviderDashboardLineChart2
                                     height="290px"
                                     color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
                                 />
@@ -139,7 +155,7 @@ const NameProviderDashboard = () => {
                         <Card  sx={{ px: 3, py: 2, mb: 3 }}>
                             <div style={titleHeader}>
                                 <div>
-                                    <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi Perera</Title>
+                                    <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi {ProfileCard.name}</Title>
                                     <SubTitle>Name Provider</SubTitle>
                                 </div>
                                 <div>
@@ -151,23 +167,20 @@ const NameProviderDashboard = () => {
                                 <Avatar style={avatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                             </div>
 
-                            <p>Astrologer Atlanta. Quality Results in 1 Minute or Less!
-                                Search for Astrologer Atlanta. Instant and Personalized
-                                Results. Always Facts.Results & Answers. Privacy Friendly.
-                                Always Facts.Results & Answers. Privacy Friendly</p>
+                            <p>{ProfileCard.description}</p>
 
                             <span style={emailAndPhone}>
                <Icon color="primary">mail</Icon>
-                <span style={{paddingLeft:20,fontSize:'17px'}}>perara@gmail.com</span>
+                <span style={{paddingLeft:20,fontSize:'17px'}}>{ProfileCard.email}</span>
                  </span>
 
                             <span style={emailAndPhone}>
                    <Icon color="primary">local_phone</Icon>
-                 <span style={{paddingLeft:20,fontSize:'17px'}} >077 4562389</span>
+                 <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.phone_number}</span>
                   </span>
                             <span style={emailAndPhone}>
                    <Icon color="primary">location_on</Icon>
-                 <span style={{paddingLeft:20,fontSize:'17px'}} >No 56/A Senanayake Road,Colombo</span>
+                 <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.address}</span>
                   </span>
 
                         </Card>

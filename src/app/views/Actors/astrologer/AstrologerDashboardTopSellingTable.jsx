@@ -17,7 +17,7 @@ import {
 import { Paragraph } from 'app/components/Typography';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
-import {load_line_chart2, load_today_req} from "../../../services/Astrologer/al_dashboard_service";
+import {load_today_req} from "../../../services/Astrologer/al_dashboard_service";
 import {array} from "yup";
 //import ViewMessage from "./ViewMessage";
 const CardHeader = styled(Box)(() => ({
