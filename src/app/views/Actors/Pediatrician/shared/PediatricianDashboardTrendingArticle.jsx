@@ -54,7 +54,7 @@ export default function BasicCard() {
                     <MarkunreadRoundedIcon style={{paddingRight:5,fontSize:30}} /> <span style={{fontSize:20}}>32</span>
                 </IconButton>
                 <Button size="small">
-                    <Link className="link" to="/pt/PediatricianViewFullArticles">View full article</Link>
+                    <Link className="link" to="/pt/PediatricianEditProfile">View full article</Link>
                     </Button>
             </div>
         </CardActions>
