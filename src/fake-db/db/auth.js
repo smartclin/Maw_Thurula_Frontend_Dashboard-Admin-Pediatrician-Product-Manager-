@@ -8,7 +8,7 @@ const JWT_SECRET = 'jwt_secret_key';
 const JWT_VALIDITY = '7 days';
 
 
-const userList = [
+const userList1 = [
   {
     id: 1,
     role: 'ADMIN',
@@ -19,8 +19,7 @@ const userList = [
     age: 25,
   },
 ];
-
-let userList1=[]
+ let userList=[]
 
 
 Mock.onPost('/api/auth/login').reply(async (config) => {
@@ -36,9 +35,9 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
       }
     }, options);
     console.log("database data")
-    console.log(response.data.data[0])
+    console.log(response.data.token)
     // const user_id=response.data.user_id
-    userList1=[
+     userList=[
       {
         id: response.data.data[0].user_id,
         role: response.data.data[0].type,
@@ -49,9 +48,10 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
         age: response.data.data[0].login_status,
       },
     ];
-    console.log("user list1")
+    console.log("user list")
     console.log(userList1)
-    const user = userList1.find((u) => u.email === email);
+    const token=response.data.token;
+    const user = userList.find((u) => u.email === email);
 
     if (!user) {
       return [400, { message: 'Invalid email or password' }];
@@ -59,6 +59,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
       expiresIn: JWT_VALIDITY,
     });
+
     console.log("token")
     console.log(accessToken)
     localStorage.setItem("role", user.role)
@@ -154,7 +155,7 @@ Mock.onGet('/api/auth/profile').reply((config) => {
 
     const accessToken = Authorization.split(' ')[1];
     const { userId } = jwt.verify(accessToken, JWT_SECRET);
-    const user = userList1.find((u) => u.id === userId);
+    const user = userList.find((u) => u.id === userId);
 
     if (!user) {
       return [401, { message: 'Invalid authorization token' }];

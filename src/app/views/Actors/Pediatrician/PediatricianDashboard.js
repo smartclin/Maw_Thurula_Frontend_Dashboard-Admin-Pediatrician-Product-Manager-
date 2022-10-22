@@ -16,7 +16,6 @@ import NameProviderDashboardLineChart from "../name-provider/NameProviderDashboa
 import FlowersListTable from "./shared/PediatricianVIewArticleComments";
 import CommentListTable from "./shared/PediatricianVIewArticleComments";
 import TodayCommentListTable from "./shared/PediatricianVIewTodayArticleComments";
-import ImageuploadS from "./shared/ImageuploadS";
 
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -122,6 +121,7 @@ const PediatricianDashboard = () => {
                                <PediatricianDashboardWritePostCard/>
                            </div>
                             <BasicCard/>
+
                         </div>
 
 

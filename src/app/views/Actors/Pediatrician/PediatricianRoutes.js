@@ -5,7 +5,7 @@ import {authRoles} from "../../../auth/authRoles";
 
 
 const PediatricianDashboard = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatricianDashboard')));
-const PediatricianViewArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansViewArticles')));
+const PediatricianViewArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansViewArticles_new')));
 const PediatricianViewFullArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansViewFullArticle')));
 const PediatricianWriteArticles = Loadable(lazy(() => import('../../Actors/Pediatrician/PediatriciansWriteArticles')));
 const PediatricianViewFollowers = Loadable(lazy(() => import('../../Actors/Pediatrician/FollowersList')));

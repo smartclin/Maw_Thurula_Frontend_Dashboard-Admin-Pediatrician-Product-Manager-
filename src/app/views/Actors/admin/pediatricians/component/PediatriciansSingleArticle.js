@@ -69,9 +69,9 @@ const PediatricianSingleArticle = (props) => {
           </span>
                 </div>
                 <span className="postTitle">
-          <Link to="/pt/PediatricianViewFullArticles" className="link" >
+          {/*<Link to="/pt/PediatricianViewFullArticles" className="link" >*/}
             {props.posts.title}
-          </Link>
+          {/*</Link>*/}
         </span>
                 <hr />
                 <span className="postDate">{DateReturn(props.posts.date)}</span>

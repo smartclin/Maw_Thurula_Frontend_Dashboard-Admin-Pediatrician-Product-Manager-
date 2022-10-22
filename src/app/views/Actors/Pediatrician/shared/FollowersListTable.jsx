@@ -153,12 +153,13 @@ const FlowersListTable=()=> {
                         ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Unlock', onClick: (rowData) => { /* anythink */ } }
                         : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'BLOCK', onClick: (rowData) => { handleClickOpen()} }
                 }
-                ,
-                {
-                    icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
-                    tooltip: 'View User',
-                    onClick: (event, rowData) => alert("You saved " + rowData.name),
-                }
+
+                // ,
+                // {
+                //     icon: ()=> <VisibilityIcon style={{color:'#1abc9c'}}/>,
+                //     tooltip: 'View User',
+                //     onClick: (event, rowData) => alert("You saved " + rowData.name),
+                // }
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,

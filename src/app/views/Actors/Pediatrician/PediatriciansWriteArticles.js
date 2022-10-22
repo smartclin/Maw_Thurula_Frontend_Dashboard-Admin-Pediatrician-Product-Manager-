@@ -4,7 +4,11 @@ import { Fragment } from 'react';
 import PediatricianSingleArticle from "../admin/pediatricians/component/PediatriciansSingleArticle";
 import Posts from "../admin/pediatricians/component/PostList";
 import Write from "./shared/PediatricianDashboardWritePost";
-//import MyEditor from "./shared/TextEditor";
+// import MyEditor from "./shared/TextEditor";
+// import RichTextEditor from 'react-rte';
+import App from "./shared/TextEditor";
+
+import {Editor} from "react-draft-wysiwyg";
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -14,6 +18,9 @@ const ContentBox = styled('div')(({ theme }) => ({
 const Analytics = () => {
     const { palette } = useTheme();
 
+    const onchangeEvent=()=>{
+
+    }
     return (
         <Fragment>
             {/*<ContentBox className="analytics">*/}
@@ -21,11 +28,10 @@ const Analytics = () => {
             {/*</ContentBox>*/}
                {/*<ContentBox className="analytics">*/}
                    {/*<Grid container spacing={3}>*/}
-                   <Grid>
-
+                   <Grid style={{margin:'10px'}}>
                        <Write/>
                        <div className="form-row">
-                           { /* <MyEditor/>*/}
+                             <App></App>
                        </div>
 
                    </Grid>

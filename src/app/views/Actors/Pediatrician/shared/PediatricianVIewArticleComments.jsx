@@ -16,18 +16,18 @@ import {useNavigate} from 'react-router-dom';
 import {getMotherListForAdmin} from "../../../../services/Admin/Mother/admin_mother_service";
 // import {useEffect, useState} from "@types/react";
 import {Fragment, useEffect, useState} from 'react';
-import {getCommentList} from "../../../../services/Pediatrician/pt_service";
+import {getCommentList,blockComments,unblockComments} from "../../../../services/Pediatrician/pt_service";
 
 const CommentListTable=(props)=> {
     let id=props.article;
-    console.log("id")
-    console.log(id)
+    // console.log("id")
+    // console.log(id)
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
+    // const handleOnClick = (id,count) => navigate('/admin/target_mothers_post_list/'+id+'/'+count, {replace: false});
 
     const [CommentList, setCommentList] = useState([]);
-    const [MotherList, setMotherList] = useState([]);
+    const [IsBlocked, setBlock] = useState([0]);
 
 
     useEffect(() => {
@@ -40,12 +40,11 @@ const CommentListTable=(props)=> {
     }, []);
 
     useEffect(async () => {
-        // console.log(MotherList)
+        // console.log("MotherList")
         console.log(CommentList)
 
     }, [CommentList]);
 
-    // const handleOnClick = () => navigate('/admin/mother_details', {replace: false});
 
     const [open, setOpen] = React.useState(false);
 
@@ -55,6 +54,34 @@ const CommentListTable=(props)=> {
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+
+    function blockthecomment(id) {
+        console.log("this is"+id)
+            blockComments(id).then(data => {
+                setBlock(data.set.affectedRows);
+            }).catch(err => {
+                console.log(err.error)
+            })
+    }
+
+    function unblockcomment(id) {
+        unblockComments(id).then(data => {
+            console.log("unblock")
+            setBlock(data.set.affectedRows);
+            console.log(data)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }
+
+    const handleClose1 = () => {
+        // console.log(id)
+        console.log("status")
+        console.log(CommentList[0].status)
+        CommentList[0].status ? unblockcomment(id):blockthecomment(id)
+        handleClose()
     };
 
     const checkStatus=(data)=>{
@@ -69,21 +96,21 @@ const CommentListTable=(props)=> {
                 <DialogTitle>Reason for this action</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        This message will show on this users window
+                        Are you sure!
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="reason"
-                        label="Reason for the action"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                    />
+                    {/*<TextField*/}
+                    {/*    autoFocus*/}
+                    {/*    margin="dense"*/}
+                    {/*    id="reason"*/}
+                    {/*    label="Reason for the action"*/}
+                    {/*    type="text"*/}
+                    {/*    fullWidth*/}
+                    {/*    variant="standard"*/}
+                    {/*/>*/}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Submit</Button>
+                    <Button onClick={handleClose1}>Yes</Button>
                 </DialogActions>
             </Dialog>
             <MaterialTable
@@ -154,8 +181,8 @@ const CommentListTable=(props)=> {
 
                     (rowData) => {
                         return rowData.status
-                            ? { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Block the comment', onClick: (rowData) => { handleClickOpen()} }
-                            : { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Unblock the comment', onClick: (rowData) => { handleClickOpen()} }
+                            ? { icon:() =><LockOpenIcon style={{color:'#27ae60'}}/>,tooltip: 'Unblock the comment', onClick: (rowData) => { handleClickOpen()} }
+                            : { icon: ()=><LockIcon style={{color:'#bdc3c7'}}/>,tooltip: 'Block the comment', onClick: (rowData) => { handleClickOpen()} }
                     }
                     // ,
                     // {

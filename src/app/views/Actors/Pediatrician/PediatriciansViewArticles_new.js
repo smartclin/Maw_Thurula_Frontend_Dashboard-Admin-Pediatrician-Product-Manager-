@@ -1,17 +1,22 @@
-import {Fragment, useEffect, useState} from 'react';
-import ArticleCard from '../shared/pediatrician/ArticleCard';
-import TextField from '@mui/material/TextField';
-import {getallPostList, getPostList} from "../../../../services/Pediatrician/pt_service";
+import { useState, useEffect } from "react";
+// import "./App.css";
+import SocialCard from "./shared/Card";
+import {Fragment} from 'react';
+import {getCommentCount, getPostList} from "../../../services/Pediatrician/pt_service";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import * as React from "react";
 
-const AdminDashboard = () => {
-    const [AdminArticlePosts, setAdminArticlePosts] = useState([]);
-    const [AllAdminArticlePosts, setAllAdminArticlePosts] = useState([]);
+
+
+function App() {
+    const [ArticlePosts, setArticlePosts] = useState([]);
+    const [AllArticlePosts, setAllArticlePosts] = useState([]);
 
     useEffect(() => {
-        getallPostList().then(data => {
-            setAdminArticlePosts(data.article)
-            setAllAdminArticlePosts(data.article)
+        getPostList(1).then(data => {
+            setArticlePosts(data.article)
+            setAllArticlePosts(data.article)
         }).catch(err => {
             console.log(err.error)
         })
@@ -20,9 +25,9 @@ const AdminDashboard = () => {
     const filterCards = event => {
         const value = event.target.value.toLowerCase();
         console.log(value)
-        console.log(AdminArticlePosts)
-        const filteredUsers = AllAdminArticlePosts.filter(user => (`${user.title} ${user.title}`.toLowerCase().includes(value)));
-        setAdminArticlePosts(filteredUsers);
+        console.log(ArticlePosts)
+        const filteredUsers = AllArticlePosts.filter(user => (`${user.title} ${user.title}`.toLowerCase().includes(value)));
+        setArticlePosts(filteredUsers);
         console.log(filteredUsers)
     }
 
@@ -56,14 +61,21 @@ const AdminDashboard = () => {
                     style={{width:'35%'}}
                 />
             </div>
+            {/*<Autocomplete*/}
+            {/*    disablePortal*/}
+            {/*    // options={top100Films}*/}
+            {/*    id="combo-box-demo"*/}
+            {/*    sx={{ width: 300 }}*/}
+            {/*    renderInput={(params) => <TextField {...params} label="Search with Date" />}*/}
+            {/*/>*/}
             <div className="cards-container" style={{display:'flex',flexWrap: 'wrap'}}>
 
-                {AdminArticlePosts.map((user, index) => (
-                    <ArticleCard key={index} userData={user}/>
+                {ArticlePosts.map((user, index) => (
+                    <SocialCard key={index} userData={user}/>
                 ))}
             </div>
         </div>
     );
-};
+}
 
-export default AdminDashboard;
+export default App;

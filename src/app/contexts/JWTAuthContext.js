@@ -92,8 +92,10 @@ export const AuthProvider = ({ children }) => {
             email,
             password,
         })
-        console.log("came to login")
+        console.log("came to login 33")
+        console.log(response.data)
         const { accessToken, user } = response.data
+        console.log(user)
 
         setSession(accessToken)
 

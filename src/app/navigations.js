@@ -65,7 +65,7 @@ export const navigations_ADMIN = [
     icon: 'home',
     badge: { value: '', color: 'secondary' },
     children: [
-      { name: 'Home', path: '/admin', iconText: 'A' },
+      { name: 'Home', path: '/ADMIN', iconText: 'A' },
     ],
   },
 

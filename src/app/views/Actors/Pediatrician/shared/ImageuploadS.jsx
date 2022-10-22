@@ -1,6 +1,8 @@
 import React,{useState } from 'react';
 import axios from 'axios';
 // import './App.css';
+import {useEffect} from 'react';
+import {Imageupload} from "../../../../services/Pediatrician/pt_service";
 
 function ImageuploadS() {
 
@@ -21,19 +23,24 @@ function ImageuploadS() {
     const [isSucces, setSuccess] = useState(null);
 
     const submit = async () =>{
+        console.log("fff",userInfo.file.name)
+        alert(userInfo.file.name)
         const formdata = new FormData();
-        formdata.append('avatar', userInfo.file);
+        formdata.append('avatar', userInfo.file.name);
+        console.log(__dirname)
+        console.log(formdata)
 
-        axios.post("http://localhost:8080/imageupload", formdata,{
-            headers: { "Content-Type": "multipart/form-data" }
-        })
-            .then(res => { // then print response status
-                console.warn(res);
-                if(res.data.success === 1){
-                    setSuccess("Image upload successfully");
-                }
+            Imageupload(userInfo.file.name).then(data => {
+                // setArticleComments(data.count)
+                console.log("imageee",data)
+                // alert(a)
+            }).catch(err => {
+                console.log(err.error)
 
             })
+
+
+
     }
 
     return (
@@ -63,10 +70,10 @@ function ImageuploadS() {
                   />:null}
           </div>
 
-            {/*<div className="form-row">*/}
-            {/*    <button type="submit" className="btn btn-dark" onClick={()=>submit()} > Save </button>*/}
+            <div className="form-row">
+                <button type="submit" className="btn btn-dark" onClick={()=>submit()} > Save </button>
 
-            {/*</div>*/}
+            </div>
 
         </div>
     );
