@@ -60,7 +60,7 @@ const AdminRoutes = [
     { path: '/admin/pediatrician_articles', element: <PediatricianArticles />, auth: authRoles.admin },
     { path: '/admin/pediatrician_request', element: <PediatricianRequests />, auth: authRoles.admin },
     { path: '/admin/pediatrician_full_article', element: <Pediatrician_full_article />, auth: authRoles.admin },
-    { path: '/admin/PediatricianApprovalDecision', element: <PediatricianApprovalDecision />, auth: authRoles.admin },
+    { path: '/admin/PediatricianApprovalDecision/:id', element: <PediatricianApprovalDecision />, auth: authRoles.admin },
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
