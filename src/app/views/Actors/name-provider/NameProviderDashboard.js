@@ -9,6 +9,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {load_profile_card} from "../../../services/NameProvider/np_dashboard_service";
 import NameProviderDashboardLineChart2 from "./NameProviderDashboardLineChart2";
+import TodayJobRequest from "./TodayJobRequest";
 //import {Title} from "@mui/icons-material";
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -189,7 +190,7 @@ const NameProviderDashboard = () => {
 
                     </Grid>
                 </Grid>
-                <NameProviderDashboardTopSellingTable/>
+                <TodayJobRequest/>
 
             </ContentBox>
         </Fragment>
