@@ -30,9 +30,10 @@ import {
 const PediatriciansRequestListTable=()=> {
     const [open, setOpen] = React.useState(false);
     const [AList, setAList] = useState([]);
+    const [pid, setPid] = useState([]);
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = () => navigate('/admin/PediatricianApprovalDecision', {replace: false});
+    const handleOnClick = (id) => navigate('/admin/PediatricianApprovalDecision/'+id, {replace: false});
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -132,7 +133,7 @@ const PediatriciansRequestListTable=()=> {
             //
             // ]}
             data={AList.pediatricians}
-            onRowClick={(event, rowData) => console.log(rowData)}
+            // onRowClick={(event, rowData) => console.log(rowData)}
             actions={[
                 (rowData) => {
                     return {
@@ -149,7 +150,7 @@ const PediatriciansRequestListTable=()=> {
                     }
                 }
             ]}
-            onRowClick={(event, rowData) => handleOnClick()}
+            onRowClick={(event, rowData) => handleOnClick(rowData.user_id)}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,
             }}
