@@ -3,14 +3,13 @@ import {avatarClasses, Card, Grid, Icon, IconButton, styled, useTheme} from '@mu
 
 import Avatar from '@mui/material/Avatar';
 import AstrologerDashboardStatCards from "./AstrologerDashboardStatCards";
-import AstrologerDashboardTopSellingTable from "./AstrologerDashboardTopSellingTable";
 import AstrologerDashboardLineChart from "./AstrologerDashboardLineChart";
-import editProfile from "./EditProfile";
 import {useNavigate, useParams} from "react-router-dom";
 
 import {load_profile_card} from "../../../services/Astrologer/al_dashboard_service";
 import AstrologerDashboardLineChart2 from "./AstrologerDashboardLineChart2";
-//import {Title} from "@mui/icons-material";
+import TodayJobRequest from "./TodayJobRequest";
+
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -193,7 +192,7 @@ const AstrologerDashboard = () => {
 
                     </Grid>
                 </Grid>
-                <AstrologerDashboardTopSellingTable/>
+                <TodayJobRequest/>
 
             </ContentBox>
 

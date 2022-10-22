@@ -15,3 +15,13 @@ export const load_req = async (u_id) => {
     console.log(data1)
     return data1;
 };
+
+export const load_today_req = async (u_id) => {
+    console.log("today req")
+    const response = await API.get('/AL/db/today_request/'+u_id,options)
+
+
+    let data1=response.data
+    //console.log(data1)
+    return data1;
+};
