@@ -17,7 +17,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import {useEffect, useState} from "react";
 import {
     BlockPediatrician,
-    getPListForAdmin,
+    getPListForAdmin, getPListForAdmin_without_pending,
     UnBlockPediatrician
 } from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
 import {
@@ -27,7 +27,7 @@ import {
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 import {useRef} from "react";
 
-const PediatricianListTable=()=> {
+export default function PediatricianListTable(){
     const [open, setOpen] = React.useState(false);
 
     const [PList, setPList] = useState([]);
@@ -37,7 +37,7 @@ const PediatricianListTable=()=> {
     const [active, setActive] = useState(0);
 
     useEffect(() => {
-        getPListForAdmin().then(data => {
+        getPListForAdmin_without_pending().then(data => {
             setPList(data);
         }).catch(err => {
             console.log(err.error)
@@ -48,10 +48,12 @@ const PediatricianListTable=()=> {
     const [id, setId] = React.useState(false);
 
     const handleBlockClickOpen = (uid) => {
-        // console.log(uid)
+
+        console.log(uid)
         setId(uid);
-        // // console.log("Id : "+id)
+        console.log("Id : "+id)
         setOpen(true);
+
     };
     const handleUnBlockClickOpen= (uid) => {
         console.log(uid)
@@ -113,7 +115,9 @@ const PediatricianListTable=()=> {
                     <Button onClick={sendValue}>Block</Button>
                 </DialogActions>
             </Dialog>
-        <MaterialTable
+
+
+            <MaterialTable
             title="Pediatricians List"
             columns={[
                 {
@@ -168,4 +172,4 @@ const PediatricianListTable=()=> {
         </div>
     )
 }
-export default PediatricianListTable;
+// export default PediatricianListTable;

@@ -87,7 +87,6 @@ const MotherStatCards = () => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-
     const cardList = [
         { name: 'Registered Name Providers', amount: all, icon: 'person_rounded',size:50 },
         { name: 'Pending Requests', amount: active, icon: 'pending_actions', size:55},

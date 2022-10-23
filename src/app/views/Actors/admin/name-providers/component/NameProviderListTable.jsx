@@ -23,7 +23,7 @@ import {
 } from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 import {BlockNP, NP_Data_with_profit, UnBlockNP} from "../../../../../services/Admin/Name_Provider/admin_np_service";
 
-const NameProviderListTable=()=> {
+const NameProviderListTable=({handle})=> {
     const [open, setOpen] = React.useState(false);
     const [AList, setAList] = useState([]);
     useEffect(() => {
@@ -38,6 +38,7 @@ const NameProviderListTable=()=> {
     const [id, setId] = React.useState(false);
 
     const handleBlockClickOpen = (uid) => {
+        handle(uid)
         console.log(uid)
         setId(uid);
         // // console.log("Id : "+id)
