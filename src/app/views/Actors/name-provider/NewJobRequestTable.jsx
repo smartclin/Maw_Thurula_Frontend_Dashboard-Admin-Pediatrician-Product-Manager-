@@ -67,21 +67,18 @@ const NewJobRequestTable=()=> {
     const [TableReq, setTableReq] = useState([]);
     useEffect(() => {
         load_req(u_id).then(data => {
-            setReq(data);
+            setReq(data.req);
             console.log(Req)
         }).catch(err => {
             console.log(err.error)
         })
-    }, [Req]);
+    }, []);
 
     useEffect(async () => {
 
-        if(Req.req){
+        if(Req){
 
-            set_req_data(Req.req)
-            console.log(req_data)
-
-            table_data=req_data.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status,"Request_id":x.request_id}))
+            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status,"Request_id":x.request_id}))
             setTableReq(table_data);
             console.log(TableReq);
 

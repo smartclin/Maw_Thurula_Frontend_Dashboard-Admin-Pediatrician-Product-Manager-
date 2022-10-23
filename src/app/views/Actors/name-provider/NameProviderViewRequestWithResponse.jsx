@@ -1,5 +1,4 @@
 
-
 import Button from '@mui/material/Button';
 import * as React from 'react';
 import List from '@mui/material/List';
@@ -11,10 +10,37 @@ import MailIcon from '@mui/icons-material/Mail';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MessageIcon from '@mui/icons-material/Message';
+import WcIcon from '@mui/icons-material/Wc';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'
+import TextField from '@mui/material/TextField';
 
-const NameProviderViewRequestWithRequest = ( ) =>  {
+import {useParams} from "react-router";
+import {load_one_req} from "../../../services/NameProvider/np_service";
+import {useEffect, useState} from "react";
+import {load_one_res} from "../../../services/NameProvider/np_service";
+
+const NameProviderViewRequestWithResponse = ( ) =>  {
+    const [Req, setReq] = useState([]);
+    const [Res, setRes] = useState([]);
+
+    let { request_id } = useParams();
+
+    useEffect(() => {
+        load_one_req(request_id).then(data => {
+            setReq(data.req[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(() => {
+        load_one_res(request_id).then(data => {
+            setRes(data.req[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
 
 
     let requestTittle={
@@ -46,7 +72,7 @@ const NameProviderViewRequestWithRequest = ( ) =>  {
                             <MailIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Email" secondary="Jan 9, 2014" />
+                    <ListItemText primary="Email" secondary={Req.email} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -54,7 +80,7 @@ const NameProviderViewRequestWithRequest = ( ) =>  {
                             <CalendarMonthIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Date" secondary="2020/10/02" />
+                    <ListItemText primary="Birth Date" secondary={Req.birth_date} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -62,7 +88,15 @@ const NameProviderViewRequestWithRequest = ( ) =>  {
                             <AccessTimeIcon  />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Time" secondary="10:14:23" />
+                    <ListItemText primary="Letters" secondary={Req.letters} />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <WcIcon />
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Gender" secondary={Req.gender} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -70,22 +104,27 @@ const NameProviderViewRequestWithRequest = ( ) =>  {
                             <MessageIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include my babies birthday and time.
-I would like to get proper letters for my baby name
-" />
+                    <ListItemText primary="Message" secondary={Req.message} />
                 </ListItem>
             </List>
             <div style={requestTittle}>Response message</div>
-            <List  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} >
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <DriveFileRenameOutlineIcon/>
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Names"  secondary={Res.names} />
+                </ListItem>
+
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
                             <MessageIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include baby names for your baby with a meaning.
-
-            " />
+                    <ListItemText primary="Message"  secondary={Res.message} />
                 </ListItem>
             </List>
         </div>
@@ -99,4 +138,4 @@ I would like to get proper letters for my baby name
 
 
 
-export default NameProviderViewRequestWithRequest;
+export default NameProviderViewRequestWithResponse;
