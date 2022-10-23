@@ -1,15 +1,13 @@
 import { Card, Grid, styled, useTheme } from '@mui/material';
 import { Fragment } from 'react';
-// import NamePorividerstatcard from "../name-providers/component/NameProviderstatcard";
-// import NameProviderListTable from "../name-providers/component/NameProviderListTable";
-// import PediatricianListTable from "./component/pediatricianListTable";
-// import Pediatricianstatcard from "./component/pediatricianstatcard";
 import NameProviderTable from "./NameProviderTable";
+import AstrologerTable from "../astrologers/AstrologerTable";
+import AstrologerProfilePic from "../astrologers/component/AstrologerProfilePic";
+import NpProfilePic from "./component/NpProfilePic";
+
 
 
 const NameProviderList = () => {
-
-
     const ContentBox = styled('div')(({ theme }) => ({
         margin: '30px',
         [theme.breakpoints.down('sm')]: { margin: '16px' },
@@ -17,13 +15,23 @@ const NameProviderList = () => {
     return (
         <Fragment>
             <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={12} md={8} sm={12} xs={12}>
-                        <NameProviderTable>
+                <Grid >
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <Grid container spacing={2}>
 
-                        </NameProviderTable>
+                            <Grid item xs={7}>
+                                <NameProviderTable>
+
+                                </NameProviderTable>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <NpProfilePic/>
+                            </Grid>
+                        </Grid>
+
                     </Grid>
                 </Grid>
+
             </ContentBox>
         </Fragment>
     );

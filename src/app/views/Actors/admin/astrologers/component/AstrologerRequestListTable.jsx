@@ -33,7 +33,7 @@ const AstrologerRequestListTable=()=> {
     const [AList, setAList] = useState([]);
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = () => navigate('/admin/AstrologerApprovalDecision', {replace: false});
+    const handleOnClick = (id) => navigate('/admin/AstrologerApprovalDecision/'+id, {replace: false});
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -135,7 +135,7 @@ const AstrologerRequestListTable=()=> {
             //
             // ]}
             data={AList.astrologers}
-            onRowClick={(event, rowData) => console.log(rowData)}
+            // onRowClick={(event, rowData) => console.log(rowData)}
             actions={[
                 (rowData) => {
                     return {
@@ -152,7 +152,7 @@ const AstrologerRequestListTable=()=> {
                     }
                 }
             ]}
-            onRowClick={(event, rowData) => handleOnClick()}
+            onRowClick={(event, rowData) => handleOnClick(rowData.user_id)}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,
             }}
