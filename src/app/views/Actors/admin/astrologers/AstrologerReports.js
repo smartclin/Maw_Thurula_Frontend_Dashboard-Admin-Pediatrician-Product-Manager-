@@ -81,9 +81,6 @@ const AstrologersReports = () => {
                 <AstrologerReportStatCards  />
 
 
-
-
-
             </div>
 
         </Fragment>

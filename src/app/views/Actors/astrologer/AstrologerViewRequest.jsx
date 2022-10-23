@@ -15,39 +15,41 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
 import { useParams } from "react-router";
 
-import {load_one_req} from "../../../services/Astrologer/al_service";
+import {insert_response, load_one_req} from "../../../services/Astrologer/al_service";
 import {useEffect, useState} from "react";
+import {load_pending_income, load_tot_income} from "../../../services/Admin/Astrologer/admin_astrologer_report_service";
+import {useNavigate} from "react-router-dom";
 
 const AstrologerViewRequest = () =>  {
-    const [Email,setEmail]=useState([]);
+    const [Msg,setMsg]=useState([]);
     const [Req, setReq] = useState([]);
+    const [Letters, setLetters] = useState([]);
 
-    let { request_id } = useParams();
+    const {request_id} = useParams();
+    //setReq_id(request_id);
 
    useEffect(() => {
         load_one_req(request_id).then(data => {
-
             setReq(data.req[0])
           // console.log(Req.req)
         }).catch(err => {
             console.log(err.error)
         })
     }, []);
-    //
-     useEffect(async () => {
+    const navigate = useNavigate();
 
-    }, [Req]);
-    useEffect(async () => {
-        console.log("---------------------")
-           console.log(Email);
-        console.log("---------------------")
-
-    }, [Email]);
-
-
-
-
-
+    function FilterData(event) {
+        //  prevent page refresh
+        event.preventDefault();
+        console.log(Msg)
+        console.log(Letters)
+        console.log(request_id)
+        //load total income
+        insert_response(request_id,Msg,Letters).then(data => {
+            console.log(data);
+            navigate({pathname:'/al/view_request_with_response/'+request_id})
+        })
+    }
 
     let requestTittle={
         color:'#9e9e9e',
@@ -68,13 +70,7 @@ const AstrologerViewRequest = () =>  {
     let mainDiv={
         margin:' 30px 400px 0px 300px'
     };
-   // const CardDataDefault=[{}];
-  const CardDataDefault=[{
-        email:"g@gmail.com",
-       birth_date:"2022-10-21",
-       birth_time:"22:02:31",
-       message:"letters for my baby"
-}];
+
   //setCardData(CardDataDefault);
     return (
         <div style={mainDiv}>
@@ -122,10 +118,16 @@ const AstrologerViewRequest = () =>  {
                 noValidate
                 autoComplete="off"
             >
-                <TextField style={responseInput} id="outlined-basic" label="Type response here ..." variant="outlined" />
+                <TextField style={responseInput} id="outlined-basic" label="Type letters here ..." variant="outlined"
+                           value={Letters}
+                           onChange={(e) => setLetters(e.target.value)}/>
+
+                <TextField style={responseInput} id="outlined-basic" label="Type response here ..." variant="outlined"
+                           value={Msg}
+                           onChange={(e) => setMsg(e.target.value)}/>
 
             </Box>
-            <Button  style ={sendButton} variant="contained">Send</Button>
+            <Button  style ={sendButton} variant="contained" onClick={FilterData}>Send</Button>
         </div>
     );
 

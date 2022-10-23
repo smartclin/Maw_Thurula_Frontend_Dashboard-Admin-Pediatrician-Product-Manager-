@@ -42,3 +42,11 @@ export const load_one_res = async (u_id) => {
     console.log(data1)
     return data1;
 };
+
+export const insert_response= async (r_id,msg,letters) => {
+    console.log("response");
+    const response = await API.get('/AL/db/insert_res/'+r_id+'/'+msg+'/'+letters,options)
+    let data1=response.data
+    console.log(data1)
+    return data1;
+};
