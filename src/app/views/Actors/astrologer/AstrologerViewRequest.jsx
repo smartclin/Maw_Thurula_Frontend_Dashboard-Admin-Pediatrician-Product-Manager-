@@ -19,38 +19,10 @@ import {load_one_req} from "../../../services/Astrologer/al_service";
 import {useEffect, useState} from "react";
 
 const AstrologerViewRequest = () =>  {
-
-
-
-    const [Req, setReq] = useState([]);
-    const [TableReq, setTableReq] = useState([]);
-    const [CardData,setCardData] = useState([]);
-
     const [Email,setEmail]=useState([]);
-    const [BD,setBD]=useState([]);
-    const [BT,setBT]=useState([]);
-    const [Msg,setMsg]=useState([]);
+    const [Req, setReq] = useState([]);
+
     let { request_id } = useParams();
-    let card_data=[];
-       const card_data1 = [
-        {value:'jdjd' , label:'select event'},
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
-   let backend_data=[];
-   //const load () =
-
-
-  /* load_one_req(request_id).then(data=>{
-       setReq(data)
-       setCardData(Req.req);
-       // console.log(CardData[0]['request_id']);
-       // alert(data)
-       console.log("data",data)
-
-   });*/
-  // console.log(backend_data.req);
 
    useEffect(() => {
         load_one_req(request_id).then(data => {
@@ -63,14 +35,7 @@ const AstrologerViewRequest = () =>  {
     }, []);
     //
      useEffect(async () => {
-        //onsole.log(Req)
-        // if(Req){
-            //console.log(Req[0]['email'])
-          //setEmail(Req[0].email);
-            // setBD(Req[0]['birth_date']);
-            // setBT(Req[0]['birth_time']);
-            // setMsg(Req[0]['message'])
-        // }
+
     }, [Req]);
     useEffect(async () => {
         console.log("---------------------")

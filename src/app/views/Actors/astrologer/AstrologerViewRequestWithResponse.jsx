@@ -11,10 +11,47 @@ import MailIcon from '@mui/icons-material/Mail';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MessageIcon from '@mui/icons-material/Message';
+import HdrAutoIcon from '@mui/icons-material/HdrAuto';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
+import { useParams } from "react-router";
 
-const AstrologerViewRequestWithRequest = ( ) =>  {
+import {load_one_req, load_one_res} from "../../../services/Astrologer/al_service";
+import {useEffect, useState} from "react";
+
+const AstrologerViewRequestWithResponse = () =>  {
+    const [Res, setRes]=useState([]);
+    const [Req, setReq] = useState([]);
+
+    let { request_id } = useParams();
+
+    //load request data
+    useEffect(() => {
+        load_one_req(request_id).then(data => {
+
+            setReq(data.req[0])
+            // console.log(Req.req)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    //load response
+    useEffect(() => {
+        load_one_res(request_id).then(data => {
+
+            setRes(data.req[0])
+            // console.log(Req.req)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    //
+
+
+
+
+
 
 
     let requestTittle={
@@ -36,6 +73,7 @@ const AstrologerViewRequestWithRequest = ( ) =>  {
     let mainDiv={
         margin:' 30px 400px 0px 300px'
     };
+
     return (
         <div style={mainDiv}>
             <div style={requestTittle}>Request message</div>
@@ -46,7 +84,7 @@ const AstrologerViewRequestWithRequest = ( ) =>  {
                             <MailIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Email" secondary="Jan 9, 2014" />
+                    <ListItemText primary="Email" secondary={Req.email}/>
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -54,7 +92,7 @@ const AstrologerViewRequestWithRequest = ( ) =>  {
                             <CalendarMonthIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Date" secondary="2020/10/02" />
+                    <ListItemText primary="Birth Date" secondary={Req.birth_date} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -62,7 +100,7 @@ const AstrologerViewRequestWithRequest = ( ) =>  {
                             <AccessTimeIcon  />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Time" secondary="10:14:23" />
+                    <ListItemText primary="Birth Time" secondary={Req.birth_time} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -70,9 +108,7 @@ const AstrologerViewRequestWithRequest = ( ) =>  {
                             <MessageIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include my babies birthday and time.
-I would like to get proper letters for my baby name
-" />
+                    <ListItemText primary="Message" secondary={Req.message}/>
                 </ListItem>
             </List>
             <div style={requestTittle}>Response message</div>
@@ -80,13 +116,20 @@ I would like to get proper letters for my baby name
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
+                            <HdrAutoIcon/>
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Letters"  secondary={Res.letters} />
+                </ListItem>
+                <ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
                             <MessageIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include baby names for your baby with a meaning.
-
-            " />
+                    <ListItemText primary="Message" secondary={Res.message} />
                 </ListItem>
+
             </List>
         </div>
     );
@@ -99,4 +142,4 @@ I would like to get proper letters for my baby name
 
 
 
-export default AstrologerViewRequestWithRequest;
+export default AstrologerViewRequestWithResponse;

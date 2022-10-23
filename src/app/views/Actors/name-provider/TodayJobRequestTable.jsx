@@ -23,11 +23,11 @@ const TodayJobRequestTable=()=> {
 
     const navigate = useNavigate();
 
-    const viewRequest=(replyStatus)=>{
+    const viewRequest=(replyStatus,Request_id)=>{
         replyStatus ?
-            navigate({pathname:'/np/view_request_with_response'})
+            navigate({pathname:'/np/view_request_with_response/'+Request_id})
             :
-            navigate({pathname:'/np/view_request'})
+            navigate({pathname:'/np/view_request/'+Request_id})
 
     }
     const [open, setOpen] = React.useState(false);
@@ -67,21 +67,21 @@ const TodayJobRequestTable=()=> {
     const [TableReq, setTableReq] = useState([]);
     useEffect(() => {
         load_today_req(u_id).then(data => {
-            setReq(data);
+            setReq(data.req);
             console.log(Req)
         }).catch(err => {
             console.log(err.error)
         })
-    }, [Req]);
+    }, []);
 
     useEffect(async () => {
 
-        if(Req.req){
+        if(Req){
 
-            set_req_data(Req.req)
-            console.log(req_data)
+            //set_req_data(Req.req)
+            //console.log(req_data)
 
-            table_data=req_data.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status}))
+            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status,"Request_id":x.request_id}))
             setTableReq(table_data);
             console.log(TableReq);
 
@@ -125,7 +125,7 @@ const TodayJobRequestTable=()=> {
                            data={
                                TableReq
                            }
-                           onRowClick={(event, rowData) => viewRequest(rowData.Status)}
+                           onRowClick={(event, rowData) => viewRequest(rowData.Status,rowData.Request_id)}
                            actions={[
                                (rowData) => {
                                    return rowData.Status
