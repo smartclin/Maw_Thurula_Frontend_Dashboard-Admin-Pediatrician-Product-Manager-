@@ -26,6 +26,15 @@ export const fullArticle = async (id,id1) => {
     }, options);
     return response.data;
 };
+export const PublishArticle = async (a) => {
+    const response = await API.post(`/pt/Insert_Pediatrician_Articles`,{
+        params:{
+            "article":a
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 
 export const getCommentCount = async (id) => {
 
@@ -92,5 +101,9 @@ export const getFollowerListForPediatrician = async(id) => {
             "doctor_id":id
         }
     }, options);
+    return response.data;
+};
+export const get_article_categories = async() => {
+    const response = await API.get(`/pt/get_article_categories`, options);
     return response.data;
 };

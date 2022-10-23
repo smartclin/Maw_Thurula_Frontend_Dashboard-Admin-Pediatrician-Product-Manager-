@@ -27,6 +27,7 @@ export const View_Target_Pediatrician = async (uid) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+
 export const getnofComments = async event => {
     console.log("call func")
     const params = { uid: 1 };
