@@ -17,7 +17,8 @@ const OneMothersDetails = Loadable(lazy(() => import('./mothers/MothersSinglePos
 const TargetMothersPostList = Loadable(lazy(() => import('./mothers/MothersPostList')));
 
 //this for pediatrician routes
-const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
+// const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
+const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianListNew')));
 const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')));
 const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests.js')))
 const PediatricianApprovalDecision = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianApprovalDecision.js')))

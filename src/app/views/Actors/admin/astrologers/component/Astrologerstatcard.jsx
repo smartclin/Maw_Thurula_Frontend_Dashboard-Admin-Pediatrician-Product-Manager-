@@ -63,6 +63,11 @@ const AstrologerRequestStatCards = () => {
         })
 
     }, []);
+    useEffect(()=>{
+        // console.log("====================")
+        // console.log(monthProfit)
+        // console.log("====================")
+    },[monthProfit])
     useEffect(async () => {
         let tall=0;
         let tblock=0;
@@ -85,7 +90,18 @@ const AstrologerRequestStatCards = () => {
         setBlock(tblock)
     }, [AList]);
     function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // console.log("======================");
+        // console.log(x);
+        // // console.log(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        // console.log("======================");
+        if(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        else{
+            return 0;
+        }
+
+        // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     const cardList = [
         { name: 'Registered Astrologers', amount: all, icon: 'person_rounded',size:55 },
