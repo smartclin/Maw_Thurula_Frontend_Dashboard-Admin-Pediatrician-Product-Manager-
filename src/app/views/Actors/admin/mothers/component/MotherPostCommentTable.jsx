@@ -100,21 +100,22 @@ const AdminPostCommentMother = () => {
         const formattedToday = dd + '/' + mm + '/' + yyyy;
         return formattedToday
     }
-    function DeleteComment(cid){
-        delete_Comment(cid).then(x => {
-            getMotherPostsReplyListForAdmin(id).then(data => {
-                setMotherPostsReplyList(data.data)
-            }).catch(err => {
-                console.log(err.error)
-            })
-        }).catch(err => {
-            console.log(err.error)
-        })
+    const [opena, setOpena] = React.useState(false);
 
-    }
+    const handleClickOpena = () => {
+        setOpen(true);
+    };
+
+    const handleClosea = () => {
+        setOpen(false);
+    };
+
     const [open, setOpen] = React.useState(false);
+    const [opendelete, setOpendelete] = React.useState(false);
+
     const [warning, setwarning] = React.useState("");
     const [uid, setUid] = React.useState(0);
+    const [rid, setRid] = React.useState(0);
 
 
     const SendWarn = (uid,comment,date) => {
@@ -131,6 +132,9 @@ const AdminPostCommentMother = () => {
     const handleClose = () => {
         setOpen(false);
     };
+    const handleClosedelete = () => {
+        setOpendelete(false);
+    };
     const valueRef = useRef('')
     const sendValue = (cid) => {
         // console.log(valueRef.current.value)
@@ -146,8 +150,45 @@ const AdminPostCommentMother = () => {
         })
         setOpen(false);
     }
+    const DeleteCommentPopup = (rid) => {
+        setRid(rid);
+        setOpendelete(true);
+    }
+    const deleteCommentOnclick = () => {
+
+        DeleteComment();
+        setOpendelete(false);
+    }
+    function DeleteComment(){
+        console.log("reply - "+rid);
+        delete_Comment(rid).then(x => {
+            getMotherPostsReplyListForAdmin(id).then(data => {
+                setMotherPostsReplyList(data.data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        }).catch(err => {
+            console.log(err.error)
+        })
+
+    }
     return (
         <div>
+            {/*delete for commit*/}
+            <Dialog open={opendelete} onClose={handleClosedelete}>
+                <DialogTitle>Delete Comment</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Are you sure to delete this comment ?
+                    </DialogContentText>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={deleteCommentOnclick}>Yes</Button>
+                    <Button onClick={handleClosedelete}>No</Button>
+                </DialogActions>
+            </Dialog>
+            {/*send notification for mom*/}
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Let's just send a warning message for now, shall we?</DialogTitle>
                 <DialogContent>
@@ -216,7 +257,7 @@ const AdminPostCommentMother = () => {
                                     </TableCell>
 
                                     <TableCell sx={{ px: 0 }} colSpan={2}>
-                                        <IconButton onClick={()=>{DeleteComment(product.reply_id)}}>
+                                        <IconButton onClick={()=>{DeleteCommentPopup(product.reply_id)}}>
                                             <Icon color="warning"  >delete_forever</Icon>
                                         </IconButton>
                                         <IconButton onClick={()=>{SendWarn(product.user_id,product.reply_content,DateReturn(product.date))}}>

@@ -12,6 +12,16 @@ export const getPListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
+
+export const View_Target_Pediatrician = async (uid) => {
+    const response = await API.get(`/admin/View_Target_Pediatrician`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getnofComments = async event => {
     console.log("call func")
     const params = { uid: 1 };
