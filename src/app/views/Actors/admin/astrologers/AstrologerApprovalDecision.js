@@ -6,6 +6,8 @@ import { Fragment } from 'react';
 // import Astrologerstatcard from "./component/Astrologerstatcard";
 //  import AstrologerTable from "./component/AstrologerTable";
 import AstrologerTable from "./AstrologerTable";
+import PediatricianProfilePic from "../pediatricians/component/PediatricianProfilePic";
+import AstrologerProfilePic from "./component/AstrologerProfilePic";
 
 
 const AstrologerList = () => {
@@ -17,12 +19,21 @@ const AstrologerList = () => {
     }));
     return (
         <Fragment>
-            <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={12} md={8} sm={12} xs={12}>
-                        <AstrologerTable>
+            <ContentBox >
+                <Grid >
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <Grid container spacing={2}>
 
-                        </AstrologerTable>
+                        <Grid item xs={7}>
+                            <AstrologerTable>
+
+                            </AstrologerTable>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <AstrologerProfilePic/>
+                        </Grid>
+                        </Grid>
+
                     </Grid>
                 </Grid>
             </ContentBox>

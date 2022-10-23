@@ -222,7 +222,7 @@ const AstrologerTable = () => {
                     </div>
 
                     <div className='m-1'>
-                        <Button variant="contained" color="error" onClick={Reject} >Reject</Button>
+                        <Button variant="contained" color="error" onClick={()=>setOpen(true)} >Reject</Button>
                     </div>
 
                 </div>
