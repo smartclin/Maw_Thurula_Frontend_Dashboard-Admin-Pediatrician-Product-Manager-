@@ -25,3 +25,12 @@ export const load_today_req = async (u_id) => {
     //console.log(data1)
     return data1;
 };
+
+export const load_one_req = async (u_id) => {
+    console.log("request data one");
+    const response = await API.get('/AL/db/request_table_row/'+u_id,options)
+
+    let data1=response.data
+    console.log(data1)
+    return data1;
+};

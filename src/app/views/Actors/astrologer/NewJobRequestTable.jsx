@@ -22,11 +22,11 @@ import {load_req} from "../../../services/Astrologer/al_service";
 
 const NewJobRequestTable=()=> {
     const navigate = useNavigate();
-    const viewRequest=(replyStatus)=>{
+    const viewRequest=(replyStatus,Request_id)=>{
         replyStatus ?
-            navigate({pathname:'/al/view_request_with_response'})
+            navigate({pathname:'/al/view_request_with_response/'+Request_id})
             :
-            navigate({pathname:'/al/view_request'})
+            navigate({pathname:'/al/view_request/'+Request_id})
 
     }
 
@@ -68,23 +68,23 @@ const NewJobRequestTable=()=> {
     const [TableReq, setTableReq] = useState([]);
     useEffect(() => {
         load_req(u_id).then(data => {
-            setReq(data);
-            console.log(Req)
+            setReq(data.req);
+            //console.log(Req)
         }).catch(err => {
             console.log(err.error)
         })
-    }, [Req]);
+    }, []);
 
     useEffect(async () => {
 
-        if(Req.req){
+        if(Req){
 
-            set_req_data(Req.req)
-            console.log(req_data)
+            //set_req_data(Req)
+           // console.log(req_data)
 
-            table_data=req_data.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status}))
+            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status,"Request_id":x.request_id}))
             setTableReq(table_data);
-            console.log(TableReq);
+          //  console.log(TableReq);
 
         }
     }, [Req]);
@@ -130,7 +130,7 @@ const NewJobRequestTable=()=> {
                            Pending: () => <PendingIcon style={{ color: "red" }} />,
                            Done: () => <DoneIcon style={{ color: "orange" }} />
                        }}*/
-            onRowClick={(event, rowData) => viewRequest(rowData.Status)}
+            onRowClick={(event, rowData) => viewRequest(rowData.Status,rowData.Request_id)}
             actions={[
                 (rowData) => {
                     return rowData.Status

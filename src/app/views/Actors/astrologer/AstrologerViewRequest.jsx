@@ -13,8 +13,75 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import MessageIcon from '@mui/icons-material/Message';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
+import { useParams } from "react-router";
 
-const AstrologerViewRequest = ( ) =>  {
+import {load_one_req} from "../../../services/Astrologer/al_service";
+import {useEffect, useState} from "react";
+
+const AstrologerViewRequest = () =>  {
+
+
+
+    const [Req, setReq] = useState([]);
+    const [TableReq, setTableReq] = useState([]);
+    const [CardData,setCardData] = useState([]);
+
+    const [Email,setEmail]=useState([]);
+    const [BD,setBD]=useState([]);
+    const [BT,setBT]=useState([]);
+    const [Msg,setMsg]=useState([]);
+    let { request_id } = useParams();
+    let card_data=[];
+       const card_data1 = [
+        {value:'jdjd' , label:'select event'},
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+    ]
+   let backend_data=[];
+   //const load () =
+
+
+  /* load_one_req(request_id).then(data=>{
+       setReq(data)
+       setCardData(Req.req);
+       // console.log(CardData[0]['request_id']);
+       // alert(data)
+       console.log("data",data)
+
+   });*/
+  // console.log(backend_data.req);
+
+   useEffect(() => {
+        load_one_req(request_id).then(data => {
+
+            setReq(data.req[0])
+          // console.log(Req.req)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    //
+     useEffect(async () => {
+        //onsole.log(Req)
+        // if(Req){
+            //console.log(Req[0]['email'])
+          //setEmail(Req[0].email);
+            // setBD(Req[0]['birth_date']);
+            // setBT(Req[0]['birth_time']);
+            // setMsg(Req[0]['message'])
+        // }
+    }, [Req]);
+    useEffect(async () => {
+        console.log("---------------------")
+           console.log(Email);
+        console.log("---------------------")
+
+    }, [Email]);
+
+
+
+
 
 
     let requestTittle={
@@ -36,17 +103,25 @@ const AstrologerViewRequest = ( ) =>  {
     let mainDiv={
         margin:' 30px 400px 0px 300px'
     };
+   // const CardDataDefault=[{}];
+  const CardDataDefault=[{
+        email:"g@gmail.com",
+       birth_date:"2022-10-21",
+       birth_time:"22:02:31",
+       message:"letters for my baby"
+}];
+  //setCardData(CardDataDefault);
     return (
         <div style={mainDiv}>
             <div style={requestTittle}>Request message</div>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+           <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
                             <MailIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Email" secondary="Jan 9, 2014" />
+                    <ListItemText primary="Email" secondary={Req.email}/>
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -54,7 +129,7 @@ const AstrologerViewRequest = ( ) =>  {
                             <CalendarMonthIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Date" secondary="2020/10/02" />
+                    <ListItemText primary="Birth Date" secondary={Req.birth_date} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -62,7 +137,7 @@ const AstrologerViewRequest = ( ) =>  {
                             <AccessTimeIcon  />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Birth Time" secondary="10:14:23" />
+                    <ListItemText primary="Birth Time" secondary={Req.birth_time} />
                 </ListItem>
                 <ListItem>
                     <ListItemAvatar>
@@ -70,9 +145,7 @@ const AstrologerViewRequest = ( ) =>  {
                             <MessageIcon />
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Message" secondary="Here I am include my babies birthday and time.
-I would like to get proper letters for my baby name
-" />
+                    <ListItemText primary="Message" secondary={Req.message}/>
                 </ListItem>
             </List>
             <div style={requestTittle}>Response message</div>
