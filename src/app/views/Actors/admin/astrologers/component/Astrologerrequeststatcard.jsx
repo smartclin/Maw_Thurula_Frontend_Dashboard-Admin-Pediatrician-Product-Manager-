@@ -84,8 +84,22 @@ const AstrologerRequestStatCards = () => {
         setActive(tactive)
         setBlock(tblock)
     }, [AList]);
+    // function numberWithCommas(x) {
+    //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // }
     function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // console.log("======================");
+        // console.log(x);
+        // // console.log(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+        // console.log("======================");
+        if(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        else{
+            return "Rs. 0.00";
+        }
+
+        // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     const cardList = [
         { name: 'Registered Astrologers', amount: all, icon: 'person_rounded',size:55 },

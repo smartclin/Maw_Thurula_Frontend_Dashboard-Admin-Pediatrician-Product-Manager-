@@ -83,10 +83,19 @@ const MotherStatCards = () => {
         setActive(tactive)
         setBlock(tblock)
     }, [AList]);
+    // function numberWithCommas(x) {
+    //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // }
     function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+        if(x){
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        else{
+            return "Rs. 0.00";
+        }
 
+        // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const cardList = [
         { name: 'Registered Name Providers', amount: all, icon: 'person_rounded',size:50 },
         { name: 'Pending Requests', amount: active, icon: 'pending_actions', size:55},
