@@ -17,10 +17,13 @@ import TextField from '@mui/material/TextField'
 import {useParams} from "react-router";
 import {load_one_req} from "../../../services/NameProvider/np_service";
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {insert_response} from "../../../services/Astrologer/al_service";
 
 const NameProviderViewRequest = ( ) =>  {
     const [Req, setReq] = useState([]);
-
+    const [Msg,setMsg]=useState([]);
+    const [Names, setNames] = useState([]);
     let { request_id } = useParams();
 
     useEffect(() => {
@@ -30,6 +33,20 @@ const NameProviderViewRequest = ( ) =>  {
             console.log(err.error)
         })
     }, []);
+    const navigate = useNavigate();
+
+    function FilterData(event) {
+        //  prevent page refresh
+        event.preventDefault();
+        console.log(Msg)
+        console.log(Names)
+        console.log(request_id)
+        //load total income
+        insert_response(request_id,Msg,Names).then(data => {
+            console.log(data);
+            navigate({pathname:'/np/view_request_with_response/'+request_id})
+        })
+    }
 
     let requestTittle={
         color:'#9e9e9e',
@@ -96,10 +113,17 @@ const NameProviderViewRequest = ( ) =>  {
                 noValidate
                 autoComplete="off"
             >
-                <TextField style={responseInput} id="outlined-basic" label="Type response here ..." variant="outlined" />
+                <TextField style={responseInput} id="outlined-basic" label="Type names for baby" variant="outlined"
+                           value={Names}
+                           onChange={(e) => setNames(e.target.value)}/>
+
+                <TextField style={responseInput} id="outlined-basic" label="Type response here ..." variant="outlined"
+                           value={Msg}
+                           onChange={(e) => setMsg(e.target.value)}/>
+
 
             </Box>
-            <Button  style ={sendButton} variant="contained">Send</Button>
+            <Button  style ={sendButton} variant="contained" onClick={FilterData}>Send</Button>
         </div>
     );
 
