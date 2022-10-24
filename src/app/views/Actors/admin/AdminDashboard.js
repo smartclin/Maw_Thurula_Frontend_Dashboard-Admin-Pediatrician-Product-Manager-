@@ -7,6 +7,11 @@ import PediatricianRequestTable from "./shared/admin/PediatricianRequestTable";
 import LineChart from "../shared/LineChart";
 import Button from 'react-bootstrap/Button';
 import MatxLayout from "../../../components/MatxLayout/MatxLayout";
+import {useEffect, useState} from "react";
+import {getMotherListForAdmin} from "../../../services/Admin/Mother/admin_mother_service";
+import {getNPListForAdmin} from "../../../services/Admin/Name_Provider/admin_np_service";
+import {getPListForAdmin} from "../../../services/Admin/Pediatrician/admin_pediatrician_service";
+import {getAListForAdmin} from "../../../services/Admin/Astrologer/admin_astrologer_service";
 
 
 const ContentBox = styled('div')(({theme}) => ({
@@ -36,6 +41,7 @@ const H4 = styled('h4')(({ theme }) => ({
 
 const AdminDashboard = () => {
 
+
     const { palette } = useTheme();
 
     const Container = styled('div')(({ theme }) => ({
@@ -50,38 +56,27 @@ const AdminDashboard = () => {
             },
         },
     }));
-    const cardList = [
-        { name: 'Registered Mothers', amount: 305, icon: 'pregnant_woman' },
-        { name: 'Pediatricians', amount: 100, icon: 'local_hospital' },
-        { name: 'Astrologers', amount: 52, icon: 'recent_actors' },
-        { name: 'Name Providers', amount: 37, icon: 'rate_review' },
-    ];
+
+
+
     return (
         <Fragment>
             <ContentBox className="analytics">
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
-                        <AdminStatCards cardList={cardList} />
+                        <AdminStatCards />
                         <LatestCommunityPostRequestTable />
-                        {/*<H4>Trending Articles </H4>*/}
-                        {/*<RowCards />*/}
-                        {/*<PediatricianRequestTable/>*/}
-                        {/*<Button>asd</Button>*/}
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12} >
                         <ProfitStatCards />
                         <Card sx={{ px: 3, py: 2, mb: 3 }}>
                             <Title>Profits Summary</Title>
-
                             <LineChart
                                 height="312px"
                                 color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
                             />
                         </Card>
-
-                        {/*<UpgradeCard />*/}
-                        {/*<Campaigns />*/}
                     </Grid>
                 </Grid>
             </ContentBox>
