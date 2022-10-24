@@ -24,7 +24,7 @@ import {AcceptNP, NP_Request_Data, RejectNP} from "../../../../../services/Admin
 const NPRequestListTable=()=> {
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
-    const handleOnClick = () => navigate('/admin/NameProviderApprovalDecision', {replace: false});
+    const handleOnClick = (id) => navigate('/admin/NameProviderApprovalDecision/'+id, {replace: false});
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -142,7 +142,7 @@ const NPRequestListTable=()=> {
                     }
                 }
             ]}
-            onRowClick={(event, rowData) => handleOnClick()}
+            onRowClick={(event, rowData) => handleOnClick(rowData.user_id)}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,
             }}

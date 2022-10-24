@@ -5,23 +5,32 @@ import NameProviderListTable from "../name-providers/component/NameProviderListT
 import PediatricianListTable from "./component/pediatricianListTable";
 import Pediatricianstatcard from "./component/pediatricianstatcard";
 import PediatricianTable from "./component/PediatricianTable";
+import PediatricianProfilePic from "./component/PediatricianProfilePic";
 
 
 const PediatricianList = () => {
 
 
     const ContentBox = styled('div')(({ theme }) => ({
-        margin: '30px',
+        // marginTop : '20px',
         [theme.breakpoints.down('sm')]: { margin: '16px' },
     }));
     return (
         <Fragment>
-            <ContentBox className="analytics">
-                <Grid container spacing={3}>
-                    <Grid item lg={12} md={8} sm={12} xs={12}>
-                        <PediatricianTable>
+            <ContentBox >
+                <Grid>
+                    <Grid item lg={12} md={12} sm={12} xs={12}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={7}>
+                                <PediatricianTable>
 
-                        </PediatricianTable>
+                                </PediatricianTable>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <PediatricianProfilePic/>
+                            </Grid>
+                        </Grid>
+
                     </Grid>
                 </Grid>
             </ContentBox>

@@ -17,7 +17,8 @@ const OneMothersDetails = Loadable(lazy(() => import('./mothers/MothersSinglePos
 const TargetMothersPostList = Loadable(lazy(() => import('./mothers/MothersPostList')));
 
 //this for pediatrician routes
-const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
+// const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianList')));
+const PediatricianList = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianListNew')));
 const PediatricianArticles = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianArticles.js')));
 const PediatricianRequests = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianRequests.js')))
 const PediatricianApprovalDecision = Loadable(lazy(() => import('../../Actors/admin/pediatricians/PediatricianApprovalDecision.js')))
@@ -60,19 +61,19 @@ const AdminRoutes = [
     { path: '/admin/pediatrician_articles', element: <PediatricianArticles />, auth: authRoles.admin },
     { path: '/admin/pediatrician_request', element: <PediatricianRequests />, auth: authRoles.admin },
     { path: '/admin/pediatrician_full_article', element: <Pediatrician_full_article />, auth: authRoles.admin },
-    { path: '/admin/PediatricianApprovalDecision', element: <PediatricianApprovalDecision />, auth: authRoles.admin },
+    { path: '/admin/PediatricianApprovalDecision/:id', element: <PediatricianApprovalDecision />, auth: authRoles.admin },
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
     { path: '/admin/one_astrologer_report', element: <OneAstrologerReport />, auth: authRoles.admin },
     { path: '/admin/astrologer_request', element: <AstrologerRequests />, auth: authRoles.admin },
-    { path: '/admin/AstrologerApprovalDecision', element: <AstrologerApprovalDecision />, auth: authRoles.admin },
+    { path: '/admin/AstrologerApprovalDecision/:id', element: <AstrologerApprovalDecision />, auth: authRoles.admin },
 
     { path: '/admin/name_providers', element: <NameProvider />, auth: authRoles.admin },
     { path: '/admin/name_providers_reports', element: <NameProviderReports />, auth: authRoles.admin },
     { path: '/admin/one_name_provider_report', element: <OneNameProviderReport />, auth: authRoles.admin },
     { path: '/admin/name_provider_requests', element: <NameProviderRequests />, auth: authRoles.admin },
-    { path: '/admin/NameProviderApprovalDecision', element: <NameProviderApprovalDecision />, auth: authRoles.admin },
+    { path: '/admin/NameProviderApprovalDecision/:id', element: <NameProviderApprovalDecision />, auth: authRoles.admin },
 
     { path: '/admin/ecommerce_products', element: <EcommerceProducts />, auth: authRoles.admin },
     { path: '/admin/ecommerce_orders', element: <EcommerceOrders />, auth: authRoles.admin },

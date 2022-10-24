@@ -35,8 +35,7 @@ const Heading = styled('h6')(({ theme }) => ({
     color: theme.palette.primary.main,
 }));
 
-const MotherStatCards = () => {
-
+const MotherStatCards = ({Handle1}) => {
     const [PList, setPList] = useState([]);
     const [all, setAll] = useState(0);
     const [block, setBlock] = useState(0);
@@ -53,6 +52,7 @@ const MotherStatCards = () => {
         let tall=0;
         let tblock=0;
         let tactive=0;
+        // console.log(Handle1)
         PList.paediatrician ? PList.paediatrician.map((p, index) => {
             tall++;
             if(p.STATUS == 1){

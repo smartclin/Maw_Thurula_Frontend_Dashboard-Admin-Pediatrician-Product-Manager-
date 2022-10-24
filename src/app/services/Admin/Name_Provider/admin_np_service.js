@@ -93,3 +93,12 @@ export const RejectNP = async (uid) => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const View_Target_NP = async (uid) => {
+    const response = await API.get(`/admin/View_Target_np`,{
+        params:{
+            "uid":uid
+        }
+    }, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};

@@ -15,11 +15,32 @@ import {
     useTheme,
 } from '@mui/material';
 import { Paragraph } from 'app/components/Typography';
+import { useParams } from "react-router";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import TextField from "@mui/material/TextField";
+import DialogActions from "@mui/material/DialogActions";
+import Dialog from "@mui/material/Dialog";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 
+
 import Button from '@mui/material/Button';
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
+import {
+    AcceptPediatrician,
+    getPListForAdmin, RejectPediatrician,
+    UnBlockPediatrician,
+    View_Target_Pediatrician
+} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
+import * as React from "react";
+
+
+
 
 const CardHeader = styled(Box)(() => ({
     display: 'flex',
@@ -62,17 +83,114 @@ const Small = styled('small')(({ bgcolor }) => ({
 
 
 
+
+
 const AstrologerTable = () => {
+    const [pediatritionList, setpediatritionList] = useState([]);
+    const [pid, setPid] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    let { id } = useParams();
+    // let history = useHistory();
+    const navigate = useNavigate();
+    useEffect(() => {
+        View_Target_Pediatrician(id).then(data => {
+            setpediatritionList(data.pediatricians[0]);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+
+    useEffect(async () => {
+        // console.log(pediatritionList);
+        // console.log(pediatritionList.description);/
+    }, [pediatritionList]);
+
+
+
+    const Accept = () => {
+
+        AcceptPediatrician(id).then(data => {
+            // console.log("data -- "+data);
+            navigate(-1);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    };
+    const Reject= () => {
+
+        RejectPediatrician(id).then(data => {
+            // console.log("data -- "+data);
+            navigate(-1);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    };
+
+
+
+
     const { palette } = useTheme();
     const bgError = palette.error.main;
     const bgPrimary = palette.primary.main;
     const bgSecondary = palette.secondary.main;
 
+    const mothersList = [
+        {
+            name: 'Name',
+            topic: pediatritionList.name,
+
+        },
+        {
+            name: 'NIC',
+            topic: pediatritionList.NIC,
+        },
+        {
+            name: 'Address ',
+            topic: pediatritionList.Address,
+        },
+        {
+            name: 'Contact No',
+            topic: pediatritionList.phone_number,
+        },
+        {
+            name: 'Email',
+            topic: pediatritionList.email,
+        },
+        {
+            name: 'Currently working at',
+            topic: pediatritionList.WorkingAt,
+        },
+        {
+            name: 'Years of experience',
+            topic: pediatritionList.experience,
+        }
+
+
+    ];
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
-        <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
-            <CardHeader>
-                <Title> User Details </Title>
+        <div>
+            <Dialog  open={open} onClose={handleClose}>
+            <DialogTitle>Reject Pediatrician</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure about this action?
+                </DialogContentText>
+
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={Reject}>Yes</Button>
+                <Button onClick={handleClose}>No</Button>
+            </DialogActions>
+        </Dialog>
+
+        <Card elevation={3} sx={{ pt: '20px', mb: 3,mt:2,ml:2}}>
+            <CardHeader sx={{  ml: 3 }}>
+                <Title sx={{fontSize: 34}}> User Details </Title>
             </CardHeader>
+
 
             <Box overflow="auto">
                 <ProductTable>
@@ -97,64 +215,27 @@ const AstrologerTable = () => {
                         ))}
                     </TableBody>
                 </ProductTable>
-                <div style={{display:"flex",marginLeft:43,marginBottom:30}} >
+                <div style={{display:"flex",marginLeft:43,marginBottom:30, marginTop:10}} >
 
                     <div className='m-1'>
-                        <Button variant="contained" color="success">Accept</Button>
+                        <Button variant="contained" color="success" onClick={Accept} >Accept</Button>
                     </div>
 
                     <div className='m-1'>
-                        <Button variant="contained" color="error">Reject</Button>
-                    </div>
-                    <div className='m-1'>
-                        <Button variant="contained" color="error">Contact user</Button>
+                        <Button variant="contained" color="error" onClick={()=>setOpen(true)} >Reject</Button>
                     </div>
 
                 </div>
             </Box>
         </Card>
+        </div>
 
 
 
     );
 };
 
-const mothersList = [
-    {
-        name: 'Name',
-        topic: "Hansana Ranaweera",
 
-    },
-    {
-        name: 'NIC',
-        topic: "199910923456",
-    },
-    {
-        name: 'Birth Date',
-        topic: "1999/10/23",
-    },
-    {
-        name: 'Address ',
-        topic: "No.53 Akuressa",
-    },
-    {
-        name: 'Contact No',
-        topic: "0713805999",
-    },
-    {
-        name: 'Email',
-        topic: "hansna@gmail.com",
-    },
-    {
-        name: 'Currently working at',
-        topic: "Akuressa Hospital",
-    },
-    {
-        name: 'Qualifications',
-        topic: "Empty",
-    },
-
-];
 
 export default AstrologerTable;
 
