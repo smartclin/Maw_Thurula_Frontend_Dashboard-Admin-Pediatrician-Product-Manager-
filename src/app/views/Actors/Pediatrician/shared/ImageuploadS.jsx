@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useEffect} from 'react';
 import {Imageupload} from "../../../../services/Pediatrician/pt_service";
 
-function ImageuploadS() {
+function ImageuploadS({imageupload}) {
 
     const [userInfo, setuserInfo] = useState({
         file:[],
@@ -42,6 +42,12 @@ function ImageuploadS() {
 
 
     }
+    const imageupload22 = () => {
+        console.log(userInfo.file.name)
+        let name=userInfo.file.name
+        // alert(userInfo);
+        imageupload({name})
+    }
 
     return (
         <div className="container mr-60">
@@ -71,7 +77,7 @@ function ImageuploadS() {
           </div>
 
             <div className="form-row">
-                <button type="submit" className="btn btn-dark" onClick={()=>submit()} > Save </button>
+                <button type="submit"  onClick={imageupload22} className="btn btn-dark" > Save </button>
 
             </div>
 

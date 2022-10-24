@@ -30,7 +30,7 @@ function AddRemovedFormField(){
     }
     return(
 
-        <div className="container">
+        <div className="container" >
             <div className="row">
                 <div className="col-sm-8">
                     {
@@ -40,7 +40,7 @@ function AddRemovedFormField(){
                                 <div className="row my-3" key={index}>
                                     <div className="col">
                                         <div className="form-group">
-                                            <input style={{height: "100px"} } type="text" onChange={(evnt)=>handleChange(index, evnt)} value={Qualifications} name="Qualifications" className="form-control"  placeholder="Qualifications" />
+                                            <input  style={{height: "100px",width:'1010px'} } type="text" onChange={(evnt)=>handleChange(index, evnt)} value={Qualifications} name="Qualifications" className="form-control"  placeholder="Qualifications" />
                                         </div>
                                     </div>
 

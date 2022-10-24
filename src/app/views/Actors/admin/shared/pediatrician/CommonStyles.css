@@ -70,10 +70,11 @@
     margin: 20px;
 }
 .post {
-    width: 385px;
+    width: 386px;
     margin: 0px 25px 40px 25px;
     display: flex;
     flex-direction: column;
+    /*background-color: red;*/
 }
 
 .postImg {

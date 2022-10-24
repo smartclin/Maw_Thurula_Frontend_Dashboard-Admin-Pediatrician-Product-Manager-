@@ -39,13 +39,14 @@ const EditForm = () => {
     }, [state.password]);
 
     const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
+        console.log("submitted");
+        console.log(event.target);
     };
 
     const handleChange = (event) => {
         event.persist();
         setState({ ...state, [event.target.name]: event.target.value });
+        console.log(state)
     };
     const handleSelectedFile = (event) => {
         //setState({ ...state, [event.target.name]: event.target.value });
@@ -90,11 +91,11 @@ const EditForm = () => {
         cursor:"pointer"
     };
     let addRemove={
-        marginBottom:"20px"
+        marginBottom:"20px",
     };
     return (
-        <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+        <div style={{padding:'25px'}}>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null} >
                 <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
                         <div style={imgDiv}>

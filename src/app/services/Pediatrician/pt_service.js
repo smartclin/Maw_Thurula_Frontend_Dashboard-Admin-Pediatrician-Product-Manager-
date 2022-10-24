@@ -11,6 +11,17 @@ export const getPostList = async (id) => {
     }, options);
     return response.data;
 };
+export const load_line_chart_for_pd = async (u_id) => {
+
+    const response = await API.get('/pt/req_chart_pt',{
+
+    },options)
+
+
+    let data1=response.data
+    //console.log(data1)
+    return data1;
+};
 export const getallPostList = async () => {
     const response = await API.get(`/pt/view_all_articles`, options);
     // console.log("res out "+response.data)
@@ -26,7 +37,7 @@ export const fullArticle = async (id,id1) => {
     }, options);
     return response.data;
 };
-export const PublishArticle = async (a) => {
+export const publishArticle = async (a) => {
     const response = await API.post(`/pt/Insert_Pediatrician_Articles`,{
         params:{
             "article":a
@@ -41,6 +52,15 @@ export const getCommentCount = async (id) => {
     const response = await API.get(`/pt/no_of_article_comments`,{
         params:{
             "article_id":id
+        }
+    }, options);
+    return response.data;
+};
+export const getMostLiked = async (id) => {
+
+    const response = await API.get(`/pt/Trending_article`,{
+        params:{
+            "doctor_id":id
         }
     }, options);
     return response.data;

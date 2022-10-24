@@ -36,8 +36,10 @@ import BasicSelect from "./BasicSelect";
 import Button from '@mui/material/Button';
 import InputAdornments from "./InputBox";
 import {getPListForAdmin} from "../../../../services/Admin/Pediatrician/admin_pediatrician_service";
-import {getPostList, PublishArticle} from "../../../../services/Pediatrician/pt_service";
-export default function App() {
+import {getPostList, publishArticle} from "../../../../services/Pediatrician/pt_service";
+
+export default function App({link}) {
+    console.log("link",link)
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     );
@@ -82,9 +84,10 @@ export default function App() {
             title,
             category,
             htmlContent,
-            id
+            id,
+            link
         ]
-            PublishArticle(options).then(data => {
+            publishArticle(options).then(data => {
                 // setPList(data);
                 console.log("aa")
                 console.log(data)

@@ -4,6 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import {getCommentCount} from "../../../../services/Pediatrician/pt_service";
 import MarkunreadRoundedIcon from "@mui/icons-material/MarkunreadRounded";
 import {Link, useNavigate} from "react-router-dom";
+import parse from "html-react-parser"
 
 const SocialCard = ({ userData }) => {
     const navigate = useNavigate();
@@ -53,8 +54,9 @@ const SocialCard = ({ userData }) => {
                     {/*<span className="postDate">{DateReturn(props.posts.date)}</span>*/}
                 </div>
                 <p className="postDesc">
-                    {userData.des}
+                    {parse(userData.des)}
                 </p>
+
                 <div>
                     <IconButton aria-label="add to favorites">
                         <FavoriteIcon /> <span style={{fontSize:20}}>{userData.no_of_likes}</span>
