@@ -157,8 +157,8 @@ const NameProviderReportStatCards = () => {
 
     const cardList2 = [
 
-        { name: 'Total Income', amount: Tot, icon: 'attach_money' },
-        { name: 'Pending Income', amount:Pending, icon: 'trending_up' },
+        { name: 'Total Income (Rs)', amount: Tot, icon: 'attach_money' },
+        { name: 'Pending Income (Rs)', amount:Pending, icon: 'trending_up' },
     ];
 
     const [value, setValue] = React.useState([null, null]);
