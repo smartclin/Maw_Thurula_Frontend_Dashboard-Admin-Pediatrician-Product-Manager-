@@ -29,6 +29,7 @@ const TextField = styled(TextValidator)(() => ({
 
 const EditForm = () => {
     const [state, setState] = useState({ date: new Date() });
+    const [state1, setState1] = useState('');
 
     useEffect(() => {
         ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
@@ -49,14 +50,10 @@ const EditForm = () => {
     const handleChange = (event) => {
         event.persist();
         setState({ ...state, [event.target.name]: event.target.value });
-        console.log(state)
-
-
     };
     const [ArticlePosts, setArticlePosts] = useState([]);
     const [qulifications, setQulifications] = useState([]);
     const Senddata=()=>{
-
         console.log("event is",state)
         let dataobject={
             "description":state.description,
@@ -100,11 +97,14 @@ const EditForm = () => {
         setState([])
     }
     const handleSelectedFile = (event) => {
-        //setState({ ...state, [event.target.name]: event.target.value });
+        setState1({ ...state1, [event.target.name]: event.target.value });
+        console.log("state",state1)
+        setState1({ ...state1, [event.target.name]: "image" });
 
-
+          console.log(state1)
         document.getElementById("fileInput").innerHTML='done';
         document.getElementById("fileInput").style.color='#2edb8a';
+        console.log(state)
     };
     const handleDateChange = (date) => setState({ ...state, date });
 

@@ -178,6 +178,16 @@ export const navigations_PT = [
 
     ],
   },
+  {
+    name: 'Edit profile',
+    icon: 'store',
+    badge: { value: '', color: 'secondary' },
+    children: [
+      { name: 'Edit', path: '/pt/PediatricianEditProfile', iconText: 'A' },
+      // { name: 'Reports', path: '/admin/ecommerce_reports', iconText: 'A' },
+
+    ],
+  }
 ];
 export const navigations_NP = [
   { label: 'Name Provider', type: 'label' },
