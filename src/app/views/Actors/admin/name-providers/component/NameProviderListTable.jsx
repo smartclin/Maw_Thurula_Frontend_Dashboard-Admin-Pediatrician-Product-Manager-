@@ -38,8 +38,8 @@ const NameProviderListTable=({handle})=> {
     const [id, setId] = React.useState(false);
 
     const handleBlockClickOpen = (uid) => {
-        handle(uid)
-        console.log(uid)
+        // handle(uid)
+        // console.log(uid)
         setId(uid);
         // // console.log("Id : "+id)
         setOpen(true);
@@ -80,7 +80,7 @@ const NameProviderListTable=({handle})=> {
     const sendValue = () => {
         // console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
         BlockNP(id,valueRef.current.value).then(data => {
-            console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
+            // console.log("Succesfully blocked id-"+id+"  reason- "+valueRef.current.value)
             NP_Data_with_profit().then(data => {
                 setAList(data);
             }).catch(err => {
