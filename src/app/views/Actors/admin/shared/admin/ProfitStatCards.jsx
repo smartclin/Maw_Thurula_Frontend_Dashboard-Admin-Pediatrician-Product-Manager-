@@ -1,4 +1,7 @@
 import {Card, Fab, Grid, Icon, lighten, styled, useTheme} from '@mui/material';
+import {useEffect, useState} from "react";
+import {Get_NP_Month_Profit} from "../../../../../services/Admin/Name_Provider/admin_np_service";
+import {Get_Astrologers_Month_Profit} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 
 const ContentBox = styled('div')(() => ({
   display: 'flex',
@@ -52,6 +55,34 @@ const IconBox = styled('div')(() => ({
 }));
 
 const ProfitStatCards = () => {
+  const [NpmonthProfit, setNpMonthProfit] = useState(0);
+  const [monthProfit, setMonthProfit] = useState(0);
+  useEffect(() => {
+    Get_NP_Month_Profit().then(data => {
+      // console.log("-----------------")
+      // console.log(data.Data[0].sum)
+      setNpMonthProfit(data.Data[0].sum)
+    }).catch(err => {
+      console.log(err.error)
+    })
+    Get_Astrologers_Month_Profit().then(data => {
+      // console.log("-----------------")
+      // console.log()
+      setMonthProfit(data.Data[0].sum)
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+  function numberWithCommas(x) {
+    if(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    else{
+      return "Rs. 0.00";
+    }
+
+    // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   const { palette } = useTheme();
   const textError = palette.error.main;
   const bgError = lighten(palette.error.main, 0.85);
@@ -69,7 +100,7 @@ const ProfitStatCards = () => {
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>Rs.10 000</H1>
+            <H1>Rs.{numberWithCommas(monthProfit)}</H1>
             <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
               <Icon className="icon">expand_less</Icon>
             </IconBox>
@@ -107,7 +138,7 @@ const ProfitStatCards = () => {
           </ContentBox>
 
           <ContentBox sx={{ pt: 2 }}>
-            <H1>Rs.12 000</H1>
+            <H1>Rs.{numberWithCommas(NpmonthProfit)}</H1>
             <IconBox sx={{ background: 'rgba(9, 182, 109, 0.15)' }}>
               <Icon className="icon">expand_less</Icon>
             </IconBox>
