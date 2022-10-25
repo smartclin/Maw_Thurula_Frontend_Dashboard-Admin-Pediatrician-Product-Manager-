@@ -144,14 +144,14 @@ const Analytics = () => {
             <ContentBox className="analytics">
                <div className="d-flex" >
                    <div className="ms-4">
-                       <Autocomplete
-                           disablePortal
-                           options={top100Films}
-                           onInput={filterCards}
-                           id="combo-box-demo"
-                           sx={{ width: 300 }}
-                           renderInput={(params) => <TextField {...params} label="Search by Title" />}
-                       />
+                       {/*<Autocomplete*/}
+                       {/*    disablePortal*/}
+                       {/*    options={top100Films}*/}
+                       {/*    onInput={filterCards}*/}
+                       {/*    id="combo-box-demo"*/}
+                       {/*    sx={{ width: 300 }}*/}
+                       {/*    renderInput={(params) => <TextField {...params} label="Search by Title" />}*/}
+                       {/*/>*/}
                    </div>
                    {/*<div className="ms-5">*/}
                    {/*    <Autocomplete*/}
