@@ -12,6 +12,11 @@ export const getPListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
+export const getArticleCountForAdmin = async event => {
+    const response = await API.get(`/admin/getArticleCountForAdmin`, options);
+    // console.log("res out "+response.data)
+    return response.data;
+};
 export const getPListForAdmin_without_pending = async event => {
     const response = await API.get(`/admin/paediatricianlist_without_pending`, options);
     // console.log("res out "+response.data)
