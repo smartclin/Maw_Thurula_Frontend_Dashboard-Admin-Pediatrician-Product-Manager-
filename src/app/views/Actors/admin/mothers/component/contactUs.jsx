@@ -19,6 +19,7 @@ import {Image} from "react-bootstrap";
 import AddRemoveFormField from "../../../astrologer/AddRemoveFormfield";
 import TextField from "@mui/material/TextField";
 import {TextValidator} from "react-material-ui-form-validator";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -28,16 +29,18 @@ import {TextValidator} from "react-material-ui-form-validator";
 const ContactUs = () => {
     const [state, setState] = useState({ date: new Date() });
     const form = useRef();
-
+    const navigate = useNavigate();
     const sendEmail = (e) => {
         e.preventDefault();
 
         emailjs.sendForm('service_531lcof', 'template_44olkws', form.current, 'ukmiDflWZglXksW5H')
             .then((result) => {
                 console.log(result.text);
+                navigate(-1);
             }, (error) => {
                 console.log(error.text);
             });
+
     };
 
     let imgDiv={
