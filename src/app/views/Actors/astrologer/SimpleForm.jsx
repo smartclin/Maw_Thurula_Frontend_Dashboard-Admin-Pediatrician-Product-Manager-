@@ -273,7 +273,7 @@ import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {Image} from "react-bootstrap";
 import AddRemoveFormField from "./AddRemoveFormfield"
-// import {editptProfile, addQulifications} from "../../../services/Pediatrician/pt_service";
+ import {editptProfileastrologer,addQulificationsAs} from "../../../services/Astrologer/al_dashboard_service";
 
 
 const TextField = styled(TextValidator)(() => ({
@@ -312,8 +312,6 @@ const EditForm = () => {
   const [ArticlePosts, setArticlePosts] = useState([]);
   const [qulifications, setQulifications] = useState([]);
   const Senddata=()=>{
-
-    console.log("event is",state)
     let dataobject={
       "description":state.description,
       "twitterUrl":state.twitterUrl,
@@ -326,11 +324,11 @@ const EditForm = () => {
       "email":state.email,
 
     }
-    // editptProfile(1,dataobject).then(data => {
-    //   setArticlePosts(data)
-    // }).catch(err => {
-    //   console.log(err.error)
-    // })
+    editptProfileastrologer(1,dataobject).then(data => {
+      setArticlePosts(data)
+    }).catch(err => {
+      console.log(err.error)
+    })
     console.log("dataobject",dataobject)
     Handlereset()
 
@@ -338,14 +336,13 @@ const EditForm = () => {
   }
 
   const check=(event)=>{
-    console.log("checkkkkkkkkkkkk",event)
     event.map((item,index)=>{
       console.log("item",item.Qualifications)
-      // addQulifications(1,item.Qualifications).then(data => {
-      //   setQulifications(data)
-      // }).catch(err => {
-      //   console.log(err.error)
-      // })
+      addQulificationsAs(1,item.Qualifications).then(data => {
+        setQulifications(data)
+      }).catch(err => {
+        console.log(err.error)
+      })
     })
     // addQulifications(1,dataobject).then(data => {
     //     setArticlePosts(data)

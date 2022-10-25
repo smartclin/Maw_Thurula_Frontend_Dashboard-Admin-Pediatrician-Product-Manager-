@@ -61,7 +61,6 @@ const EditForm = () => {
         let dataobject={
             "description":state.description,
             "twitterUrl":state.twitterUrl,
-            "serviceCharge":state.serviceCharge,
             "mobile":state.mobile,
             "linkedinUrl":state.linkedinUrl,
             "fbUrl":state.fbUrl,
@@ -116,7 +115,7 @@ const EditForm = () => {
         mobile,
         description,
         email,
-        serviceCharge,
+        // serviceCharge,
         linkedinUrl,
         fbUrl,
         twitterUrl
@@ -243,7 +242,7 @@ const EditForm = () => {
 
                     </Grid>
 
-                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                    <Grid style={{marginTop:'80px'}} item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
                         <TextField
                             type="text"
                             name="mobile"
@@ -253,15 +252,15 @@ const EditForm = () => {
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
-                        <TextField
-                            type="text"
-                            name="serviceCharge"
-                            value={serviceCharge || ""}
-                            label="Service Charge (Rs.)"
-                            onChange={handleChange}
-                            validators={["required"]}
-                            errorMessages={["this field is required"]}
-                        />
+                        {/*<TextField*/}
+                        {/*    type="text"*/}
+                        {/*    name="serviceCharge"*/}
+                        {/*    value={serviceCharge || ""}*/}
+                        {/*    label="Service Charge (Rs.)"*/}
+                        {/*    onChange={handleChange}*/}
+                        {/*    validators={["required"]}*/}
+                        {/*    errorMessages={["this field is required"]}*/}
+                        {/*/>*/}
                         <TextField
                             type="url"
                             name="linkedinUrl"

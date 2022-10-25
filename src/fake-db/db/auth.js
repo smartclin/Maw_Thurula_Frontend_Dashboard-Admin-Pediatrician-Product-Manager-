@@ -46,13 +46,17 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
         email: response.data.data[0].email,
         avatar: response.data.data[0].profile_picture,
         age: response.data.data[0].login_status,
+        STATUS: response.data.data[0].STATUS,
       },
     ];
     console.log("user list")
-    console.log(userList1)
+    console.log(userList)
     const token=response.data.token;
     const user = userList.find((u) => u.email === email);
-
+    console.log("block",userList[0].STATUS)
+    if(!userList[0].STATUS){
+      console.log("jjjjjjjjjjjjjjjjjjjjjjj")
+    }
     if (!user) {
       return [400, { message: 'Invalid email or password' }];
     }
@@ -64,6 +68,7 @@ Mock.onPost('/api/auth/login').reply(async (config) => {
     console.log(accessToken)
     localStorage.setItem("role", user.role)
     localStorage.setItem("id", user.id)
+    localStorage.setItem("status", userList[0].STATUS)
     // $window.localStorage.setItem('user', JSON.stringify(user));
     // this.currentUser = user;
 
@@ -156,6 +161,7 @@ Mock.onGet('/api/auth/profile').reply((config) => {
     const accessToken = Authorization.split(' ')[1];
     const { userId } = jwt.verify(accessToken, JWT_SECRET);
     const user = userList.find((u) => u.id === userId);
+    const login_block = userList.find((u) => u.id === userId);
 
     if (!user) {
       return [401, { message: 'Invalid authorization token' }];
