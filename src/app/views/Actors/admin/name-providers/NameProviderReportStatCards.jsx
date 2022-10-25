@@ -82,7 +82,7 @@ const NameProviderReportStatCards = () => {
 
     useEffect(async () => {
 
-        console.log(StatCard1)
+
     }, [StatCard1]);
 
     const [StatCard2, setStatCard2] = useState([]);
@@ -116,17 +116,17 @@ const NameProviderReportStatCards = () => {
 
 
 
-    const [sDate, setsDate] = useState('');
-    const [eDate, seteDate] = useState('');
+    const [sDate, setsDate] = useState(dateS);
+    const [eDate, seteDate] = useState(dateE);
     const [Tot, setTot] = useState();
     const [Pending, setPending] = useState();
 
     useEffect(()=>{
         seteDate(dateE);
         setsDate(dateS);
-    },[])
-    console.log(`sDate: ${sDate}`);
-    console.log(`eDate: ${eDate}`);
+    },[],[eDate],[sDate])
+   // console.log(`sDate: ${sDate}`);
+   // console.log(`eDate: ${eDate}`);
     //load total income
     load_tot_income(sDate,eDate).then(data => {
         setTot(data);
@@ -196,25 +196,30 @@ const NameProviderReportStatCards = () => {
 
               >
 
-                  <TextField label="Start Date" color="primary" focused type="date"  id={sDate} name='sDate'
-                             defaultValue={sDate}
-                             value={sDate}
-                             onChange={(e) => setsDate(e.target.value)}
-                             selected
+                  <div style={{display:'flex', flexDirection:'raw',color:'grey',width:"25%",justifyContent:'space-between'}}>
+                      <div sx={{width:"100%"}}> From : {sDate} </div>
+                      <div sx={{width:"100%"}}> To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {eDate}</div>
+                  </div>
+
+                  {/*<TextField label="Start Date" color="primary" focused type="date"  id={sDate} name='sDate'*/}
+                  {/*           defaultValue={sDate}*/}
+                  {/*           value={sDate}*/}
+                  {/*           onChange={(e) => setsDate(e.target.value)}*/}
+                  {/*           selected*/}
 
 
-                  />
+                  {/*/>*/}
 
-                  <TextField label="End Date" color="primary" focused  type="date" id={eDate} name='eDate'
-                             value={eDate}
-                             onChange={(e) => seteDate(e.target.value)}
-                             defaultValue={eDate}
-                  />
-                  <Stack spacing={2} direction="row">
+                  {/*<TextField label="End Date" color="primary" focused  type="date" id={eDate} name='eDate'*/}
+                  {/*           value={eDate}*/}
+                  {/*           onChange={(e) => seteDate(e.target.value)}*/}
+                  {/*           defaultValue={eDate}*/}
+                  {/*/>*/}
+                  {/*<Stack spacing={2} direction="row">*/}
 
-                      <Button type="submit" variant="contained" onClick={FilterData} >Generate Report</Button>
+                  {/*    <Button type="submit" variant="contained" onClick={FilterData} >Generate Report</Button>*/}
 
-                  </Stack>
+                  {/*</Stack>*/}
 
 
 

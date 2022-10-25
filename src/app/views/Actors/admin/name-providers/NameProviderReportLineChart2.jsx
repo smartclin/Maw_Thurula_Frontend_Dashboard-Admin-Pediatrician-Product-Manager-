@@ -23,7 +23,7 @@ const NameProviderReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
         }).catch(err => {
             console.log(err.error)
         })
-    }, [RegAl]);
+    }, []);
 
     useEffect(async () => {
 

@@ -26,17 +26,17 @@ const NameProviderReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
     }).catch(err => {
       console.log(err.error)
     })
-  }, [RegAl]);
+  }, []);
 
   useEffect(async () => {
 
     if(RegAl.reg_np){
-      console.log(RegAl)
+      //console.log(RegAl)
       al_count=RegAl.reg_np.map((al_count:array)=> al_count['count(*)']);
       al_month=RegAl.reg_np.map((al_month:array)=> al_month['month(registered_at)']);
       setAlCount(al_count)
       setAlMonth(al_month)
-      console.log(al_count)
+     // console.log(al_count)
     }
   }, [RegAl]);
 

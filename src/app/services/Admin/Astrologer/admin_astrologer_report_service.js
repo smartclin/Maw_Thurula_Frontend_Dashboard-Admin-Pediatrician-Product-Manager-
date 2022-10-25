@@ -10,20 +10,20 @@ import options from '../../option';
 export const load_stat_card1 = async () => {
 
     const response = await API.get('/admin/al/report_stat_card1',options)
-    console.log("report")
+    //console.log("report")
 
     let data1=response.data['al_count'][0]['COUNT(*)']
-    console.log(data1)
+    //console.log(data1)
      return data1;
 };
 
 export const load_stat_card2 = async () => {
 
     const response = await API.get('/admin/al/report_stat_card2',options)
-    console.log("report2")
+    //console.log("report2")
 
     let data1=response.data['al_count_month'][0]['COUNT(*)']
-    console.log(data1)
+    //console.log(data1)
     return data1;
 };
 
@@ -57,7 +57,7 @@ export const load_reg_al = async (sDate,eDate) => {
     })
     let data1=response.data;
     //let data1=response.data['reg_al'];
-    console.log(data1)
+   // console.log(data1)
     return data1;
 };
 
@@ -70,4 +70,17 @@ export const load_profit_al = async (sDate,eDate) => {
     let data1=response.data;
     //  console.log(data1)
     return data1;
+};
+
+
+//one astrologer report star here
+export const load_stat_card2_one_al = async (a_id) => {
+    console.log("one_al_report")
+    const response = await API.get('/admin/al/Astrologer_Response_Count/'+a_id,options)
+   console.log("one_al_report_2")
+
+    let data1=response.data['Response_data']['DoneJobs']
+    console.log(data1)
+    return data1;
+
 };

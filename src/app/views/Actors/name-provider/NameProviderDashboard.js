@@ -153,7 +153,7 @@ const NameProviderDashboard = () => {
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <Card  sx={{ px: 3, py: 2, mb: 3 }}>
+                        <Card  sx={{ px: 3, py: 2, mb: 3 }}  style={{paddingBottom:85}}>
                             <div style={titleHeader}>
                                 <div>
                                     <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi {ProfileCard.name}</Title>

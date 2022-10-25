@@ -65,7 +65,7 @@ const AdminRoutes = [
 
     { path: '/admin/astrologers', element: <Astrologer />, auth: authRoles.admin },
     { path: '/admin/astrologers_reports', element: <AstrologerReports />, auth: authRoles.admin },
-    { path: '/admin/one_astrologer_report', element: <OneAstrologerReport />, auth: authRoles.admin },
+    { path: '/admin/one_astrologer_report/:a_id', element: <OneAstrologerReport />, auth: authRoles.admin },
     { path: '/admin/astrologer_request', element: <AstrologerRequests />, auth: authRoles.admin },
     { path: '/admin/AstrologerApprovalDecision/:id', element: <AstrologerApprovalDecision />, auth: authRoles.admin },
 

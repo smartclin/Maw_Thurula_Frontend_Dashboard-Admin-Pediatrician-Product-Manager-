@@ -31,6 +31,18 @@ const TodayJobRequestTable=()=> {
 
     }
     const [open, setOpen] = React.useState(false);
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
+
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -59,7 +71,18 @@ const TodayJobRequestTable=()=> {
     const [req_data, set_req_data] = useState([]);
     //load today requests
     let table_data=[];
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
 
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
 
 
 
@@ -81,7 +104,7 @@ const TodayJobRequestTable=()=> {
             //set_req_data(Req.req)
             //console.log(req_data)
 
-            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status,"Request_id":x.request_id}))
+            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":DateReturn(x.request_date),"Status":x.request_status,"Request_id":x.request_id}))
             setTableReq(table_data);
             console.log(TableReq);
 
@@ -89,7 +112,7 @@ const TodayJobRequestTable=()=> {
     }, [Req]);
 
     return (
-        <div style={mainDiv}>
+        <div >
 
             {/*
         <Dialog open={open} onClose={handleClose}>
@@ -114,7 +137,7 @@ const TodayJobRequestTable=()=> {
             </DialogActions>
         </Dialog>*/}
             <MaterialTable style={tableStyle}
-                           title="Request List"
+                           title="Today Request List"
                            columns={[
 
                                { title: 'Name', field: 'name',width: "20%" },

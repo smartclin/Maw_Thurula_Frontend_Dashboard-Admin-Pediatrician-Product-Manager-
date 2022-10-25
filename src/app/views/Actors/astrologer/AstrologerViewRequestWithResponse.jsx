@@ -48,7 +48,18 @@ const AstrologerViewRequestWithResponse = () =>  {
     }, []);
     //
 
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
 
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
 
 
 
@@ -56,8 +67,9 @@ const AstrologerViewRequestWithResponse = () =>  {
 
     let requestTittle={
         color:'#9e9e9e',
-        fontSize: '25px',
-        paddingLeft:'20px',
+        fontSize: '20px',
+        marginTop:'100px',
+        //paddingLeft:'10px',
         fontWeight:'bold',
     };
 
@@ -71,66 +83,72 @@ const AstrologerViewRequestWithResponse = () =>  {
     }
 
     let mainDiv={
-        margin:' 30px 400px 0px 300px'
+        margin:' 30px 300px 0px 280px',
+        display:'flex',
+        flexDirection:'raw',
+        justifyContent:'space-between'
     };
 
     return (
         <div style={mainDiv}>
-            <div style={requestTittle}>Request message</div>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <MailIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Email" secondary={Req.email}/>
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <CalendarMonthIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Birth Date" secondary={Req.birth_date} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <AccessTimeIcon  />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Birth Time" secondary={Req.birth_time} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <MessageIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Message" secondary={Req.message}/>
-                </ListItem>
-            </List>
-            <div style={requestTittle}>Response message</div>
-            <List  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} >
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <HdrAutoIcon/>
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Letters"  secondary={Res.letters} />
-                </ListItem>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <MessageIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Message" secondary={Res.message} />
-                </ListItem>
+            <div><div style={requestTittle}>Request message</div>
+                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper',borderRadius:'10px' ,marginTop:'10px',paddingRight:'50px' }}>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <MailIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Email" secondary={Req.email}/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <CalendarMonthIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Birth Date" secondary={DateReturn(Req.birth_date)} />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <AccessTimeIcon  />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Birth Time" secondary={Req.birth_time} />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar>
+                                <MessageIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary="Message" secondary={Req.message}/>
+                    </ListItem>
+                </List>
+            </div>
+           <div>
+               <div style={requestTittle}>Response message</div>
+               <List  sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' ,borderRadius:'10px' ,marginTop:'10px',paddingRight:'150px'}} >
+                   <ListItem>
+                       <ListItemAvatar>
+                           <Avatar>
+                               <HdrAutoIcon/>
+                           </Avatar>
+                       </ListItemAvatar>
+                       <ListItemText primary="Letters"  secondary={Res.letters} />
+                   </ListItem>
+                   <ListItem>
+                       <ListItemAvatar>
+                           <Avatar>
+                               <MessageIcon />
+                           </Avatar>
+                       </ListItemAvatar>
+                       <ListItemText primary="Message" secondary={Res.message} />
+                   </ListItem>
 
-            </List>
+               </List>
+           </div>
         </div>
     );
 

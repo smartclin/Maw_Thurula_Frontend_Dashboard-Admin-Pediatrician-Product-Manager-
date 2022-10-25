@@ -7,8 +7,8 @@ import {array} from "yup";
 
 const AstrologerReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
   const theme = useTheme();
-  console.log("line chart"+sDate)
-  console.log("line chart"+eDate)
+  //console.log("line chart"+sDate)
+  //console.log("line chart"+eDate)
   const [RegAl, setRegAl] = useState([[]]);
 
   //load profit from astrolergers
@@ -17,22 +17,25 @@ const AstrologerReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
     let al_count=[];
     const [AlMonth, setAlMonth] = useState([]);
     const [AlCount, setAlCount] = useState([]);
+  //  const [Count, setCount] = useState([0, 0, 0, 0, 0, 0, 0,0, 0, 0]);
+   // var ProfitArray=[0, 0, 0, 0, 0, 0, 0,0, 0, 0]
+
     useEffect(() => {
         load_profit_al(sDate,eDate).then(data => {
-            setRegAl(data);
+            setRegAl(data.profit_al);
+
         }).catch(err => {
             console.log(err.error)
         })
-    }, [RegAl]);
+    }, []);
+
 
     useEffect(async () => {
-
-        if(RegAl.profit_al){
-            console.log(RegAl.profit_al)
-            al_count=RegAl.profit_al.map((al_count:array)=> al_count['SUM(amount)']);
-            al_month=RegAl.profit_al.map((al_month:array)=> al_month['month(date_time)']);
-            setAlCount(al_count)
-            setAlMonth(al_month)
+        if(RegAl) {
+          al_count = RegAl.map((al_count: array) => al_count['SUM(amount)']);
+          al_month = RegAl.map((al_month: array) => al_month['month(date_time)']);
+          setAlCount(al_count)
+          setAlMonth(al_month)
         }
     }, [RegAl]);
 

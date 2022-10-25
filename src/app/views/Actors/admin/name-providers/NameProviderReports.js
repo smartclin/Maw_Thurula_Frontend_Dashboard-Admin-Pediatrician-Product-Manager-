@@ -43,13 +43,13 @@ const NameProvidersReports = () => {
             <div style={titleDiv}>
                 <div style={reportTitle}> Name Provider's Report </div>
                 <div>
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                        <Button variant="contained" component="label">
-                            Download as a PDF  <DownloadIcon></DownloadIcon>
-                            <input hidden accept="image/*" multiple type="file" />
-                        </Button>
+                    {/*<Stack direction="row" alignItems="center" spacing={2}>*/}
+                    {/*    <Button variant="contained" component="label">*/}
+                    {/*        Download as a PDF  <DownloadIcon></DownloadIcon>*/}
+                    {/*        <input hidden accept="image/*" multiple type="file" />*/}
+                    {/*    </Button>*/}
 
-                    </Stack>
+                    {/*</Stack>*/}
                 </div>
             </div>
 

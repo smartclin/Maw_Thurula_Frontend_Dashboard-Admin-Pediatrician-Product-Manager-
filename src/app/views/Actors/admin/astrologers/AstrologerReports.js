@@ -67,13 +67,12 @@ const AstrologersReports = () => {
             <div style={titleDiv}>
                 <div style={reportTitle}> Astrologer's Report </div>
                 <div>
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                        <Button variant="contained" component="label" onClick={Download}>
-                            Download as a PDF  <DownloadIcon></DownloadIcon>
+                    {/*<Stack direction="row" alignItems="center" spacing={2}>*/}
+                    {/*    <Button variant="contained" component="label" onClick={Download}>*/}
+                    {/*        Download as a PDF  <DownloadIcon></DownloadIcon>*/}
+                    {/*    </Button>*/}
 
-                        </Button>
-
-                    </Stack>
+                    {/*</Stack>*/}
                 </div>
             </div>
 
