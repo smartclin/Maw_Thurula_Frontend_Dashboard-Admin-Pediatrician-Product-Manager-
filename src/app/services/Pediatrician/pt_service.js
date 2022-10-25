@@ -11,6 +11,27 @@ export const getPostList = async (id) => {
     }, options);
     return response.data;
 };
+export const editptProfile =async (id,object) => {
+    const response = await API.post(`/pt/editprofile`,{
+        params:{
+            "doctor_id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    console.log("object")
+    console.log(id)
+};
+export const addQulifications =async (id,object) => {
+    const response = await API.post(`/pt/addQulifications`,{
+        params:{
+            "id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    console.log("object")
+};
 export const load_line_chart_for_pd = async (u_id) => {
 
     const response = await API.get('/pt/req_chart_pt',{

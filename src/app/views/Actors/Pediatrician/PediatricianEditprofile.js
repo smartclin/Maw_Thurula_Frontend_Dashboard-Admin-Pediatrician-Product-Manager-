@@ -13,10 +13,11 @@ import {
     styled,
 } from "@mui/material";
 import { Span } from "app/components/Typography";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {Image} from "react-bootstrap";
 import AddRemoveFormField from "././shared/AddremoveField";
+import {editptProfile, addQulifications} from "../../../services/Pediatrician/pt_service";
 
 
 const TextField = styled(TextValidator)(() => ({
@@ -39,15 +40,66 @@ const EditForm = () => {
     }, [state.password]);
 
     const handleSubmit = (event) => {
+        handleChange(event)
         console.log("submitted");
         console.log(event.target);
+        Senddata()
     };
 
     const handleChange = (event) => {
         event.persist();
         setState({ ...state, [event.target.name]: event.target.value });
         console.log(state)
+
+
     };
+    const [ArticlePosts, setArticlePosts] = useState([]);
+    const [qulifications, setQulifications] = useState([]);
+    const Senddata=()=>{
+
+        console.log("event is",state)
+        let dataobject={
+            "description":state.description,
+            "twitterUrl":state.twitterUrl,
+            "serviceCharge":state.serviceCharge,
+            "mobile":state.mobile,
+            "linkedinUrl":state.linkedinUrl,
+            "fbUrl":state.fbUrl,
+            "Address":state.Address,
+            "firstName":state.firstName,
+            "email":state.email,
+
+        }
+            editptProfile(1,dataobject).then(data => {
+                setArticlePosts(data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        console.log("dataobject",dataobject)
+        Handlereset()
+
+
+    }
+
+    const check=(event)=>{
+        console.log("checkkkkkkkkkkkk",event)
+        event.map((item,index)=>{
+            console.log("item",item.Qualifications)
+            addQulifications(1,item.Qualifications).then(data => {
+                setQulifications(data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        })
+        // addQulifications(1,dataobject).then(data => {
+        //     setArticlePosts(data)
+        // }).catch(err => {
+        //     console.log(err.error)
+        // })
+    }
+    const Handlereset=()=>{
+        setState([])
+    }
     const handleSelectedFile = (event) => {
         //setState({ ...state, [event.target.name]: event.target.value });
 
@@ -59,7 +111,7 @@ const EditForm = () => {
 
     const {
         profilePic,
-        lastName,
+        Address,
         firstName,
         mobile,
         description,
@@ -137,10 +189,10 @@ const EditForm = () => {
                         />
                         <TextField
                             type="text"
-                            name="lastName"
-                            label="Last Name"
+                            name="Address"
+                            label="Address"
                             onChange={handleChange}
-                            value={lastName || ""}
+                            value={Address || ""}
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
@@ -242,12 +294,15 @@ const EditForm = () => {
 
                 </Grid>
                 <div style={addRemove}>
-                    <AddRemoveFormField />
+                    <AddRemoveFormField check={check} />
                 </div>
-                <Button color="primary" variant="contained" type="submit">
-                    <Icon>send</Icon>
+                <Button color="primary" style={{width:'100%',height:'30px',display:'flex',marginTop:'10px'}} variant="contained" type="submit">
+                    {/*<Icon>send</Icon>*/}
                     <Span sx={{ pl: 1, textTransform: "capitalize" }}>Submit</Span>
                 </Button>
+                {/*<div>*/}
+                {/*    <Button variant="contained" onClick={Pass} style={{width:'100%',display:'flex',marginTop:'10px'}}>PUBLISH</Button>*/}
+                {/*</div>*/}
             </ValidatorForm>
         </div>
     );

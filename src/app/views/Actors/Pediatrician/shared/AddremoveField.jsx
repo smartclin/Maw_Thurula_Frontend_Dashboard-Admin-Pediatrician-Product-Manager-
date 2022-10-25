@@ -1,6 +1,5 @@
 import { useState } from "react"
-function AddRemovedFormField(){
-
+function AddRemovedFormField({check}){
     const [inputFields, setInputFields] = useState([{
         Qualifications:'',
 
@@ -13,6 +12,7 @@ function AddRemovedFormField(){
         } ])
 
     }
+
     const removeInputFields = (index)=>{
         const rows = [...inputFields];
         rows.splice(index, 1);
@@ -24,9 +24,13 @@ function AddRemovedFormField(){
         const list = [...inputFields];
         list[index][name] = value;
         setInputFields(list);
+        console.log("inputs",inputFields)
 
 
 
+    }
+    const check2=()=>{
+        check(inputFields)
     }
     return(
 
@@ -60,7 +64,8 @@ function AddRemovedFormField(){
                     <div className="row">
                         <div className="col-sm-12">
 
-                            <button className="btn btn-outline-success " onClick={addInputField}>Add New</button>
+                            <button className="btn btn-outline-success " style={{marginRight:'20px',width:'300px'}} onClick={addInputField}>Add New</button>
+                            <button className="btn btn-outline-success " style={{width:'300px'}} onClick={check2}>Finish</button>
                         </div>
                     </div>
                 </div>
