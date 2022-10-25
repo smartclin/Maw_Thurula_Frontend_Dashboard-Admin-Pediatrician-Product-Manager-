@@ -147,7 +147,7 @@ const AstrologerListTable=()=> {
                 { title: 'Jobs', field: 'Jobs',width: "10%",hidden:true },
                 { title: 'Charge', field: 'service_charge', },
                 { title: 'Income', field: 'sum',render: (expense) => <span>{calcProfit(expense.sum)}</span>,},
-                { title: 'Status', field: 'STATUS',width: "10%" ,hidden:false},
+                { title: 'Status', field: 'STATUS',width: "10%" ,hidden:true},
             ]}
             // data={[
             //     {url:'https://i.postimg.cc/mkbXchv1/7.jpg', name: 'Akila Anjana', Email: 'anjanadissanayaka@gmail.com', Jobs: 1987, Charge: 'Rs.500' ,Income: 'Rs.7500' ,Status:1},
