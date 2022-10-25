@@ -4,6 +4,8 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import {Fragment, useEffect, useState} from 'react';
 import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
+import {Get_NP_Month_Profit} from "../../../../../services/Admin/Name_Provider/admin_np_service";
+import {Get_Astrologers_Month_Profit} from "../../../../../services/Admin/Astrologer/admin_astrologer_service";
 // import {getMotherList, getnofComments} from "../../../../../services/Admin/Mother/";
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -38,7 +40,8 @@ const MotherStatCards = () => {
     const [all, setAll] = useState(0);
     const [block, setBlock] = useState(0);
     const [active, setActive] = useState(0);
-
+    const [NpmonthProfit, setNpMonthProfit] = useState(0);
+    const [monthProfit, setMonthProfit] = useState(0);
 
     const mlist=[]
 
@@ -51,6 +54,23 @@ const MotherStatCards = () => {
         }).catch(err => {
             console.log(err.error)
         })
+        getMotherListForAdmin().then(data => {
+            setMotherList(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+
+        Get_NP_Month_Profit().then(data => {
+            setNpMonthProfit(data.Data[0].sum)
+        }).catch(err => {
+            console.log(err.error)
+        })
+        Get_Astrologers_Month_Profit().then(data => {
+            setMonthProfit(data.Data[0].sum)
+        }).catch(err => {
+            console.log(err.error)
+        })
+
     }, []);
 
     useEffect(async () => {
@@ -71,11 +91,20 @@ const MotherStatCards = () => {
         setActive(tactive)
         setBlock(tblock)
     }, [motherList]);
+    function numberWithCommas(x) {
+        if(x){
+            return "Rs. "+ x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+".00";
+        }
+        else{
+            return "Rs. 0.00";
+        }
 
+        // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     const cardList = [
         { name: 'Registered Mothers', amount: all, icon: 'pregnant_woman' },
-        { name: 'Active Mothers', amount: active, icon: 'woman' },
-        { name: 'Blocked Mothers', amount: block, icon: 'person_offIcon' },
+        { name: 'Astrologers profit', amount: numberWithCommas(monthProfit), icon: 'monetization_on',size:45 },
+        { name: 'Name providers profit', amount: numberWithCommas(NpmonthProfit), icon: 'monetization_on',size:45 },
     ];
 
     return (
