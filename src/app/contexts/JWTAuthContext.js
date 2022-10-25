@@ -111,12 +111,20 @@ export const AuthProvider = ({ children }) => {
             username,
             password,
         })*/
-    const register = async (email, username, password,user_type,service_charge) => {
+
+
+    const register = async (email, username, password,user_type,service_charge,nic,address,contact_no,currently_working_at,
+                            years_of_experience  ) => {
         //alert(user_type)
         const response = await API.post('/reg', {
             'name': username,
             'email': email,
             'password':password,
+            'nic':nic,
+            'address':address,
+            'contact_no':contact_no,
+            'currently_working_at':currently_working_at,
+            'years_of_experience':years_of_experience,
             'user_type':user_type,
             'service_charge':service_charge
         })

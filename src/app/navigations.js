@@ -190,11 +190,11 @@ export const navigations_NP = [
     ],
   },
   {
-    name: 'requests',
+    name: 'Requests',
     icon: 'store',
     badge: { value: '', color: 'secondary' },
     children: [
-      { name: 'Request lists', path: '/np/new_request', iconText: 'A' },
+      { name: 'Request list', path: '/np/new_request', iconText: 'A' },
 
     ],
   },
@@ -210,11 +210,11 @@ export const navigations_AL = [
     ],
   },
   {
-    name: 'Jobs',
+    name: 'Requests',
     icon: 'store',
     badge: { value: '', color: 'secondary' },
     children: [
-      { name: 'New Request', path: '/al/new_request', iconText: 'A' },
+      { name: 'Request list', path: '/al/new_request', iconText: 'A' },
 
     ],
   },
