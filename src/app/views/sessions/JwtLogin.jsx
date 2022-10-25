@@ -52,9 +52,10 @@ const JwtLogin = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
+let a=""
   const { login } = useAuth();
 
+  // document.getElementById('block').style.color = 'red'
   const handleFormSubmit = async (values) => {
     setLoading(true);
     try {
@@ -62,10 +63,15 @@ const JwtLogin = () => {
       await login(values.email, values.password);
       // console.log(accessToken)
       var userType = localStorage.getItem("role")
+      var status = localStorage.getItem("status")
       console.log("session")
-    //  console.log(userType)
-      //navigate('/');
-      navigate('/'+userType);
+      if(status==0){
+        navigate('/'+userType);
+      }else {
+        localStorage.setItem("status",0)
+        navigate('/'+"block");
+      }
+
     } catch (e) {
       setLoading(false);
     }
@@ -150,6 +156,8 @@ const JwtLogin = () => {
                     >
                       Login
                     </LoadingButton>
+                    <div id={"block"}></div>
+
 
                     <Paragraph>
                       Don't have an account?
@@ -164,6 +172,7 @@ const JwtLogin = () => {
                 )}
               </Formik>
             </ContentBox>
+
           </Grid>
         </Grid>
       </Card>

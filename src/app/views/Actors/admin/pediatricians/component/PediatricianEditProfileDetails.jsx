@@ -64,11 +64,11 @@ const PediatricianEditProfileDetails = () => {
   let other;
   return (
 
-    <div>
-      <h1>Edit Profile</h1>
+    <div style={{backgroundColor:'red'}}>
+      <h1>Edit Profile hhhhhhhhhhhhhhhh</h1>
       <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
         <Grid container spacing={6}>
-          <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+          <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }} >
             <TextField
               type="text"
               name="username"

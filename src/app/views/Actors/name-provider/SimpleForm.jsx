@@ -1,7 +1,3 @@
-import { DatePicker } from "@mui/lab";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-
 import {
   Button,
   Checkbox, Fab,
@@ -13,10 +9,12 @@ import {
   styled,
 } from "@mui/material";
 import { Span } from "app/components/Typography";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {Image} from "react-bootstrap";
-import AddRemoveFormField from "./AddRemoveFormfield";
+import AddRemoveFormField from "./AddRemoveFormfield"
+// import {editptProfileastrologer,addQulificationsAs} from "../../../services/Astrologer/al_dashboard_service";
+import {addQulificationsNP,editptProfileNameprovider} from "../../../services/NameProvider/np_dashboard_service";
 
 
 const TextField = styled(TextValidator)(() => ({
@@ -26,7 +24,7 @@ const TextField = styled(TextValidator)(() => ({
 
 
 
-const SimpleForm = () => {
+const EditForm = () => {
   const [state, setState] = useState({ date: new Date() });
 
   useEffect(() => {
@@ -39,14 +37,61 @@ const SimpleForm = () => {
   }, [state.password]);
 
   const handleSubmit = (event) => {
-    // console.log("submitted");
-    // console.log(event);
+    handleChange(event)
+    console.log("submitted");
+    console.log(event.target);
+    Senddata()
   };
 
   const handleChange = (event) => {
     event.persist();
     setState({ ...state, [event.target.name]: event.target.value });
+    console.log(state)
+
+
   };
+  const [ArticlePosts, setArticlePosts] = useState([]);
+  const [qulifications, setQulifications] = useState([]);
+  const Senddata=()=>{
+    let dataobject={
+      "description":state.description,
+      "twitterUrl":state.twitterUrl,
+      "serviceCharge":state.serviceCharge,
+      "mobile":state.mobile,
+      "linkedinUrl":state.linkedinUrl,
+      "fbUrl":state.fbUrl,
+      "Address":state.Address,
+      "firstName":state.firstName,
+      "email":state.email,
+
+    }
+    editptProfileNameprovider(1,dataobject).then(data => {
+      setArticlePosts(data)
+    }).catch(err => {
+      console.log(err.error)
+    })
+    console.log("dataobject",dataobject)
+    Handlereset()
+  }
+
+  const check=(event)=>{
+    event.map((item,index)=>{
+      console.log("item",item.Qualifications)
+      addQulificationsNP(1,item.Qualifications).then(data => {
+        setQulifications(data)
+      }).catch(err => {
+        console.log(err.error)
+      })
+    })
+    // addQulifications(1,dataobject).then(data => {
+    //     setArticlePosts(data)
+    // }).catch(err => {
+    //     console.log(err.error)
+    // })
+  }
+  const Handlereset=()=>{
+    setState([])
+  }
   const handleSelectedFile = (event) => {
     //setState({ ...state, [event.target.name]: event.target.value });
 
@@ -58,7 +103,7 @@ const SimpleForm = () => {
 
   const {
     profilePic,
-    lastName,
+    Address,
     firstName,
     mobile,
     description,
@@ -78,7 +123,7 @@ const SimpleForm = () => {
 
   };
   let labelDiv={
-   color:"#d82edb",
+    color:"#d82edb",
     fontWeight:"600",
 
   };
@@ -90,11 +135,11 @@ const SimpleForm = () => {
     cursor:"pointer"
   };
   let addRemove={
-    marginBottom:"20px"
+    marginBottom:"20px",
   };
   return (
-      <div>
-        <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+      <div style={{padding:'25px'}}>
+        <ValidatorForm onSubmit={handleSubmit} onError={() => null} >
           <Grid container spacing={6}>
             <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
               <div style={imgDiv}>
@@ -136,10 +181,10 @@ const SimpleForm = () => {
               />
               <TextField
                   type="text"
-                  name="lastName"
-                  label="Last Name"
+                  name="Address"
+                  label="Address"
                   onChange={handleChange}
-                  value={lastName || ""}
+                  value={Address || ""}
                   validators={["required"]}
                   errorMessages={["this field is required"]}
               />
@@ -216,7 +261,7 @@ const SimpleForm = () => {
                   label="LinkedIn url"
                   onChange={handleChange}
                   //validators={["required"]}
-                 // errorMessages={["this field is required"]}
+                  // errorMessages={["this field is required"]}
               />
               <TextField
                   type="url"
@@ -241,15 +286,18 @@ const SimpleForm = () => {
 
           </Grid>
           <div style={addRemove}>
-            <AddRemoveFormField />
+            <AddRemoveFormField check={check} />
           </div>
-          <Button color="primary" variant="contained" type="submit">
-            <Icon>send</Icon>
+          <Button color="primary" style={{width:'100%',height:'30px',display:'flex',marginTop:'10px'}} variant="contained" type="submit">
+            {/*<Icon>send</Icon>*/}
             <Span sx={{ pl: 1, textTransform: "capitalize" }}>Submit</Span>
           </Button>
+          {/*<div>*/}
+          {/*    <Button variant="contained" onClick={Pass} style={{width:'100%',display:'flex',marginTop:'10px'}}>PUBLISH</Button>*/}
+          {/*</div>*/}
         </ValidatorForm>
       </div>
   );
 };
 
-export default SimpleForm;
+export default EditForm;

@@ -2,7 +2,10 @@ import { Button, Card, styled,IconButton,Icon, Avatar } from '@mui/material';
 import { convertHexToRGB } from 'app/utils/utils';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ThumbUpAlt from '@mui/icons-material/ThumbUpAlt';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {getCommentCount} from "../../../../../services/Pediatrician/pt_service";
+
 
 const CardRoot = styled(Card)(({ theme }) => ({
     marginBottom: '24px',
@@ -31,35 +34,45 @@ const Heading = styled('h6')(({ theme }) => ({
 const Paragraph = styled('p')(({ theme }) => ({
     margin: 0,
     paddingTop: '24px',
-    paddingBottom: '24px',
+    // paddingBottom: '24px',
     color: theme.palette.text.secondary,
 }));
-const ArticleCard = () => {
+const ArticleCard = (userData) => {
+    const navigate = useNavigate();
+    const handleOnClick = (id,id1,id2) => navigate('/pt/PediatricianViewFullArticles/'+id+'/'+id1+'/'+id2, {replace: false});
+    const [ArticleComments, setArticleComments] = useState([]);
+    // const date=userData.date.split('T')[0]
+    // console.log(date)
+    useEffect(() => {
+        getCommentCount(userData.userData.article_id).then(data => {
+            setArticleComments(data.count[0])
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
     return (
-        <div className="w-25 card shadow-sm mb-5 bg-white rounded m-5">
+        <div className="w-30 card shadow-sm mb-5 bg-white rounded m-5">
 
                 {/*<div className="p-3" >*/}
                 {/*    <div  className="w-25 card shadow-sm p-3 mb-5 bg-white rounded"  >*/}
                         {/*<img className="card-img-top" src="..." alt="Card image cap">*/}
                         <div className="card-body">
-                            <h5 className="card-title">Family Success Planning</h5>
-                            <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-Pregnancy</a></p></Heading>
-                            <Paragraph className="card-text">This is a longer card with supporting text below as a natural
-                                lead-in to
-                                additional content. This content is a little bit longer.</Paragraph>
+                            <h5 className="card-title">{userData.userData.title}</h5>
+                            <Heading className="d-flex">Catogery <p><a href="app/views/Actors/admin/shared/pediatrician/ArticleCard#">-{userData.userData.category_name}</a></p></Heading>
+                            <Paragraph className="card-text">{userData.userData.des.slice(0,250)}....</Paragraph>
                         </div>
                         <div className="d-flex p-1 ms-2">
                             <StyledAvatar src="/assets/images/face-4.jpg"/>
-                            <Heading className="card-text m-1"><small>By Dr.Madhuni Tharukshi</small></Heading>
+                            <Heading className="card-text m-1"><small>By {userData.userData.name}</small></Heading>
                         </div>
-                        <Heading className="card-footer text-muted text-center"><small>Last updated-2021/09/08</small></Heading>
+                        <Heading className="card-footer text-muted text-center"><small>Published date-{userData.userData.date.split('T')[0]}</small></Heading>
 
-                        <StyledCard className="card-footer">
+                        <StyledCard className="card-footer" onClick={()=>handleOnClick(userData.userData.article_id,userData.userData.doctor_id,ArticleComments.count)}>
 
-                            <small className="text-muted ">
-                                <Link to="/admin/pediatrician_full_article" className="link">
-                                    View full article
-                                </Link>
+                            <small className="link" >
+                                {/*<Link className="link">*/}
+                                    <a>View full article</a>
+                                {/*</Link>*/}
                             </small>
                         </StyledCard>
                 {/*    </div>*/}

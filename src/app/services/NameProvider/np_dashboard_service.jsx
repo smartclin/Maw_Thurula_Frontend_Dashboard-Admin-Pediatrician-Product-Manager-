@@ -65,4 +65,25 @@ export const load_today_req = async (u_id) => {
     // console.log(data1)
     return data1;
 };
+export const editptProfileNameprovider =async (id,object) => {
+    console.log("object is",object)
+    const response = await API.post(`/NP/editptProfileNameprovider`,{
+        params:{
+            "id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    // console.log("object")
+};
+export const addQulificationsNP =async (id,object) => {
+    const response = await API.post(`/AL/addQulificationsAs`,{
+        params:{
+            "id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    console.log("object")
+};
 
