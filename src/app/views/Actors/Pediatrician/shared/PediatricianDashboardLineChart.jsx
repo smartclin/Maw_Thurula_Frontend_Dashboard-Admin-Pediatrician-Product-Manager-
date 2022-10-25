@@ -17,16 +17,20 @@ const PediatricianDashboardLineChart = ({ height, color = [] }) => {
   const [AlCount, setAlCount] = useState([]);
   useEffect(() => {
     load_line_chart_for_pd(1).then(data => {
+      setRegAl(data.catogery);
       //console.log("data",data.catogery)
 
     }).catch(err => {
       console.log(err.error)
     })
-  }, [RegAl]);
+  }, []);
   useEffect(async () => {
-    if(RegAl.catogery){
-      al_count=RegAl.req_data.map((al_count:array)=> al_count['count(*)']);
-      al_month=RegAl.req_data.map((al_month:array)=> al_month['month(followed_date)']);
+    if(RegAl){
+      al_count=RegAl.map((al_count:array)=> al_count['count(*)']);
+      al_month=RegAl.map((al_month:array)=> al_month['month(followed_date)']);
+      setAlMonth(al_month);
+      setAlCount(al_count)
+
     }
     console.log("al minth2")
     console.log(al_count)
@@ -42,7 +46,7 @@ const PediatricianDashboardLineChart = ({ height, color = [] }) => {
     },
     xAxis: {
       type: 'category',
-      data: al_month,
+      data: AlMonth,
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
@@ -62,7 +66,7 @@ const PediatricianDashboardLineChart = ({ height, color = [] }) => {
     },
     series: [
       {
-        data: al_count,
+        data: AlCount,
         type: 'line',
         smooth: true,
         symbolSize: 4,
