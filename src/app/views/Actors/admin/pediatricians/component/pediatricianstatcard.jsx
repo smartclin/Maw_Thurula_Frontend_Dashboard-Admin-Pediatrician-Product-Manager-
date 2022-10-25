@@ -7,8 +7,11 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PendingIcon from '@mui/icons-material/Pending';
 import {useEffect, useState} from "react";
 import {getMotherListForAdmin} from "../../../../../services/Admin/Mother/admin_mother_service";
-import {getPListForAdmin} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
-
+import {
+    getArticleCountForAdmin,
+    getPListForAdmin
+} from "../../../../../services/Admin/Pediatrician/admin_pediatrician_service";
+import ArticleIcon from '@mui/icons-material/Article';
 const StyledCard = styled(Card)(({ theme }) => ({
     display: 'flex',
     flexWrap: 'wrap',
@@ -38,8 +41,8 @@ const Heading = styled('h6')(({ theme }) => ({
 const MotherStatCards = ({Handle1}) => {
     const [PList, setPList] = useState([]);
     const [all, setAll] = useState(0);
-    const [block, setBlock] = useState(0);
-    const [active, setActive] = useState(0);
+    const [active, setactive] = useState(0);
+    const [Article, setArticle] = useState(0);
 
     useEffect(() => {
         getPListForAdmin().then(data => {
@@ -47,7 +50,15 @@ const MotherStatCards = ({Handle1}) => {
         }).catch(err => {
             console.log(err.error)
         })
+        getArticleCountForAdmin().then(data => {
+            setArticle(data.articlecount[0].count);
+        }).catch(err => {
+            console.log(err.error)
+        })
     }, []);
+    useEffect(() => {
+        console.log("data count ",Article)
+    }, [Article]);
     useEffect(async () => {
         let tall=0;
         let tblock=0;
@@ -67,8 +78,8 @@ const MotherStatCards = ({Handle1}) => {
         // console.log(tactive)
 
         setAll(tall)
-        setActive(tactive)
-        setBlock(tblock)
+        // setActive(tactive)
+        setactive(tactive)
     }, [PList]);
 
     // useEffect(async () => {
@@ -93,7 +104,7 @@ const MotherStatCards = ({Handle1}) => {
     const cardList = [
         { name: 'Registered Pediatricians', amount: all, icon: 'person_rounded',size:50 },
         { name: 'Pending Requests', amount: active, icon: 'pending_actions', size:45},
-        { name: 'Blocked Pediatricians', amount: block, icon: 'person_offIcon', size:45},
+        { name: 'New articles', amount: Article, icon: 'article', size:45},
     ];
 
     return (

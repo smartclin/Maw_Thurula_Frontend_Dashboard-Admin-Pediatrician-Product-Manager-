@@ -32,7 +32,7 @@ export const getNPListForAdmin = async event => {
     // console.log("res out "+response.data)
     return response.data;
 };
-export const Get_NP_Month_Profit = async (uid) => {
+export const Get_NP_Month_Profit = async () => {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);

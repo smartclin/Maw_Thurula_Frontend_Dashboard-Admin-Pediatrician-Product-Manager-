@@ -117,7 +117,7 @@ export default function PediatricianListTable(){
             </Dialog>
 
 
-            <MaterialTable
+            <MaterialTable style={{paddingRight:12}}
             title="Pediatricians List"
             columns={[
                 {
@@ -161,6 +161,10 @@ export default function PediatricianListTable(){
             ]}
             options={{sorting:true, exportAllData:true ,exportButton:true ,actionsColumnIndex: -1,
                 paging: true,
+                actionsCellStyle:{
+                    paddingRight:1
+                    // marginRight:4
+                }
             }}
             localization={{
                 pagination: {

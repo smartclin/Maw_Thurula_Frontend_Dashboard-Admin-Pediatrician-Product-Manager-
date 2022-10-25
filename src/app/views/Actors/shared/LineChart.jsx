@@ -26,19 +26,19 @@ const LineChart = ({ height, color = [] }) => {
 
 
   useEffect(async () => {
-    console.log(RegAl)
+    // console.log(RegAl)
     if(RegAl){
       // console.log(RegAl.profit_al)
       al_count=RegAl.map((al_count:array)=> al_count['SUM(amount)']);
       al_month=RegAl.map((al_month:array)=> al_month['month(date_time)']);
-      console.log("al_count",al_count)
-      console.log("al_month",al_month)
+      // console.log("al_count",al_count)
+      // console.log("al_month",al_month)
       setAlCount(al_count)
       setAlMonth(al_month)
       for(let i=0;i<12;i++){
         if(al_month[i]){
           ProfitArray[ al_month[i]]=al_count[i]
-          console.log("month ", al_month[i], "profit",al_count[i])
+          // console.log("month ", al_month[i], "profit",al_count[i])
         }
       }
       setCount(ProfitArray)
