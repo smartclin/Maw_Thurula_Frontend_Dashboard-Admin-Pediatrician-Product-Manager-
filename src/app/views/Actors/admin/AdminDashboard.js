@@ -12,6 +12,7 @@ import {getMotherListForAdmin} from "../../../services/Admin/Mother/admin_mother
 import {getNPListForAdmin} from "../../../services/Admin/Name_Provider/admin_np_service";
 import {getPListForAdmin} from "../../../services/Admin/Pediatrician/admin_pediatrician_service";
 import {getAListForAdmin} from "../../../services/Admin/Astrologer/admin_astrologer_service";
+import MotherPostListTable from "./mothers/component/MotherPostsListTable";
 
 
 const ContentBox = styled('div')(({theme}) => ({
@@ -65,6 +66,7 @@ const AdminDashboard = () => {
                 <Grid container spacing={3}>
                     <Grid item lg={8} md={8} sm={12} xs={12}>
                         <AdminStatCards />
+                        {/*<MotherPostListTable/>*/}
                         <LatestCommunityPostRequestTable />
                     </Grid>
 

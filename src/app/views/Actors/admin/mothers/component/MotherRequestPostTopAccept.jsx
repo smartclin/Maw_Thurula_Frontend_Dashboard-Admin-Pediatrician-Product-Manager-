@@ -124,7 +124,7 @@ const MotherRequestPostacceptcard = () => {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Rejecting will permanetly remove this from the system.
+                        Rejecting will permanently remove this from the system.
                         This cannot be undone!
                     </DialogContentText>
                 </DialogContent>

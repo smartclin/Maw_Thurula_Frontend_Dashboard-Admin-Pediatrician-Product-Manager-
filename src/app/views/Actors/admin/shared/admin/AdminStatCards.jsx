@@ -42,66 +42,68 @@ const AdminStatCards = (  ) => {
     const [Astroall, setAstroall] = useState(0);
     const [NPall, setNPAll] = useState(0);
     const [Pall, setPAll] = useState(0);
-    // useEffect(() => {
-      // getMotherListForAdmin().then(data => {
-      //   setMotherList(data);
-      // }).catch(err => {
-      //   console.log(err.error)
-      // })
-      // getNPListForAdmin().then(data => {
-      //   setNPList(data);
-      // }).catch(err => {
-      //   console.log(err.error)
-      // })
-      // getPListForAdmin().then(data => {
-      //   setPList(data);
-      // }).catch(err => {
-      //   console.log(err.error)
-      // })
-      // getAListForAdmin().then(data => {
-      //   setAList(data);
-      // }).catch(err => {
-      //   console.log(err.error)
-      // })
-    // }, []);
-    // useEffect(async () => {
-    //   let tall=0;
-    //   motherList.students ? motherList.students.map((mother, index) => {
-    //     tall++;
-    //   }) : console.log("")
-    //   // console.log(tall);
-    //   setMAll(tall)
-    // }, [motherList]);
-    // useEffect(async () => {
-    //   let tall=0;
-    //   AList.np ? AList.np.map((p, index) => {
-    //     tall++;
-    //   }) : console.log("")
-    //   // console.log(tall);
-    //   setNPAll(tall)
-    // }, [NPList]);
-    // useEffect(async () => {
-    //   let tall=0;
-    //   PList.paediatrician ? PList.paediatrician.map((p, index) => {
-    //     tall++;
-    //   }) : console.log("")
-    //   // console.log(tall);
-    //   setPAll(tall)
-    // }, [PList]);
-    // useEffect(async () => {
-    //   let tall=0;
-    //   AList.astrologers ? AList.astrologers.map((p, index) => {
-    //     tall++;
-    //   }) : console.log("")
-    //   // console.log(tall);
-    //   setAstroall(tall)
-    // }, [AList]);
+    useEffect(() => {
+      getMotherListForAdmin().then(data => {
+        setMotherList(data);
+      }).catch(err => {
+        console.log(err.error)
+      })
+      getNPListForAdmin().then(data => {
+        setNPList(data);
+      }).catch(err => {
+        console.log(err.error)
+      })
+      getPListForAdmin().then(data => {
+        setPList(data);
+      }).catch(err => {
+        console.log(err.error)
+      })
+      getAListForAdmin().then(data => {
+        setAList(data);
+      }).catch(err => {
+        console.log(err.error)
+      })
+    }, []);
+    useEffect(async () => {
+
+      let tall=0;
+      motherList.students ? motherList.students.map((mother, index) => {
+        tall++;
+      }) : console.log("")
+      // console.log(tall);
+      setMAll(tall)
+    }, [motherList]);
+    useEffect(async () => {
+      // console.log("NP",NPList)
+      let tall=0;
+      NPList.np ? NPList.np.map((p, index) => {
+        tall++;
+      }) : console.log("")
+      // console.log(tall);
+      setNPAll(tall)
+    }, [NPList]);
+    useEffect(async () => {
+      let tall=0;
+      PList.paediatrician ? PList.paediatrician.map((p, index) => {
+        tall++;
+      }) : console.log("")
+      // console.log(tall);
+      setPAll(tall)
+    }, [PList]);
+    useEffect(async () => {
+      let tall=0;
+      AList.astrologers ? AList.astrologers.map((p, index) => {
+        tall++;
+      }) : console.log("")
+      // console.log(tall);
+      setAstroall(tall)
+    }, [AList]);
 
   const cardList = [
-    { name: 'Registered Mothers', amount: 3, icon: 'pregnant_woman' },
-    { name: 'Pediatricians', amount: 3, icon: 'local_hospital' },
-    { name: 'Astrologers', amount: 3, icon: 'recent_actors' },
-    { name: 'Name Providers', amount: 3, icon: 'rate_review' },
+    { name: 'Registered Mothers', amount: Mall, icon: 'pregnant_woman' },
+    { name: 'Pediatricians', amount: Pall, icon: 'local_hospital' },
+    { name: 'Astrologers', amount: Astroall, icon: 'recent_actors' },
+    { name: 'Name Providers', amount: NPall, icon: 'rate_review' },
   ];
   return (
     <Grid container spacing={3} sx={{ mb: '24px' }}>

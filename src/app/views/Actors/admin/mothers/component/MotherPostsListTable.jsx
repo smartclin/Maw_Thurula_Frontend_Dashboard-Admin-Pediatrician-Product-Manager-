@@ -25,7 +25,6 @@ import {
 } from "../../../../../services/Admin/Mother/admin_mother_service";
 
 const MotherPostListTable=()=> {
-
     const navigate = useNavigate();
     // const handleOnClick = () => navigate('/admin/mother_details/2', {replace: false});
     // const handleOnClick = () => navigate('/admin/target_mothers_full_post_list/2', {replace: false});
