@@ -25,6 +25,8 @@ import {Fragment, useEffect, useState} from 'react';
 import {getPostList,getCommentCount} from "../../../../../services/Pediatrician/pt_service";
 import mothersList from "../../mothers/MothersList";
 import PediatricianSingleArticle from "./PediatriciansSingleArticle";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -38,6 +40,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const Posts1 = () => {
+
     // const navigate = useNavigate();
     // const handleOnClick = (id) => navigate('/admin/mother_details/'+id, {replace: false});
 
@@ -87,6 +90,15 @@ const Posts1 = () => {
 
     return (
         <Grid container spacing={3} sx={{ mb: '24px' }}>
+            {/*<div className="ms-5">*/}
+            {/*    <Autocomplete*/}
+            {/*        disablePortal*/}
+            {/*        options={top100Films}*/}
+            {/*        id="combo-box-demo"*/}
+            {/*        sx={{ width: 300 }}*/}
+            {/*        renderInput={(params) => <TextField {...params} label="Search with Category" />}*/}
+            {/*    />*/}
+            {/*</div>*/}
             {(ArticlePosts).map((item, index) => (
                 <div className="posts">
                     <PediatricianSingleArticle posts= {item}/>

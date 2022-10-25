@@ -1,8 +1,41 @@
 import { useTheme } from '@mui/system';
 import ReactEcharts from 'echarts-for-react';
+import {useEffect, useState} from "react";
+import {load_line_chart1} from "../../../../services/NameProvider/np_dashboard_service";
+import {array} from "yup";
+import {load_line_chart_for_pd} from "../../../../services/Pediatrician/pt_service";
 
 const PediatricianDashboardLineChart = ({ height, color = [] }) => {
   const theme = useTheme();
+  const [RegAl, setRegAl] = useState([[]]);
+
+  //load profit from astrolergers
+
+  let al_month=[];
+  let al_count=[];
+  const [AlMonth, setAlMonth] = useState([]);
+  const [AlCount, setAlCount] = useState([]);
+  useEffect(() => {
+    load_line_chart_for_pd(1).then(data => {
+      setRegAl(data.catogery);
+      //console.log("data",data.catogery)
+
+    }).catch(err => {
+      console.log(err.error)
+    })
+  }, []);
+  useEffect(async () => {
+    if(RegAl){
+      al_count=RegAl.map((al_count:array)=> al_count['count(*)']);
+      al_month=RegAl.map((al_month:array)=> al_month['month(followed_date)']);
+      setAlMonth(al_month);
+      setAlCount(al_count)
+
+    }
+    console.log("al minth2")
+    console.log(al_count)
+  }, [RegAl]);
+
 
   const option = {
     grid: { top: '10%', bottom: '10%', left: '5%', right: '5%' },
@@ -13,7 +46,7 @@ const PediatricianDashboardLineChart = ({ height, color = [] }) => {
     },
     xAxis: {
       type: 'category',
-      data: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+      data: AlMonth,
       axisLine: { show: false },
       axisTick: { show: false },
       axisLabel: {
@@ -33,7 +66,7 @@ const PediatricianDashboardLineChart = ({ height, color = [] }) => {
     },
     series: [
       {
-        data: [30, 40, 20, 50, 40, 80, 90,30, 40, 20, 50, 40,],
+        data: AlCount,
         type: 'line',
         smooth: true,
         symbolSize: 4,

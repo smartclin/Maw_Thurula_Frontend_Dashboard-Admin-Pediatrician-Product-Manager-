@@ -4,19 +4,21 @@ import { Navigate, useLocation } from 'react-router-dom';
 import AllPages from '../routes';
 
 const userHasPermission = (pathname, user, routes) => {
-  console.log("pathname")
-  console.log(pathname)
-
-  console.log("user")
-  console.log(user)
-
-  console.log("routes")
-  console.log(routes)
-
+  // console.log("pathname")
+  // console.log(pathname)
+  //
+  // console.log("user")
+  // console.log(user)
+  //
+  // console.log("routes")
+  // console.log(routes)
+  //
   if (!user) {
     return false;
   }
   const matched = routes.find((r) => r.path === pathname);
+  console.log("auth")
+  // console.log(matched.auth)
 
   const authenticated =
     matched && matched.auth && matched.auth.length ? matched.auth.includes(user.role) : true;
@@ -24,6 +26,9 @@ const userHasPermission = (pathname, user, routes) => {
 };
 
 const AuthGuard = ({ children }) => {
+  console.log("children")
+  console.log(useAuth())
+  console.log(children)
   let {
     isAuthenticated,
     user
@@ -34,13 +39,15 @@ const AuthGuard = ({ children }) => {
     const routes = flat(AllPages);
 
     const hasPermission = userHasPermission(pathname, user, routes);
-    let authenticated = isAuthenticated && hasPermission;
+    // let authenticated = isAuthenticated && hasPermission;
 
   // // IF YOU NEED ROLE BASED AUTHENTICATION,
   // // UNCOMMENT ABOVE LINES
   // // AND COMMENT OUT BELOW authenticated VARIABLE
 
-  // let authenticated = isAuthenticated;
+  let authenticated = isAuthenticated;
+  console.log("authentication")
+  console.log(authenticated)
 
   return (
     <>

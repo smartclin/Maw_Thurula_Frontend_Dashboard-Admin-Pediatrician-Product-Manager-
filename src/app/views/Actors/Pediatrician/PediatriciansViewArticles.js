@@ -147,20 +147,21 @@ const Analytics = () => {
                        <Autocomplete
                            disablePortal
                            options={top100Films}
+                           onInput={filterCards}
                            id="combo-box-demo"
                            sx={{ width: 300 }}
                            renderInput={(params) => <TextField {...params} label="Search by Title" />}
                        />
                    </div>
-                   <div className="ms-5">
-                       <Autocomplete
-                           disablePortal
-                           options={top100Films}
-                           id="combo-box-demo"
-                           sx={{ width: 300 }}
-                           renderInput={(params) => <TextField {...params} label="Search with Category" />}
-                       />
-                   </div>
+                   {/*<div className="ms-5">*/}
+                   {/*    <Autocomplete*/}
+                   {/*        disablePortal*/}
+                   {/*        options={top100Films}*/}
+                   {/*        id="combo-box-demo"*/}
+                   {/*        sx={{ width: 300 }}*/}
+                   {/*        renderInput={(params) => <TextField {...params} label="Search with Category" />}*/}
+                   {/*    />*/}
+                   {/*</div>*/}
                    <div className="ms-5">
                        <Autocomplete
                            disablePortal
