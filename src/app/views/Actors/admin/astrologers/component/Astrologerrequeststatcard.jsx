@@ -96,7 +96,7 @@ const AstrologerRequestStatCards = () => {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         else{
-            return "Rs. 0.00";
+            return " 0";
         }
 
         // return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
