@@ -17,7 +17,8 @@ import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {Image} from "react-bootstrap";
 import AddRemoveFormField from "././shared/AddremoveField";
-import {editptProfile, addQulifications} from "../../../services/Pediatrician/pt_service";
+import {editptProfile, addQulifications,getselectedpt} from "../../../services/Pediatrician/pt_service";
+import {NP_Request_Data} from "../../../services/Admin/Name_Provider/admin_np_service";
 
 
 const TextField = styled(TextValidator)(() => ({
@@ -30,6 +31,10 @@ const TextField = styled(TextValidator)(() => ({
 const EditForm = () => {
     const [state, setState] = useState({ date: new Date() });
     const [state1, setState1] = useState('');
+    const [AList, setAList] = useState([]);
+    const [Email, setEmail] = useState([]);
+    const [Name, setName] = useState([]);
+    const [Phone, setPhone] = useState([]);
 
     useEffect(() => {
         ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
@@ -46,6 +51,30 @@ const EditForm = () => {
         console.log(event.target);
         Senddata()
     };
+    var id=localStorage.getItem("id")
+    useEffect(() => {
+        getselectedpt(id).then(data => {
+            let a='madhuniw@gmail.com'
+            setAList(data.paediatrician[0]);
+            console.log(AList)
+
+
+            // console.log("dataaaaaaaaa",AList)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(() => {
+        setEmail(AList.email)
+        setEmail(AList.email)
+        setName(AList.name)
+        setName(AList.name)
+        setPhone(AList.phone_number)
+        setPhone(AList.phone_number)
+        console.log(Email)
+    }, [Email]);
+
+    console.log("dataaaaaaaaa1",Email)
 
     const handleChange = (event) => {
         event.persist();
@@ -72,10 +101,11 @@ const EditForm = () => {
                 console.log(err.error)
             })
         console.log("dataobject",dataobject)
-        Handlereset()
+        // Handlereset()
 
 
     }
+let name=AList
 
     const check=(event)=>{
         console.log("checkkkkkkkkkkkk",event)
@@ -182,7 +212,7 @@ const EditForm = () => {
                             name="firstName"
                             label="First Name"
                             onChange={handleChange}
-                            value={firstName || ""}
+                            value={firstName || Name}
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
@@ -200,7 +230,7 @@ const EditForm = () => {
                             type="email"
                             name="email"
                             label="Email"
-                            value={email || ""}
+                            value={email || Email}
                             onChange={handleChange}
                             validators={["required", "isEmail"]}
                             errorMessages={["this field is required", "email is not valid"]}
@@ -246,7 +276,7 @@ const EditForm = () => {
                         <TextField
                             type="text"
                             name="mobile"
-                            value={mobile || ""}
+                            value={mobile || Phone}
                             label="Mobile Nubmer"
                             onChange={handleChange}
                             validators={["required"]}

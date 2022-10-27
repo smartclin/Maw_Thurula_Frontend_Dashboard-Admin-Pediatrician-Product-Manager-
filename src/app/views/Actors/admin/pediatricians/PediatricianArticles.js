@@ -39,22 +39,22 @@ const AdminDashboard = () => {
                     variant="standard"
                     style={{width:'35%',marginRight:'70px'}}
                 />
-                <TextField
-                    id="standard-search"
-                    label="Search field"
-                    type="search"
-                    onInput={filterCards}
-                    variant="standard"
-                    style={{width:'35%'}}
-                />
-                <TextField
-                    id="standard-search"
-                    label="Search field"
-                    type="search"
-                    onInput={filterCards}
-                    variant="standard"
-                    style={{width:'35%'}}
-                />
+                {/*<TextField*/}
+                {/*    id="standard-search"*/}
+                {/*    label="Search field"*/}
+                {/*    type="search"*/}
+                {/*    onInput={filterCards}*/}
+                {/*    variant="standard"*/}
+                {/*    style={{width:'35%'}}*/}
+                {/*/>*/}
+                {/*<TextField*/}
+                {/*    id="standard-search"*/}
+                {/*    label="Search field"*/}
+                {/*    type="search"*/}
+                {/*    onInput={filterCards}*/}
+                {/*    variant="standard"*/}
+                {/*    style={{width:'35%'}}*/}
+                {/*/>*/}
             </div>
             <div className="cards-container" style={{display:'flex',flexWrap: 'wrap'}}>
 

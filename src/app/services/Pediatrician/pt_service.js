@@ -22,6 +22,16 @@ export const editptProfile =async (id,object) => {
     console.log("object")
     console.log(id)
 };
+export const getselectedpt =async (id) => {
+    // console.log(id)
+    const response = await API.get(`/admin/selected_pediatricianList`,{
+        params:{
+            "id":id,
+        }
+    }, options);
+    console.log(response.data)
+    return response.data;
+};
 export const addQulifications =async (id,object) => {
     const response = await API.post(`/pt/addQulifications`,{
         params:{
