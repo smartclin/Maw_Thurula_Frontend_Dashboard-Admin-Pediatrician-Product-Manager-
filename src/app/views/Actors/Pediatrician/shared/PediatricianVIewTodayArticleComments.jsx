@@ -37,7 +37,7 @@ const TodayCommentListTable=()=> {
     console.log(today)
     useEffect(() => {
         today_article_comments(today).then(data => {
-            setCommentList(data.comment);
+            data.categories?setCommentList(data.categories):console.log("connte");
             console.log("CommentList")
         }).catch(err => {
             console.log(err.error)
@@ -45,7 +45,7 @@ const TodayCommentListTable=()=> {
     }, []);
 
     useEffect(async () => {
-        // console.log(MotherList)
+        console.log("MotherList")
         console.log(CommentList)
 
     }, [CommentList]);

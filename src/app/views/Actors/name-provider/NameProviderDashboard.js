@@ -165,7 +165,7 @@ const NameProviderDashboard = () => {
                             </div>
 
                             <div style={cardInside}>
-                                <Avatar style={avatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                <Avatar style={avatar} alt="Remy Sharp" src={ProfileCard.profile_picture} />
                             </div>
 
                             <p>{ProfileCard.description}</p>

@@ -118,7 +118,8 @@ const MotherPosts = () => {
                             <CardMedia
                                 component="img"
                                 height="194"
-                                image="https://i.postimg.cc/Pxng9B9H/1.webp"
+                                image={item.image}
+                                // image="https://i.postimg.cc/Pxng9B9H/1.webp"
                                 alt="Paella dish"
                             />
                             <CardContent>

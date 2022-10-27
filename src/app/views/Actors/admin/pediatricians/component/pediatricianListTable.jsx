@@ -136,7 +136,7 @@ export default function PediatricianListTable(){
                 { title: 'Email', field: 'email',width: "10%" },
                 { title: 'Articles', field: 'count',width: "10%" },
                 { title: 'Phone Number', field: 'phone_number',width: "10%" },
-                { title: 'Registered', field: 'registered_at',width: "10%" },
+                { title: 'Registered', field: 'registered_at',width: "10%",hidden:true },
                 { title: 'Status', field: 'STATUS',lookup:{0:'Unblock',1:'Block'},width: "10%" ,hidden:true},
             ]}
             // commect for check data

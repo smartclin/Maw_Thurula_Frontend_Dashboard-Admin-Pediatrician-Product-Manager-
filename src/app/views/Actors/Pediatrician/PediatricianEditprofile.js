@@ -13,10 +13,12 @@ import {
     styled,
 } from "@mui/material";
 import { Span } from "app/components/Typography";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import {Image} from "react-bootstrap";
 import AddRemoveFormField from "././shared/AddremoveField";
+import {editptProfile, addQulifications,getselectedpt} from "../../../services/Pediatrician/pt_service";
+import {NP_Request_Data} from "../../../services/Admin/Name_Provider/admin_np_service";
 
 
 const TextField = styled(TextValidator)(() => ({
@@ -28,6 +30,11 @@ const TextField = styled(TextValidator)(() => ({
 
 const EditForm = () => {
     const [state, setState] = useState({ date: new Date() });
+    const [state1, setState1] = useState('');
+    const [AList, setAList] = useState([]);
+    const [Email, setEmail] = useState([]);
+    const [Name, setName] = useState([]);
+    const [Phone, setPhone] = useState([]);
 
     useEffect(() => {
         ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
@@ -39,31 +46,106 @@ const EditForm = () => {
     }, [state.password]);
 
     const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
+        handleChange(event)
+        console.log("submitted");
+        console.log(event.target);
+        Senddata()
     };
+    var id=localStorage.getItem("id")
+    useEffect(() => {
+        getselectedpt(id).then(data => {
+            let a='madhuniw@gmail.com'
+            setAList(data.paediatrician[0]);
+            console.log(AList)
+
+
+            // console.log("dataaaaaaaaa",AList)
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, []);
+    useEffect(() => {
+        setEmail(AList.email)
+        setEmail(AList.email)
+        setName(AList.name)
+        setName(AList.name)
+        setPhone(AList.phone_number)
+        setPhone(AList.phone_number)
+        console.log(Email)
+    }, [Email]);
+
+    console.log("dataaaaaaaaa1",Email)
 
     const handleChange = (event) => {
         event.persist();
         setState({ ...state, [event.target.name]: event.target.value });
     };
+    const [ArticlePosts, setArticlePosts] = useState([]);
+    const [qulifications, setQulifications] = useState([]);
+    const Senddata=()=>{
+        console.log("event is",state)
+        let dataobject={
+            "description":state.description,
+            "twitterUrl":state.twitterUrl,
+            "mobile":state.mobile,
+            "linkedinUrl":state.linkedinUrl,
+            "fbUrl":state.fbUrl,
+            "Address":state.Address,
+            "firstName":state.firstName,
+            "email":state.email,
+
+        }
+            editptProfile(1,dataobject).then(data => {
+                setArticlePosts(data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        console.log("dataobject",dataobject)
+        // Handlereset()
+
+
+    }
+let name=AList
+
+    const check=(event)=>{
+        console.log("checkkkkkkkkkkkk",event)
+        event.map((item,index)=>{
+            console.log("item",item.Qualifications)
+            addQulifications(1,item.Qualifications).then(data => {
+                setQulifications(data)
+            }).catch(err => {
+                console.log(err.error)
+            })
+        })
+        // addQulifications(1,dataobject).then(data => {
+        //     setArticlePosts(data)
+        // }).catch(err => {
+        //     console.log(err.error)
+        // })
+    }
+    const Handlereset=()=>{
+        setState([])
+    }
     const handleSelectedFile = (event) => {
-        //setState({ ...state, [event.target.name]: event.target.value });
+        setState1({ ...state1, [event.target.name]: event.target.value });
+        console.log("state",state1)
+        setState1({ ...state1, [event.target.name]: "image" });
 
-
+          console.log(state1)
         document.getElementById("fileInput").innerHTML='done';
         document.getElementById("fileInput").style.color='#2edb8a';
+        console.log(state)
     };
     const handleDateChange = (date) => setState({ ...state, date });
 
     const {
         profilePic,
-        lastName,
+        Address,
         firstName,
         mobile,
         description,
         email,
-        serviceCharge,
+        // serviceCharge,
         linkedinUrl,
         fbUrl,
         twitterUrl
@@ -90,11 +172,11 @@ const EditForm = () => {
         cursor:"pointer"
     };
     let addRemove={
-        marginBottom:"20px"
+        marginBottom:"20px",
     };
     return (
-        <div>
-            <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
+        <div style={{padding:'25px'}}>
+            <ValidatorForm onSubmit={handleSubmit} onError={() => null} >
                 <Grid container spacing={6}>
                     <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
                         <div style={imgDiv}>
@@ -130,16 +212,16 @@ const EditForm = () => {
                             name="firstName"
                             label="First Name"
                             onChange={handleChange}
-                            value={firstName || ""}
+                            value={firstName || Name}
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
                         <TextField
                             type="text"
-                            name="lastName"
-                            label="Last Name"
+                            name="Address"
+                            label="Address"
                             onChange={handleChange}
-                            value={lastName || ""}
+                            value={Address || ""}
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
@@ -148,7 +230,7 @@ const EditForm = () => {
                             type="email"
                             name="email"
                             label="Email"
-                            value={email || ""}
+                            value={email || Email}
                             onChange={handleChange}
                             validators={["required", "isEmail"]}
                             errorMessages={["this field is required", "email is not valid"]}
@@ -190,25 +272,25 @@ const EditForm = () => {
 
                     </Grid>
 
-                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                    <Grid style={{marginTop:'80px'}} item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
                         <TextField
                             type="text"
                             name="mobile"
-                            value={mobile || ""}
+                            value={mobile || Phone}
                             label="Mobile Nubmer"
                             onChange={handleChange}
                             validators={["required"]}
                             errorMessages={["this field is required"]}
                         />
-                        <TextField
-                            type="text"
-                            name="serviceCharge"
-                            value={serviceCharge || ""}
-                            label="Service Charge (Rs.)"
-                            onChange={handleChange}
-                            validators={["required"]}
-                            errorMessages={["this field is required"]}
-                        />
+                        {/*<TextField*/}
+                        {/*    type="text"*/}
+                        {/*    name="serviceCharge"*/}
+                        {/*    value={serviceCharge || ""}*/}
+                        {/*    label="Service Charge (Rs.)"*/}
+                        {/*    onChange={handleChange}*/}
+                        {/*    validators={["required"]}*/}
+                        {/*    errorMessages={["this field is required"]}*/}
+                        {/*/>*/}
                         <TextField
                             type="url"
                             name="linkedinUrl"
@@ -241,12 +323,15 @@ const EditForm = () => {
 
                 </Grid>
                 <div style={addRemove}>
-                    <AddRemoveFormField />
+                    <AddRemoveFormField check={check} />
                 </div>
-                <Button color="primary" variant="contained" type="submit">
-                    <Icon>send</Icon>
+                <Button color="primary" style={{width:'100%',height:'30px',display:'flex',marginTop:'10px'}} variant="contained" type="submit">
+                    {/*<Icon>send</Icon>*/}
                     <Span sx={{ pl: 1, textTransform: "capitalize" }}>Submit</Span>
                 </Button>
+                {/*<div>*/}
+                {/*    <Button variant="contained" onClick={Pass} style={{width:'100%',display:'flex',marginTop:'10px'}}>PUBLISH</Button>*/}
+                {/*</div>*/}
             </ValidatorForm>
         </div>
     );

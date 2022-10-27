@@ -11,7 +11,7 @@ import PediatricianRoutes from "./views/Actors/Pediatrician/PediatricianRoutes";
 const routes = [
   {
   element: (
-     <AuthGuard>
+    <AuthGuard>
      <MatxLayout />
      </AuthGuard>
      ),

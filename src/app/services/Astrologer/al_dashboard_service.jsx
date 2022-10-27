@@ -35,6 +35,27 @@ export const load_profile_card = async (u_id) => {
     console.log(data1)
     return data1;
 };
+export const editptProfileastrologer =async (id,object) => {
+    console.log("object is",object)
+    const response = await API.post(`/AL/editptProfileastrologer`,{
+        params:{
+            "id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    // console.log("object")
+};
+export const addQulificationsAs =async (id,object) => {
+    const response = await API.post(`/AL/addQulificationsAs`,{
+        params:{
+            "id":id,
+            "object":object
+        }
+    }, options);
+    return response.data;
+    console.log("object")
+};
 
 export const load_line_chart1 = async (u_id) => {
 
