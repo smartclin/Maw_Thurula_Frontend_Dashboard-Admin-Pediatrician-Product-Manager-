@@ -39,11 +39,6 @@ const initialValues = {
   email: '',
   password: '',
   username: '',
-  nic:'',
-  address:'',
-  contact_no:'',
-  currently_working_at:'',
-  years_of_experience:'',
   user_type: true,
   service_charge:''
 };

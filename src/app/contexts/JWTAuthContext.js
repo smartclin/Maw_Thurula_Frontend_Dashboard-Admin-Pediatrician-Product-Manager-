@@ -1,5 +1,3 @@
-
-
 import  React, { createContext, useEffect, useReducer } from 'react'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios.js'
@@ -107,12 +105,12 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
-    /* const register = async (email, username, password) => {
-         const response = await axios.post('/api/auth/register', {
-             email,
-             username,
-             password,
-         })*/
+   /* const register = async (email, username, password) => {
+        const response = await axios.post('/api/auth/register', {
+            email,
+            username,
+            password,
+        })*/
 
 
     const register = async (email, username, password,user_type,service_charge,nic,address,contact_no,currently_working_at,

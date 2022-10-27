@@ -22,7 +22,7 @@ const NameProviderReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
     load_reg_np(sDate,eDate).then(data => {
 
       setRegAl(data);
-      console.log(RegAl)
+    //  console.log(RegAl)
     }).catch(err => {
       console.log(err.error)
     })

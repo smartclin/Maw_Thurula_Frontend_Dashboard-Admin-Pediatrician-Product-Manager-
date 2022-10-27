@@ -7,8 +7,8 @@ import {array} from "yup";
 
 const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
 
-  console.log("line chart"+sDate)
-  console.log("line chart"+eDate)
+ // console.log("line chart"+sDate)
+  //console.log("line chart"+eDate)
   let al_month=[];
   let al_count=[];
   const [AlMonth, setAlMonth] = useState([]);

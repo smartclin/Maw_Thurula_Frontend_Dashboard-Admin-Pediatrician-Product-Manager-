@@ -27,7 +27,7 @@ const AstrologerDashboardLineChart = ({ height, color = []}) => {
   useEffect(async () => {
 
     if(RegAl.req_data){
-      console.log(RegAl.req_data)
+     // console.log(RegAl.req_data)
       al_count=RegAl.req_data.map((al_count:array)=> al_count['count(*)']);
       al_month=RegAl.req_data.map((al_month:array)=> al_month['month(request_date)']);
       setAlCount(al_count)

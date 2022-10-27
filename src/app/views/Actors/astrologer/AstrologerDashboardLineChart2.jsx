@@ -28,7 +28,7 @@ const AstrologerDashboardLineChart2 = ({ height, color = []}) => {
     useEffect(async () => {
 
         if(RegAl.profit_data){
-            console.log(RegAl.profit_data)
+          //  console.log(RegAl.profit_data)
             al_count=RegAl.profit_data.map((al_count:array)=> al_count['sum(amount)']);
             al_month=RegAl.profit_data.map((al_month:array)=> al_month['month(date_time)']);
             setAlCount(al_count)
