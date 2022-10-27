@@ -14,10 +14,9 @@ const EditProfile = Loadable(lazy(() => import('./EditProfile')));
 const AstrologerRoutes = [
     { path: '/AL', element: <AstrologerDashboard />, auth: authRoles.admin },
     { path: '/al/new_request', element: <NewJobs />, auth: authRoles.admin },
-    { path: '/al/view_request', element: <AstrologerViewRequest />, auth: authRoles.admin },
-    { path: '/al/view_request_with_response', element: <AstrologerViewRequestWithResponse />, auth: authRoles.admin },
+    { path: '/al/view_request/:request_id', element: <AstrologerViewRequest />, auth: authRoles.admin },
+    { path: '/al/view_request_with_response/:request_id', element: <AstrologerViewRequestWithResponse />, auth: authRoles.admin },
     { path: '/al/edit_profile', element: <EditProfile/>, auth: authRoles.admin },
-
 
 ];
 

@@ -3,14 +3,13 @@ import {avatarClasses, Card, Grid, Icon, IconButton, styled, useTheme} from '@mu
 
 import Avatar from '@mui/material/Avatar';
 import AstrologerDashboardStatCards from "./AstrologerDashboardStatCards";
-import AstrologerDashboardTopSellingTable from "./AstrologerDashboardTopSellingTable";
 import AstrologerDashboardLineChart from "./AstrologerDashboardLineChart";
-import editProfile from "./EditProfile";
 import {useNavigate, useParams} from "react-router-dom";
 
 import {load_profile_card} from "../../../services/Astrologer/al_dashboard_service";
 import AstrologerDashboardLineChart2 from "./AstrologerDashboardLineChart2";
-//import {Title} from "@mui/icons-material";
+import TodayJobRequest from "./TodayJobRequest";
+
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -156,8 +155,8 @@ const AstrologerDashboard = () => {
 
                     </Grid>
 
-                    <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <Card  sx={{ px: 3, py: 2, mb: 3 }}>
+                    <Grid item lg={4} md={4} sm={12} xs={12} >
+                        <Card  sx={{ px: 3, py: 2, }} style={{paddingBottom:85}}>
                             <div style={titleHeader}>
                                 <div>
                                     <Title style ={{fontSize:'2em',color:'#56595e'}}>Hi {ProfileCard.name}</Title>
@@ -174,18 +173,18 @@ const AstrologerDashboard = () => {
                             <p>{ProfileCard.description}</p>
 
                             <span style={emailAndPhone}>
-               <Icon color="primary">mail</Icon>
-                <span style={{paddingLeft:20,fontSize:'17px'}}>{ProfileCard.email}</span>
-                 </span>
+                            <Icon color="primary">mail</Icon>
+                            <span style={{paddingLeft:20,fontSize:'17px'}}>{ProfileCard.email}</span>
+                             </span>
 
-                            <span style={emailAndPhone}>
-                   <Icon color="primary">local_phone</Icon>
-                 <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.phone_number}</span>
-                  </span>
-                            <span style={emailAndPhone}>
-                   <Icon color="primary">location_on</Icon>
-                 <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.address}</span>
-                  </span>
+                                        <span style={emailAndPhone}>
+                               <Icon color="primary">local_phone</Icon>
+                             <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.phone_number}</span>
+                              </span>
+                                        <span style={emailAndPhone}>
+                               <Icon color="primary">location_on</Icon>
+                             <span style={{paddingLeft:20,fontSize:'17px'}} >{ProfileCard.address}</span>
+                                        </span>
 
                         </Card>
 
@@ -193,7 +192,7 @@ const AstrologerDashboard = () => {
 
                     </Grid>
                 </Grid>
-                <AstrologerDashboardTopSellingTable/>
+                <TodayJobRequest/>
 
             </ContentBox>
 

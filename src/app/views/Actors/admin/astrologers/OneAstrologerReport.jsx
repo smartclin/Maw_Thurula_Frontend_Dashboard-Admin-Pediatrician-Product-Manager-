@@ -1,6 +1,6 @@
 
 import { Card, Grid, styled, useTheme } from '@mui/material';
-import { Fragment } from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import AstrologerReportStatCards from "./AstrologerReportStatCards";
 import AstrologerReportLineChart from "./AstrologerReportLineChart";
 import {Title} from "@mui/icons-material";
@@ -10,8 +10,29 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import DownloadIcon from '@mui/icons-material/Download';
 import OneAstrologerReportStatCards from "./OneAstrologerReportStatCards";
+import {useParams} from "react-router-dom";
+
+
+
 
 const OneAstrologerReport  = () => {
+
+    let {a_id}=useParams();
+    //console.log(a_id)
+    const [AlId, setAlId] = useState([]);
+
+    useEffect(async () => {
+        setAlId(a_id)
+        // console.log(StatCard1)
+    }, []);
+
+
+
+    useEffect(async () => {
+     // console.log(AlId)
+        // console.log(StatCard1)
+    }, [AlId]);
+
     const { palette } = useTheme();
 
     const Title = styled('span')(() => ({
@@ -53,18 +74,15 @@ const OneAstrologerReport  = () => {
             <div style={titleDiv}>
                 <div style={reportTitle}> Gayan Perera </div>
                 <div>
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                        <Button variant="contained" component="label">
-                            Download as a PDF  <DownloadIcon></DownloadIcon>
-                            <input hidden accept="image/*" multiple type="file" />
-                        </Button>
 
-                    </Stack>
                 </div>
             </div>
 
             <div style={mainDiv}>
-                <OneAstrologerReportStatCards>
+                <OneAstrologerReportStatCards
+
+                    AlId={AlId}
+                >
 
                 </OneAstrologerReportStatCards>
 
@@ -72,10 +90,10 @@ const OneAstrologerReport  = () => {
                     <Card sx={{ px: 3, py: 2, mb: 3 }} style={registerdAstrologers}>
                         <Title> Profit </Title>
 
-                        <AstrologerReportLineChart
-                            height="350px"
-                            color={[palette.primary.dark, palette.primary.main, palette.primary.light]}
-                        />
+                        {/*<AstrologerReportLineChart*/}
+                        {/*    height="350px"*/}
+                        {/*    color={[palette.primary.dark, palette.primary.main, palette.primary.light]}*/}
+                        {/*/>*/}
                     </Card>
 
                 </div>

@@ -7,7 +7,8 @@ import {array} from "yup";
 
 const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
 
-
+ // console.log("line chart"+sDate)
+  //console.log("line chart"+eDate)
   let al_month=[];
   let al_count=[];
   const [AlMonth, setAlMonth] = useState([]);
@@ -17,28 +18,29 @@ const AstrologerReportLineChart = ({ height, color = [] ,sDate,eDate}) => {
 
   const [RegAl, setRegAl] = useState([[]]);
 
-
   useEffect(() => {
     load_reg_al(sDate,eDate).then(data => {
 
       setRegAl(data);
-      console.log(RegAl)
+     // console.log(RegAl)
     }).catch(err => {
       console.log(err.error)
     })
-  }, [RegAl]);
+  }, [],sDate,eDate);
 
   useEffect(async () => {
 
     if(RegAl.reg_al){
-     console.log(RegAl)
+    console.log(RegAl)
       al_count=RegAl.reg_al.map((al_count:array)=> al_count['count(*)']);
       al_month=RegAl.reg_al.map((al_month:array)=> al_month['month(registered_at)']);
       setAlCount(al_count)
       setAlMonth(al_month)
-      console.log(al_count)
+      //console.log(al_count)
     }
   }, [RegAl]);
+
+
 
 
  /*useEffect(()=>{

@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Card, Grid, Icon, IconButton, styled, TextField, Tooltip} from '@mui/material';
 import {Small} from 'app/components/Typography';
+
+import {load_stat_card2_one_al} from "../../../../services/Admin/Astrologer/admin_astrologer_report_service";
 
 
 const StyledCard = styled(Card)(({theme}) => ({
@@ -33,11 +35,40 @@ const dateRange={
     margin:"20px 0px 20px 0"
 };
 
-const OneAstrologerReportStatCards = () => {
+const OneAstrologerReportStatCards = ({AlId}) => {
+   // console.log(AlId)
+
+    //number of response
+    const [StatCard2, setStatCard2] = useState([]);
+    const [Al, setAl] = useState([]);
+
+
+    useEffect(async () => {
+        setAl(AlId)
+        console.log(AlId)
+    }, []);
+
+
+    useEffect(() => {
+        console.log('********')
+        console.log(Al)
+        console.log('********')
+      load_stat_card2_one_al(Al).then(data => {
+            setStatCard2(data);
+        }).catch(err => {
+            console.log(err.error)
+        })
+    }, [Al]);
+
+
+    useEffect(async () => {
+
+        // console.log(StatCard2)
+    }, [StatCard2]);
 
     const cardList1 = [
-        { name: 'Requests', amount: 200, icon: 'call_received' },
-        { name: 'Responses', amount: '190', icon: 'call_made' },
+        { name: 'Total Requests', amount: "StatCard1", icon: 'call_received' },
+        { name: 'Total Responses', amount: StatCard2, icon: 'call_made' },
 
     ];
     const cardList2 = [
@@ -84,44 +115,7 @@ const OneAstrologerReportStatCards = () => {
               </Grid>
           ))}
         </Grid>
-          <div style={dateRange}>
 
-                  <Box
-                      component="form"
-                      sx={{
-                          '& > :not(style)': { m: 1, width: '25ch' },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                  >
-                      <TextField label="Start Date" color="primary" focused type="date" />
-                      <TextField label="End Date" color="primary" focused  type="date"/>
-
-                  </Box>
-             {/* <LocalizationProvider
-                  dateAdapter={AdapterDateFns}
-                  localeText={{ start: 'Start date', end: 'End date' }}
-              >
-                  <DateRangePicker
-                      value={value}
-                      onChange={(newValue) => {
-                          setValue(newValue);
-                      }}
-                      renderInput={(startProps, endProps) => (
-                          <React.Fragment>
-                              <TextField {...startProps} />
-                              <Box sx={{ mx: 2 }}> to </Box>
-                              <TextField {...endProps} />
-                          </React.Fragment>
-                      )}
-                  />
-              </LocalizationProvider>*/}
-              {/*<DateRangePicker*/}
-              {/*    initialSettings={{ startDate: '1/1/2022', endDate: '3/10/2022' }}*/}
-              {/*>*/}
-              {/*    <button style={dateRangeButton}>Select Date Range </button>*/}
-              {/*</DateRangePicker>*/}
-          </div>
 
           <Grid container spacing={3} sx={{ mb: '24px' }}>
               {cardList2.map((item, index) => (

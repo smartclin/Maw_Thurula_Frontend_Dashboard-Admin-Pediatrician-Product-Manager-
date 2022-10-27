@@ -23,7 +23,7 @@ const NameProviderDashboardLineChart2 = ({ height, color = []}) => {
         }).catch(err => {
             console.log(err.error)
         })
-    }, [RegAl]);
+    }, []);
 
     useEffect(async () => {
 

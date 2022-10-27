@@ -39,6 +39,11 @@ const initialValues = {
   email: '',
   password: '',
   username: '',
+  nic:'',
+  address:'',
+  contact_no:'',
+  currently_working_at:'',
+  years_of_experience:'',
   user_type: true,
   service_charge:''
 };
@@ -61,7 +66,8 @@ const JwtRegister = () => {
     setLoading(true);
 
     try {
-      register(values.email, values.username, values.password, values.user_type,values.service_charge);
+      register(values.email, values.username, values.password, values.user_type,values.service_charge,values.nic,values.address,values.contact_no,values.currently_working_at,values.years_of_experience);
+
       //alert(values.username)
       navigate('/');
       setLoading(false);
@@ -137,6 +143,76 @@ const JwtRegister = () => {
                       helperText={touched.password && errors.password}
                       error={Boolean(errors.password && touched.password)}
                       sx={{ mb: 2 }}
+                    />
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="nic"
+                        type="nic"
+                        label="NIC"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.nic}
+                        onChange={handleChange}
+                        helperText={touched.nic && errors.nic}
+                        error={Boolean(errors.nic && touched.nic)}
+                        sx={{ mb: 2 }}
+                    />
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="address"
+                        type="address"
+                        label="Address"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.address}
+                        onChange={handleChange}
+                        helperText={touched.address && errors.address}
+                        error={Boolean(errors.address && touched.address)}
+                        sx={{ mb: 2 }}
+                    />
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="contact_no"
+                        type="contact_no"
+                        label="Contact Number"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.contact_no}
+                        onChange={handleChange}
+                        helperText={touched.contact_no && errors.contact_no}
+                        error={Boolean(errors.contact_no && touched.contact_no)}
+                        sx={{ mb: 2 }}
+                    />
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="currently_working_at"
+                        type="currently_working_at"
+                        label="Currently Working At"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.currently_working_at}
+                        onChange={handleChange}
+                        helperText={touched.currently_working_at && errors.currently_working_at}
+                        error={Boolean(errors.currently_working_at && touched.currently_working_at)}
+                        sx={{ mb: 2 }}
+                    />
+                    <TextField
+                        fullWidth
+                        size="small"
+                        name="years_of_experience"
+                        type="years_of_experience"
+                        label="Years of experience"
+                        variant="outlined"
+                        onBlur={handleBlur}
+                        value={values.years_of_experience}
+                        onChange={handleChange}
+                        helperText={touched.years_of_experience && errors.years_of_experience}
+                        error={Boolean(errors.years_of_experience && touched.years_of_experience)}
+                        sx={{ mb: 2 }}
                     />
 
                     <FlexBox style={{display:"flex" ,marginBottom:'10px'}} gap={2}>

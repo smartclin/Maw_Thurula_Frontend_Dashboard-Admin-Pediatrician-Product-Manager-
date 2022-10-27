@@ -59,7 +59,7 @@ const AstrologerDashboardStatCards = () => {
 
   useEffect(async () => {
 
-    console.log(StatCard2)
+  //  console.log(StatCard2)
   }, [StatCard2]);
 
 

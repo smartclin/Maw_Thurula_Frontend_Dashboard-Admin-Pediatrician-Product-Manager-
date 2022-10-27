@@ -7,8 +7,8 @@ import {array} from "yup";
 
 const NameProviderReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
   const theme = useTheme();
-  console.log("line chart"+sDate)
-  console.log("line chart"+eDate)
+  //console.log("line chart"+sDate)
+  //console.log("line chart"+eDate)
   const [RegAl, setRegAl] = useState([[]]);
 
   //load profit from astrolergers
@@ -23,12 +23,12 @@ const NameProviderReportLineChart2 = ({ height, color = [] ,sDate,eDate}) => {
         }).catch(err => {
             console.log(err.error)
         })
-    }, [RegAl]);
+    }, []);
 
     useEffect(async () => {
 
         if(RegAl.profit_np){
-            console.log(RegAl.profit_np)
+           // console.log(RegAl.profit_np)
             al_count=RegAl.profit_np.map((al_count:array)=> al_count['SUM(amount)']);
             al_month=RegAl.profit_np.map((al_month:array)=> al_month['month(date_time)']);
             setAlCount(al_count)

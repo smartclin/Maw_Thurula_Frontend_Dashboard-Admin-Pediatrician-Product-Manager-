@@ -57,7 +57,7 @@ const AstrologerReportStatCards = () => {
 
     useEffect(async () => {
 
-        console.log(StatCard1)
+       // console.log(StatCard1)
     }, [StatCard1]);
 
     const [StatCard2, setStatCard2] = useState([]);
@@ -70,11 +70,72 @@ const AstrologerReportStatCards = () => {
         })
     }, []);
 
-    useEffect(async () => {
+   useEffect(async () => {
 
-        console.log(StatCard2)
+      //  console.log(StatCard2)
     }, [StatCard2]);
 
+
+   //line charts
+    const current = new Date();
+    const dateE = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+    // console.log(dateE)
+
+    const dateS=`${(current.getFullYear()-1)}-${current.getMonth()+1}-${current.getDate()}`;
+
+
+
+    const [sDate, setsDate] = useState(dateS);
+    const [eDate, seteDate] = useState(dateE);
+    const [Tot, setTot] = useState();
+    const [Pending, setPending] = useState();
+
+    useEffect(()=>{
+        console.log(`sDate: ${sDate}`);
+        console.log(`eDate: ${eDate}`);
+    },[eDate],[sDate])
+
+    useEffect(()=>{
+        seteDate(dateE);
+        setsDate(dateS);
+    },[])
+
+
+    //console.log(`sDate: ${sDate}`);
+    // console.log(`eDate: ${eDate}`);
+    //load total income
+    load_tot_income(sDate,eDate).then(data => {
+        setTot(data);
+    })
+
+    //load pending income
+    load_pending_income(sDate,eDate).then(data => {
+        setPending(data);
+    })
+
+    function FilterData(event) {
+        //  prevent page refresh
+        event.preventDefault();
+
+
+        //load total income
+        load_tot_income(sDate,eDate).then(data => {
+            setTot(data);
+        })
+
+        //load pending income
+        load_pending_income(sDate,eDate).then(data => {
+            setPending(data);
+        })
+
+        setValue({});
+    }
+
+    const cardList2 = [
+
+        { name: 'Total Income (Rs)', amount:Tot , icon: 'attach_money' },
+        { name: 'Pending Income (Rs)', amount: Pending, icon: 'trending_up' },
+    ];
 
     const [TotIncome, setTotIncome] = useState([]);
 
@@ -144,58 +205,7 @@ const AstrologerReportStatCards = () => {
         alignItems:'center',
         justifyContent:'space-between',
     };
-    const current = new Date();
-    const dateE = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
-   // console.log(dateE)
 
-    const dateS=`${(current.getFullYear()-1)}-${current.getMonth()+1}-${current.getDate()}`;
-
-
-
-    const [sDate, setsDate] = useState('');
-    const [eDate, seteDate] = useState('');
-    const [Tot, setTot] = useState();
-    const [Pending, setPending] = useState();
-
-    useEffect(()=>{
-    seteDate(dateE);
-    setsDate(dateS);
-    },[])
-    console.log(`sDate: ${sDate}`);
-    console.log(`eDate: ${eDate}`);
-    //load total income
-    load_tot_income(sDate,eDate).then(data => {
-        setTot(data);
-    })
-
-    //load pending income
-    load_pending_income(sDate,eDate).then(data => {
-        setPending(data);
-    })
-
-    function FilterData(event) {
-        //  prevent page refresh
-        event.preventDefault();
-
-
-        //load total income
-        load_tot_income(sDate,eDate).then(data => {
-            setTot(data);
-         })
-
-        //load pending income
-        load_pending_income(sDate,eDate).then(data => {
-            setPending(data);
-        })
-
-        setValue({});
-    }
-
-    const cardList2 = [
-
-        { name: 'Total Income', amount:Tot , icon: 'attach_money' },
-        { name: 'Pending Income', amount: Pending, icon: 'trending_up' },
-    ];
     let chart;
     return (<div>
         <Grid container spacing={3} sx={{ mb: '24px' }}>
@@ -232,25 +242,30 @@ const AstrologerReportStatCards = () => {
 
               >
 
-                      <TextField label="Start Date" color="primary" focused type="date"  id={sDate} name='sDate'
-                                 defaultValue={sDate}
-                                 value={sDate}
-                                 onChange={(e) => setsDate(e.target.value)}
-                                 selected
+                  <div style={{display:'flex', flexDirection:'raw',color:'grey',width:"25%",justifyContent:'space-between'}}>
+                      <div sx={{width:"100%"}}> From : {sDate} </div>
+                      <div sx={{width:"100%"}}> To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {eDate}</div>
+                  </div>
 
 
-                          />
+                      {/*<TextField label="Start Date" color="primary" focused type="date"  id={sDate} name='sDate'*/}
+                      {/*           defaultValue={sDate}*/}
+                      {/*           value={sDate}*/}
+                      {/*           onChange={(e) => setsDate(e.target.value)}*/}
+                      {/*           selected*/}
+                      {/*    />*/}
 
-                      <TextField label="End Date" color="primary" focused  type="date" id={eDate} name='eDate'
-                                 value={eDate}
-                                 onChange={(e) => seteDate(e.target.value)}
-                                 defaultValue={eDate}
-                          />
-                      <Stack spacing={2} direction="row">
+                      {/*<TextField label="End Date" color="primary" focused  type="date" id={eDate} name='eDate'*/}
+                      {/*           value={eDate}*/}
+                      {/*           onChange={(e) => seteDate(e.target.value)}*/}
+                      {/*           defaultValue={eDate}*/}
+                      {/*           style={{display: 'none' }}*/}
+                      {/*    />*/}
+                      {/*<Stack spacing={2} direction="row">*/}
 
-                      <Button type="submit" variant="contained" onClick={FilterData} >Generate Report</Button>
+                      {/*<Button type="submit" variant="contained" onClick={FilterData} >Generate Report</Button>*/}
 
-                      </Stack>
+                      {/*</Stack>*/}
 
 
 

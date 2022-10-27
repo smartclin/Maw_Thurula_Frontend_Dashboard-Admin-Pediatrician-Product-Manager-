@@ -23,11 +23,11 @@ const NewJobRequestTable=()=> {
 
     const navigate = useNavigate();
 
-    const viewRequest=(replyStatus)=>{
+    const viewRequest=(replyStatus,Request_id)=>{
         replyStatus ?
-            navigate({pathname:'/np/view_request_with_response'})
+            navigate({pathname:'/np/view_request_with_response/'+Request_id})
             :
-            navigate({pathname:'/np/view_request'})
+            navigate({pathname:'/np/view_request/'+Request_id})
 
     }
     const [open, setOpen] = React.useState(false);
@@ -59,7 +59,18 @@ const NewJobRequestTable=()=> {
     const [req_data, set_req_data] = useState([]);
     //load today requests
     let table_data=[];
+    function DateReturn(date){
+        const today = new Date(date);
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
 
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+
+        const formattedToday = dd + '/' + mm + '/' + yyyy;
+        return formattedToday
+    }
 
 
 
@@ -67,21 +78,18 @@ const NewJobRequestTable=()=> {
     const [TableReq, setTableReq] = useState([]);
     useEffect(() => {
         load_req(u_id).then(data => {
-            setReq(data);
+            setReq(data.req);
             console.log(Req)
         }).catch(err => {
             console.log(err.error)
         })
-    }, [Req]);
+    }, []);
 
     useEffect(async () => {
 
-        if(Req.req){
+        if(Req){
 
-            set_req_data(Req.req)
-            console.log(req_data)
-
-            table_data=req_data.map((x) => ({"name":x.first_name,"Email":x.email,"Date":x.request_date,"Status":x.request_status}))
+            table_data=Req.map((x) => ({"name":x.first_name,"Email":x.email,"Date":DateReturn(x.request_date),"Status":x.request_status,"Request_id":x.request_id}))
             setTableReq(table_data);
             console.log(TableReq);
 
@@ -125,7 +133,7 @@ const NewJobRequestTable=()=> {
                            data={
                                TableReq
                            }
-                           onRowClick={(event, rowData) => viewRequest(rowData.Status)}
+                           onRowClick={(event, rowData) => viewRequest(rowData.Status,rowData.Request_id)}
                            actions={[
                                (rowData) => {
                                    return rowData.Status
